@@ -5,7 +5,7 @@ import { FormidableField } from '@/models/Formidable/Field/field.abstract';
  * Formidable Basic Form
  * The Basic form is a single form
  */
-export class FormidableFormBasic extends FormidableForm {
+export class FormidableBasicForm extends FormidableForm {
 
     constructor(fields?: Array<FormidableField<any>>) {
         super(fields);
