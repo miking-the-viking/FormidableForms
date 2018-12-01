@@ -11,6 +11,8 @@
     "test:unit:watch": "vue-cli-service test:unit --watch --verbose"
   },
   "dependencies": {
+    "class-transformer": "^0.2.0",
+    "class-transformer-validator": "^0.6.0",
     "class-validator": "^0.9.1",
     "register-service-worker": "^1.5.2",
     "vue": "^2.5.17",

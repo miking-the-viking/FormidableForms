@@ -29,7 +29,7 @@ const runFormTests = <T extends FormidableForm>(ctor: new(...args: any[]) => For
             // });
         });
     });
-}
+};
 
 runFormTests(FormidableBasicForm);
 runFormTests(FormidableWizardForm);

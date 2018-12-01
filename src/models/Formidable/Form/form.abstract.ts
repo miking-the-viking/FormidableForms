@@ -4,9 +4,9 @@ import { FormidableField } from '@/models/Formidable/Field/field.abstract';
  * Formidable Form definition
  */
 export abstract class FormidableForm {
-    public fields: Array<FormidableField<any>>;
+    public fields: FormidableField[];
 
-    constructor(fields?: Array<FormidableField<any>>) {
+    constructor(fields?: FormidableField[]) {
         this.fields = fields || [];
     }
 }
