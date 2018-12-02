@@ -4,7 +4,23 @@ import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
 import { transformAndValidate } from 'class-transformer-validator';
 import { ValidationError } from 'class-validator';
 
-const runFieldTests = (ctor: new (...args: any[]) => FormidableField) => {
+/**
+ * reduces a ValidationError array checking for a specific type string type match
+ * returns false if found, true otherwise.
+ * @param type
+ * @param e
+ */
+export function errorArrayHas(type: string, e: ValidationError[]): boolean {
+    return e.reduce((acc: boolean, val: ValidationError) => {
+        expect(val).toBeInstanceOf(ValidationError);
+        if (val.property === type) {
+            return true;
+        }
+        return acc;
+    }, false);
+}
+
+const runFieldTests = (ctor: new (...args: any[]) => FormidableField<any>) => {
     describe(`Formidable Form Field Core Test for ${ctor.name} Implementation`, () => {
 
         describe('Field Initialization', () => {
@@ -19,17 +35,7 @@ const runFieldTests = (ctor: new (...args: any[]) => FormidableField) => {
                         fail(`Did not throw a validator error when using an invalid field type ${invalidType.type}`);
                     } catch (e) {
                         expect(e).toBeInstanceOf(Array);
-                        expect(
-                            // verify that type threw an error
-                            e.reduce((acc: boolean, val: ValidationError) => {
-                                expect(val).toBeInstanceOf(ValidationError);
-                                if (val.property === 'type') {
-                                    expect(val.value).toEqual(invalidType.type);
-                                    return true;
-                                }
-                                return acc;
-                            }, false)
-                        ).toBeTruthy();
+                        expect(errorArrayHas('type', e)).toBeTruthy();
                     }
                 });
 
@@ -40,16 +46,7 @@ const runFieldTests = (ctor: new (...args: any[]) => FormidableField) => {
                         await transformAndValidate(ctor, validType);
                     } catch (e) {
                         expect(e).toBeInstanceOf(Array);
-                        expect(
-                            // verify that none of the thrown errors were for type
-                            e.reduce((acc: boolean, val: ValidationError) => {
-                                expect(val).toBeInstanceOf(ValidationError);
-                                if (val.property === 'type') {
-                                    return true;
-                                }
-                                return acc;
-                            }, false)
-                        ).toBeFalsy();
+                        expect(!errorArrayHas('type', e)).toBeTruthy();
                     }
                 });
             });
@@ -64,17 +61,7 @@ const runFieldTests = (ctor: new (...args: any[]) => FormidableField) => {
                             fail(`Did not throw a validator error when using an invalid name prop ${invalidName.name}`);
                         } catch (e) {
                             expect(e).toBeInstanceOf(Array);
-                            expect(
-                                // verify that type threw an error
-                                e.reduce((acc: boolean, val: ValidationError) => {
-                                    expect(val).toBeInstanceOf(ValidationError);
-                                    if (val.property === 'name') {
-                                        expect(val.value).toEqual(invalidName.name);
-                                        return true;
-                                    }
-                                    return acc;
-                                }, false)
-                            ).toBeTruthy();
+                            expect(errorArrayHas('name', e)).toBeTruthy();
                         }
                     });
 
@@ -86,17 +73,7 @@ const runFieldTests = (ctor: new (...args: any[]) => FormidableField) => {
                             fail(`Did not throw a validator error when using an invalid name prop ${invalidName.name}`);
                         } catch (e) {
                             expect(e).toBeInstanceOf(Array);
-                            expect(
-                                // verify that type threw an error
-                                e.reduce((acc: boolean, val: ValidationError) => {
-                                    expect(val).toBeInstanceOf(ValidationError);
-                                    if (val.property === 'name') {
-                                        expect(val.value).toEqual(invalidName.name);
-                                        return true;
-                                    }
-                                    return acc;
-                                }, false)
-                            ).toBeTruthy();
+                            expect(errorArrayHas('name', e)).toBeTruthy();
                         }
                     });
 
@@ -108,17 +85,7 @@ const runFieldTests = (ctor: new (...args: any[]) => FormidableField) => {
                             fail(`Did not throw a validator error when using an invalid name prop ${invalidName.name}`);
                         } catch (e) {
                             expect(e).toBeInstanceOf(Array);
-                            expect(
-                                // verify that type threw an error
-                                e.reduce((acc: boolean, val: ValidationError) => {
-                                    expect(val).toBeInstanceOf(ValidationError);
-                                    if (val.property === 'name') {
-                                        expect(val.value).toEqual(invalidName.name);
-                                        return true;
-                                    }
-                                    return acc;
-                                }, false)
-                            ).toBeTruthy();
+                            expect(errorArrayHas('name', e)).toBeTruthy();
                         }
                     });
                 });
@@ -130,16 +97,7 @@ const runFieldTests = (ctor: new (...args: any[]) => FormidableField) => {
                         await transformAndValidate(ctor, validName);
                     } catch (e) {
                         expect(e).toBeInstanceOf(Array);
-                        expect(
-                            // verify that none of the thrown errors were for type
-                            e.reduce((acc: boolean, val: ValidationError) => {
-                                expect(val).toBeInstanceOf(ValidationError);
-                                if (val.property === 'name') {
-                                    return true;
-                                }
-                                return acc;
-                            }, false)
-                        ).toBeFalsy();
+                        expect(!errorArrayHas('name', e)).toBeTruthy();
                     }
                 });
             });

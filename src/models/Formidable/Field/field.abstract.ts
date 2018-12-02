@@ -1,14 +1,4 @@
 import {
-    validate,
-    Contains,
-    IsInt,
-    Length,
-    IsEmail,
-    IsFQDN,
-    IsDate,
-    Min,
-    Max,
-    IsDefined,
     IsEnum,
     IsOptional,
     IsString,
@@ -34,9 +24,22 @@ export enum FieldType {
 }
 
 /**
+ * Basic props for a Formidable Field
+ */
+export interface IFormidableFieldProps {
+    type: FieldType;
+    name?: string;
+    label?: string;
+    id?: string;
+    required?: boolean;
+    disabled?: boolean;
+    value: any;
+}
+
+/**
  * FormidableForm Field definition
  */
-export abstract class FormidableField {
+export abstract class FormidableField<T> {
 
     /**
      * The Enumerated type of the field, used for code clarity and programmatically limiting the avaialble field types
@@ -70,18 +73,17 @@ export abstract class FormidableField {
      */
     @IsOptional()
     @IsBoolean()
-    public required: boolean = false;
+    public required!: boolean;
 
     /**
      * Whether the field is disabled or not
      */
     @IsOptional()
     @IsBoolean()
-    public disabled: boolean = false;
+    public disabled!: boolean;
 
     /**
      * The given value of the field
      */
-    public value!: any;   // TODO: Pass vlaidator options for the given value?
-
+    public value!: T | null;   // TODO: Pass vlaidator options for the given value?
 }
