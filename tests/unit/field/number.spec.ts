@@ -1,9 +1,13 @@
 import { FormidableNumber, IFormidableNumberProps } from '@/models/Formidable/Field/FormidableNumber';
 import { transformAndValidate } from 'class-transformer-validator';
 import { FieldType } from '@/models/Formidable/Field/field.abstract';
-import { errorArrayHas } from './field.spec';
+import { errorArrayHas, runFieldTests } from './field.abstract';
 
 describe('Formidable Number field', () => {
+
+    describe('Core Field Tests', () => {
+        runFieldTests(FormidableNumber);
+    });
 
     describe('Initialization & Validation', () => {
 
