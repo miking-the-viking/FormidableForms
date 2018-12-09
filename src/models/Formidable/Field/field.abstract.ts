@@ -1,3 +1,6 @@
+/**
+ * Abstract definition concerning Formidable Form Field
+ */
 import {
     IsEnum,
     IsOptional,
@@ -73,14 +76,14 @@ export abstract class FormidableField<T> {
      */
     @IsOptional()
     @IsBoolean()
-    public required!: boolean;
+    public required?: boolean;
 
     /**
      * Whether the field is disabled or not
      */
     @IsOptional()
     @IsBoolean()
-    public disabled!: boolean;
+    public disabled?: boolean;
 
     /**
      * The given value of the field

@@ -1,6 +1,6 @@
-import { FormidableField, FieldType } from '@/models/Formidable/Field/field.abstract';
 
-import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
+import { FormidableField} from '@/models/Formidable/Field/field.abstract';
+
 import { transformAndValidate } from 'class-transformer-validator';
 import { ValidationError } from 'class-validator';
 
@@ -20,7 +20,7 @@ export function errorArrayHas(type: string, e: ValidationError[]): boolean {
     }, false);
 }
 
-export const runFieldTests = (ctor: new (...args: any[]) => FormidableField<any>) => {
+export default (ctor: new (...args: any[]) => FormidableField<any>) => {
     describe(`Formidable Form Field Core Test for ${ctor.name} Implementation`, () => {
 
         describe('Field Initialization', () => {
@@ -39,16 +39,6 @@ export const runFieldTests = (ctor: new (...args: any[]) => FormidableField<any>
                     }
                 });
 
-                // it('does not throw an error when a valid Field Type is used', async () => {
-                //     const validType = { type: FieldType.Number };
-
-                //     try {
-                //         await transformAndValidate(ctor, validType);
-                //     } catch (e) {
-                //         expect(e).toBeInstanceOf(Array);
-                //         expect(!errorArrayHas('type', e)).toBeTruthy();
-                //     }
-                // });
             });
 
             describe('Name Prop', () => {
@@ -135,8 +125,8 @@ export const runFieldTests = (ctor: new (...args: any[]) => FormidableField<any>
 
                         try {
                             await transformAndValidate(ctor, invalidLabel);
-                            // tslint:disable-next-line:max-line-length
-                            fail(`Did not throw a validator error when using an invalid label prop ${invalidLabel.label}`);
+                            fail(`Did not throw a validator error` +
+                            `when using an invalid label prop ${invalidLabel.label}`);
                         } catch (e) {
                             expect(e).toBeInstanceOf(Array);
                             expect(errorArrayHas('label', e)).toBeTruthy();
@@ -184,5 +174,3 @@ export const runFieldTests = (ctor: new (...args: any[]) => FormidableField<any>
         });
     });
 };
-
-// runFieldTests(FormidableNumber);

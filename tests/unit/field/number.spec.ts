@@ -1,7 +1,11 @@
+/**
+ * Number implementation of a Formidable Field test suite
+ */
 import { FormidableNumber, IFormidableNumberProps } from '@/models/Formidable/Field/FormidableNumber';
 import { transformAndValidate } from 'class-transformer-validator';
 import { FieldType } from '@/models/Formidable/Field/field.abstract';
-import { errorArrayHas, runFieldTests } from './field.abstract';
+import runFieldTests, { errorArrayHas } from './field.abstract';
+import { __await } from 'tslib';
 
 describe('Formidable Number field', () => {
 
@@ -132,13 +136,63 @@ describe('Formidable Number field', () => {
                                 FormidableNumber,
                                 {type: FieldType.Number, value: 1, ...invalid}
                             );
+                            fail(`Should have failed with the non numeric value`);
                         } catch (e) {
                             expect(errorArrayHas('minimum', e)).toBeTruthy();
                             expect(errorArrayHas('maximum', e)).toBeTruthy();
                         }
                     }));
                 });
-            })
+
+                it('fails when the value is less than the minimum', async () => {
+                    try {
+                        await transformAndValidate(FormidableNumber,
+                            {
+                                type: FieldType.Number,
+                                value: 1,
+                                minimum: 2
+                            }
+                        );
+                        fail(`should have failed with a value less than the minimum`);
+                    } catch (e) {
+                        expect(errorArrayHas('value', e)).toBeTruthy();
+                    }
+                });
+
+
+                it('fails when the value is greater than the maximum', async () => {
+                    try {
+                        await transformAndValidate(FormidableNumber,
+                            {
+                                type: FieldType.Number,
+                                value: 6,
+                                maximum: 5
+                            }
+                        );
+                        fail(`should have failed with a value less than the minimum`);
+                    } catch (e) {
+                        expect(errorArrayHas('value', e)).toBeTruthy();
+                    }
+                });
+
+
+                it('fails when minimum is greater than maximum', async () => {
+                    try {
+                        const result = await transformAndValidate(FormidableNumber, {
+                            type: FieldType.Number,
+                            value: 10,
+                            maximum: 11,
+                            minimum: 12
+                        });
+                        fail(`should have failed when the maximum was less than the minimum`);
+                    } catch (e) {
+                        expect(e).toBeInstanceOf(Array);
+                        expect(errorArrayHas('minimum', e)).toBeTruthy();
+                        expect(errorArrayHas('maximum', e)).toBeTruthy();
+                    }
+                });
+
+            });
 
         });
     });

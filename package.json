@@ -11,9 +11,11 @@
     "test:unit:watch": "vue-cli-service test:unit --watch --verbose"
   },
   "dependencies": {
+    "bulma": "^0.7.2",
     "class-transformer": "^0.2.0",
     "class-transformer-validator": "^0.6.0",
     "class-validator": "^0.9.1",
+    "reflect-metadata": "^0.1.12",
     "register-service-worker": "^1.5.2",
     "vue": "^2.5.17",
     "vue-class-component": "^6.0.0",
@@ -36,6 +38,7 @@
     "sass-loader": "^7.0.1",
     "ts-jest": "^23.0.0",
     "typescript": "^3.0.0",
+    "vue-cli-plugin-pug": "^1.0.7",
     "vue-template-compiler": "^2.5.17"
   },
   "gitHooks": {
