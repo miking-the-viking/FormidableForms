@@ -1,35 +1,24 @@
 <template lang="pug">
-#app
-  #nav
-    router-link(to="/") Formidable Forms
-  router-view
+#app.container
+	#nav.section
+		router-link(to="/") Formidable Forms
+	router-view.section
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
+import Navbar from '@/components/Page/Navbar.vue';
 
-@Component
+@Component({
+	components: {
+		Navbar
+	}
+})
 export default class App extends Vue {
 }
 </script>
 
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+<style lang="scss" scoped>
+
 </style>

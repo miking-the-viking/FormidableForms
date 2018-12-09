@@ -5,12 +5,12 @@ import { FormidableWizardForm } from '@/models/Formidable/Form/FormidableWizardF
 import runFormTests from '@/../tests/unit/form/form.abstract';
 
 describe('Formidable Wizard Form', () => {
-    describe('Passes Formidable Form Core tests', () => {
-        runFormTests(FormidableWizardForm);
-    });
+	describe('Passes Formidable Form Core tests', () => {
+		runFormTests(FormidableWizardForm);
+	});
 
-    // describe('Simple Wizard Steps', () => {
+	// describe('Simple Wizard Steps', () => {
 
-    // });
+	// });
 
 });

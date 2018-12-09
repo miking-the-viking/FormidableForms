@@ -1,30 +1,71 @@
 <template lang="pug">
 #forms
     h1 Formidable Forms
+    h2 Basic Form Sample
     FormidableForm(:form="form")
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { FormidableBasicForm } from '@/models/Formidable/Form/FormidableBasicForm';
-import { FieldType, IFormidableFieldProps } from '@/models/Formidable/Field/field.abstract';
+import { FieldType, IFormidableFieldProps, FormidableField } from '@/models/Formidable/Field/field.abstract';
 import FormidableForm from '@/components/FormidableForm.vue';
+import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
+import { FormidableText } from '@/models/Formidable/Field/FormidableText';
 
-const formConfig: FormidableBasicForm<number> = {
-    fields: [
-        {
-            type: FieldType.Number,
-            value: null
-        }
-    ]
+const formConfig: FormidableBasicForm<number | string> = {
+	fields: [
+		{
+			type: FieldType.Number,
+			value: null,
+			label: 'Any number'
+		},
+		{
+			type: FieldType.Number,
+			value: null,
+			minimum: -20,
+			label: 'Any number >= -20'
+		} as FormidableNumber,
+		{
+			type: FieldType.Number,
+			value: null,
+			minimum: 0,
+			maximum: 10,
+			label: 'Any number between 0-10'
+		},
+		{
+			type: FieldType.Text,
+			value: null,
+			label: 'Any amount of string text'
+		},
+		{
+			type: FieldType.Text,
+			value: null,
+			minLength: 3,
+			label: 'Atleast 3 character string'
+		} as FormidableText,
+		{
+			type: FieldType.Text,
+			value: null,
+			maxLength: 8,
+			label: 'At most 8 character string'
+		},
+		{
+			type: FieldType.Text,
+			value: null,
+			minLength: 3,
+			maxLength: 8,
+			label: 'Between 3-8 character string'
+		}
+	]
 };
 
 @Component({
-    components: {
-        FormidableForm
-    }
+	components: {
+		FormidableForm
+	}
 })
 export default class Forms extends Vue {
-    private form = formConfig;
+	private form = formConfig;
 }
 </script>
