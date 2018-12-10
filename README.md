@@ -1,4 +1,4 @@
-# projects
+# Formidable Forms
 
 ## Project setup
 ```

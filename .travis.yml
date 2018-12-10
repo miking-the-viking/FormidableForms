@@ -1,0 +1,50 @@
+language: node_js
+
+cache: yarn
+
+install:
+  # install v6.x of nodejs
+  #  - nvm install 6
+  #install yarn globally
+  #  - npm install -g yarn
+  - yarn install
+
+script:
+  - yarn test:unit
+
+env:
+  global:
+    - GITHUB_TOKEN: 283d08c3ff7968e20ce5774f963d7d19d50c7347
+
+# after_success:
+  # - npm run typedoc
+  # - npm pack
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep-history: true
+  on:
+    branch: master
+
+# deploy:
+#   - provider: pages
+#     skip_cleanup: true
+#     local_dir: docs/
+#     github_token: $GITHUB_TOKEN
+#     on:
+#       tags: true
+#   - provider: releases
+#     api_key: $GITHUB_TOKEN
+#     file_glob: true
+#     file: "{YOURLIB}-*.tgz"
+#     skip_cleanup: true
+#     on:
+#       tags: true
+#   - provider: npm
+#     skip_cleanup: true
+#     email: "youremail@example.com"
+#     api_key: $NPM_TOKEN
+#     on:
+#       tags: true
