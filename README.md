@@ -1,5 +1,9 @@
 # Formidable Forms
 
+[![Build Status](https://travis-ci.com/miking-the-viking/FormidableForms.svg?token=mm6yHByGgeorBxsvuzKv&branch=master)](https://travis-ci.com/miking-the-viking/FormidableForms)
+
+[page](./dist/index.html)
+
 ## Project setup
 ```
 yarn install
