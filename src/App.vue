@@ -1,7 +1,8 @@
 <template lang="pug">
 #app.container
-	#nav.section
-		router-link(to="/") Formidable Forms
+	Navbar
+	//- #nav.section
+	//- 	router-link(to="/") Formidable Forms
 	router-view.section
 </template>
 
