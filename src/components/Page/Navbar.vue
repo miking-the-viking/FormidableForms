@@ -2,7 +2,7 @@
 nav.navbar
 	.navbar-brand
 		router-link.navbar-item(to="/")
-			| FormidableForms
+			| Home
 		a.navbar-burger.burger(role="button" :class="{'is-active': isActive}" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" @click="toggleActive")
 			span(aria-hidden="true")
 			span(aria-hidden="true")
@@ -10,9 +10,10 @@ nav.navbar
 	transition(name="fade")
 		.navbar-menu(v-if="isActive" :class="{'is-active': true}")
 			.navbar-start
+				router-link.navbar-item(to="/sample") Sample
 			.navbar-end
-				a.navbar-item Basic
-				a.navbar-item Wizard
+				router-link.navbar-item(to="/docs/forms/basic") Basic
+				router-link.navbar-item(to="/docs/forms/wizard") Wizard
 				.navbar-item.has-dropdown.is-hoverable
 					a.navbar-link Fields
 					.navbar-dropdown.is-boxed

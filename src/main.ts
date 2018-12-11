@@ -8,6 +8,12 @@ import '@/style/app.scss';
 
 // Vue.component('font-awesome-icon', FontAwesomeIcon);
 
+
+import VueHighlightJS from 'vue-highlightjs';
+// Tell Vue.js to use vue-highlightjs
+Vue.use(VueHighlightJS);
+
+
 Vue.config.productionTip = false;
 
 new Vue({

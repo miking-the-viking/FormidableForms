@@ -1,8 +1,29 @@
 <template lang="pug">
 #forms
-    h1 Formidable Forms
-    h2 Basic Form Sample test
-    FormidableForm(:form="form")
+
+	h1.title Formidable Basic Form
+	h2.subtitle Straightforward, simple.
+
+	.columns.is-desktop
+
+		.column
+			p The Formidable Basic Form is as basic as forms come. They are setup simply using a configuration json adhering to the
+				code FormidableBasicForm
+				| class. That is an array of
+				code FormidableField
+				| configurations.
+
+		hr.is-hidden-desktop
+		.column
+			p.lead The form below was setup using the following
+				code FormidableBasicForm
+				| config:
+
+			pre(v-highlightjs="JSON.stringify(form, null, 1)")
+				CollapsibleArea
+					code(class="javascript")
+
+	FormidableForm(:form="form")
 </template>
 
 <script lang="ts">
@@ -12,8 +33,9 @@ import { FieldType, IFormidableFieldProps, FormidableField } from '@/models/Form
 import FormidableForm from '@/components/FormidableForm.vue';
 import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
 import { FormidableText } from '@/models/Formidable/Field/FormidableText';
+import CollapsibleArea from '@/components/Interactive/CollapsibleArea.vue';
 
-const formConfig: FormidableBasicForm<number | string> = {
+const formConfig: FormidableBasicForm<number | string | null> = {
 	fields: [
 		{
 			type: FieldType.Number,
@@ -62,10 +84,12 @@ const formConfig: FormidableBasicForm<number | string> = {
 
 @Component({
 	components: {
-		FormidableForm
+		FormidableForm,
+		CollapsibleArea
 	}
 })
-export default class Forms extends Vue {
+export default class BasicDoc extends Vue {
 	private form = formConfig;
 }
 </script>
+

@@ -1,7 +1,6 @@
 <template lang="pug">
 #forms
-    h1 Formidable Forms
-    h2 Basic Form Sample test
+    h2 Wizard Form Sample
     FormidableForm(:form="form")
 </template>
 
@@ -65,7 +64,7 @@ const formConfig: FormidableBasicForm<number | string> = {
 		FormidableForm
 	}
 })
-export default class Forms extends Vue {
+export default class WizardDoc extends Vue {
 	private form = formConfig;
 }
 </script>

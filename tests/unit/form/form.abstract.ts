@@ -20,6 +20,26 @@ export default <T extends FormidableForm<T>>(ctor: new(...args: any[]) => Formid
 					expect(errorArrayHas('fields', e)).toBeTruthy();
 				}
 			});
+
+			// it('Fails when a field value is invalid', async () => {
+			// 	// const invalidFields: Array<FormidableField<number>> = [
+			// 	const invalidFields: Array<FormidableField<any>> = [
+			// 		{
+			// 			type: FieldType.Number,
+			// 			// tslint:disable-next-line
+			// 			value: 'some string'
+			// 		}
+			// 	];
+			// 	try {
+			// 		await transformAndValidate(ctor, {
+			// 			fields: invalidFields
+			// 		});
+			// 		fail(`Did not throw a validator error when the number field had a string value`);
+			// 	} catch (e) {
+			// 		expect(e).toBeInstanceOf(Array);
+			// 		expect(errorArrayHas('fields', e)).toBeTruthy();
+			// 	}
+			// });
 		});
 
 		describe('Form initialization', () => {
