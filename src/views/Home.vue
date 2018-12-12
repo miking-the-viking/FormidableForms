@@ -1,6 +1,7 @@
 <template lang="pug">
 .home.container-fluid
   h1.title Formidable Forms
+  img(src="https://travis-ci.com/miking-the-viking/FormidableForms.svg?token=mm6yHByGgeorBxsvuzKv&branch=master")
   h2.subtitle The last solution you'll need for inputs or forms. Powered by TypeScript.
 
   .columns.is-desktop
@@ -17,7 +18,7 @@
 
   .columns.is-desktop
     .column
-      h2.heading.is-size-5 Forms
+      h2.heading.is-size-5 Forms, Formidable Forms.
 
       p Out of the box, Formidable Forms comes with several different form types that are easily extensible:
 
