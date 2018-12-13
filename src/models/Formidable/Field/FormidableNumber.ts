@@ -4,7 +4,6 @@ import {
 	IsEnum,
 	Equals
 } from 'class-validator';
-
 import {
 	FormidableField,
 	IFormidableFieldProps,
@@ -29,13 +28,13 @@ export interface IFormidableNumberProps extends IFormidableFieldProps {
 /**
  * Formidable Field definition for a number input
  */
-export class FormidableNumber extends FormidableField < number > implements IFormidableNumberProps {
+export class FormidableNumber extends FormidableField<number> implements IFormidableNumberProps {
 
 	/**
 	 * Specifically only allow Number enum
 	 */
-	@IsEnum(FieldType)
-	@Equals(FieldType.Number)
+	// @IsEnum(FieldType)
+	// @Equals(FieldType.Number)
 	public type!: FieldType;
 
 	/**
@@ -47,7 +46,7 @@ export class FormidableNumber extends FormidableField < number > implements IFor
 		message: 'Value must be less than specified maximum'
 	})
 	@IsGreaterThanOrEqualTo('minimum', {
-		message: 'Value must be greater than specified minim um'
+		message: 'Value must be greater than specified minimum'
 	})
 	public value!: number | null;
 

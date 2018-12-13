@@ -1,3 +1,6 @@
+// import { FormidableTextarea } from './FormidableTextarea';
+// import { FormidableText } from './FormidableText';
+// import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
 /**
  * Abstract definition concerning Formidable Form Field
  */
@@ -7,23 +10,24 @@ import {
 	IsString,
 	IsBoolean
 } from 'class-validator';
+import { Type } from 'class-transformer';
 
 /**
  * FieldType enum defines the avaialble Formidable Form Field Types
  */
 export enum FieldType {
 	Number = 'number',
-		Text = 'text',
-		Textarea = 'textarea',
-		File = 'file',
-		Date = 'date',
-		Time = 'time',
-		Email = 'email',
-		Password = 'password',
-		Link = 'link',
-		Image = 'image',
-		Audio = 'audio',
-		Video = 'video'
+	Text = 'text',
+	Textarea = 'textarea',
+	File = 'file',
+	Date = 'date',
+	Time = 'time',
+	Email = 'email',
+	Password = 'password',
+	Link = 'link',
+	Image = 'image',
+	Audio = 'audio',
+	Video = 'video'
 }
 
 /**
@@ -39,15 +43,29 @@ export interface IFormidableFieldProps {
 	value: any;
 }
 
+// export const getFieldType = (value: any) => {
+// 	const resolvedFieldType =
+// 		value.type === FieldType.Number ? FormidableNumber
+// 			: value.type === FieldType.Text ? FormidableText
+// 			: value.type === FieldType.Textarea ? FormidableTextarea
+// 			: undefined;
+
+// 	if (resolvedFieldType === undefined) {
+// 		throw new Error(`Unable to determine Formidable Field type`);
+// 	}
+
+// 	return resolvedFieldType;
+// };
+
 /**
  * FormidableForm Field definition
  */
-export abstract class FormidableField < T > {
+export abstract class FormidableField<T> {
 
 	/**
 	 * The Enumerated type of the field, used for code clarity and programmatically limiting the avaialble field types
 	 */
-	@IsEnum(FieldType)
+	// @IsEnum(FieldType)
 	public type!: FieldType;
 
 	/**
@@ -89,4 +107,14 @@ export abstract class FormidableField < T > {
 	 * The given value of the field
 	 */
 	public value!: T | null; // TODO: Pass vlaidator options for the given value?
+
+	// constructor(data: any) {
+	// 	this.type = data.type;
+	// 	this.name = data.name || null;
+	// 	this.label = data.label || null;
+	// 	this.id = data.id || null;
+	// 	this.required = data.required || false;
+	// 	this.disabled = data.disabled || false;
+	// 	this.value = data.value || null;
+	// }
 }

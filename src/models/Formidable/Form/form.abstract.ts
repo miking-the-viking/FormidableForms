@@ -1,9 +1,13 @@
+import { FormidableTextarea } from './../Field/FormidableTextarea';
+import { FormidableText } from './../Field/FormidableText';
+import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
+import { FieldType } from './../Field/field.abstract';
 /**
  * Abstract Formidable Form core definition
  */
 import {
 	FormidableField,
-	IFormidableFieldProps
+	IFormidableFieldProps,
 } from '@/models/Formidable/Field/field.abstract';
 import {
 	ValidateNested,
@@ -21,10 +25,12 @@ export interface IFormidableFormProps {
 	fields: IFormidableFieldProps[];
 }
 
+
+
 /**
  * Formidable Form definition
  */
-export abstract class FormidableForm < T > {
+export abstract class FormidableForm {
 
 	/**
 	 * fields of the form
@@ -33,7 +39,16 @@ export abstract class FormidableForm < T > {
 	@ValidateNested({
 		each: true
 	})
-	@Type(() => FormidableField)
-	public fields!: Array < FormidableField < T >> ;
+	@Type(() => FormidableField, {
+		discriminator: {
+			property: 'type',
+			subTypes: [
+				{ value: FormidableNumber, name: FieldType.Number },
+				{ value: FormidableText, name: FieldType.Text },
+				{ value: FormidableTextarea, name: FieldType.Textarea }
+			]
+		}
+	})
+	public fields!: Array<FormidableNumber | FormidableText | FormidableTextarea>;
 
 }

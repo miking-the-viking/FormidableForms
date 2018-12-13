@@ -18,7 +18,7 @@ export function IsLongerThan(property: string, validationOptions?: ValidationOpt
 
 					return typeof value === 'string' &&
 						typeof relatedValue === 'number' ?
-						value.length > relatedValue : true;
+						value.length >= relatedValue : true;
 				}
 			}
 		});

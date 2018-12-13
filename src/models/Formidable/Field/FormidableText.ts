@@ -28,13 +28,13 @@ export interface IFormidableTextProps extends IFormidableFieldProps {
 /**
  * Formidable Field definition for a text input
  */
-export class FormidableText extends FormidableField < string > implements IFormidableTextProps {
+export class FormidableText extends FormidableField<string> implements IFormidableTextProps {
 
 	/**
 	 * Specifically only allow Number enum
 	 */
-	@IsEnum(FieldType)
-	@Equals(FieldType.Text)
+	// @IsEnum(FieldType)
+	// @Equals(FieldType.Text)
 	public type!: FieldType;
 
 	/**
@@ -61,6 +61,6 @@ export class FormidableText extends FormidableField < string > implements IFormi
 		message: 'Must be shorter than the specified maxLength'
 	})
 	@IsStringOrNull()
-	public value!: string | null; // TODO: Pass vlaidator options for the given value?
+	public value!: string | null;
 
 }

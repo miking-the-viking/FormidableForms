@@ -13,7 +13,7 @@ import FormidableForm from '@/components/FormidableForm.vue';
 import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
 import { FormidableText } from '@/models/Formidable/Field/FormidableText';
 
-const formConfig: FormidableBasicForm<number | string> = {
+const formConfig: FormidableBasicForm = {
 	fields: [
 		{
 			type: FieldType.Number,
@@ -25,7 +25,7 @@ const formConfig: FormidableBasicForm<number | string> = {
 			value: null,
 			minimum: -20,
 			label: 'Any number >= -20'
-		} as FormidableNumber,
+		},
 		{
 			type: FieldType.Number,
 			value: null,
@@ -43,7 +43,7 @@ const formConfig: FormidableBasicForm<number | string> = {
 			value: null,
 			minLength: 3,
 			label: 'Atleast 3 character string'
-		} as FormidableText,
+		},
 		{
 			type: FieldType.Text,
 			value: null,
@@ -56,6 +56,13 @@ const formConfig: FormidableBasicForm<number | string> = {
 			minLength: 3,
 			maxLength: 8,
 			label: 'Between 3-8 character string'
+		},
+		{
+			type: FieldType.Textarea,
+			value: null,
+			minLength: 10,
+			maxLength: 500,
+			label: 'Between 10-500 character string'
 		}
 	]
 };

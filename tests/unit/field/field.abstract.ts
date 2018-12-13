@@ -1,3 +1,4 @@
+import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
 
 import { FormidableField} from '@/models/Formidable/Field/field.abstract';
 
@@ -25,21 +26,21 @@ export default (ctor: new (...args: any[]) => FormidableField<any>) => {
 
 		describe('Field Initialization', () => {
 
-			describe('Field Type Prop', () => {
-				it('throws an error when an invalid FieldType is used', async () => {
+			// describe('Field Type Prop', () => {
+			// 	it('throws an error when an invalid FieldType is used', async () => {
 
-					const invalidType = { type: 'someInvalidType'};
+			// 		const invalidType = { type: 'someInvalidType'};
 
-					try {
-						await transformAndValidate(ctor, invalidType);
-						fail(`Did not throw a validator error when using an invalid field type ${invalidType.type}`);
-					} catch (e) {
-						expect(e).toBeInstanceOf(Array);
-						expect(errorArrayHas('type', e)).toBeTruthy();
-					}
-				});
+			// 		try {
+			// 			await transformAndValidate(ctor, invalidType);
+			// 			fail(`Did not throw a validator error when using an invalid field type ${invalidType.type}`);
+			// 		} catch (e) {
+			// 			expect(e).toBeInstanceOf(Array);
+			// 			expect(errorArrayHas('type', e)).toBeTruthy();
+			// 		}
+			// 	});
 
-			});
+			// });
 
 			describe('Name Prop', () => {
 				describe('Errors are thrown when an invalid name prop is used', () => {
