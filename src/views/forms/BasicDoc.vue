@@ -14,6 +14,8 @@
 				| configurations.
 
 		hr.is-hidden-desktop
+
+		h3 Basic Sample	
 		.column
 			p.lead The form below was setup using the following
 				code FormidableBasicForm
@@ -24,6 +26,7 @@
 					code(class="javascript")
 
 	FormidableForm(:form="form")
+	
 </template>
 
 <script lang="ts">
@@ -35,7 +38,10 @@ import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
 import { FormidableText } from '@/models/Formidable/Field/FormidableText';
 import CollapsibleArea from '@/components/Interactive/CollapsibleArea.vue';
 
-const formConfig: FormidableBasicForm<number | string | null> = {
+/**
+ * Basic form config for intial sample
+ */
+const formConfig: FormidableBasicForm = {
 	fields: [
 		{
 			type: FieldType.Number,
@@ -47,7 +53,7 @@ const formConfig: FormidableBasicForm<number | string | null> = {
 			value: null,
 			minimum: -20,
 			label: 'Any number >= -20'
-		} as FormidableNumber,
+		},
 		{
 			type: FieldType.Number,
 			value: null,
@@ -65,7 +71,7 @@ const formConfig: FormidableBasicForm<number | string | null> = {
 			value: null,
 			minLength: 3,
 			label: 'Atleast 3 character string'
-		} as FormidableText,
+		},
 		{
 			type: FieldType.Text,
 			value: null,
@@ -78,6 +84,21 @@ const formConfig: FormidableBasicForm<number | string | null> = {
 			minLength: 3,
 			maxLength: 8,
 			label: 'Between 3-8 character string'
+		},
+		{
+			type: FieldType.Textarea,
+			value: null,
+			minLength: 10,
+			maxLength: 500,
+			label: 'Between 10-500 character string'
+		},
+		{
+			type: FieldType.Link,
+			value: {
+				text: null,
+				href: null
+			},
+			label: 'Some Link',
 		}
 	]
 };

@@ -1,17 +1,13 @@
 /**
  * Abstract Formidable Form core definition
  */
-import {
-	FormidableField,
-	IFormidableFieldProps
-} from '@/models/Formidable/Field/field.abstract';
-import {
-	ValidateNested,
-	IsDefined
-} from 'class-validator';
-import {
-	Type
-} from 'class-transformer';
+import { FieldType, FormidableField, IFormidableFieldProps } from '@/models/Formidable/Field/field.abstract';
+import { FormidableLink } from '@/models/Formidable/Field/FormidableLink';
+import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
+import { FormidableText } from '@/models/Formidable/Field/FormidableText';
+import { FormidableTextarea } from '@/models/Formidable/Field/FormidableTextarea';
+import { Type } from 'class-transformer';
+import { IsDefined, ValidateNested } from 'class-validator';
 import 'reflect-metadata';
 
 /**
@@ -24,7 +20,7 @@ export interface IFormidableFormProps {
 /**
  * Formidable Form definition
  */
-export abstract class FormidableForm < T > {
+export abstract class FormidableForm {
 
 	/**
 	 * fields of the form
@@ -33,7 +29,22 @@ export abstract class FormidableForm < T > {
 	@ValidateNested({
 		each: true
 	})
-	@Type(() => FormidableField)
-	public fields!: Array < FormidableField < T >> ;
+	@Type(() => FormidableField, {
+		discriminator: {
+			property: 'type',
+			subTypes: [
+				{ value: FormidableNumber, name: FieldType.Number },
+				{ value: FormidableText, name: FieldType.Text },
+				{ value: FormidableTextarea, name: FieldType.Textarea },
+				{ value: FormidableLink, name: FieldType.Link }
+			]
+		}
+	})
+	public fields!: Array<
+		FormidableNumber
+		| FormidableText
+		| FormidableTextarea
+		| FormidableLink
+	>;
 
 }

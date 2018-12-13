@@ -14,7 +14,7 @@ nav.navbar
 			.navbar-end
 				router-link.navbar-item(to="/docs/forms/basic") Basic
 				router-link.navbar-item(to="/docs/forms/wizard") Wizard
-				.navbar-item.has-dropdown.is-hoverable
+				.navbar-item.has-dropdown(:class="{'is-hoverable': isPastThreshold}")
 					a.navbar-link Fields
 					.navbar-dropdown.is-boxed
 						a.navbar-item Number
@@ -49,13 +49,18 @@ export default class Navbar extends Vue {
 	}
 
 	private mounted() {
+		this.checkWindowWidth();
 		this.$nextTick(function() {
 			window.addEventListener('resize', this.checkWindowWidth);
 		});
 	}
 
+	private isPastThreshold() {
+		return document.documentElement.clientWidth > this.HAMBURGER_THRESHOLD;
+	}
+
 	private checkWindowWidth() {
-		this.isActive = document.documentElement.clientWidth > this.HAMBURGER_THRESHOLD;
+		this.isActive = this.isPastThreshold();
 	}
 
 	private beforeDestroy() {

@@ -18,6 +18,8 @@ import {
 import {
 	IsShorterThan
 } from '@/models/IsShorterThan';
+import { IsLessThanOrEqualTo } from '@/models/IsLessThanOrEqualTo';
+import { IsGreaterThanOrEqualTo } from '@/models/IsGreaterThanOrEqualTo';
 
 
 export interface IFormidableTextProps extends IFormidableFieldProps {
@@ -28,13 +30,13 @@ export interface IFormidableTextProps extends IFormidableFieldProps {
 /**
  * Formidable Field definition for a text input
  */
-export class FormidableText extends FormidableField < string > implements IFormidableTextProps {
+export class FormidableText extends FormidableField<string> implements IFormidableTextProps {
 
 	/**
 	 * Specifically only allow Number enum
 	 */
-	@IsEnum(FieldType)
-	@Equals(FieldType.Text)
+	// @IsEnum(FieldType)
+	// @Equals(FieldType.Text)
 	public type!: FieldType;
 
 	/**
@@ -42,6 +44,9 @@ export class FormidableText extends FormidableField < string > implements IFormi
 	 */
 	@IsOptional()
 	@IsNumber()
+	@IsLessThanOrEqualTo('maxLength', {
+		message: (v) => 'MinLength must be less than or equal to specified maximum length: ' + v.object.maxLength
+	})
 	public minLength ?: number;
 
 	/**
@@ -49,18 +54,21 @@ export class FormidableText extends FormidableField < string > implements IFormi
 	 */
 	@IsOptional()
 	@IsNumber()
+	@IsGreaterThanOrEqualTo('minLength', {
+		message: (v) => 'MaxLength must be greater than or equal to the specified minimum length: ' + v.object.minLength
+	})
 	public maxLength ?: number;
 
 	/**
 	 * The given value of the field
 	 */
 	@IsLongerThan('minLength', {
-		message: 'Must be longer than the specified minLength'
+		message: (v) => 'Must be longer than or equal to the specified minimum length: ' + v.object.minLength
 	})
 	@IsShorterThan('maxLength', {
-		message: 'Must be shorter than the specified maxLength'
+		message: (v) => 'Must be shorter than or equal to the specified maximum length: ' + v.object.maxLength
 	})
 	@IsStringOrNull()
-	public value!: string | null; // TODO: Pass vlaidator options for the given value?
+	public value!: string | null;
 
 }

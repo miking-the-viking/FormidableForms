@@ -4,7 +4,6 @@ import {
 	IsEnum,
 	Equals
 } from 'class-validator';
-
 import {
 	FormidableField,
 	IFormidableFieldProps,
@@ -29,13 +28,13 @@ export interface IFormidableNumberProps extends IFormidableFieldProps {
 /**
  * Formidable Field definition for a number input
  */
-export class FormidableNumber extends FormidableField < number > implements IFormidableNumberProps {
+export class FormidableNumber extends FormidableField<number> implements IFormidableNumberProps {
 
 	/**
 	 * Specifically only allow Number enum
 	 */
-	@IsEnum(FieldType)
-	@Equals(FieldType.Number)
+	// @IsEnum(FieldType)
+	// @Equals(FieldType.Number)
 	public type!: FieldType;
 
 	/**
@@ -44,10 +43,11 @@ export class FormidableNumber extends FormidableField < number > implements IFor
 	@IsNumber() // this may not work with null, tbd.
 	@IsOptional()
 	@IsLessThanOrEqualTo('maximum', {
-		message: 'Value must be less than specified maximum'
+		message: (v) => 'Value must be less than specified maximum: ' + v.object.maximum
+
 	})
 	@IsGreaterThanOrEqualTo('minimum', {
-		message: 'Value must be greater than specified minim um'
+		message: (v) => 'Value must be greater than specified minimum: ' + v.object.minimum
 	})
 	public value!: number | null;
 
@@ -57,7 +57,7 @@ export class FormidableNumber extends FormidableField < number > implements IFor
 	@IsOptional()
 	@IsNumber()
 	@IsLessThanOrEqualTo('maximum', {
-		message: 'The minimum has to be less than or equal to the maximum'
+		message: (v) => 'The minimum has to be less than or equal to the maximum: ' + v.object.maximum
 	})
 	public minimum ?: number;
 
@@ -67,7 +67,7 @@ export class FormidableNumber extends FormidableField < number > implements IFor
 	@IsOptional()
 	@IsNumber()
 	@IsGreaterThanOrEqualTo('minimum', {
-		message: 'The maximum has to be greater than or equal to the minimum'
+		message: (v) => 'The maximum has to be greater than or equal to the minimum: ' + v.object.maximum
 	})
 	public maximum ?: number;
 }

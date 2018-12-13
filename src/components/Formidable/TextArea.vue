@@ -1,19 +1,19 @@
 <template lang="pug">
-.field
+.field(:class="feedbackClass")
     label.label(v-if="value.label") {{value.label}}
     .control
-        input.input(type="number" :min="value.minimum" :max="value.maximum" v-model.number="val" :class="feedbackClass")
+        textarea.input(type="text" :maxlength="value.maxLength" v-model="val"  :class="feedbackClass")
     p.help(v-if="hasFeedback" :class="feedbackClass") {{errorText}}
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
+import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
 import { FormidableField } from '@/models/Formidable/Field/field.abstract';
 import { ValidationError } from 'class-validator';
 
 @Component
-export default class NumberField extends Vue {
-	@Prop({ required: true }) private value!: FormidableField<number | null>;
+export default class TextArea extends Vue {
+	@Prop({ required: true }) private value!: FormidableField<string | null>;
 	@Prop({ default: () => [] }) private validationErrors!: ValidationError[];
 
 	get hasFeedback() {
@@ -31,7 +31,7 @@ export default class NumberField extends Vue {
 		return this.value.value;
 	}
 
-	set val(newVal: number | null) {
+	set val(newVal: string | null) {
 		this.$emit('input', {...this.value, value: newVal});
 	}
 

@@ -17,20 +17,20 @@ describe('Formidable Text field', () => {
 
 		describe('Props', () => {
 
-			describe('type', () => {
-				it('Only allows the text FieldType', async () => {
-					for (const type in FieldType) {
-						if (FieldType[type] !== FieldType.Text) {
-							try {
-								await transformAndValidate(FormidableText, { type: FieldType[type] });
-								fail(`Should have failed on an invalid Field Type ${FieldType[type]}`);
-							} catch (e) {
-								expect(errorArrayHas('type', e)).toBeTruthy();
-							}
-						}
-					}
-				});
-			});
+			// describe('type', () => {
+			// 	it('Only allows the text FieldType', async () => {
+			// 		for (const type in FieldType) {
+			// 			if (FieldType[type] !== FieldType.Text) {
+			// 				try {
+			// 					await transformAndValidate(FormidableText, { type: FieldType[type] });
+			// 					fail(`Should have failed on an invalid Field Type ${FieldType[type]}`);
+			// 				} catch (e) {
+			// 					expect(errorArrayHas('type', e)).toBeTruthy();
+			// 				}
+			// 			}
+			// 		}
+			// 	});
+			// });
 
 			describe('value', () => {
 

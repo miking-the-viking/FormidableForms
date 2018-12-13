@@ -19,7 +19,7 @@ export function IsShorterThan(property: string, validationOptions?: ValidationOp
 
 					return typeof value === 'string' &&
 						typeof relatedValue === 'number' ?
-						value.length < relatedValue : true;
+						value.length <= relatedValue : true;
 				}
 			}
 		});

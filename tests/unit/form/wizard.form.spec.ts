@@ -8,9 +8,4 @@ describe('Formidable Wizard Form', () => {
 	describe('Passes Formidable Form Core tests', () => {
 		runFormTests(FormidableWizardForm);
 	});
-
-	// describe('Simple Wizard Steps', () => {
-
-	// });
-
 });

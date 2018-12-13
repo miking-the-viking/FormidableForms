@@ -2,7 +2,7 @@
 .home.container-fluid
   h1.title Formidable Forms
   img(src="https://travis-ci.com/miking-the-viking/FormidableForms.svg?token=mm6yHByGgeorBxsvuzKv&branch=master")
-  h2.subtitle The last solution you'll need for inputs or forms. Powered by TypeScript.
+  h2.subtitle The last solution you'll need for inputs or forms. Powered by TypeScript, built with TDD.
 
   .columns.is-desktop
     .column
@@ -32,7 +32,22 @@
           dt Wizard Form
           dd Wizard Forms are a little more advanced as they are designed to have 1...N Steps each containing 1...N Fields.
           dd.is-size-7.has-text-right
-            router-link(to="/docs/forms/wizard") Read more about Formidable Wizard Form
+            router-link(to="/docs/forms/wizard") Read more about Formidable Wizard For
+
+  hr
+
+  .columns.is-desktop
+
+    .column
+      h2.heading.is-size-5 Simply Formidable Fields
+
+      p Using the powers of abstracts and generics, Formidable Fields are very easily created, consistently; with validation, type safety and easy extensibility.
+
+    .column
+      .box
+        dl
+          dt 
+          dd
 
 </template>
 
