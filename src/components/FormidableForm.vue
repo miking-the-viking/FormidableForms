@@ -1,7 +1,11 @@
 <template lang="pug">
 .formidable-form.container.is-fluid.box(:class="formClasses")
     .field(v-for="(field, index) in form.fields")
-        component(v-bind:is="getField(field)" v-model="form.fields[index]" :validationErrors="getFieldErrors(index)")
+        component(
+			v-bind:is="getField(field)"
+			v-model="form.fields[index]"
+			:validationErrors="getFieldErrors(index)"
+		)
 </template>
 
 <script lang="ts">
@@ -17,6 +21,7 @@ import NumberField from '@/components/Formidable/NumberField.vue';
 import InvalidField from '@/components/Formidable/InvalidField.vue';
 import TextField from '@/components/Formidable/TextField.vue';
 import TextArea from '@/components/Formidable/TextArea.vue';
+import LinkField from '@/components/Formidable/LinkField.vue';
 import { FormidableWizardForm } from '@/models/Formidable/Form/FormidableWizardForm';
 
 @Component({
@@ -24,12 +29,18 @@ import { FormidableWizardForm } from '@/models/Formidable/Form/FormidableWizardF
 		InvalidField,
 		NumberField,
 		TextField,
-		TextArea
+		TextArea,
+		LinkField
 	}
 })
 export default class FormidableForm extends Vue {
 	private readonly FieldType = FieldType;
 	private validationErrors: ValidationError[] = [];
+
+	@Prop({
+		required: true
+	})
+	private form!: FormidableBasicForm | FormidableWizardForm;
 
 	get isValid() {
 		return this.validationErrors.length === 0;
@@ -44,16 +55,12 @@ export default class FormidableForm extends Vue {
 		};
 	}
 
-	@Prop({
-		required: true
-	})
-	private form!: FormidableBasicForm | FormidableWizardForm;
-
 	private getField(field: FormidableField<any>): VueConstructor<Vue> {
 		switch (field.type) {
 			case FieldType.Number: return NumberField;
 			case FieldType.Text: return TextField;
 			case FieldType.Textarea: return TextArea;
+			case FieldType.Link: return LinkField;
 			default: return InvalidField;
 		}
 	}

@@ -91,6 +91,14 @@ const formConfig: FormidableBasicForm = {
 			minLength: 10,
 			maxLength: 500,
 			label: 'Between 10-500 character string'
+		},
+		{
+			type: FieldType.Link,
+			value: {
+				text: null,
+				href: null
+			},
+			label: 'Some Link',
 		}
 	]
 };

@@ -43,10 +43,11 @@ export class FormidableNumber extends FormidableField<number> implements IFormid
 	@IsNumber() // this may not work with null, tbd.
 	@IsOptional()
 	@IsLessThanOrEqualTo('maximum', {
-		message: 'Value must be less than specified maximum'
+		message: (v) => 'Value must be less than specified maximum: ' + v.object.maximum
+
 	})
 	@IsGreaterThanOrEqualTo('minimum', {
-		message: 'Value must be greater than specified minimum'
+		message: (v) => 'Value must be greater than specified minimum: ' + v.object.minimum
 	})
 	public value!: number | null;
 
@@ -56,7 +57,7 @@ export class FormidableNumber extends FormidableField<number> implements IFormid
 	@IsOptional()
 	@IsNumber()
 	@IsLessThanOrEqualTo('maximum', {
-		message: 'The minimum has to be less than or equal to the maximum'
+		message: (v) => 'The minimum has to be less than or equal to the maximum: ' + v.object.maximum
 	})
 	public minimum ?: number;
 
@@ -66,7 +67,7 @@ export class FormidableNumber extends FormidableField<number> implements IFormid
 	@IsOptional()
 	@IsNumber()
 	@IsGreaterThanOrEqualTo('minimum', {
-		message: 'The maximum has to be greater than or equal to the minimum'
+		message: (v) => 'The maximum has to be greater than or equal to the minimum: ' + v.object.maximum
 	})
 	public maximum ?: number;
 }

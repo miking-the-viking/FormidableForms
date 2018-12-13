@@ -2,7 +2,7 @@
 .field
     label.label(v-if="value.label") {{value.label}}
     .control
-        input.input(type="number" :min="value.minimum" :max="value.maximum" v-model.number="val")
+        input.input(type="number" :min="value.minimum" :max="value.maximum" v-model.number="val" :class="feedbackClass")
     p.help(v-if="hasFeedback" :class="feedbackClass") {{errorText}}
 </template>
 
