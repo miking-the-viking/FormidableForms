@@ -34,13 +34,32 @@ nav.navbar
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
+const HAMBURGER_THRESHOLD = 1087;
+
 @Component
 export default class Navbar extends Vue {
 
 	private isActive: boolean = false;
+	private windowWidth!: number;
+	private windowHeight!: number;
+	private readonly HAMBURGER_THRESHOLD = HAMBURGER_THRESHOLD;
 
-	private toggleActive() {
-		this.isActive = !this.isActive;
+	private toggleActive(activeState?: boolean) {
+		this.isActive = activeState || !this.isActive;
+	}
+
+	private mounted() {
+		this.$nextTick(function() {
+			window.addEventListener('resize', this.checkWindowWidth);
+		});
+	}
+
+	private checkWindowWidth() {
+		this.isActive = document.documentElement.clientWidth > this.HAMBURGER_THRESHOLD;
+	}
+
+	private beforeDestroy() {
+		window.removeEventListener('resize', this.checkWindowWidth);
 	}
 }
 </script>
