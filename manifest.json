@@ -1,6 +1,6 @@
 {
-  "name": "projects",
-  "short_name": "projects",
+  "name": "formidableforms",
+  "short_name": "formidableforms",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",
