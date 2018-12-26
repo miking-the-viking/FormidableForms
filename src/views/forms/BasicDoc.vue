@@ -99,6 +99,23 @@ const formConfig: FormidableBasicForm = {
 				href: null
 			},
 			label: 'Some Link',
+		},
+		{
+			type: FieldType.Email,
+			value: null,
+			label: 'Some Email',
+		},
+		{
+			type: FieldType.Email,
+			value: null,
+			minLength: 3,
+			label: 'Some Email longer than 3 characters',
+		},
+		{
+			type: FieldType.Email,
+			value: null,
+			maxLength: 30,
+			label: 'Some Email shorter than 30 characters',
 		}
 	]
 };
