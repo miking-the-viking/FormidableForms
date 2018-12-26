@@ -22,6 +22,7 @@ export enum FieldType {
 	Link = 'link',
 	Email = 'email',
 	Password = 'password',
+	NumberRange = 'numberrange',
 	Date = 'date',
 	Time = 'time',
 	Datetime = 'datetime',

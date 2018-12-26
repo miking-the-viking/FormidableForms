@@ -18,6 +18,7 @@ import { transformAndValidate } from 'class-transformer-validator';
 import { ValidationError } from 'class-validator';
 
 import NumberField from '@/components/Formidable/NumberField.vue';
+import NumberRangeField from '@/components/Formidable/NumberRangeField.vue';
 import InvalidField from '@/components/Formidable/InvalidField.vue';
 import TextField from '@/components/Formidable/TextField.vue';
 import TextArea from '@/components/Formidable/TextArea.vue';
@@ -62,6 +63,7 @@ export default class FormidableForm extends Vue {
 	private getField(field: FormidableField<any>): VueConstructor<Vue> {
 		switch (field.type) {
 			case FieldType.Number: return NumberField;
+			case FieldType.NumberRange: return NumberRangeField;
 			case FieldType.Text: return TextField;
 			case FieldType.Textarea: return TextArea;
 			case FieldType.Link: return LinkField;

@@ -122,6 +122,14 @@ const formConfig: FormidableBasicForm = {
 			value: null,
 			minLength: 8,
 			label: 'Some password field',
+		},
+		{
+			type: FieldType.NumberRange,
+			value: {
+				from: null,
+				to: null
+			},
+			label: 'Number Range',
 		}
 	]
 };

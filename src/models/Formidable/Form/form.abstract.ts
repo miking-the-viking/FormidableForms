@@ -1,16 +1,17 @@
-import { FormidablePassword } from './../Field/FormidablePassword';
-import { FormidableEmail } from '@/models/Formidable/Field/FormidableEmail';
 /**
  * Abstract Formidable Form core definition
  */
+import 'reflect-metadata';
+import { Type } from 'class-transformer';
+import { IsDefined, ValidateNested } from 'class-validator';
 import { FieldType, FormidableField, IFormidableFieldProps } from '@/models/Formidable/Field/field.abstract';
 import { FormidableLink } from '@/models/Formidable/Field/FormidableLink';
 import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
 import { FormidableText } from '@/models/Formidable/Field/FormidableText';
 import { FormidableTextarea } from '@/models/Formidable/Field/FormidableTextarea';
-import { Type } from 'class-transformer';
-import { IsDefined, ValidateNested } from 'class-validator';
-import 'reflect-metadata';
+import { FormidablePassword } from '@/models/Formidable/Field/FormidablePassword';
+import { FormidableEmail } from '@/models/Formidable/Field/FormidableEmail';
+import { FormidableNumberRange } from '@/models/Formidable/Field/FormidableNumberRange';
 
 /**
  * Basic Props for a Formidable Form
@@ -42,7 +43,8 @@ export abstract class FormidableForm {
 				{ value: FormidableTextarea, name: FieldType.Textarea },
 				{ value: FormidableLink, name: FieldType.Link },
 				{ value: FormidableEmail, name: FieldType.Email },
-				{ value: FormidablePassword, name: FieldType.Password }
+				{ value: FormidablePassword, name: FieldType.Password },
+				{ value: FormidableNumberRange, name: FieldType.NumberRange }
 			]
 		}
 	})
@@ -53,6 +55,7 @@ export abstract class FormidableForm {
 		| FormidableLink
 		| FormidableEmail
 		| FormidablePassword
+		| FormidableNumberRange
 	>;
 
 }
