@@ -31,14 +31,6 @@ export interface IFormidableTextProps extends IFormidableFieldProps {
  * Formidable Field definition for a text input
  */
 export class FormidableText extends FormidableField<string> implements IFormidableTextProps {
-
-	/**
-	 * Specifically only allow Number enum
-	 */
-	// @IsEnum(FieldType)
-	// @Equals(FieldType.Text)
-	public type!: FieldType;
-
 	/**
 	 * Optional minimum length
 	 */

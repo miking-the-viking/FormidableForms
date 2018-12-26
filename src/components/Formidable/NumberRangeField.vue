@@ -75,7 +75,7 @@ export default class NumberRangeField extends Vue {
 		this.$emit('input', {...this.value, value: {...this.value.value, to}});
 	}
 
-	get fromErrorfrom() {
+	get fromErrorText() {
 		return this.fromFieldError ? Object.keys(this.fromFieldError.constraints).reduce((acc, val) => {
 			return acc + (this.fromFieldError as ValidationError).constraints[val];
 		}, '') : null;

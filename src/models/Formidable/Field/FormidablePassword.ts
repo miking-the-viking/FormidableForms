@@ -33,13 +33,6 @@ export interface IFormidablePasswordProps extends IFormidableFieldProps {
 export class FormidablePassword extends FormidableField<string> implements IFormidablePasswordProps {
 
 	/**
-	 * Specifically only allow Password enum
-	 */
-	// @IsEnum(FieldType)
-	// @Equals(FieldType.Password)
-	public type!: FieldType;
-
-	/**
 	 * Optional minimum length
 	 */
 	@IsOptional()

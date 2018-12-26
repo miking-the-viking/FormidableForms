@@ -1,11 +1,15 @@
 <template lang="pug">
 .formidable-form.container.is-fluid.box(:class="formClasses")
-    .field(v-for="(field, index) in form.fields")
-        component(
+	.field(v-for="(field, index) in form.fields")
+		component(
 			v-bind:is="getField(field)"
 			v-model="form.fields[index]"
 			:validationErrors="getFieldErrors(index)"
 		)
+	button.button.is-small(:class="formClasses" @click="form.submit")
+		span.icon
+			font-awesome-icon(:icon="isValid ? 'check-circle' : 'times-circle'")
+		span Submit
 </template>
 
 <script lang="ts">
@@ -25,7 +29,13 @@ import TextArea from '@/components/Formidable/TextArea.vue';
 import LinkField from '@/components/Formidable/LinkField.vue';
 import EmailField from '@/components/Formidable/EmailField.vue';
 import PasswordField from '@/components/Formidable/PasswordField.vue';
+import DateField from '@/components/Formidable/DateField.vue';
 import { FormidableWizardForm } from '@/models/Formidable/Form/FormidableWizardForm';
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faCheckCircle, faTimesCircle);
 
 @Component({
 	components: {
@@ -35,7 +45,8 @@ import { FormidableWizardForm } from '@/models/Formidable/Form/FormidableWizardF
 		TextArea,
 		LinkField,
 		EmailField,
-		PasswordField
+		PasswordField,
+		DateField
 	}
 })
 export default class FormidableForm extends Vue {
@@ -69,6 +80,7 @@ export default class FormidableForm extends Vue {
 			case FieldType.Link: return LinkField;
 			case FieldType.Email: return EmailField;
 			case FieldType.Password: return PasswordField;
+			case FieldType.Date: return DateField;
 			default: return InvalidField;
 		}
 	}

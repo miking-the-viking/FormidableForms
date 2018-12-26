@@ -1,7 +1,11 @@
 <template lang="pug">
 .home.container-fluid
   h1.title Formidable Forms
-  img(src="https://travis-ci.com/miking-the-viking/FormidableForms.svg?token=mm6yHByGgeorBxsvuzKv&branch=master")
+  nav.level.is-mobile
+    p.level-item.has-text-centered
+      img(src="https://travis-ci.com/miking-the-viking/FormidableForms.svg?token=mm6yHByGgeorBxsvuzKv&branch=master")
+    p.level-item.has-text-centered
+      a.link.is-info(href="https://github.com/miking-the-viking/FormidableForms/projects/1") GitHub Project
   h2.subtitle The last solution you'll need for inputs or forms. Powered by TypeScript, built with TDD.
 
   .columns.is-desktop

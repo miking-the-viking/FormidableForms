@@ -4,9 +4,9 @@ import router from './router';
 import store from './store';
 import './registerServiceWorker';
 import '@/style/app.scss';
-// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-// Vue.component('font-awesome-icon', FontAwesomeIcon);
+Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 
 import VueHighlightJS from 'vue-highlightjs';

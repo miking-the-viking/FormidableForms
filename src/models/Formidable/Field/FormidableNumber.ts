@@ -29,14 +29,6 @@ export interface IFormidableNumberProps extends IFormidableFieldProps {
  * Formidable Field definition for a number input
  */
 export class FormidableNumber extends FormidableField<number> implements IFormidableNumberProps {
-
-	/**
-	 * Specifically only allow Number enum
-	 */
-	// @IsEnum(FieldType)
-	// @Equals(FieldType.Number)
-	public type!: FieldType;
-
 	/**
 	 * The value of the number
 	 */

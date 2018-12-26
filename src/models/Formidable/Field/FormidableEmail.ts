@@ -35,13 +35,6 @@ export interface IFormidableEmailProps extends IFormidableFieldProps {
 export class FormidableEmail extends FormidableField<string> implements IFormidableEmailProps {
 
 	/**
-	 * Specifically only allow Email enum
-	 */
-	// @IsEnum(FieldType)
-	// @Equals(FieldType.Email)
-	public type!: FieldType;
-
-	/**
 	 * Optional minimum length
 	 */
 	@IsOptional()

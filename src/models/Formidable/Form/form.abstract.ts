@@ -12,6 +12,7 @@ import { FormidableTextarea } from '@/models/Formidable/Field/FormidableTextarea
 import { FormidablePassword } from '@/models/Formidable/Field/FormidablePassword';
 import { FormidableEmail } from '@/models/Formidable/Field/FormidableEmail';
 import { FormidableNumberRange } from '@/models/Formidable/Field/FormidableNumberRange';
+import { FormidableDate } from '@/models/Formidable/Field/FormidableDate';
 
 /**
  * Basic Props for a Formidable Form
@@ -44,7 +45,8 @@ export abstract class FormidableForm {
 				{ value: FormidableLink, name: FieldType.Link },
 				{ value: FormidableEmail, name: FieldType.Email },
 				{ value: FormidablePassword, name: FieldType.Password },
-				{ value: FormidableNumberRange, name: FieldType.NumberRange }
+				{ value: FormidableNumberRange, name: FieldType.NumberRange },
+				{ value: FormidableDate, name: FieldType.Date }
 			]
 		}
 	})
@@ -56,6 +58,12 @@ export abstract class FormidableForm {
 		| FormidableEmail
 		| FormidablePassword
 		| FormidableNumberRange
+		| FormidableDate
 	>;
+
+	/**
+	 * Submit action for the form, optional or null if retrieving the values and submitting by another means.
+	 */
+	public submit?: () => Promise<void> | null;
 
 }
