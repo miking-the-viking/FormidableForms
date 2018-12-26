@@ -1,3 +1,4 @@
+import { FormidablePassword } from './../Field/FormidablePassword';
 import { FormidableEmail } from '@/models/Formidable/Field/FormidableEmail';
 /**
  * Abstract Formidable Form core definition
@@ -40,7 +41,8 @@ export abstract class FormidableForm {
 				{ value: FormidableText, name: FieldType.Text },
 				{ value: FormidableTextarea, name: FieldType.Textarea },
 				{ value: FormidableLink, name: FieldType.Link },
-				{ value: FormidableEmail, name: FieldType.Email }
+				{ value: FormidableEmail, name: FieldType.Email },
+				{ value: FormidablePassword, name: FieldType.Password }
 			]
 		}
 	})
@@ -50,6 +52,7 @@ export abstract class FormidableForm {
 		| FormidableTextarea
 		| FormidableLink
 		| FormidableEmail
+		| FormidablePassword
 	>;
 
 }

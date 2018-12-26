@@ -116,6 +116,12 @@ const formConfig: FormidableBasicForm = {
 			value: null,
 			maxLength: 30,
 			label: 'Some Email shorter than 30 characters',
+		},
+		{
+			type: FieldType.Password,
+			value: null,
+			minLength: 8,
+			label: 'Some password field',
 		}
 	]
 };

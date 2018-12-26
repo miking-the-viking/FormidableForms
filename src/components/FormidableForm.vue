@@ -23,6 +23,7 @@ import TextField from '@/components/Formidable/TextField.vue';
 import TextArea from '@/components/Formidable/TextArea.vue';
 import LinkField from '@/components/Formidable/LinkField.vue';
 import EmailField from '@/components/Formidable/EmailField.vue';
+import PasswordField from '@/components/Formidable/PasswordField.vue';
 import { FormidableWizardForm } from '@/models/Formidable/Form/FormidableWizardForm';
 
 @Component({
@@ -32,7 +33,8 @@ import { FormidableWizardForm } from '@/models/Formidable/Form/FormidableWizardF
 		TextField,
 		TextArea,
 		LinkField,
-		EmailField
+		EmailField,
+		PasswordField
 	}
 })
 export default class FormidableForm extends Vue {
@@ -64,6 +66,7 @@ export default class FormidableForm extends Vue {
 			case FieldType.Textarea: return TextArea;
 			case FieldType.Link: return LinkField;
 			case FieldType.Email: return EmailField;
+			case FieldType.Password: return PasswordField;
 			default: return InvalidField;
 		}
 	}
