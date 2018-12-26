@@ -1,3 +1,4 @@
+import { FormidableEmail } from '@/models/Formidable/Field/FormidableEmail';
 /**
  * Abstract Formidable Form core definition
  */
@@ -38,7 +39,8 @@ export abstract class FormidableForm {
 				{ value: FormidableNumber, name: FieldType.Number },
 				{ value: FormidableText, name: FieldType.Text },
 				{ value: FormidableTextarea, name: FieldType.Textarea },
-				{ value: FormidableLink, name: FieldType.Link }
+				{ value: FormidableLink, name: FieldType.Link },
+				{ value: FormidableEmail, name: FieldType.Email }
 			]
 		}
 	})
@@ -47,6 +49,7 @@ export abstract class FormidableForm {
 		| FormidableText
 		| FormidableTextarea
 		| FormidableLink
+		| FormidableEmail
 	>;
 
 }
