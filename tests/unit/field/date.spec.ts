@@ -42,10 +42,10 @@ describe('Formidable Date field', () => {
 					await transformAndValidate(FormidableDate, validDate);
 				});
 
-				it('Can initialize a FormidableDate with valid basic props and a Date value', async () => {
+				it('Can initialize a FormidableDate with valid basic props and a Date string value', async () => {
 					const validDate: IFormidableDateProps = {
 						type: FieldType.Date,
-						value: new Date()
+						value: new Date().toISOString()
 					};
 					await transformAndValidate(FormidableDate, validDate);
 				});

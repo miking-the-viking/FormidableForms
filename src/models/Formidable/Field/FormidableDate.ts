@@ -1,26 +1,12 @@
 import {
 	FormidableField,
-	IFormidableFieldProps,
-	FieldType
+	IFormidableFieldProps
 } from '@/models/Formidable/Field/field.abstract';
 import {
 	IsOptional,
-	IsNumber,
-	IsEnum,
-	Equals,
-	IsDate
+	IsDate,
+	IsDateString
 } from 'class-validator';
-import {
-	IsLongerThan
-} from '@/models/IsLongerThan';
-import {
-	IsStringOrNull
-} from '@/models/IsStringOrNull';
-import {
-	IsShorterThan
-} from '@/models/IsShorterThan';
-import { IsLessThanOrEqualTo } from '@/models/IsLessThanOrEqualTo';
-import { IsGreaterThanOrEqualTo } from '@/models/IsGreaterThanOrEqualTo';
 
 
 
@@ -37,7 +23,8 @@ export class FormidableDate extends FormidableField<Date> implements IFormidable
 	/**
 	 * The given value of the field
 	 */
-	@IsDate()
+	// @IsDate()
+	@IsDateString()
 	@IsOptional()
 	public value!: Date | null;
 

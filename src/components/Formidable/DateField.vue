@@ -1,17 +1,24 @@
 <template lang="pug">
 .field(:class="feedbackClass")
-    label.label(v-if="value.label") {{value.label}}
-    .control
-        input.input(type="date" v-model="val" :class="feedbackClass")
-    p.help(v-if="hasFeedback" :class="feedbackClass") {{errorText}}
+	label.label(v-if="value.label") {{value.label}}
+	.control
+		//- input.input(type="date" v-model.date="val" :class="feedbackClass")
+		datetime(v-model.date="val" type="datetime" :use12-hour="true" :class="feedbackClass" :auto="true")
+	p.help(v-if="hasFeedback" :class="feedbackClass") {{errorText}}
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
+import { Vue, Component, Prop, Emit, Watch } from 'vue-property-decorator';
 import { FormidableField } from '@/models/Formidable/Field/field.abstract';
 import { ValidationError } from 'class-validator';
+import { Datetime } from 'vue-datetime';
+import 'vue-datetime/dist/vue-datetime.css';
 
-@Component
+@Component({
+	components: {
+		Datetime
+	}
+})
 export default class DateField extends Vue {
 	@Prop({ required: true }) private value!: FormidableField<Date>;
 	@Prop({ default: () => [] }) private validationErrors!: ValidationError[];
@@ -28,12 +35,16 @@ export default class DateField extends Vue {
 	}
 
 	get val() {
-		return this.value.value;
+		return this.value.value ? this.value.value.toString() : this.value.value;
 	}
 
-	set val(newVal: Date | null) {
-		this.$emit('input', {...this.value, value: newVal});
+	set val(value: null | string) {
+		this.$emit('input', {
+			...this.value,
+			value
+		});
 	}
+
 
 	get errorText() {
 		if (!this.validationErrors || this.validationErrors.length === 0) {
