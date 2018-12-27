@@ -2,50 +2,42 @@
 
 [![Build Status](https://travis-ci.com/miking-the-viking/FormidableForms.svg?token=mm6yHByGgeorBxsvuzKv&branch=master)](https://travis-ci.com/miking-the-viking/FormidableForms)
 
-[GitHub Pages Deployed Sample](https://miking-the-viking.github.io/FormidableForms/)
+> This project is built using the Vue CLI 3, the standard commands are given below. Documentation is provided as a Vue SPA at [MikingTheViking's Formidable Forms](https://miking-the-viking.github.io/FormidableForms/).
 
 ## Project setup
 
 ```bash
-yarn install
+yarn
+
+# or yarn install, for the exceptionally verbose
 ```
 
 ### Compiles and hot-reloads for development
 
 ```bash
-yarn run serve
+yarn serve
 ```
 
 ### Compiles and minifies for production
 
 ```bash
-yarn run build
+yarn build
 ```
 
-### Run your tests
+### Run unit tests
 
 ```bash
-yarn run test
+yarn test:unit
 ```
 
 ### Lints and fixes files
 
 ```bash
-yarn run lint
+yarn lint
 ```
 
-### Run your end-to-end tests
+### Run end-to-end tests
 
 ```bash
-yarn run test:e2e
+yarn test:e2e
 ```
-
-### Run your unit tests
-
-```bash
-yarn run test:unit
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
