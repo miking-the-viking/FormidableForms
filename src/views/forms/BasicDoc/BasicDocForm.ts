@@ -112,6 +112,11 @@ const formConfig: FormidableBasicForm = {
 			value: null,
 			label: 'Some Time',
 			dateType: DateType.Time
+		},
+		{
+			type: FieldType.File,
+			value: null,
+			label: 'Some file'
 		}
 	]
 };

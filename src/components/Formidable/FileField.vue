@@ -2,26 +2,18 @@
 .field(:class="feedbackClass")
 	label.label(v-if="value.label") {{value.label}}
 	.control
-		//- input.input(type="date" v-model.date="val" :class="feedbackClass")
-		datetime(v-model.date="val" :type="dateType" :use12-hour="true" :class="feedbackClass" :auto="true" :input-id="'datefield-' + Math.floor(Math.random() * 10000000)")
+		input.input(type="file" :class="feedbackClass")
 	p.help(v-if="hasFeedback" :class="feedbackClass") {{errorText}}
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Emit, Watch } from 'vue-property-decorator';
+import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
 import { FormidableField } from '@/models/Formidable/Field/field.abstract';
 import { ValidationError } from 'class-validator';
-import { Datetime } from 'vue-datetime';
-import 'vue-datetime/dist/vue-datetime.css';
-import { FormidableDate } from '@/models/Formidable/Field/FormidableDate';
 
-@Component({
-	components: {
-		Datetime
-	}
-})
-export default class DateField extends Vue {
-	@Prop({ required: true }) private value!: FormidableDate;
+@Component
+export default class FileField extends Vue {
+	@Prop({ required: true }) private value!: FormidableField<string>;
 	@Prop({ default: () => [] }) private validationErrors!: ValidationError[];
 
 	get hasFeedback() {
@@ -36,18 +28,11 @@ export default class DateField extends Vue {
 	}
 
 	get val() {
-		return this.value.value ? this.value.value.toString() : this.value.value;
+		return this.value.value;
 	}
 
-	set val(value: null | string) {
-		this.$emit('input', {
-			...this.value,
-			value
-		});
-	}
-
-	get dateType() {
-		return this.value.dateType;
+	set val(value: string | null) {
+		this.$emit('input', {...this.value, value});
 	}
 
 	get errorText() {

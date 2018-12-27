@@ -30,6 +30,7 @@ import LinkField from '@/components/Formidable/LinkField.vue';
 import EmailField from '@/components/Formidable/EmailField.vue';
 import PasswordField from '@/components/Formidable/PasswordField.vue';
 import DateField from '@/components/Formidable/DateField.vue';
+import FileField from '@/components/Formidable/FileField.vue';
 import { FormidableWizardForm } from '@/models/Formidable/Form/FormidableWizardForm';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -46,7 +47,8 @@ library.add(faCheckCircle, faTimesCircle);
 		LinkField,
 		EmailField,
 		PasswordField,
-		DateField
+		DateField,
+		FileField
 	}
 })
 export default class FormidableForm extends Vue {
@@ -81,6 +83,7 @@ export default class FormidableForm extends Vue {
 			case FieldType.Email: return EmailField;
 			case FieldType.Password: return PasswordField;
 			case FieldType.Date: return DateField;
+			case FieldType.File: return FileField;
 			default: return InvalidField;
 		}
 	}
