@@ -5,7 +5,7 @@
 import { transformAndValidate } from 'class-transformer-validator';
 import { FieldType } from '@/models/Formidable/Field/field.abstract';
 import runFieldTests, { errorArrayHas } from './field.abstract';
-import { FormidableDate, IFormidableDateProps } from '@/models/Formidable/Field/FormidableDate';
+import { FormidableDate, IFormidableDateProps, DateType } from '@/models/Formidable/Field/FormidableDate';
 
 describe('Formidable Date field', () => {
 
@@ -37,7 +37,8 @@ describe('Formidable Date field', () => {
 				it('Can initialize a FormidableDate with valid basic props and a null value', async () => {
 					const validDate: IFormidableDateProps = {
 						type: FieldType.Date,
-						value: null
+						value: null,
+						dateType: DateType.Datetime
 					};
 					await transformAndValidate(FormidableDate, validDate);
 				});
@@ -45,7 +46,8 @@ describe('Formidable Date field', () => {
 				it('Can initialize a FormidableDate with valid basic props and a Date string value', async () => {
 					const validDate: IFormidableDateProps = {
 						type: FieldType.Date,
-						value: new Date().toISOString()
+						value: new Date().toISOString(),
+						dateType: DateType.Datetime
 					};
 					await transformAndValidate(FormidableDate, validDate);
 				});
@@ -53,7 +55,8 @@ describe('Formidable Date field', () => {
 				it('Fails when just a number is used', async () => {
 					const invalidDate: IFormidableDateProps = {
 						type: FieldType.Date,
-						value: 1337
+						value: 1337,
+						dateType: DateType.Datetime
 					};
 					try {
 						await transformAndValidate(FormidableDate, invalidDate);
@@ -67,7 +70,8 @@ describe('Formidable Date field', () => {
 				it('Fails when a non-Date string is used', async () => {
 					const invalidDate: IFormidableDateProps = {
 						type: FieldType.Date,
-						value: 'not a damn Date'
+						value: 'not a damn Date',
+						dateType: DateType.Datetime
 					};
 					try {
 						await transformAndValidate(FormidableDate, invalidDate);
@@ -81,7 +85,8 @@ describe('Formidable Date field', () => {
 				it('Fails when an object is used', async () => {
 					const invalidDate: IFormidableDateProps = {
 						type: FieldType.Date,
-						value: { blah: 5 }
+						value: { blah: 5 },
+						dateType: DateType.Datetime
 					};
 					try {
 						await transformAndValidate(FormidableDate, invalidDate);
@@ -94,7 +99,8 @@ describe('Formidable Date field', () => {
 				it('Fails when an array is used', async () => {
 					const invalidDate: IFormidableDateProps = {
 						type: FieldType.Date,
-						value: [1, 2, 3, 45, 5, 6]
+						value: [1, 2, 3, 45, 5, 6],
+						dateType: DateType.Datetime
 					};
 					try {
 						await transformAndValidate(FormidableDate, invalidDate);

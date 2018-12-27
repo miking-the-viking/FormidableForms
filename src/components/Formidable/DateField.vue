@@ -3,7 +3,7 @@
 	label.label(v-if="value.label") {{value.label}}
 	.control
 		//- input.input(type="date" v-model.date="val" :class="feedbackClass")
-		datetime(v-model.date="val" type="datetime" :use12-hour="true" :class="feedbackClass" :auto="true")
+		datetime(v-model.date="val" :type="dateType" :use12-hour="true" :class="feedbackClass" :auto="true")
 	p.help(v-if="hasFeedback" :class="feedbackClass") {{errorText}}
 </template>
 
@@ -13,6 +13,7 @@ import { FormidableField } from '@/models/Formidable/Field/field.abstract';
 import { ValidationError } from 'class-validator';
 import { Datetime } from 'vue-datetime';
 import 'vue-datetime/dist/vue-datetime.css';
+import { FormidableDate } from '@/models/Formidable/Field/FormidableDate';
 
 @Component({
 	components: {
@@ -20,7 +21,7 @@ import 'vue-datetime/dist/vue-datetime.css';
 	}
 })
 export default class DateField extends Vue {
-	@Prop({ required: true }) private value!: FormidableField<Date>;
+	@Prop({ required: true }) private value!: FormidableDate;
 	@Prop({ default: () => [] }) private validationErrors!: ValidationError[];
 
 	get hasFeedback() {
@@ -45,6 +46,9 @@ export default class DateField extends Vue {
 		});
 	}
 
+	get dateType() {
+		return this.value.dateType;
+	}
 
 	get errorText() {
 		if (!this.validationErrors || this.validationErrors.length === 0) {

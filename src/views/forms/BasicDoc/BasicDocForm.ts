@@ -1,5 +1,6 @@
 import { FormidableBasicForm } from '@/models/Formidable/Form/FormidableBasicForm';
 import { FieldType } from '@/models/Formidable/Field/field.abstract';
+import { DateType } from '@/models/Formidable/Field/FormidableDate';
 
 /**
  * Basic form config for intial sample
@@ -97,7 +98,20 @@ const formConfig: FormidableBasicForm = {
 		{
 			type: FieldType.Date,
 			value: null,
-			label: 'Some date'
+			label: 'Some datetime',
+			dateType: DateType.Datetime
+		},
+		{
+			type: FieldType.Date,
+			value: null,
+			label: 'Some Date',
+			dateType: DateType.Date
+		},
+		{
+			type: FieldType.Date,
+			value: null,
+			label: 'Some Time',
+			dateType: DateType.Time
 		}
 	]
 };
