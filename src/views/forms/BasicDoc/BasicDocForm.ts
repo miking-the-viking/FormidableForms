@@ -1,3 +1,4 @@
+import { FileType } from '@/models/Formidable/Field/FormidableFile';
 import { FormidableBasicForm } from '@/models/Formidable/Form/FormidableBasicForm';
 import { FieldType } from '@/models/Formidable/Field/field.abstract';
 import { DateType } from '@/models/Formidable/Field/FormidableDate';
@@ -117,6 +118,30 @@ const formConfig: FormidableBasicForm = {
 			type: FieldType.File,
 			value: null,
 			label: 'Some file'
+		},
+		{
+			type: FieldType.File,
+			fileType: FileType.Audio,
+			value: null,
+			label: 'Some audio file'
+		},
+		{
+			type: FieldType.File,
+			fileType: FileType.Video,
+			value: null,
+			label: 'Some video file'
+		},
+		{
+			type: FieldType.File,
+			fileType: FileType.PDF,
+			value: null,
+			label: 'Some pdf file'
+		},
+		{
+			type: FieldType.File,
+			fileType: FileType.Image,
+			value: null,
+			label: 'Some image file'
 		}
 	]
 };

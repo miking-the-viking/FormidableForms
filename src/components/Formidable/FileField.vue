@@ -2,7 +2,7 @@
 .field(:class="feedbackClass")
 	label.label(v-if="value.label") {{value.label}}
 	.control
-		input.input(type="file" :class="feedbackClass")
+		input.input(type="file" :class="feedbackClass" :accept="acceptedFileTypes")
 	p.help(v-if="hasFeedback" :class="feedbackClass") {{errorText}}
 </template>
 
@@ -10,10 +10,11 @@
 import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
 import { FormidableField } from '@/models/Formidable/Field/field.abstract';
 import { ValidationError } from 'class-validator';
+import { FormidableFile, FileType } from '@/models/Formidable/Field/FormidableFile';
 
 @Component
 export default class FileField extends Vue {
-	@Prop({ required: true }) private value!: FormidableField<string>;
+	@Prop({ required: true }) private value!: FormidableFile;
 	@Prop({ default: () => [] }) private validationErrors!: ValidationError[];
 
 	get hasFeedback() {
@@ -31,8 +32,18 @@ export default class FileField extends Vue {
 		return this.value.value;
 	}
 
-	set val(value: string | null) {
+	set val(value: File | null) {
 		this.$emit('input', {...this.value, value});
+	}
+
+	get acceptedFileTypes() {
+		switch (this.value.fileType) {
+			case FileType.Audio: return 'audio/*';
+			case FileType.Image: return 'image/*';
+			case FileType.Video: return 'video/*';
+			case FileType.PDF: return '.pdf';
+			default: return null;
+		}
 	}
 
 	get errorText() {

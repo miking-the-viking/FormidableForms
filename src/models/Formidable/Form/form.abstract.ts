@@ -13,6 +13,7 @@ import { FormidablePassword } from '@/models/Formidable/Field/FormidablePassword
 import { FormidableEmail } from '@/models/Formidable/Field/FormidableEmail';
 import { FormidableNumberRange } from '@/models/Formidable/Field/FormidableNumberRange';
 import { FormidableDate } from '@/models/Formidable/Field/FormidableDate';
+import { FormidableFile } from '@/models/Formidable/Field/FormidableFile';
 
 /**
  * Basic Props for a Formidable Form
@@ -46,7 +47,8 @@ export abstract class FormidableForm {
 				{ value: FormidableEmail, name: FieldType.Email },
 				{ value: FormidablePassword, name: FieldType.Password },
 				{ value: FormidableNumberRange, name: FieldType.NumberRange },
-				{ value: FormidableDate, name: FieldType.Date }
+				{ value: FormidableDate, name: FieldType.Date },
+				{ value: FormidableFile, name: FieldType.File },
 			]
 		}
 	})
@@ -59,6 +61,7 @@ export abstract class FormidableForm {
 		| FormidablePassword
 		| FormidableNumberRange
 		| FormidableDate
+		| FormidableFile
 	>;
 
 	/**

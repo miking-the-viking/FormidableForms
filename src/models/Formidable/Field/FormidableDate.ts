@@ -20,7 +20,7 @@ export interface IFormidableDateProps extends IFormidableFieldProps {
 }
 
 /**
- * Formidable Field definition for a Email input
+ * Formidable Field definition for a Date input
  */
 export class FormidableDate extends FormidableField<Date> implements IFormidableDateProps {
 
@@ -28,7 +28,9 @@ export class FormidableDate extends FormidableField<Date> implements IFormidable
 	 * The given value of the field
 	 */
 	// @IsDate()
-	@IsDateString()
+	@IsDateString({
+		message: (val) => 'Please select a valid date.'
+	})
 	@IsOptional()
 	public value!: Date | null;
 
