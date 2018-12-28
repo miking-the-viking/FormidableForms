@@ -21,8 +21,8 @@
 				code FormidableBasicForm
 				| config:
 
-			pre(v-highlightjs="JSON.stringify(form, null, 1)")
-				CollapsibleArea
+			CollapsibleArea
+				pre(v-highlightjs="JSON.stringify(form, null, 1)")
 					code(class="javascript")
 
 	FormidableForm(:form="form")

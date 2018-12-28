@@ -14,8 +14,6 @@ export enum DateType {
 }
 
 export interface IFormidableDateProps extends IFormidableFieldProps {
-	maxLength?: number;
-	minLength?: number;
 	dateType: DateType;
 }
 

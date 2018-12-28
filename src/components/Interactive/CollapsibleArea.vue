@@ -39,6 +39,8 @@ export default class CollapsibleArea extends Vue {
 
 
 <style lang="scss" scoped>
+
+$collapsible-color: #2172ff6b;
 .collapsible {
 	cursor: s-resize;
 	max-height: 10000px;
@@ -47,9 +49,36 @@ export default class CollapsibleArea extends Vue {
 	transition: max-height 1.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 	overflow: hidden;
 	
+	pre {
+		width: 100%
+	}
+
 	&.collapsed {
 		max-height: 200px;
-		// height:200px;
+	}
+
+  	// box-shadow: 0 0 0 rgba(204,169,44, 0.4);
+	animation: pulse 2s infinite;
+	cursor: s-resize;
+	margin:0.5rem;
+
+	&:hover {
+		animation: none;
+		margin:0;
+		border: 0.5rem solid $collapsible-color;
 	}
 }
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 $collapsible-color;
+  }
+  70% {
+      box-shadow: 0 0 0 10px transparent;
+  }
+  100% {
+      box-shadow: 0 0 0 0 transparent;
+  }
+}
+
 </style>
