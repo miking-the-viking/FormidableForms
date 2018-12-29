@@ -11,12 +11,16 @@ const textComponentTests = describe('TextField.vue', () => {
 		it('Fails when no value prop is provided', () => {
 			try {
 				shallowMount(TextField, {
-					propsData: {}
+					propsData: {
+						// value: {
+						// 	label: 'something'
+						// }
+					}
 				});
 				fail(`Did not throw an error when no value prop was provided`);
 			} catch (e) {
 				expect(e).toBeInstanceOf(TypeError);
-				expect(e.message).toEqual(`Cannot read property 'value' of undefined`);
+				expect(e.message).toEqual(`Cannot read property 'type' of undefined`);
 			}
 		});
 
