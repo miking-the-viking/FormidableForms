@@ -1,52 +1,33 @@
 <template lang="pug">
 .field
-    label.label(v-if="value.label") {{value.label}}
-    .control
-        input.input(type="number" :min="value.minimum" :max="value.maximum" v-model.number="val" :class="feedbackClass")
-    p.help(v-if="hasFeedback" :class="feedbackClass") {{errorText}}
+	label.label(v-if="value.label") {{value.label}}
+	.control
+		input.input(type="number" :min="value.minimum" :max="value.maximum" v-model.number="val" :class="feedbackClass")
+	FeedbackText(:validationErrors="validationErrors" :valueIsSubmittable="isSubmittable")
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import { FormidableField } from '@/models/Formidable/Field/field.abstract';
 import { ValidationError } from 'class-validator';
+import FeedbackText from '@/components/Formidable/components/FeedbackText.vue';
+import { FormidableFieldComponent} from '@/components/Formidable/FormidableFieldComponent.abstract';
+import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
 
-@Component
-export default class NumberField extends Vue {
-	@Prop({ required: true }) private value!: FormidableField<number | null>;
-	@Prop({ default: () => [] }) private validationErrors!: ValidationError[];
-
-	get hasFeedback() {
-		return this.validationErrors.length > 0;
+@Component({
+	components: {
+		FeedbackText
 	}
+})
+export default class NumberField extends FormidableFieldComponent<FormidableNumber> {}
+</script>
 
-	get feedbackClass() {
-		return {
-			'is-danger': this.validationErrors && this.validationErrors.length > 0,
-			'is-success': this.value.value !== null && (!this.validationErrors || this.validationErrors.length === 0)
-		};
-	}
-
-	get val() {
-		return this.value.value;
-	}
-
-	set val(newVal: number | null) {
-		this.$emit('input', {...this.value, value: newVal});
-	}
-
-	get errorText() {
-		if (!this.validationErrors || this.validationErrors.length === 0) {
-			return null;
-		}
-
-		return this.validationErrors.reduce((acc, val) => {
-			return acc + (val.property === 'value' ?
-				Object.keys(val.constraints).reduce((acc2, val2) => {
-					return acc2 + val.constraints[val2];
-				}, '') : ''
-			);
-		}, '');
+<style scoped lang="scss">
+$transition: 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+input {
+	transition : border $transition;
+	.help {
+		transition: color $transition;
 	}
 }
-</script>
+</style>
