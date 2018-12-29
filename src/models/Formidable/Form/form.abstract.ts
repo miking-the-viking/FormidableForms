@@ -38,7 +38,7 @@ export abstract class FormidableForm {
 	})
 	@Type(() => FormidableField, {
 		discriminator: {
-			property: 'type',
+			property: 'fieldType',
 			subTypes: [
 				{ value: FormidableNumber, name: FieldType.Number },
 				{ value: FormidableText, name: FieldType.Text },

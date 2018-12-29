@@ -37,7 +37,7 @@ export class Album {
 	})
 	@Type(() => Photo, {
 		discriminator: {
-			property: 'type',
+			property: 'fieldType',
 			subTypes: [
 				{ value: Landscape, name: 'landscape' },
 				{ value: Portrait, name: 'portrait' },
@@ -52,7 +52,7 @@ export class Album {
 	})
 	@Type(() => Photo, {
 		discriminator: {
-			property: 'type',
+			property: 'fieldType',
 			subTypes: [
 				{ value: Landscape, name: 'landscape' },
 				{ value: Portrait, name: 'portrait' },

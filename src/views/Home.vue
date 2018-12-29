@@ -156,7 +156,7 @@ const fieldTypeDescriptions = [
 const sampleFormJSON =
 `const formConfig: FormidableBasicForm = {
 	fields: [{
-			type: FieldType.Number,
+			fieldType: FieldType.Number,
 			value: null,
 			label: 'Any number',
 			required: true

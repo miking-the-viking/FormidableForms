@@ -17,14 +17,14 @@ describe('Formidable Number field', () => {
 
 		describe('Props', () => {
 
-			describe('type', () => {
+			describe('fieldType', () => {
 				it('Only allows the Number FieldType', async () => {
 					for (const type in FieldType) {
 						if (type !== FieldType.Number) {
 							try {
-								await transformAndValidate(FormidableNumber, {type: FieldType[type]});
+								await transformAndValidate(FormidableNumber, {fieldType: FieldType[type]});
 							} catch (e) {
-								expect(errorArrayHas('type', e)).toBeTruthy();
+								expect(errorArrayHas('fieldType', e)).toBeTruthy();
 							}
 						}
 					}
@@ -35,7 +35,7 @@ describe('Formidable Number field', () => {
 
 				it('Can initialize a FormidableNumber with valid basic props and a null value', async () => {
 					const validNumber: IFormidableNumberProps = {
-						type: FieldType.Number,
+						fieldType: FieldType.Number,
 						value: null
 					};
 					await transformAndValidate(FormidableNumber, validNumber);
@@ -43,7 +43,7 @@ describe('Formidable Number field', () => {
 
 				it('Can initialize a FormidableNumber with valid basic props and a numeric value', async () => {
 					const validNumber: IFormidableNumberProps = {
-						type: FieldType.Number,
+						fieldType: FieldType.Number,
 						value: 5
 					};
 					await transformAndValidate(FormidableNumber, validNumber);
@@ -51,7 +51,7 @@ describe('Formidable Number field', () => {
 
 				it('Fails when a string is used', async () => {
 					const invalidNumber: IFormidableNumberProps = {
-						type: FieldType.Number,
+						fieldType: FieldType.Number,
 						value: 5
 					};
 					try {
@@ -64,7 +64,7 @@ describe('Formidable Number field', () => {
 
 				it('Fails when an object is used', async () => {
 					const invalidNumber: IFormidableNumberProps = {
-						type: FieldType.Number,
+						fieldType: FieldType.Number,
 						value: {blah: 5}
 					};
 					try {
@@ -77,7 +77,7 @@ describe('Formidable Number field', () => {
 
 				it('Fails when an array is used', async () => {
 					const invalidNumber: IFormidableNumberProps = {
-						type: FieldType.Number,
+						fieldType: FieldType.Number,
 						value: [1, 2, 3, 45, 5, 6]
 					};
 					try {
@@ -90,7 +90,7 @@ describe('Formidable Number field', () => {
 
 				it('Fails when a Date is used', async () => {
 					const invalidNumber: IFormidableNumberProps = {
-						type: FieldType.Number,
+						fieldType: FieldType.Number,
 						value: new Date()
 					};
 					try {
@@ -104,13 +104,13 @@ describe('Formidable Number field', () => {
 
 			describe('minimum and maximum', () => {
 				it('are not required', async () => {
-					await transformAndValidate(FormidableNumber, {type: FieldType.Number, value: 1});
+					await transformAndValidate(FormidableNumber, {fieldType: FieldType.Number, value: 1});
 				});
 
 				it('accepts numeric values', async () => {
 					await transformAndValidate(
 						FormidableNumber,
-						{ type: FieldType.Number, value: 1, minimum: 1, maximum: 1000 }
+						{fieldfieldType: FieldType.Number, value: 1, minimum: 1, maximum: 1000 }
 					);
 				});
 
@@ -134,7 +134,7 @@ describe('Formidable Number field', () => {
 						try {
 							await transformAndValidate(
 								FormidableNumber,
-								{type: FieldType.Number, value: 1, ...invalid}
+								{fieldType: FieldType.Number, value: 1, ...invalid}
 							);
 							fail(`Should have failed with the non numeric value`);
 						} catch (e) {
@@ -148,7 +148,7 @@ describe('Formidable Number field', () => {
 					try {
 						await transformAndValidate(FormidableNumber,
 							{
-								type: FieldType.Number,
+								fieldType: FieldType.Number,
 								value: 1,
 								minimum: 2
 							}
@@ -164,7 +164,7 @@ describe('Formidable Number field', () => {
 					try {
 						await transformAndValidate(FormidableNumber,
 							{
-								type: FieldType.Number,
+								fieldType: FieldType.Number,
 								value: 6,
 								maximum: 5
 							}
@@ -179,7 +179,7 @@ describe('Formidable Number field', () => {
 				it('fails when minimum is greater than maximum', async () => {
 					try {
 						const result = await transformAndValidate(FormidableNumber, {
-							type: FieldType.Number,
+							fieldType: FieldType.Number,
 							value: 10,
 							maximum: 11,
 							minimum: 12

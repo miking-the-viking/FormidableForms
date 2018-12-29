@@ -37,7 +37,7 @@ export default <T extends FormidableForm>(
 				const invalidFields: FormidableForm = {
 						fields: [
 							{
-								type: FieldType.Number,
+								fieldType: FieldType.Number,
 								value: -50,
 								minimum: -20,
 								label: 'Any number >= -20'
@@ -65,7 +65,7 @@ export default <T extends FormidableForm>(
 				// const invalidFields: Array<FormidableField<number>> = [
 				const invalidFields: Array<FormidableField<any>> = [
 					{
-						type: FieldType.Number,
+						fieldType: FieldType.Number,
 						// tslint:disable-next-line
 						value: 'some string'
 					}
@@ -96,7 +96,7 @@ export default <T extends FormidableForm>(
 		describe('Form initialization', () => {
 
 			const existingFields: Array<FormidableNumber | FormidableText> = [{
-				type: FieldType.Number,
+				fieldType: FieldType.Number,
 				value: 1
 			}];
 

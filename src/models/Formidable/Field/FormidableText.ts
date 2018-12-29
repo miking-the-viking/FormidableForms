@@ -33,9 +33,9 @@ export interface IFormidableTextProps extends IFormidableFieldProps {
  */
 export class FormidableText extends FormidableField<string> implements IFormidableTextProps {
 
-	@IsEnum(FieldType)
-	@IsIn([FieldType.Text])
-	public type!: FieldType;
+	// @IsEnum(FieldType)
+	// @Equals(FieldType.Text)
+	public fieldType!: FieldType;
 
 	/**
 	 * Optional minimum length

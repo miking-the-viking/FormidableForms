@@ -31,7 +31,7 @@ export enum FieldType {
  * Basic props for a Formidable Field
  */
 export interface IFormidableFieldProps {
-	type: FieldType;
+	fieldType: FieldType;
 	name ?: string;
 	label ?: string;
 	id ?: string;
@@ -48,7 +48,7 @@ export abstract class FormidableField<T> {
 	/**
 	 * The Enumerated type of the field, used for code clarity and programmatically limiting the avaialble field types
 	 */
-	public type!: FieldType;
+	public fieldType!: FieldType;
 
 	/**
 	 * Optional name of the field

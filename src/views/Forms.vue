@@ -16,49 +16,49 @@ import { FormidableText } from '@/models/Formidable/Field/FormidableText';
 const formConfig: FormidableBasicForm = {
 	fields: [
 		{
-			type: FieldType.Number,
+			fieldType: FieldType.Number,
 			value: null,
 			label: 'Any number'
 		},
 		{
-			type: FieldType.Number,
+			fieldType: FieldType.Number,
 			value: null,
 			minimum: -20,
 			label: 'Any number >= -20'
 		},
 		{
-			type: FieldType.Number,
+			fieldType: FieldType.Number,
 			value: null,
 			minimum: 0,
 			maximum: 10,
 			label: 'Any number between 0-10'
 		},
 		{
-			type: FieldType.Text,
+			fieldType: FieldType.Text,
 			value: null,
 			label: 'Any amount of string text'
 		},
 		{
-			type: FieldType.Text,
+			fieldType: FieldType.Text,
 			value: null,
 			minLength: 3,
 			label: 'Atleast 3 character string'
 		},
 		{
-			type: FieldType.Text,
+			fieldType: FieldType.Text,
 			value: null,
 			maxLength: 8,
 			label: 'At most 8 character string'
 		},
 		{
-			type: FieldType.Text,
+			fieldType: FieldType.Text,
 			value: null,
 			minLength: 3,
 			maxLength: 8,
 			label: 'Between 3-8 character string'
 		},
 		{
-			type: FieldType.Textarea,
+			fieldType: FieldType.Textarea,
 			value: null,
 			minLength: 10,
 			maxLength: 500,

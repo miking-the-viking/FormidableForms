@@ -17,15 +17,15 @@ describe('Formidable Email field', () => {
 
 		describe('Props', () => {
 
-			// describe('type', () => {
+			// describe('fieldType', () => {
 			// 	it('Only allows the Email FieldType', async () => {
 			// 		for (const type in FieldType) {
 			// 			if (FieldType[type] !== FieldType.Email) {
 			// 				try {
-			// 					await transformAndValidate(FormidableEmail, { type: FieldType[type] });
+			// 					await transformAndValidate(FormidableEmail, { fieldType: FieldType[type] });
 			// 					fail(`Should have failed on an invalid Field Type ${FieldType[type]}`);
 			// 				} catch (e) {
-			// 					expect(errorArrayHas('type', e)).toBeTruthy();
+			// 					expect(errorArrayHas('fieldType', e)).toBeTruthy();
 			// 				}
 			// 			}
 			// 		}
@@ -36,7 +36,7 @@ describe('Formidable Email field', () => {
 
 				it('Can initialize a FormidableEmail with valid basic props and a null value', async () => {
 					const validEmail: IFormidableEmailProps = {
-						type: FieldType.Email,
+						fieldType: FieldType.Email,
 						value: null
 					};
 					await transformAndValidate(FormidableEmail, validEmail);
@@ -44,7 +44,7 @@ describe('Formidable Email field', () => {
 
 				it('Can initialize a FormidableEmail with valid basic props and an email string value', async () => {
 					const validEmail: IFormidableEmailProps = {
-						type: FieldType.Email,
+						fieldType: FieldType.Email,
 						value: 'someemail@gmail.com'
 					};
 					await transformAndValidate(FormidableEmail, validEmail);
@@ -52,7 +52,7 @@ describe('Formidable Email field', () => {
 
 				it('Fails when a non-email string is used', async () => {
 					const invalidEmail: IFormidableEmailProps = {
-						type: FieldType.Email,
+						fieldType: FieldType.Email,
 						value: 'not a damn email'
 					};
 					try {
@@ -66,7 +66,7 @@ describe('Formidable Email field', () => {
 
 				it('Fails when an object is used', async () => {
 					const invalidEmail: IFormidableEmailProps = {
-						type: FieldType.Email,
+						fieldType: FieldType.Email,
 						value: { blah: 5 }
 					};
 					try {
@@ -79,7 +79,7 @@ describe('Formidable Email field', () => {
 
 				it('Fails when an array is used', async () => {
 					const invalidEmail: IFormidableEmailProps = {
-						type: FieldType.Email,
+						fieldType: FieldType.Email,
 						value: [1, 2, 3, 45, 5, 6]
 					};
 					try {
@@ -92,7 +92,7 @@ describe('Formidable Email field', () => {
 
 				it('Fails when a Date is used', async () => {
 					const invalidEmail: IFormidableEmailProps = {
-						type: FieldType.Email,
+						fieldType: FieldType.Email,
 						value: new Date()
 					};
 					try {
@@ -109,21 +109,21 @@ describe('Formidable Email field', () => {
 				it('are optional', async () => {
 					const validPayloads: IFormidableEmailProps[] = [
 						{
-							type: FieldType.Email,
+							fieldType: FieldType.Email,
 							value: null
 						},
 						{
-							type: FieldType.Email,
+							fieldType: FieldType.Email,
 							value: null,
 							maxLength: 10
 						},
 						{
-							type: FieldType.Email,
+							fieldType: FieldType.Email,
 							value: null,
 							minLength: 1
 						},
 						{
-							type: FieldType.Email,
+							fieldType: FieldType.Email,
 							value: null,
 							minLength: 1,
 							maxLength: 10
@@ -143,7 +143,7 @@ describe('Formidable Email field', () => {
 						{
 							it: 'fails on a string',
 							data: {
-								type: FieldType.Email,
+								fieldType: FieldType.Email,
 								value: null,
 								minLength: 'some string'
 							}
@@ -151,7 +151,7 @@ describe('Formidable Email field', () => {
 						{
 							it: 'fails on a boolean',
 							data: {
-								type: FieldType.Email,
+								fieldType: FieldType.Email,
 								value: null,
 								minLength: true
 							}
@@ -159,7 +159,7 @@ describe('Formidable Email field', () => {
 						{
 							it: 'fails on an object',
 							data: {
-								type: FieldType.Email,
+								fieldType: FieldType.Email,
 								value: null,
 								minLength: {}
 							}
@@ -182,7 +182,7 @@ describe('Formidable Email field', () => {
 						{
 							it: 'fails on a string',
 							data: {
-								type: FieldType.Email,
+								fieldType: FieldType.Email,
 								value: null,
 								maxLength: 'some string'
 							}
@@ -190,7 +190,7 @@ describe('Formidable Email field', () => {
 						{
 							it: 'fails on a boolean',
 							data: {
-								type: FieldType.Email,
+								fieldType: FieldType.Email,
 								value: null,
 								maxLength: true
 							}
@@ -198,7 +198,7 @@ describe('Formidable Email field', () => {
 						{
 							it: 'fails on an object',
 							data: {
-								type: FieldType.Email,
+								fieldType: FieldType.Email,
 								value: null,
 								maxLength: {}
 							}
@@ -222,7 +222,7 @@ describe('Formidable Email field', () => {
 				it('fails when value is less than the provided minLength', async () => {
 					try {
 						const result = await transformAndValidate(FormidableEmail, {
-							type: FieldType.Email,
+							fieldType: FieldType.Email,
 							value: 'a',
 							minLength: 2
 						});
@@ -237,7 +237,7 @@ describe('Formidable Email field', () => {
 				it('fails when value is greater than the provided maxLength', async () => {
 					try {
 						const result = await transformAndValidate(FormidableEmail, {
-							type: FieldType.Email,
+							fieldType: FieldType.Email,
 							value: 'abbv',
 							maxLength: 2
 						});

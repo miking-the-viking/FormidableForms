@@ -18,14 +18,14 @@ describe('Formidable Link field', () => {
 
 		describe('Props', () => {
 
-			// describe('type', () => {
+			// describe('fieldType', () => {
 			// 	it('Only allows the Link FieldType', async () => {
 			// 		for (const type in FieldType) {
 			// 			if (type !== FieldType.Link) {
 			// 				try {
-			// 					await transformAndValidate(FormidableLink, { type: FieldType[type] });
+			// 					await transformAndValidate(FormidableLink, {fieldfieldType: FieldType[type] });
 			// 				} catch (e) {
-			// 					expect(errorArrayHas('type', e)).toBeTruthy();
+			// 					expect(errorArrayHas('fieldType', e)).toBeTruthy();
 			// 				}
 			// 			}
 			// 		}
@@ -36,7 +36,7 @@ describe('Formidable Link field', () => {
 
 				it('Can initialize a FormidableLink with valid basic props and a null value', async () => {
 					const validLink: IFormidableLinkProps = {
-						type: FieldType.Link,
+						fieldType: FieldType.Link,
 						value: {
 							href: null,
 							text: null
@@ -47,7 +47,7 @@ describe('Formidable Link field', () => {
 
 				it('Can initialize a FormidableLink with valid basic props and string values for href and text', async () => {
 					const validLink: IFormidableLinkProps = {
-						type: FieldType.Link,
+						fieldType: FieldType.Link,
 						value: {
 							href: 'somewebsite.com',
 							text: 'Some Website'
@@ -66,7 +66,7 @@ describe('Formidable Link field', () => {
 
 				it('Fails to validate a FormidableLink with a non-url href', async () => {
 					const validLink: IFormidableLinkProps = {
-						type: FieldType.Link,
+						fieldType: FieldType.Link,
 						value: {
 							href: '~`=---2?//\\/"\'',
 							text: 'Some Website'
@@ -83,7 +83,7 @@ describe('Formidable Link field', () => {
 
 				it('Fails when an object is used', async () => {
 					const invalidLink: IFormidableLinkProps = {
-						type: FieldType.Link,
+						fieldType: FieldType.Link,
 						value: {
 							href: {},
 							text: {}
@@ -104,7 +104,7 @@ describe('Formidable Link field', () => {
 				describe('href', () => {
 					it('is not required', async () => {
 						await transformAndValidate(FormidableLink,
-							{ type: FieldType.Link, value: { href: 'test.com', text: 'somText' } }
+							{fieldfieldType: FieldType.Link, value: { href: 'test.com', text: 'somText' } }
 						);
 					});
 
@@ -112,7 +112,7 @@ describe('Formidable Link field', () => {
 						await transformAndValidate(
 							FormidableLink,
 							{
-								type: FieldType.Link,
+								fieldType: FieldType.Link,
 								value: { href: 'test.com', text: 'somText' },
 								minLinkHrefLength: 1,
 								maxLinkHrefLength: 1000
@@ -140,7 +140,7 @@ describe('Formidable Link field', () => {
 							try {
 								await transformAndValidate(
 									FormidableLink,
-									{ type: FieldType.Link, value: { href: 'test.com', text: 'somText' }, ...invalid }
+									{fieldfieldType: FieldType.Link, value: { href: 'test.com', text: 'somText' }, ...invalid }
 								);
 								fail(`Should have failed with the non numeric values`);
 							} catch (e) {
@@ -154,7 +154,7 @@ describe('Formidable Link field', () => {
 						try {
 							await transformAndValidate(FormidableLink,
 								{
-									type: FieldType.Link,
+									fieldType: FieldType.Link,
 									value: 'a',
 									minLinkHrefLength: 2
 								}
@@ -167,7 +167,7 @@ describe('Formidable Link field', () => {
 
 					it('fails when the href length is greater than the maximum length', async () => {
 						const linkObj = {
-							type: FieldType.Link,
+							fieldType: FieldType.Link,
 							value: { href: 'test.com', text: 'somText' },
 							maxLinkHrefLength: 5
 						};
@@ -192,7 +192,7 @@ describe('Formidable Link field', () => {
 					it('is not required', async () => {
 						await transformAndValidate(FormidableLink,
 							{
-								type: FieldType.Link,
+								fieldType: FieldType.Link,
 								value: { href: 'test.com', text: 'somText' }
 							}
 						);
@@ -202,7 +202,7 @@ describe('Formidable Link field', () => {
 						await transformAndValidate(
 							FormidableLink,
 							{
-								type: FieldType.Link,
+								fieldType: FieldType.Link,
 								value: { href: 'test.com', text: 'somText' },
 								minLinkTextLength: 1,
 								maxLinkTextLength: 1000
@@ -231,7 +231,7 @@ describe('Formidable Link field', () => {
 							try {
 								await transformAndValidate(
 									FormidableLink,
-									{ type: FieldType.Link, value: { href: 'test.com', text: 'somText' }, ...invalid }
+									{fieldfieldType: FieldType.Link, value: { href: 'test.com', text: 'somText' }, ...invalid }
 								);
 								fail(`Should have failed with the non numeric values`);
 							} catch (e) {
@@ -245,7 +245,7 @@ describe('Formidable Link field', () => {
 						try {
 							await transformAndValidate(FormidableLink,
 								{
-									type: FieldType.Link,
+									fieldType: FieldType.Link,
 									value: { href: 'test.com', text: 'somTextsblahblah' },
 									maxLinkTextLength: 5
 								}
@@ -260,7 +260,7 @@ describe('Formidable Link field', () => {
 					it('fails when minimum text length is greater than maximum text length', async () => {
 						try {
 							await transformAndValidate(FormidableLink, {
-								type: FieldType.Link,
+								fieldType: FieldType.Link,
 								value: { link: 'something.com', text: 'something' },
 								minLinkTextLength: 18,
 								maxLinkTextLength: 17
@@ -276,7 +276,7 @@ describe('Formidable Link field', () => {
 					it('fails when minimum href length is greater than maximum href length', async () => {
 						try {
 							await transformAndValidate(FormidableLink, {
-								type: FieldType.Link,
+								fieldType: FieldType.Link,
 								value: { link: 'something.com', text: 'something' },
 								minLinkHrefLength: 18,
 								maxLinkHrefLength: 17

@@ -74,7 +74,7 @@ export default class FormidableForm extends Vue {
 	}
 
 	private getField(field: FormidableField<any>): VueConstructor<Vue> {
-		switch (field.type) {
+		switch (field.fieldType) {
 			case FieldType.Number: return NumberField;
 			case FieldType.NumberRange: return NumberRangeField;
 			case FieldType.Text: return TextField;

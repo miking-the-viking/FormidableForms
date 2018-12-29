@@ -34,14 +34,14 @@ export default (ctor: new (...args: any[]) => FormidableField<any>) => {
 			// describe('Field Type Prop', () => {
 			// 	it('throws an error when an invalid FieldType is used', async () => {
 
-			// 		const invalidType = { type: 'someInvalidType'};
+			// 		const invalidType = {fieldType: 'someInvalidType'};
 
 			// 		try {
 			// 			await transformAndValidate(ctor, invalidType);
 			// 			fail(`Did not throw a validator error when using an invalid field type ${invalidType.type}`);
 			// 		} catch (e) {
 			// 			expect(e).toBeInstanceOf(Array);
-			// 			expect(errorArrayHas('type', e)).toBeTruthy();
+			// 			expect(errorArrayHas('fieldType', e)).toBeTruthy();
 			// 		}
 			// 	});
 
