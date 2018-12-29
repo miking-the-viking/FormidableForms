@@ -1,28 +1,43 @@
 <template lang="pug">
 .field
+
 	label.label(v-if="value.label") {{value.label}}
+
 	.columns
+
 		.column
 			.control
-				label.label Link Text
-				input.input(type="text" :maxlength="value.maxLinkTextLength" v-model="text"  :class="textFeedbackClass")
-				p.help(v-if="hasTextFeedback" :class="textFeedbackClass") {{textErrorText}}
+				TextField(
+					v-model="textField"
+					:maxlength="value.maxLinkTextLength"
+					:validationErrors="textFieldError"
+					:alternateValidationKey="text"
+				)
+
 		.column
 			.control
-				label.label Link Href
-				input.input(type="text" :maxlength="value.maxLinkHrefLength" v-model="href"  :class="hrefFeedbackClass")
-				p.help(v-if="hasHrefFeedback" :class="hrefFeedbackClass") {{hrefErrorText}}
+				TextField(
+					v-model="hrefField"
+					:maxlength="value.maxLinkHrefLength"
+					:validationErrors="hrefFieldError"
+					:alternateValidationKey="href"
+				)
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
-import { FormidableField } from '@/models/Formidable/Field/field.abstract';
+import { FormidableField, FieldType } from '@/models/Formidable/Field/field.abstract';
 import { ValidationError } from 'class-validator';
 import { Link } from '@/models/Formidable/Field/FormidableLink/Link';
 import { FormidableLink } from '@/models/Formidable/Field/FormidableLink';
 import TextField from '@/components/Formidable/TextField.vue';
+import { FormidableText } from '@/models/Formidable/Field/FormidableText';
 
-@Component
+@Component({
+	components: {
+		TextField
+	}
+})
 export default class LinkField extends Vue {
 	@Prop({ required: true }) private value!: FormidableLink;
 	@Prop({ default: () => [] }) private validationErrors!: ValidationError[];
@@ -31,34 +46,28 @@ export default class LinkField extends Vue {
 		return this.validationErrors.find((val) => val.property === 'value');
 	}
 
-	get textFieldError(): ValidationError | undefined {
-		return this.valueFieldError ? this.valueFieldError.children.find((val) => val.property === 'text') : undefined;
+	get textFieldError(): ValidationError[] | undefined {
+		const textFieldErr = this.valueFieldError
+			? this.valueFieldError.children.find((val) => val.property === 'text') : undefined;
+		return textFieldErr ? [textFieldErr] : undefined;
 	}
 
-	get hrefFieldError(): ValidationError | undefined {
-		return this.valueFieldError ? this.valueFieldError.children.find((val) => val.property === 'href') : undefined;
+	get hrefFieldError(): ValidationError[] | undefined {
+		const hrefFieldErr = this.valueFieldError
+			? this.valueFieldError.children.find((val) => val.property === 'href') : undefined;
+		return hrefFieldErr ? [hrefFieldErr] : undefined;
 	}
 
-	get hasTextFeedback() {
-		return this.textFieldError;
-	}
-
-	get hasHrefFeedback() {
-		return this.hrefFieldError;
-	}
-
-	get textFeedbackClass() {
+	get textField() {
 		return {
-			'is-danger': this.textFieldError && this.text !== null,
-			'is-success': this.value.value.text !== null && !this.textFieldError
+			label: 'Link Text',
+			value: this.text,
+			fieldType: FieldType.Text
 		};
 	}
 
-	get hrefFeedbackClass() {
-		return {
-			'is-danger': this.hrefFieldError && this.href !== null,
-			'is-success': this.value.value.href !== null && !this.hrefFieldError
-		};
+	set textField(text: FormidableText) {
+		this.text = text.value;
 	}
 
 	get text() {
@@ -69,6 +78,18 @@ export default class LinkField extends Vue {
 		this.$emit('input', {...this.value, value: {...this.value.value, text}});
 	}
 
+	get hrefField() {
+		return {
+			label: 'Link href',
+			value: this.href,
+			fieldType: FieldType.Text
+		};
+	}
+
+	set hrefField(text: FormidableText) {
+		this.href = text.value;
+	}
+
 	get href() {
 		return this.value.value.href;
 	}
@@ -77,33 +98,5 @@ export default class LinkField extends Vue {
 		this.$emit('input', {...this.value, value: {...this.value.value, href}});
 	}
 
-	get textErrorText() {
-		return this.textFieldError ? Object.keys(this.textFieldError.constraints).reduce((acc, val) => {
-			return acc + (this.textFieldError as ValidationError).constraints[val];
-		}, '') : null;
-	}
-
-	get hrefErrorText() {
-		return this.hrefFieldError ? Object.keys(this.hrefFieldError.constraints).reduce((acc, val) => {
-			return acc + (this.hrefFieldError as ValidationError).constraints[val];
-		}, '') : null;
-	}
-
-	// get errorText() {
-	// 	if (!this.validationErrors || this.validationErrors.length === 0) {
-	// 		return null;
-	// 	}
-
-	// 	return this.validationErrors.reduce((acc, val) => {
-	// 		return acc
-	// 			+ ( val.property === 'value'
-	// 				? Object.keys(val.constraints).reduce(
-	// 					(acc2, val2) => {
-	// 						return acc2 + val.constraints[val2];
-	// 					}, '')
-	// 				: ''
-	// 		);
-	// 	}, '');
-	// }
 }
 </script>

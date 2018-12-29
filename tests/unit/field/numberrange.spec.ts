@@ -22,14 +22,14 @@ describe('Formidable NumberRange field', () => {
 
 		describe('Props', () => {
 
-			// describe('type', () => {
+			// describe('fieldType', () => {
 			// 	it('Only allows the NumberRange FieldType', async () => {
 			// 		for (const type in FieldType) {
 			// 			if (type !== FieldType.NumberRange) {
 			// 				try {
-			// 					await transformAndValidate(FormidableNumberRange, { type: FieldType[type] });
+			// 					await transformAndValidate(FormidableNumberRange, {fieldfieldType: FieldType[type] });
 			// 				} catch (e) {
-			// 					expect(errorArrayHas('type', e)).toBeTruthy();
+			// 					expect(errorArrayHas('fieldType', e)).toBeTruthy();
 			// 				}
 			// 			}
 			// 		}
@@ -40,7 +40,7 @@ describe('Formidable NumberRange field', () => {
 
 				it('Can initialize a FormidableNumberRange with valid basic props and a null value from from and to', async () => {
 					const validNumberRange: IFormidableNumberRangeProps = {
-						type: FieldType.NumberRange,
+						fieldType: FieldType.NumberRange,
 						value: {
 							from: null,
 							to: null
@@ -53,7 +53,7 @@ describe('Formidable NumberRange field', () => {
 					'Can initialize a FormidableNumberRange with valid basic props and number values for from and to',
 					async () => {
 						const validNumberRange: IFormidableNumberRangeProps = {
-							type: FieldType.NumberRange,
+							fieldType: FieldType.NumberRange,
 							value: {
 								from: 1,
 								to: 10
@@ -72,7 +72,7 @@ describe('Formidable NumberRange field', () => {
 
 				it('Fails to validate a FormidableNumberRange with a to less than the from', async () => {
 					const validNumberRange: IFormidableNumberRangeProps = {
-						type: FieldType.NumberRange,
+						fieldType: FieldType.NumberRange,
 						value: {
 							from: 8,
 							to: 6

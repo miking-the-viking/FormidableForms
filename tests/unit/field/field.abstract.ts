@@ -11,14 +11,19 @@ import { ValidationError } from 'class-validator';
  * @param type
  * @param e
  */
-export function errorArrayHas(type: string, e: ValidationError[]): boolean {
-	return e.reduce((acc: boolean, val: ValidationError) => {
-		expect(val).toBeInstanceOf(ValidationError);
-		if (val.property === type) {
-			return true;
-		}
-		return acc;
-	}, false);
+export function errorArrayHas(type: string, e: ValidationError[] | ValidationError): boolean {
+
+	if (e instanceof Array) {
+		return e.reduce((acc: boolean, val: ValidationError) => {
+			expect(val).toBeInstanceOf(ValidationError);
+			if (val.property === type) {
+				return true;
+			}
+			return acc;
+		}, false);
+	}
+	expect(e).toBeInstanceOf(ValidationError);
+	return e.property === type;
 }
 
 export default (ctor: new (...args: any[]) => FormidableField<any>) => {
@@ -29,14 +34,14 @@ export default (ctor: new (...args: any[]) => FormidableField<any>) => {
 			// describe('Field Type Prop', () => {
 			// 	it('throws an error when an invalid FieldType is used', async () => {
 
-			// 		const invalidType = { type: 'someInvalidType'};
+			// 		const invalidType = {fieldType: 'someInvalidType'};
 
 			// 		try {
 			// 			await transformAndValidate(ctor, invalidType);
 			// 			fail(`Did not throw a validator error when using an invalid field type ${invalidType.type}`);
 			// 		} catch (e) {
 			// 			expect(e).toBeInstanceOf(Array);
-			// 			expect(errorArrayHas('type', e)).toBeTruthy();
+			// 			expect(errorArrayHas('fieldType', e)).toBeTruthy();
 			// 		}
 			// 	});
 

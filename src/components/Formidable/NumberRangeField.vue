@@ -4,59 +4,69 @@
 	.columns
 		.column
 			.control
-				label.label From
-				input.input(type="number" v-model.number="from" :max="to" :class="fromFeedbackClass")
-				p.help(v-if="hasFromFeedback" :class="fromFeedbackClass") {{fromErrorText}}
+				NumberField(v-model="fromField" :validationErrors="fromFieldError" :alternateValidationKey="from")
 		.column
 			.control
-				label.label To
-				input.input(type="number" v-model.number="to"  :min="from" :class="toFeedbackClass")
-				p.help(v-if="hasToFeedback" :class="toFeedbackClass") {{toErrorText}}
+				NumberField(v-model="toField" :validationErrors="toFieldError" :alternateValidationKey="to")
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
-import { FormidableField } from '@/models/Formidable/Field/field.abstract';
+import { FormidableField, FieldType } from '@/models/Formidable/Field/field.abstract';
 import { ValidationError } from 'class-validator';
 import { INumberRange, FormidableNumberRange } from '@/models/Formidable/Field/FormidableNumberRange';
+import NumberField from '@/components/Formidable/NumberField.vue';
+import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
 
-@Component
+@Component({
+	components: {
+		NumberField
+	}
+})
 export default class NumberRangeField extends Vue {
 	@Prop({ required: true }) private value!: FormidableNumberRange;
 	@Prop({ default: () => [] }) private validationErrors!: ValidationError[];
+
+	get fromField() {
+		return {
+			label: 'From',
+			value: this.from,
+			fieldType: FieldType.Number,
+			maximum: this.to || undefined
+		};
+	}
+
+	set fromField(from: FormidableNumber) {
+		this.from = from.value;
+	}
+
+	get toField() {
+		return {
+			label: 'To',
+			value: this.to,
+			fieldType: FieldType.Number,
+			minimum: this.from || undefined
+		};
+	}
+
+	set toField(to: FormidableNumber) {
+		this.to = to.value;
+	}
 
 	get valueFieldError(): ValidationError | undefined {
 		return this.validationErrors.find((val) => val.property === 'value');
 	}
 
-	get fromFieldError(): ValidationError | undefined {
-		return this.valueFieldError ? this.valueFieldError.children.find((val) => val.property === 'from') : undefined;
+	get fromFieldError(): ValidationError[] | undefined {
+		const fromFieldErr = this.valueFieldError
+			? this.valueFieldError.children.find((val) => val.property === 'from') : undefined;
+		return fromFieldErr ? [fromFieldErr] : undefined;
 	}
 
-	get toFieldError(): ValidationError | undefined {
-		return this.valueFieldError ? this.valueFieldError.children.find((val) => val.property === 'to') : undefined;
-	}
-
-	get hasFromFeedback() {
-		return this.fromFieldError;
-	}
-
-	get hasToFeedback() {
-		return this.toFieldError;
-	}
-
-	get fromFeedbackClass() {
-		return {
-			'is-danger': this.fromFieldError && this.from !== null,
-			'is-success': this.value.value.from !== null && !this.fromFieldError
-		};
-	}
-
-	get toFeedbackClass() {
-		return {
-			'is-danger': this.toFieldError && this.to !== null,
-			'is-success': this.value.value.to !== null && !this.toFieldError
-		};
+	get toFieldError(): ValidationError[] | undefined {
+		const toFieldErr = this.valueFieldError
+			? this.valueFieldError.children.find((val) => val.property === 'to') : undefined;
+		return toFieldErr ? [toFieldErr] : undefined;
 	}
 
 	get from() {
@@ -75,16 +85,5 @@ export default class NumberRangeField extends Vue {
 		this.$emit('input', {...this.value, value: {...this.value.value, to}});
 	}
 
-	get fromErrorText() {
-		return this.fromFieldError ? Object.keys(this.fromFieldError.constraints).reduce((acc, val) => {
-			return acc + (this.fromFieldError as ValidationError).constraints[val];
-		}, '') : null;
-	}
-
-	get toErrorText() {
-		return this.toFieldError ? Object.keys(this.toFieldError.constraints).reduce((acc, val) => {
-			return acc + (this.toFieldError as ValidationError).constraints[val];
-		}, '') : null;
-	}
 }
 </script>

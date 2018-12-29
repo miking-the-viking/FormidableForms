@@ -6,10 +6,14 @@
 			v-model="form.fields[index]"
 			:validationErrors="getFieldErrors(index)"
 		)
-	button.button.is-small(:class="formClasses" @click="form.submit")
-		span.icon
-			font-awesome-icon(:icon="isValid ? 'check-circle' : 'times-circle'")
-		span Submit
+	.level
+		.level-left
+		.level-right
+			.level-item
+				button.button.transitionButton(:class="formClasses" @click="form.submit")
+					span.icon
+						font-awesome-icon(:icon="isValid ? 'check-circle' : 'times-circle'")
+					span Submit
 </template>
 
 <script lang="ts">
@@ -67,14 +71,15 @@ export default class FormidableForm extends Vue {
 	get formClasses() {
 		return {
 			'is-danger': !this.isValid,
-			'is-success': this.isValid && this.form.fields.reduce((acc, val) => {
-				return acc || val.required ? val.value !== null : true;
-			}, false)
+			'is-success': this.isValid
+			// 'is-success': this.isValid && this.form.fields.reduce((acc, val) => {
+			// 	return acc || val.required ? val.value !== null : true;
+			// }, false)
 		};
 	}
 
 	private getField(field: FormidableField<any>): VueConstructor<Vue> {
-		switch (field.type) {
+		switch (field.fieldType) {
 			case FieldType.Number: return NumberField;
 			case FieldType.NumberRange: return NumberRangeField;
 			case FieldType.Text: return TextField;
@@ -125,6 +130,11 @@ export default class FormidableForm extends Vue {
 	&.is-success {
 		box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(40, 255, 0, 0.92);
 	}
+}
+$transition: 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+.transitionButton {
+	transition : color $transition, background-color $transition;
 }
 
 </style>

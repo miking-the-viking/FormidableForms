@@ -16,15 +16,15 @@ describe('Formidable Password field', () => {
 
 		describe('Props', () => {
 
-			// describe('type', () => {
+			// describe('fieldType', () => {
 			// 	it('Only allows the Password FieldType', async () => {
 			// 		for (const type in FieldType) {
 			// 			if (FieldType[type] !== FieldType.Password) {
 			// 				try {
-			// 					await transformAndValidate(FormidablePassword, { type: FieldType[type] });
+			// 					await transformAndValidate(FormidablePassword, {fieldType: FieldType[type] });
 			// 					fail(`Should have failed on an invalid Field Type ${FieldType[type]}`);
 			// 				} catch (e) {
-			// 					expect(errorArrayHas('type', e)).toBeTruthy();
+			// 					expect(errorArrayHas('fieldType', e)).toBeTruthy();
 			// 				}
 			// 			}
 			// 		}
@@ -35,7 +35,7 @@ describe('Formidable Password field', () => {
 
 				it('Can initialize a FormidablePassword with valid basic props and a null value', async () => {
 					const validPassword: IFormidablePasswordProps = {
-						type: FieldType.Password,
+						fieldType: FieldType.Password,
 						value: null
 					};
 					await transformAndValidate(FormidablePassword, validPassword);
@@ -43,7 +43,7 @@ describe('Formidable Password field', () => {
 
 				it('Can initialize a FormidablePassword with valid basic props and an Password string value', async () => {
 					const validPassword: IFormidablePasswordProps = {
-						type: FieldType.Password,
+						fieldType: FieldType.Password,
 						value: 'thisIsMyPassword123!'
 					};
 					await transformAndValidate(FormidablePassword, validPassword);
@@ -51,7 +51,7 @@ describe('Formidable Password field', () => {
 
 				it('Fails when an object is used', async () => {
 					const invalidPassword: IFormidablePasswordProps = {
-						type: FieldType.Password,
+						fieldType: FieldType.Password,
 						value: { blah: 5 }
 					};
 					try {
@@ -64,7 +64,7 @@ describe('Formidable Password field', () => {
 
 				it('Fails when an array is used', async () => {
 					const invalidPassword: IFormidablePasswordProps = {
-						type: FieldType.Password,
+						fieldType: FieldType.Password,
 						value: [1, 2, 3, 45, 5, 6]
 					};
 					try {
@@ -77,7 +77,7 @@ describe('Formidable Password field', () => {
 
 				it('Fails when a Date is used', async () => {
 					const invalidPassword: IFormidablePasswordProps = {
-						type: FieldType.Password,
+						fieldType: FieldType.Password,
 						value: new Date()
 					};
 					try {
@@ -94,21 +94,21 @@ describe('Formidable Password field', () => {
 				it('are optional', async () => {
 					const validPayloads: IFormidablePasswordProps[] = [
 						{
-							type: FieldType.Password,
+							fieldType: FieldType.Password,
 							value: null
 						},
 						{
-							type: FieldType.Password,
+							fieldType: FieldType.Password,
 							value: null,
 							maxLength: 10
 						},
 						{
-							type: FieldType.Password,
+							fieldType: FieldType.Password,
 							value: null,
 							minLength: 1
 						},
 						{
-							type: FieldType.Password,
+							fieldType: FieldType.Password,
 							value: null,
 							minLength: 1,
 							maxLength: 10
@@ -128,7 +128,7 @@ describe('Formidable Password field', () => {
 						{
 							it: 'fails on a string',
 							data: {
-								type: FieldType.Password,
+								fieldType: FieldType.Password,
 								value: null,
 								minLength: 'some string'
 							}
@@ -136,7 +136,7 @@ describe('Formidable Password field', () => {
 						{
 							it: 'fails on a boolean',
 							data: {
-								type: FieldType.Password,
+								fieldType: FieldType.Password,
 								value: null,
 								minLength: true
 							}
@@ -144,7 +144,7 @@ describe('Formidable Password field', () => {
 						{
 							it: 'fails on an object',
 							data: {
-								type: FieldType.Password,
+								fieldType: FieldType.Password,
 								value: null,
 								minLength: {}
 							}
@@ -167,7 +167,7 @@ describe('Formidable Password field', () => {
 						{
 							it: 'fails on a string',
 							data: {
-								type: FieldType.Password,
+								fieldType: FieldType.Password,
 								value: null,
 								maxLength: 'some string'
 							}
@@ -175,7 +175,7 @@ describe('Formidable Password field', () => {
 						{
 							it: 'fails on a boolean',
 							data: {
-								type: FieldType.Password,
+								fieldType: FieldType.Password,
 								value: null,
 								maxLength: true
 							}
@@ -183,7 +183,7 @@ describe('Formidable Password field', () => {
 						{
 							it: 'fails on an object',
 							data: {
-								type: FieldType.Password,
+								fieldType: FieldType.Password,
 								value: null,
 								maxLength: {}
 							}
@@ -207,7 +207,7 @@ describe('Formidable Password field', () => {
 				it('fails when value is less than the provided minLength', async () => {
 					try {
 						const result = await transformAndValidate(FormidablePassword, {
-							type: FieldType.Password,
+							fieldType: FieldType.Password,
 							value: 'a',
 							minLength: 2
 						});
@@ -222,7 +222,7 @@ describe('Formidable Password field', () => {
 				it('fails when value is greater than the provided maxLength', async () => {
 					try {
 						const result = await transformAndValidate(FormidablePassword, {
-							type: FieldType.Password,
+							fieldType: FieldType.Password,
 							value: 'abbv',
 							maxLength: 2
 						});

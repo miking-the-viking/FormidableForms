@@ -1,53 +1,24 @@
 <template lang="pug">
 .field(:class="feedbackClass")
-    label.label(v-if="value.label") {{value.label}}
-    .control
-        input.input(type="text" :maxlength="value.maxLength" v-model="val" :class="feedbackClass")
-    p.help(v-if="hasFeedback" :class="feedbackClass") {{errorText}}
+	label.label(v-if="value && value.label") {{value.label}}
+	.control
+		input.input(type="text" :maxlength="value && value.maxLength" v-model="val" :class="feedbackClass")
+	FeedbackText(:validationErrors="validationErrors" :valueIsSubmittable="isSubmittable")
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
 import { FormidableField } from '@/models/Formidable/Field/field.abstract';
 import { ValidationError } from 'class-validator';
+import { FormidableText } from '@/models/Formidable/Field/FormidableText';
+import { transformAndValidate, transformAndValidateSync } from 'class-transformer-validator';
+import FeedbackText from '@/components/Formidable/components/FeedbackText.vue';
+import { FormidableFieldComponent} from '@/components/Formidable/FormidableFieldComponent.abstract';
 
-@Component
-export default class TextField extends Vue {
-	@Prop({ required: true }) private value!: FormidableField<string | null>;
-	@Prop({ default: () => [] }) private validationErrors!: ValidationError[];
-
-	get hasFeedback() {
-		return this.validationErrors.length > 0;
+@Component({
+	components: {
+		FeedbackText
 	}
-
-	get feedbackClass() {
-		return {
-			'is-danger': this.validationErrors && this.validationErrors.length > 0,
-			'is-success': this.value.value !== null && (!this.validationErrors || this.validationErrors.length === 0)
-		};
-	}
-
-	get val() {
-		return this.value.value;
-	}
-
-	set val(newVal: string | null) {
-		this.$emit('input', {...this.value, value: newVal});
-	}
-
-	get errorText() {
-		if (!this.validationErrors || this.validationErrors.length === 0) {
-			return null;
-		}
-
-		return this.validationErrors.reduce((acc, val) => {
-			return acc + (val.property === 'value' ?
-				Object.keys(val.constraints).reduce((acc2, val2) => {
-					return acc2 + val.constraints[val2];
-				}, '') : ''
-			);
-		}, '');
-	}
-
-}
+})
+export default class TextField extends FormidableFieldComponent<FormidableText> {}
 </script>
