@@ -11,14 +11,19 @@ import { ValidationError } from 'class-validator';
  * @param type
  * @param e
  */
-export function errorArrayHas(type: string, e: ValidationError[]): boolean {
-	return e.reduce((acc: boolean, val: ValidationError) => {
-		expect(val).toBeInstanceOf(ValidationError);
-		if (val.property === type) {
-			return true;
-		}
-		return acc;
-	}, false);
+export function errorArrayHas(type: string, e: ValidationError[] | ValidationError): boolean {
+
+	if (e instanceof Array) {
+		return e.reduce((acc: boolean, val: ValidationError) => {
+			expect(val).toBeInstanceOf(ValidationError);
+			if (val.property === type) {
+				return true;
+			}
+			return acc;
+		}, false);
+	}
+	expect(e).toBeInstanceOf(ValidationError);
+	return e.property === type;
 }
 
 export default (ctor: new (...args: any[]) => FormidableField<any>) => {

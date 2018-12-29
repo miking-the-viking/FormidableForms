@@ -7,7 +7,8 @@ import {
 	IsOptional,
 	IsNumber,
 	IsEnum,
-	Equals
+	Equals,
+	IsIn
 } from 'class-validator';
 import {
 	IsLongerThan
@@ -31,6 +32,11 @@ export interface IFormidableTextProps extends IFormidableFieldProps {
  * Formidable Field definition for a text input
  */
 export class FormidableText extends FormidableField<string> implements IFormidableTextProps {
+
+	@IsEnum(FieldType)
+	@IsIn([FieldType.Text])
+	public type!: FieldType;
+
 	/**
 	 * Optional minimum length
 	 */

@@ -4,33 +4,40 @@
 // import { IFormidableNumberProps } from '@/models/Formidable/Field/FormidableNumber';
 import { transformAndValidate } from 'class-transformer-validator';
 import { FieldType } from '@/models/Formidable/Field/field.abstract';
-import runFieldTests, { errorArrayHas } from './field.abstract';
+import runFieldTests, { errorArrayHas } from '../field.abstract';
 import { FormidableText, IFormidableTextProps } from '@/models/Formidable/Field/FormidableText';
+import textFieldComponentTests from './text.spec.component';
 
 describe('Formidable Text field', () => {
 
 	describe('Core Field Tests', () => {
 		runFieldTests(FormidableText);
+		// tslint:disable-next-line:no-unused-expression
+		textFieldComponentTests;
 	});
 
 	describe('Initialization & Validation', () => {
 
 		describe('Props', () => {
 
-			// describe('type', () => {
-			// 	it('Only allows the text FieldType', async () => {
-			// 		for (const type in FieldType) {
-			// 			if (FieldType[type] !== FieldType.Text) {
-			// 				try {
-			// 					await transformAndValidate(FormidableText, { type: FieldType[type] });
-			// 					fail(`Should have failed on an invalid Field Type ${FieldType[type]}`);
-			// 				} catch (e) {
-			// 					expect(errorArrayHas('type', e)).toBeTruthy();
-			// 				}
-			// 			}
-			// 		}
-			// 	});
-			// });
+			describe('type', () => {
+				it('Only allows the text FieldType', async () => {
+					try {
+						await transformAndValidate(FormidableText, { type: FieldType.Number });
+						fail(`Should have failed on an invalid Field Type ${FieldType.Number}`);
+					} catch (e) {
+						expect(errorArrayHas('type', e)).toBeTruthy();
+					}
+					Object.keys(FieldType).map(async (val) => {
+						try {
+							await transformAndValidate(FormidableText, { type: val });
+							fail(`Should have failed on an invalid Field Type ${val}`);
+						} catch (e) {
+							expect(errorArrayHas('type', e)).toBeTruthy();
+						}
+					});
+				});
+			});
 
 			describe('value', () => {
 

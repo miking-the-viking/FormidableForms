@@ -10,11 +10,24 @@
 import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
 import { FormidableField } from '@/models/Formidable/Field/field.abstract';
 import { ValidationError } from 'class-validator';
+import { FormidableText } from '@/models/Formidable/Field/FormidableText';
+import { transformAndValidate, transformAndValidateSync } from 'class-transformer-validator';
 
 @Component
 export default class TextField extends Vue {
-	@Prop({ required: true }) private value!: FormidableField<string | null>;
-	@Prop({ default: () => [] }) private validationErrors!: ValidationError[];
+
+	@Prop({ required: true, validator: (value) => {
+		return transformAndValidateSync(FormidableText, value) ? true : false;
+	} }) private value!: FormidableText;
+
+	@Prop({ default: () => [], validator: (value) => {
+		if (value === undefined || value === null || value.length >= 0) {
+			return true;
+		}
+		const err = new ValidationError();
+		err.property = 'validationErrors';
+		throw err;
+	} }) private validationErrors!: ValidationError[];
 
 	get hasFeedback() {
 		return this.validationErrors.length > 0;

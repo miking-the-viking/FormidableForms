@@ -15,8 +15,8 @@
 
 		hr.is-hidden-desktop
 
-		h3 Basic Sample	
 		.column
+			h3.is-size-6 Basic Sample	
 			p.lead The form below was setup using the following
 				code FormidableBasicForm
 				| config:
