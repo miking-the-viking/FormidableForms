@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/FormidableForms/precache-manifest.bc4118a3db2ff2b61b87ffe5176c32f8.js"
+  "/FormidableForms/precache-manifest.aebeb297e0b7119dd7f686ba9173786c.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "formidable-forms"});
