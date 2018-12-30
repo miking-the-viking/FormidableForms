@@ -26,10 +26,10 @@
 
 			p Out of the box, Formidable Forms comes with several different form types that are easily extensible:
 
-			p At its core, a form is defined by a
+			p At its core, a form is defined by a 
 				code JSON
 				| object conforming to a
-				code FormidableForm 
+				code FormidableForm
 				| Class specification.
 
 			CollapsibleArea
@@ -39,7 +39,8 @@
 			p Pass in a FormidableField object into the 
 				code fields
 				| array to add more fields to the form. Then pass the form configuration object to the 
-				code FormidableForm.
+				code FormidableForm
+				| .
 			CollapsibleArea
 				pre(v-highlightjs="formidableFormVueComponentUsagePug")
 					code(class="pug")

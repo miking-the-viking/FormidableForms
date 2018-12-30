@@ -2,7 +2,7 @@
 .field(:class="feedbackClass")
 	label.label(v-if="value.label") {{value.label}}
 	.control
-		datetime(
+		datetime.datetime-selector(
 			v-model.date="val"
 			:type="dateType"
 			:use12-hour="true"
@@ -37,7 +37,7 @@ export default class DateField extends FormidableFieldComponent<FormidableDate> 
 </script>
 
 <style scoped lang="scss">
-input {
+.datetime-selector {
 	cursor: pointer;
 }
 </style>

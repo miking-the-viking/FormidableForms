@@ -66,12 +66,23 @@ export default class Navbar extends Vue {
 </script>
 
 <style lang="scss" scoped>
+@import "@/style/palette.scss";
+
+.navbar, .navbar-item, .navbar-link, .navbar-dropdown {
+	background-color: $color1;
+	color: $color4;
+}
 
 .fade-enter-active, .fade-leave-active {
   	transition: opacity .25s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   	opacity: 0;
+}
+
+a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:hover, .navbar-link.is-active .navbar-item.has-dropdown:hover .navbar-link, .navbar-item.has-dropdown.is-active a.navbar-link, {
+	background-color: $color2;
+	color: $color5;
 }
 
 </style>

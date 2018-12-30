@@ -1,4 +1,20 @@
 @import "~bulma";
+@import "./palette.scss";
+
+
+body, .title, .subtitle, a, p, li, .box, .label {
+    background: $color1;
+    color: $color4;
+}
+
+a:hover {
+    color: $color5;
+}
+
+code {
+    background: $color2;
+    color: $color4;
+}
 
 p {
     margin-bottom: 0.75rem;
