@@ -27,6 +27,8 @@ const NUMBERRANGE_FIELD = () => import(
 	/* webpackChunkName: "docs-fields-numberrange" */ '@/views/forms/FormidableFieldsDoc/FormidableNumberRangeDoc.vue');
 const DATE_FIELD = () => import(
 	/* webpackChunkName: "docs-fields-date" */ '@/views/forms/FormidableFieldsDoc/FormidableDateDoc.vue');
+const FILE_FIELD = () => import(
+	/* webpackChunkName: "docs-fields-file" */ '@/views/forms/FormidableFieldsDoc/FormidableFileDoc.vue');
 
 Vue.use(Router);
 
@@ -100,6 +102,11 @@ export default new Router({
 					name: FieldType.NumberRange,
 					path: FieldType.NumberRange,
 					component: NUMBERRANGE_FIELD
+				},
+				{
+					name: FieldType.File,
+					path: FieldType.File,
+					component: FILE_FIELD
 				},
 				{
 					name: FieldType.Date,
