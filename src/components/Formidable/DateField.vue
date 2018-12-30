@@ -2,7 +2,14 @@
 .field(:class="feedbackClass")
 	label.label(v-if="value.label") {{value.label}}
 	.control
-		datetime(v-model.date="val" :type="dateType" :use12-hour="true" :class="feedbackClass" :auto="true" :input-id="'datefield-' + Math.floor(Math.random() * 10000000)")
+		datetime(
+			v-model.date="val"
+			:type="dateType"
+			:use12-hour="true"
+			:class="feedbackClass"
+			:auto="true"
+			:input-id="'datefield-' + Math.floor(Math.random() * 10000000)"
+		)
 	FeedbackText(:validationErrors="validationErrors" :valueIsSubmittable="isSubmittable")
 </template>
 
@@ -28,3 +35,10 @@ export default class DateField extends FormidableFieldComponent<FormidableDate> 
 	}
 }
 </script>
+
+<style scoped lang="scss">
+input {
+	cursor: pointer;
+}
+</style>
+

@@ -24,7 +24,7 @@ import { IsGreaterThanOrEqualTo } from '@/models/IsGreaterThanOrEqualTo';
 
 
 
-export interface IFormidableEmailProps extends IFormidableFieldProps {
+export interface IFormidableEmailProps extends IFormidableFieldProps<string> {
 	maxLength?: number;
 	minLength?: number;
 }
@@ -66,6 +66,6 @@ export class FormidableEmail extends FormidableField<string> implements IFormida
 	@IsStringOrNull()
 	@IsEmail()
 	@IsOptional()
-	public value!: string | null;
+	public value!: string;
 
 }

@@ -10,6 +10,7 @@
 				TextField(
 					v-model="textField"
 					:maxlength="value.maxLinkTextLength"
+					:minLength="value.minLinkTextLength"
 					:validationErrors="textFieldError"
 					:alternateValidationKey="text"
 				)
@@ -19,6 +20,7 @@
 				TextField(
 					v-model="hrefField"
 					:maxlength="value.maxLinkHrefLength"
+					:minLength="value.minLinkHrefLength"
 					:validationErrors="hrefFieldError"
 					:alternateValidationKey="href"
 				)

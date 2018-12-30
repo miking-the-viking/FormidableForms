@@ -15,7 +15,7 @@ export interface INumberRange {
 /**
  * Props interface
  */
-export interface IFormidableNumberRangeProps extends IFormidableFieldProps {
+export interface IFormidableNumberRangeProps extends IFormidableFieldProps<INumberRange> {
 	value: INumberRange;
 }
 

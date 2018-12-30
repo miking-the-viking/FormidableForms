@@ -23,9 +23,9 @@ import { IsLessThanOrEqualTo } from '@/models/IsLessThanOrEqualTo';
 import { IsGreaterThanOrEqualTo } from '@/models/IsGreaterThanOrEqualTo';
 
 
-export interface IFormidableTextProps extends IFormidableFieldProps {
-	maxLength ?: number;
-	minLength ?: number;
+export interface IFormidableTextProps extends IFormidableFieldProps<string> {
+	maxLength?: number;
+	minLength?: number;
 }
 
 /**

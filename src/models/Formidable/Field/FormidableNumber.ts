@@ -1,13 +1,10 @@
 import {
 	IsOptional,
-	IsNumber,
-	IsEnum,
-	Equals
+	IsNumber
 } from 'class-validator';
 import {
 	FormidableField,
-	IFormidableFieldProps,
-	FieldType
+	IFormidableFieldProps
 } from '@/models/Formidable/Field/field.abstract';
 import {
 	IsGreaterThanOrEqualTo
@@ -20,7 +17,7 @@ import {
 /**
  * Props interface
  */
-export interface IFormidableNumberProps extends IFormidableFieldProps {
+export interface IFormidableNumberProps extends IFormidableFieldProps<number> {
 	minimum ?: number;
 	maximum ?: number;
 }

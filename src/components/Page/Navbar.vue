@@ -15,20 +15,16 @@ nav.navbar
 				router-link.navbar-item(to="/docs/forms/basic") Basic
 				router-link.navbar-item(to="/docs/forms/wizard") Wizard
 				.navbar-item.has-dropdown(:class="{'is-hoverable': isPastThreshold}")
-					a.navbar-link Fields
+					router-link.navbar-link(to="/docs/fields") Formidable Fields
 					.navbar-dropdown.is-boxed
-						a.navbar-item Number
-						a.navbar-item Text
-						a.navbar-item Email
-						a.navbar-item Password
-						a.navbar-item Textarea
-						a.navbar-item File
-						a.navbar-item Date
-						a.navbar-item Time
-						a.navbar-item Link
-						a.navbar-item Image
-						a.navbar-item Audio
-						a.navbar-item Video
+						router-link.navbar-item(to="/docs/fields/number") Formidable Number Field
+						router-link.navbar-item(to="/docs/fields/text") Formidable Text Field
+						router-link.navbar-item(to="/docs/fields/textarea") Formidable Textarea Field
+						router-link.navbar-item(to="/docs/fields/email") Formidable Email Field
+						router-link.navbar-item(to="/docs/fields/password") Formidable Password Field
+						router-link.navbar-item(to="/docs/fields/file") Formidable File Field
+						router-link.navbar-item(to="/docs/fields/link") Formidable Link Field
+						router-link.navbar-item(to="/docs/fields/date") Formidable Date Field
 </template>
 
 <script lang="ts">

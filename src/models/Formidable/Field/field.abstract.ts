@@ -30,14 +30,14 @@ export enum FieldType {
 /**
  * Basic props for a Formidable Field
  */
-export interface IFormidableFieldProps {
+export interface IFormidableFieldProps<T> {
 	fieldType: FieldType;
 	name ?: string;
 	label ?: string;
 	id ?: string;
 	required ?: boolean;
 	disabled ?: boolean;
-	value: any;
+	value: T | null;
 }
 
 /**

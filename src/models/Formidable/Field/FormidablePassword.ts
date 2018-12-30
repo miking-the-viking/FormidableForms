@@ -1,12 +1,10 @@
 import {
 	FormidableField,
-	IFormidableFieldProps,
-	FieldType
+	IFormidableFieldProps
 } from '@/models/Formidable/Field/field.abstract';
 import {
 	IsOptional,
-	IsNumber,
-	MinLength,
+	IsNumber
 } from 'class-validator';
 import {
 	IsLongerThan
@@ -22,7 +20,7 @@ import { IsGreaterThanOrEqualTo } from '@/models/IsGreaterThanOrEqualTo';
 
 
 
-export interface IFormidablePasswordProps extends IFormidableFieldProps {
+export interface IFormidablePasswordProps extends IFormidableFieldProps<string> {
 	maxLength?: number;
 	minLength?: number;
 }

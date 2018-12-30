@@ -6,7 +6,7 @@
 			v-model="form.fields[index]"
 			:validationErrors="getFieldErrors(index)"
 		)
-	.level
+	.level(v-if="form.submit")
 		.level-left
 		.level-right
 			.level-item
