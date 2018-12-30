@@ -55,7 +55,7 @@ describe('Formidable Date field', () => {
 				it('Fails when just a number is used', async () => {
 					const invalidDate: IFormidableDateProps = {
 						fieldType: FieldType.Date,
-						value: 1337,
+						value: 1337 as any,
 						dateType: DateType.Datetime
 					};
 					try {
@@ -85,7 +85,7 @@ describe('Formidable Date field', () => {
 				it('Fails when an object is used', async () => {
 					const invalidDate: IFormidableDateProps = {
 						fieldType: FieldType.Date,
-						value: { blah: 5 },
+						value: { blah: 5 } as any,
 						dateType: DateType.Datetime
 					};
 					try {
@@ -99,7 +99,7 @@ describe('Formidable Date field', () => {
 				it('Fails when an array is used', async () => {
 					const invalidDate: IFormidableDateProps = {
 						fieldType: FieldType.Date,
-						value: [1, 2, 3, 45, 5, 6],
+						value: [1, 2, 3, 45, 5, 6] as any,
 						dateType: DateType.Datetime
 					};
 					try {

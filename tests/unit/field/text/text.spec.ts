@@ -60,7 +60,7 @@ describe('Formidable Text field', () => {
 				it('Fails when a number is used', async () => {
 					const invalidText: IFormidableTextProps = {
 						fieldType: FieldType.Text,
-						value: 5
+						value: 5 as any
 					};
 					try {
 						await transformAndValidate(FormidableText, invalidText);
@@ -74,7 +74,7 @@ describe('Formidable Text field', () => {
 				it('Fails when an object is used', async () => {
 					const invalidText: IFormidableTextProps = {
 						fieldType: FieldType.Text,
-						value: {blah: 5}
+						value: { blah: 5 } as any
 					};
 					try {
 						await transformAndValidate(FormidableText, invalidText);
@@ -87,7 +87,7 @@ describe('Formidable Text field', () => {
 				it('Fails when an array is used', async () => {
 					const invalidText: IFormidableTextProps = {
 						fieldType: FieldType.Text,
-						value: [1, 2, 3, 45, 5, 6]
+						value: [1, 2, 3, 45, 5, 6] as any
 					};
 					try {
 						await transformAndValidate(FormidableText, invalidText);
@@ -100,7 +100,7 @@ describe('Formidable Text field', () => {
 				it('Fails when a Date is used', async () => {
 					const invalidText: IFormidableTextProps = {
 						fieldType: FieldType.Text,
-						value: new Date()
+						value: new Date() as any
 					};
 					try {
 						await transformAndValidate(FormidableText, invalidText);

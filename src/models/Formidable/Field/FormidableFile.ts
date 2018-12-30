@@ -14,7 +14,7 @@ export enum FileType {
 	PDF = 'pdf'
 }
 
-export interface IFormidableFileProps extends IFormidableFieldProps {
+export interface IFormidableFileProps extends IFormidableFieldProps<string> {
 	maxSize?: number;
 	fileType?: FileType;
 }
@@ -22,13 +22,13 @@ export interface IFormidableFileProps extends IFormidableFieldProps {
 /**
  * Formidable Field definition for a File Input
  */
-export class FormidableFile extends FormidableField<File> implements IFormidableFileProps {
+export class FormidableFile extends FormidableField<string> implements IFormidableFileProps {
 
 	/**
 	 * The given value of the field
 	 */
 	@IsOptional()
-	public value!: File | null;
+	public value!: string;
 
 
 	public fileType?: FileType;

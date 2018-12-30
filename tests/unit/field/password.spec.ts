@@ -52,7 +52,7 @@ describe('Formidable Password field', () => {
 				it('Fails when an object is used', async () => {
 					const invalidPassword: IFormidablePasswordProps = {
 						fieldType: FieldType.Password,
-						value: { blah: 5 }
+						value: { blah: 5 } as any
 					};
 					try {
 						await transformAndValidate(FormidablePassword, invalidPassword);
@@ -65,7 +65,7 @@ describe('Formidable Password field', () => {
 				it('Fails when an array is used', async () => {
 					const invalidPassword: IFormidablePasswordProps = {
 						fieldType: FieldType.Password,
-						value: [1, 2, 3, 45, 5, 6]
+						value: [1, 2, 3, 45, 5, 6] as any
 					};
 					try {
 						await transformAndValidate(FormidablePassword, invalidPassword);
@@ -78,7 +78,7 @@ describe('Formidable Password field', () => {
 				it('Fails when a Date is used', async () => {
 					const invalidPassword: IFormidablePasswordProps = {
 						fieldType: FieldType.Password,
-						value: new Date()
+						value: new Date() as any
 					};
 					try {
 						await transformAndValidate(FormidablePassword, invalidPassword);

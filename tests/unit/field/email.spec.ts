@@ -67,7 +67,7 @@ describe('Formidable Email field', () => {
 				it('Fails when an object is used', async () => {
 					const invalidEmail: IFormidableEmailProps = {
 						fieldType: FieldType.Email,
-						value: { blah: 5 }
+						value: { blah: 5 } as any
 					};
 					try {
 						await transformAndValidate(FormidableEmail, invalidEmail);
@@ -80,7 +80,7 @@ describe('Formidable Email field', () => {
 				it('Fails when an array is used', async () => {
 					const invalidEmail: IFormidableEmailProps = {
 						fieldType: FieldType.Email,
-						value: [1, 2, 3, 45, 5, 6]
+						value: [1, 2, 3, 45, 5, 6] as any
 					};
 					try {
 						await transformAndValidate(FormidableEmail, invalidEmail);
@@ -93,7 +93,7 @@ describe('Formidable Email field', () => {
 				it('Fails when a Date is used', async () => {
 					const invalidEmail: IFormidableEmailProps = {
 						fieldType: FieldType.Email,
-						value: new Date()
+						value: new Date() as any
 					};
 					try {
 						await transformAndValidate(FormidableEmail, invalidEmail);

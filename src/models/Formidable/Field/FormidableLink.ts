@@ -15,12 +15,11 @@ export interface ILink {
 /**
  * Props interface
  */
-export interface IFormidableLinkProps extends IFormidableFieldProps {
+export interface IFormidableLinkProps extends IFormidableFieldProps<ILink> {
 	minLinkHrefLength?: number;
 	maxLinkHrefLength?: number;
 	minLinkTextLength?: number;
 	maxLinkTextLength?: number;
-	value: ILink;
 }
 
 export class FormidableLink extends FormidableField<ILink> implements IFormidableLinkProps {

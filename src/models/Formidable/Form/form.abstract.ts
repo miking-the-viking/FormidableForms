@@ -19,7 +19,7 @@ import { FormidableFile } from '@/models/Formidable/Field/FormidableFile';
  * Basic Props for a Formidable Form
  */
 export interface IFormidableFormProps {
-	fields: IFormidableFieldProps[];
+	fields: Array<IFormidableFieldProps<any>>;
 }
 
 
