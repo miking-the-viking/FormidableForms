@@ -14,6 +14,7 @@ export abstract class FormidableFieldComponent<S extends FormidableField<any>> e
 	} }) protected validationErrors!: ValidationError[];
 
 	get isSubmittable() {
+		const test = false;
 		return this.value.value !== null && (!this.validationErrors || this.validationErrors.length === 0);
 	}
 
