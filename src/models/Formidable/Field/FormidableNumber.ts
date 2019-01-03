@@ -36,7 +36,7 @@ export class FormidableNumber extends FormidableField<number> implements IFormid
 
 	})
 	@IsGreaterThanOrEqualTo('minimum', {
-		message: (v) => 'Value must be greater than specified minimum: ' + v.object.minimum
+		message: (v) => 'Value must be greater than or equal to specified minimum: ' + v.object.minimum
 	})
 	public value!: number | null;
 

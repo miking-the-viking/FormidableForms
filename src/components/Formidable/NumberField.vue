@@ -1,5 +1,5 @@
 <template lang="pug">
-.field
+.field.shit(:class="feedbackClass")
 	label.label(v-if="value.label") {{value.label}}
 	.control
 		input.input(type="number" :min="value.minimum" :max="value.maximum" v-model.number="val" :class="feedbackClass")
