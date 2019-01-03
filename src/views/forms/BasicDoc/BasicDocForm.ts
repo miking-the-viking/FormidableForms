@@ -118,7 +118,8 @@ const formConfig: FormidableBasicForm = {
 		{
 			fieldType: FieldType.File,
 			value: null,
-			label: 'Some file (optional)'
+			label: 'Some file (required)',
+			required: true
 		},
 		{
 			fieldType: FieldType.File,

@@ -12,7 +12,7 @@
 			.level-item
 				button.button.transitionButton(:class="formClasses" @click="form.submit")
 					span.icon
-						font-awesome-icon(:icon="isValid ? 'check-circle' : 'times-circle'")
+						font-awesome-icon(:icon="hasAllNecessaryData ? 'check-circle' : 'times-circle'")
 					span Submit
 </template>
 
@@ -68,10 +68,22 @@ export default class FormidableForm extends Vue {
 		return this.validationErrors.length === 0;
 	}
 
+	get hasAllNecessaryData() {
+		return this.form.fields.reduce(
+			(acc, val) => {
+				return acc
+					&& (val.required
+						? (val.value !== null && val.value !== undefined)
+						: true);
+			},
+			true
+		);
+	}
+
 	get formClasses() {
 		return {
 			'is-danger': !this.isValid,
-			'is-success': this.isValid
+			'is-success': this.isValid && this.hasAllNecessaryData
 			// 'is-success': this.isValid && this.form.fields.reduce((acc, val) => {
 			// 	return acc || val.required ? val.value !== null : true;
 			// }, false)
