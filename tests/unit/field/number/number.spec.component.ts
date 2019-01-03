@@ -1,4 +1,6 @@
-import { IFormidableNumberProps } from './../../../../src/models/Formidable/Field/FormidableNumber';
+import { IFormidableNumberProps } from '@/models/Formidable/Field/FormidableNumber';
+import { transformAndValidate } from 'class-transformer-validator';
+import { ValidationError, validate } from 'class-validator';
 import { shallowMount, mount, Wrapper } from '@vue/test-utils';
 import NumberField from '@/components/Formidable/NumberField.vue';
 import { FieldType } from '@/models/Formidable/Field/field.abstract';

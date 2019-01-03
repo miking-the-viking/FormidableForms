@@ -15,7 +15,7 @@ nav.navbar
 				router-link.navbar-item(to="/docs/forms/basic" @click.native="toggleActive(false)") Basic
 				router-link.navbar-item(to="/docs/forms/wizard" @click.native="toggleActive(false)") Wizard
 				.navbar-item.has-dropdown(:class="{'is-hoverable': isPastThreshold}")
-					router-link.navbar-link(to="/docs/fields") Formidable Fields
+					router-link.navbar-link(to="/docs/fields" @click.native="toggleActive(false)") Formidable Fields
 					.navbar-dropdown.is-boxed
 						router-link.navbar-item(
 							v-for="link in FORM_FIELD_NAVBAR_LINKS"
@@ -23,6 +23,7 @@ nav.navbar
 							:to="link.to"
 							@click.native="toggleActive(false)"
 						) {{link.text}}
+				router-link.navbar-item(to="/docs/state" @click.native="toggleActive(false)") State
 </template>
 
 <script lang="ts">

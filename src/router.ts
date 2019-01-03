@@ -29,6 +29,8 @@ const DATE_FIELD = () => import(
 	/* webpackChunkName: "docs-fields-date" */ '@/views/forms/FormidableFieldsDoc/FormidableDateDoc.vue');
 const FILE_FIELD = () => import(
 	/* webpackChunkName: "docs-fields-file" */ '@/views/forms/FormidableFieldsDoc/FormidableFileDoc.vue');
+const STATE_ANIMATIONS = () => import(
+	/* webpackChunkName: "docs-state" */ '@/views/forms/FormidableFieldsDoc/FormidableState.vue');
 
 Vue.use(Router);
 
@@ -48,6 +50,14 @@ export default new Router({
 			// this generates a separate chunk (about.[hash].js) for this route
 			// which is lazy-loaded when the route is visited.
 			component: FORMS_HOME
+		},
+		{
+			path: '/docs/state',
+			name: 'Formidable State & Animations',
+			// route level code-splitting
+			// this generates a separate chunk (about.[hash].js) for this route
+			// which is lazy-loaded when the route is visited.
+			component: STATE_ANIMATIONS
 		},
 		{
 			path: '/docs/forms/wizard',

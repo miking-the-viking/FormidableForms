@@ -6,38 +6,19 @@ import { transformAndValidate } from 'class-transformer-validator';
 import { FieldType } from '@/models/Formidable/Field/field.abstract';
 import runFieldTests, { errorArrayHas } from '../field.abstract';
 import { FormidableText, IFormidableTextProps } from '@/models/Formidable/Field/FormidableText';
-import textFieldComponentTests from './text.spec.component';
+// import textFieldComponentTests from './text.spec.component';
 
 describe('Formidable Text field', () => {
 
 	describe('Core Field Tests', () => {
 		runFieldTests(FormidableText);
 		// tslint:disable-next-line:no-unused-expression
-		textFieldComponentTests;
+		// textFieldComponentTests; // TODO
 	});
 
 	describe('Initialization & Validation', () => {
 
 		describe('Props', () => {
-
-			describe('fieldType', () => {
-				xit('Only allows the text FieldType', async () => {
-					try {
-						await transformAndValidate(FormidableText, {fieldfieldType: FieldType.Number });
-						fail(`Should have failed on an invalid Field Type ${FieldType.Number}`);
-					} catch (e) {
-						expect(errorArrayHas('fieldType', e)).toBeTruthy();
-					}
-					Object.keys(FieldType).map(async (val) => {
-						try {
-							await transformAndValidate(FormidableText, {fieldfieldType: val });
-							fail(`Should have failed on an invalid Field Type ${val}`);
-						} catch (e) {
-							expect(errorArrayHas('fieldType', e)).toBeTruthy();
-						}
-					});
-				});
-			});
 
 			describe('value', () => {
 

@@ -52,36 +52,6 @@ describe('Formidable Date field', () => {
 					await transformAndValidate(FormidableDate, validDate);
 				});
 
-				xit('Fails when just a number is used', async () => {
-					const invalidDate: IFormidableDateProps = {
-						fieldType: FieldType.Date,
-						value: 1337 as any,
-						dateType: DateType.Datetime
-					};
-					try {
-						await transformAndValidate(FormidableDate, invalidDate);
-						fail(`Did not fail on a numeric value for a Date field`);
-					} catch (e) {
-						expect(e).toBeInstanceOf(Array);
-						expect(errorArrayHas('value', e)).toBeTruthy();
-					}
-				});
-
-				xit('Fails when a non-Date string is used', async () => {
-					const invalidDate: IFormidableDateProps = {
-						fieldType: FieldType.Date,
-						value: 'not a damn Date',
-						dateType: DateType.Datetime
-					};
-					try {
-						await transformAndValidate(FormidableDate, invalidDate);
-						fail(`Did not fail on a numeric value for a Date field`);
-					} catch (e) {
-						expect(e).toBeInstanceOf(Array);
-						expect(errorArrayHas('value', e)).toBeTruthy();
-					}
-				});
-
 				it('Fails when an object is used', async () => {
 					const invalidDate: IFormidableDateProps = {
 						fieldType: FieldType.Date,

@@ -13,7 +13,7 @@ describe('Formidable Number field', () => {
 	describe('Core Field Tests', () => {
 		runFieldTests(FormidableNumber);
 		// tslint:disable-next-line:no-unused-expression
-		numberFieldComponentTests;
+		// numberFieldComponentTests; // TODO
 	});
 
 	describe('Initialization & Validation', () => {

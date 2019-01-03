@@ -1,4 +1,4 @@
-import { FormidableField, IFormidableFieldProps } from '@/models/Formidable/Field/field.abstract';
+import { FormidableField, IFormidableFieldProps, FieldType } from '@/models/Formidable/Field/field.abstract';
 import { ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
 import 'reflect-metadata';
@@ -16,10 +16,14 @@ export interface INumberRange {
  * Props interface
  */
 export interface IFormidableNumberRangeProps extends IFormidableFieldProps<INumberRange> {
+	fieldType: FieldType.NumberRange;
 	value: INumberRange;
 }
 
 export class FormidableNumberRange extends FormidableField<INumberRange> implements IFormidableNumberRangeProps {
+
+	public fieldType: FieldType.NumberRange = FieldType.NumberRange;
+
 	@ValidateNested()
 	@Type(() => NumberRange)
 	public value!: INumberRange;

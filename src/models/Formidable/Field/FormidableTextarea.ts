@@ -1,15 +1,18 @@
-import { FormidableField, IFormidableFieldProps } from '@/models/Formidable/Field/field.abstract';
+import { FormidableField, IFormidableFieldProps, FieldType } from '@/models/Formidable/Field/field.abstract';
 import { IsOptional, IsNumber, ValidateIf, IsString } from 'class-validator';
 import { IsLongerThan } from '@/models/IsLongerThan';
 import { IsShorterThan } from '@/models/IsShorterThan';
 import { IsStringOrNull } from '@/models/IsStringOrNull';
 
 export interface IFormidableTextareaProps extends IFormidableFieldProps<string> {
+	fieldType: FieldType.Textarea;
 	maxLength?: number;
 	minLength?: number;
 }
 
 export class FormidableTextarea extends FormidableField<string> implements IFormidableTextareaProps {
+
+	public fieldType: FieldType.Textarea = FieldType.Textarea;
 
 	/**
 	 * Optional minimum length

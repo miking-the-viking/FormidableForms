@@ -1,3 +1,4 @@
+import { FieldType } from './field.abstract';
 import {
 	IsOptional,
 	IsNumber,
@@ -19,6 +20,7 @@ import {
  * Props interface
  */
 export interface IFormidableNumberProps extends IFormidableFieldProps<number> {
+	fieldType: FieldType.Number;
 	minimum ?: number;
 	maximum ?: number;
 }
@@ -27,6 +29,8 @@ export interface IFormidableNumberProps extends IFormidableFieldProps<number> {
  * Formidable Field definition for a number input
  */
 export class FormidableNumber extends FormidableField<number> implements IFormidableNumberProps {
+
+	public fieldType: FieldType.Number = FieldType.Number;
 
 	/**
 	 * The value of the number

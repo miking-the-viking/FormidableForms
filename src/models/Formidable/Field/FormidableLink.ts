@@ -1,4 +1,4 @@
-import { FormidableField, IFormidableFieldProps } from '@/models/Formidable/Field/field.abstract';
+import { FormidableField, IFormidableFieldProps, FieldType } from '@/models/Formidable/Field/field.abstract';
 import { IsOptional, IsNumber, ValidateNested } from 'class-validator';
 import { LinkIsValid } from '@/models/LinkIsValid';
 import { Type } from 'class-transformer';
@@ -16,6 +16,7 @@ export interface ILink {
  * Props interface
  */
 export interface IFormidableLinkProps extends IFormidableFieldProps<ILink> {
+	fieldType: FieldType.Link;
 	minLinkHrefLength?: number;
 	maxLinkHrefLength?: number;
 	minLinkTextLength?: number;
@@ -23,6 +24,8 @@ export interface IFormidableLinkProps extends IFormidableFieldProps<ILink> {
 }
 
 export class FormidableLink extends FormidableField<ILink> implements IFormidableLinkProps {
+
+	public fieldType: FieldType.Link = FieldType.Link;
 
 	@IsOptional()
 	@IsNumber()
