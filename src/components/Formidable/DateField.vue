@@ -20,6 +20,11 @@
 			:valueIsSubmittable="isSubmittable"
 			:validationErrors="validationErrors"
 		)
+		RequiredIcon(
+			:required="required"
+			:valueIsSubmittable="isSubmittable"
+			:validationErrors="validationErrors"
+		)
 	FeedbackText(:validationErrors="validationErrors" :valueIsSubmittable="isSubmittable")
 </template>
 

@@ -14,7 +14,6 @@ export abstract class FormidableFieldComponent<S extends FormidableField<any>> e
 	} }) protected validationErrors!: ValidationError[];
 
 	get isSubmittable() {
-		const test = false;
 		return this.value.value !== null && (!this.validationErrors || this.validationErrors.length === 0);
 	}
 
@@ -31,6 +30,17 @@ export abstract class FormidableFieldComponent<S extends FormidableField<any>> e
 
 	set val(newVal: S | string | null) {
 		this.$emit('input', { ...this.value, value: newVal === '' ? null : newVal });
+	}
+	get id() {
+		return this.value.id;
+	}
+
+	get name() {
+		return this.value.name;
+	}
+
+	get required() {
+		return this.value.required;
 	}
 	get id() {
 		return this.value.id;
