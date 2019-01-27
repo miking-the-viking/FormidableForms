@@ -41,6 +41,10 @@ export default class Navbar extends Vue {
 	private readonly HAMBURGER_THRESHOLD = HAMBURGER_THRESHOLD;
 
 	private toggleActive(activeState?: boolean) {
+		if (activeState == null || !((activeState as any) instanceof Boolean)) {
+			this.isActive = !this.isActive;
+			return;
+		}
 		this.isActive = activeState || !this.isActive;
 	}
 
