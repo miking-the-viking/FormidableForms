@@ -27,11 +27,11 @@
 
 	FormidableForm(:form="form")
 
-	h3.is-size-3 Samples
+	//- h3.is-size-3 Samples
 
-	h4.is-size-4 Simple Registration
+	//- h4.is-size-4 Simple Registration
 
-	FormidableForm(:form="simpleRegistrationForm")
+	//- FormidableForm(:form="simpleRegistrationForm")
 
 </template>
 

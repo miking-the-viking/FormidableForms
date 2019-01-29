@@ -79,18 +79,6 @@ export default class FormidableForm extends Vue {
 		return this.validationErrors.length === 0;
 	}
 
-	get hasAllNecessaryData() {
-		return this.form.fields.reduce(
-			(acc, val) => {
-				return acc
-					&& (val.required
-						? (val.value !== null && val.value !== undefined)
-						: true);
-			},
-			true
-		);
-	}
-
 	get formClasses() {
 		return {
 			'is-danger': !this.isValid,

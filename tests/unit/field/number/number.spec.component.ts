@@ -2,14 +2,12 @@ import { IFormidableNumberProps } from '@/models/Formidable/Field/FormidableNumb
 import { transformAndValidate } from 'class-transformer-validator';
 import { ValidationError, validate } from 'class-validator';
 import { shallowMount, mount, Wrapper } from '@vue/test-utils';
-import { render } from '@vue/server-test-utils';
 import NumberField from '@/components/Formidable/NumberField.vue';
 import { FieldType } from '@/models/Formidable/Field/field.abstract';
 import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
 import { errorArrayHas } from '@/../tests/unit/field/field.abstract';
 import { Validator } from '@/models/Validator';
 import FeedbackText from '@/components/Formidable/components/FeedbackText.vue';
-import { FormidableFieldComponent } from '@/components/Formidable/FormidableFieldComponent.abstract';
 
 const errorClass = 'is-danger';
 const feedbackTextClass = 'help';

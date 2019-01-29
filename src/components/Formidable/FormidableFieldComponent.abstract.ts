@@ -42,17 +42,6 @@ export abstract class FormidableFieldComponent<S extends FormidableField<any>> e
 	get required() {
 		return this.value.required;
 	}
-	get id() {
-		return this.value.id;
-	}
-
-	get name() {
-		return this.value.name;
-	}
-
-	get required() {
-		return this.value.required;
-	}
 
 	get fieldType() {
 		return this.value.fieldType;
