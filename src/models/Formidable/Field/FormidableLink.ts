@@ -48,4 +48,8 @@ export class FormidableLink extends FormidableField<ILink> implements IFormidabl
 	@ValidateNested()
 	@Type(() => Link)
 	public value!: ILink;
+
+	get fieldIsSubmittable() {
+		return (this.required ? this.value.href != null && this.value.text != null : true);
+	}
 }

@@ -63,9 +63,9 @@ $danger: red;
 	color: $danger;
 }
 .requiredFlag {
-	background-color: #adadad4a;
+	background-color: #2a348f28;
     svg {
-		color: #b6b6b6;
+		color: #0004ff;
 	}
 }
 </style>

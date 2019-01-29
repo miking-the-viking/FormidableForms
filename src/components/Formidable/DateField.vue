@@ -3,12 +3,17 @@
 	label.label(v-if="value.label") {{value.label}}
 	.control.has-icons-left.has-icons-right
 		datetime.datetime-selector(
-			v-model.date="val"
 			:type="dateType"
+			v-model.date="val"
 			:use12-hour="true"
 			class="datetime-selector input"
 			:auto="true"
 			:input-id="'datefield-' + Math.floor(Math.random() * 10000000)"
+			:name="name"
+			:disabled="disabled"
+			:required="required"
+			:id="id"
+			:class="feedbackClass"
 		)
 		RequiredIcon(
 			:required="required"

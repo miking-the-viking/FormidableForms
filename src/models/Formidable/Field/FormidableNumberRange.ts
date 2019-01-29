@@ -23,4 +23,8 @@ export class FormidableNumberRange extends FormidableField<INumberRange> impleme
 	@ValidateNested()
 	@Type(() => NumberRange)
 	public value!: INumberRange;
+
+	get fieldIsSubmittable() {
+		return (this.required ? this.value.from != null && this.value.to != null : true);
+	}
 }

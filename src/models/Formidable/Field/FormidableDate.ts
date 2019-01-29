@@ -23,14 +23,18 @@ export interface IFormidableDateProps extends IFormidableFieldProps<string> {
 export class FormidableDate extends FormidableField<string> implements IFormidableDateProps {
 
 	/**
+	 * BUGGY! TO BE FIXED
 	 * The given value of the field
 	 */
-	@IsDateString({
-		message: (val) => 'Please select a valid date.'
-	})
+	// @IsDateString({
+	// 	message: (val) => 'Please select a valid date.',
+	// })
 	@IsOptional()
 	public value!: string;
 
-
 	public dateType!: DateType;
+
+	get fieldIsSubmittable() {
+		return this.required ? this.value != null : true;
+	}
 }

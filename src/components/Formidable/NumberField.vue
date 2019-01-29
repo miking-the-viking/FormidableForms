@@ -1,5 +1,5 @@
 <template lang="pug">
-.field.shit(:class="feedbackClass")
+.field(:class="feedbackClass")
 	label.label(v-if="value.label") {{value.label}}
 	.control.has-icons-left.has-icons-right
 		input.input(

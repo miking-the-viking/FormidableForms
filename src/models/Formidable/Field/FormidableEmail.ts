@@ -68,4 +68,8 @@ export class FormidableEmail extends FormidableField<string> implements IFormida
 	@IsOptional()
 	public value!: string;
 
+	get fieldIsSubmittable() {
+		return this.required ? this.value != null : true;
+	}
+
 }

@@ -8,7 +8,9 @@ import {
 	IsNumber,
 	IsEnum,
 	Equals,
-	IsIn
+	IsIn,
+	ValidateIf,
+	IsString
 } from 'class-validator';
 import {
 	IsLongerThan
@@ -35,7 +37,7 @@ export class FormidableText extends FormidableField<string> implements IFormidab
 
 	// @IsEnum(FieldType)
 	// @Equals(FieldType.Text)
-	public fieldType!: FieldType;
+	public fieldType: FieldType = FieldType.Text;
 
 	/**
 	 * Optional minimum length
@@ -66,7 +68,12 @@ export class FormidableText extends FormidableField<string> implements IFormidab
 	@IsShorterThan('maxLength', {
 		message: (v) => 'Must be shorter than or equal to the specified maximum length: ' + v.object.maxLength
 	})
-	@IsStringOrNull()
+	@IsString()
+	@ValidateIf((o: FormidableText, v: any) => o.required || v != null)
 	public value!: string | null;
+
+	get fieldIsSubmittable() {
+		return this.required ? this.value != null : true;
+	}
 
 }

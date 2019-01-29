@@ -30,6 +30,12 @@ const formConfig: FormidableBasicForm = {
 		{
 			fieldType: FieldType.Text,
 			value: null,
+			label: 'Any amount of string text (required)',
+			required: true
+		},
+		{
+			fieldType: FieldType.Text,
+			value: null,
 			label: 'Any amount of string text (optional)'
 		},
 		{
@@ -54,6 +60,13 @@ const formConfig: FormidableBasicForm = {
 		{
 			fieldType: FieldType.Textarea,
 			value: null,
+			maxLength: 150,
+			label: 'Between 0-150 character string (required)',
+			required: true
+		},
+		{
+			fieldType: FieldType.Textarea,
+			value: null,
 			minLength: 10,
 			maxLength: 500,
 			label: 'Between 10-500 character string (optional)'
@@ -64,7 +77,22 @@ const formConfig: FormidableBasicForm = {
 				text: null,
 				href: null
 			},
+			label: 'Some Link (required)',
+			required: true
+		},
+		{
+			fieldType: FieldType.Link,
+			value: {
+				text: null,
+				href: null
+			},
 			label: 'Some Link (optional)',
+		},
+		{
+			fieldType: FieldType.Email,
+			value: null,
+			label: 'Some Email (required)',
+			required: true
 		},
 		{
 			fieldType: FieldType.Email,
@@ -86,8 +114,14 @@ const formConfig: FormidableBasicForm = {
 		{
 			fieldType: FieldType.Password,
 			value: null,
+			label: 'Some password field (required)',
+			required: true
+		},
+		{
+			fieldType: FieldType.Password,
+			value: null,
 			minLength: 8,
-			label: 'Some password field (optional)',
+			label: 'Some password field (optional, min length 8)',
 		},
 		{
 			fieldType: FieldType.NumberRange,
@@ -148,4 +182,140 @@ const formConfig: FormidableBasicForm = {
 	]
 };
 
-export default formConfig;
+const form2: FormidableBasicForm = {
+	fields: [
+
+		// NUMBER
+
+		// {
+		// 	fieldType: FieldType.Number,
+		// 	value: null,
+		// 	label: 'Any number (required)',
+		// 	required: true
+		// },
+		// {
+		// 	fieldType: FieldType.Number,
+		// 	value: null,
+		// 	label: 'Any number (optional)',
+		// 	required: false
+		// },
+
+		// TEXT
+
+		// {
+		// 	fieldType: FieldType.Text,
+		// 	value: null,
+		// 	minLength: 2,
+		// 	label: '2 or more character text (required)',
+		// 	required: true
+		// },
+		// {
+		// 	fieldType: FieldType.Text,
+		// 	value: null,
+		// 	label: 'any length of character text (optional)',
+		// 	required: false
+		// },
+
+		// TEXTAREA
+
+		// {
+		// 	fieldType: FieldType.Textarea,
+		// 	value: null,
+		// 	maxLength: 150,
+		// 	label: 'Between 0-150 character string (required)',
+		// 	required: true
+		// },
+		// {
+		// 	fieldType: FieldType.Textarea,
+		// 	value: null,
+		// 	maxLength: 20,
+		// 	label: 'Between 0-20 character string (optional)',
+		// 	required: false
+		// },
+
+		// EMAIL
+
+		// {
+		// 	fieldType: FieldType.Email,
+		// 	value: null,
+		// 	label: 'Some Email (required)',
+		// 	required: true
+		// },
+		// {
+		// 	fieldType: FieldType.Email,
+		// 	value: null,
+		// 	label: 'Some Email (optional)',
+		// 	required: false
+		// },
+
+		// DATE
+
+		// {
+		// 	fieldType: FieldType.Date,
+		// 	value: null,
+		// 	label: 'Some Date',
+		// 	required: true
+		// },
+		// {
+		// 	fieldType: FieldType.Date,
+		// 	value: null,
+		// 	label: 'Some Datetime',
+		// 	dateType: DateType.Datetime,
+		// 	required: true
+		// },
+		// {
+		// 	fieldType: FieldType.Date,
+		// 	value: null,
+		// 	label: 'Some Time',
+		// 	dateType: DateType.Time,
+		// 	required: true
+		// },
+
+		// PASSWORD
+
+		// {
+		// 	fieldType: FieldType.Password,
+		// 	value: null,
+		// 	label: 'Some Password (required, at least 3 chars)',
+		// 	required: true,
+		// 	minLength: 3
+		// },
+
+		// NUMBERRANGE
+
+		// {
+		// 	fieldType: FieldType.NumberRange,
+		// 	value: {
+		// 		from: null,
+		// 		to: null
+		// 	},
+		// 	label: 'Some Number Range (required)',
+		// 	required: true
+		// }
+
+		// LINK
+
+		// {
+		// 	fieldType: FieldType.Link,
+		// 	value: {
+		// 		text: null,
+		// 		href: null
+		// 	},
+		// 	label: 'Some Link (required)',
+		// 	required: true
+		// },
+
+		// FILE
+
+		{
+			fieldType: FieldType.File,
+			value: null,
+			label: 'Some File (required)',
+			required: true
+		}
+
+	]
+};
+
+// export default formConfig;
+export default form2;

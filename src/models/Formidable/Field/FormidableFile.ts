@@ -30,6 +30,9 @@ export class FormidableFile extends FormidableField<string> implements IFormidab
 	@IsOptional()
 	public value!: string;
 
-
 	public fileType?: FileType;
+
+	get fieldIsSubmittable() {
+		return this.required ? this.value != null : true;
+	}
 }

@@ -1,3 +1,5 @@
+import { IFormidableTextProps } from './../../../src/models/Formidable/Field/FormidableText';
+import { IFormidableFieldProps } from './../../../src/models/Formidable/Field/field.abstract';
 /**
  * Abstract tests defining consistent core Formidable Form behaviour
  */
@@ -7,7 +9,7 @@ import { FieldType, FormidableField } from '@/models/Formidable/Field/field.abst
 import { errorArrayHas } from '../field/field.abstract';
 import { plainToClass } from 'class-transformer';
 import { validate } from 'class-validator';
-import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
+import { FormidableNumber, IFormidableNumberProps } from '@/models/Formidable/Field/FormidableNumber';
 import { FormidableText } from '@/models/Formidable/Field/FormidableText';
 
 export default <T extends FormidableForm>(
@@ -63,7 +65,7 @@ export default <T extends FormidableForm>(
 
 			it('Fails when a field value is invalid', async () => {
 				// const invalidFields: Array<FormidableField<number>> = [
-				const invalidFields: Array<FormidableField<any>> = [
+				const invalidFields: Array<IFormidableFieldProps<any>> = [
 					{
 						fieldType: FieldType.Number,
 						// tslint:disable-next-line
@@ -95,7 +97,7 @@ export default <T extends FormidableForm>(
 
 		describe('Form initialization', () => {
 
-			const existingFields: Array<FormidableNumber | FormidableText> = [{
+			const existingFields: Array<IFormidableNumberProps | IFormidableTextProps> = [{
 				fieldType: FieldType.Number,
 				value: 1
 			}];

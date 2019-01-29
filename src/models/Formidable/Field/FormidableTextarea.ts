@@ -1,10 +1,15 @@
-import { FormidableField } from '@/models/Formidable/Field/field.abstract';
-import { IsOptional, IsNumber } from 'class-validator';
+import { FormidableField, IFormidableFieldProps } from '@/models/Formidable/Field/field.abstract';
+import { IsOptional, IsNumber, ValidateIf, IsString } from 'class-validator';
 import { IsLongerThan } from '@/models/IsLongerThan';
 import { IsShorterThan } from '@/models/IsShorterThan';
 import { IsStringOrNull } from '@/models/IsStringOrNull';
 
-export class FormidableTextarea extends FormidableField<string> {
+export interface IFormidableTextareaProps extends IFormidableFieldProps<string> {
+	maxLength?: number;
+	minLength?: number;
+}
+
+export class FormidableTextarea extends FormidableField<string> implements IFormidableTextareaProps {
 
 	/**
 	 * Optional minimum length
@@ -29,7 +34,12 @@ export class FormidableTextarea extends FormidableField<string> {
 	@IsShorterThan('maxLength', {
 		message: (v) => 'Must be shorter than the specified maxLength: ' + v.object.maxLength
 	})
-	@IsStringOrNull()
+	@IsString()
+	@ValidateIf((o: FormidableTextarea, v: any) => o.required || v != null)
 	public value!: string | null;
+
+	get fieldIsSubmittable() {
+		return this.required ? this.value != null : true;
+	}
 
 }
