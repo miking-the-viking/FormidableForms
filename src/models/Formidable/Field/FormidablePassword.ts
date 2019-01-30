@@ -62,4 +62,8 @@ export class FormidablePassword extends FormidableField<string> implements IForm
 	@IsStringOrNull()
 	public value!: string | null;
 
+	get fieldIsSubmittable() {
+		return this.required ? this.value != null : true;
+	}
+
 }

@@ -4,13 +4,16 @@
 import { FormidableNumber, IFormidableNumberProps } from '@/models/Formidable/Field/FormidableNumber';
 import { transformAndValidate } from 'class-transformer-validator';
 import { FieldType } from '@/models/Formidable/Field/field.abstract';
-import runFieldTests, { errorArrayHas } from './field.abstract';
-import { __await } from 'tslib';
+import runFieldTests, { errorArrayHas } from '../field.abstract';
+import numberFieldComponentTests from './number.spec.component';
+
 
 describe('Formidable Number field', () => {
 
 	describe('Core Field Tests', () => {
 		runFieldTests(FormidableNumber);
+		// tslint:disable-next-line:no-unused-expression
+		numberFieldComponentTests;
 	});
 
 	describe('Initialization & Validation', () => {

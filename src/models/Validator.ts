@@ -2,11 +2,11 @@ import { ValidationError, validate } from 'class-validator';
 import { plainToClass } from 'class-transformer';
 
 export class Validator {
-	private validationErrors!: ValidationError[];
+	public validationErrors!: ValidationError[];
 
 	constructor(
 		private readonly validationCtor: new (...args: any[]) => object,
-		private readonly formData: {}
+		public formData: {}
 	) {
 		this.validationErrors = [];
 	}

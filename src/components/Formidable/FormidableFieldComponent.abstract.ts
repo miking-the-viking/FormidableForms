@@ -28,8 +28,30 @@ export abstract class FormidableFieldComponent<S extends FormidableField<any>> e
 		return this.value.value;
 	}
 
-	set val(newVal: S | null) {
-		this.$emit('input', { ...this.value, value: newVal });
+	set val(newVal: S | string | null) {
+		this.$emit('input', { ...this.value, value: newVal === '' ? null : newVal });
+	}
+	get id() {
+		return this.value.id;
 	}
 
+	get name() {
+		return this.value.name;
+	}
+
+	get required() {
+		return this.value.required;
+	}
+
+	get fieldType() {
+		return this.value.fieldType;
+	}
+
+	get label() {
+		return this.value.label;
+	}
+
+	get disabled() {
+		return this.value.disabled;
+	}
 }

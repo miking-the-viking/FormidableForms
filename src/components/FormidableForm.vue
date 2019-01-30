@@ -12,7 +12,7 @@
 			.level-item
 				button.button.transitionButton(:class="formClasses" @click="form.submit")
 					span.icon
-						font-awesome-icon(:icon="isValid ? 'check-circle' : 'times-circle'")
+						font-awesome-icon(:icon="hasAllNecessaryData ? 'check-circle' : 'times-circle'")
 					span Submit
 </template>
 
@@ -21,9 +21,10 @@ import { VueConstructor } from 'vue';
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import { FormidableBasicForm } from '@/models/Formidable/Form/FormidableBasicForm';
 import { FieldType, IFormidableFieldProps, FormidableField } from '@/models/Formidable/Field/field.abstract';
-import { IFormidableFormProps } from '@/models/Formidable/Form/form.abstract';
-import { transformAndValidate } from 'class-transformer-validator';
-import { ValidationError } from 'class-validator';
+import { FieldCtorTypes, IFormidableFormProps } from '@/models/Formidable/Form/form.abstract';
+import { transformAndValidate, transformAndValidateSync } from 'class-transformer-validator';
+import { ValidationError, validateSync } from 'class-validator';
+import { plainToClass } from 'class-transformer';
 
 import NumberField from '@/components/Formidable/NumberField.vue';
 import NumberRangeField from '@/components/Formidable/NumberRangeField.vue';
@@ -39,6 +40,15 @@ import { FormidableWizardForm } from '@/models/Formidable/Form/FormidableWizardF
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
+import { FormidableNumberRange } from '@/models/Formidable/Field/FormidableNumberRange';
+import { FormidableText } from '@/models/Formidable/Field/FormidableText';
+import { FormidableTextarea } from '@/models/Formidable/Field/FormidableTextarea';
+import { FormidableLink } from '@/models/Formidable/Field/FormidableLink';
+import { FormidableEmail } from '@/models/Formidable/Field/FormidableEmail';
+import { FormidablePassword } from '@/models/Formidable/Field/FormidablePassword';
+import { FormidableDate } from '@/models/Formidable/Field/FormidableDate';
+import { FormidableFile } from '@/models/Formidable/Field/FormidableFile';
 
 library.add(faCheckCircle, faTimesCircle);
 
@@ -58,6 +68,7 @@ library.add(faCheckCircle, faTimesCircle);
 export default class FormidableForm extends Vue {
 	private readonly FieldType = FieldType;
 	private validationErrors: ValidationError[] = [];
+	private hasAllNecessaryData: boolean = false;
 
 	@Prop({
 		required: true
@@ -71,11 +82,24 @@ export default class FormidableForm extends Vue {
 	get formClasses() {
 		return {
 			'is-danger': !this.isValid,
-			'is-success': this.isValid
+			'is-success': this.isValid && this.hasAllNecessaryData
 			// 'is-success': this.isValid && this.form.fields.reduce((acc, val) => {
 			// 	return acc || val.required ? val.value !== null : true;
 			// }, false)
 		};
+	}
+
+	private async getFieldCtor(fieldConfig: IFormidableFieldProps<any>): Promise<FieldCtorTypes> {
+		switch (fieldConfig.fieldType) {
+			case FieldType.Number: return await transformAndValidateSync(FormidableNumber, fieldConfig);
+			case FieldType.NumberRange: return await transformAndValidateSync(FormidableNumberRange, fieldConfig);
+			case FieldType.Text: return await transformAndValidateSync(FormidableText, fieldConfig);
+			case FieldType.Textarea: return await transformAndValidateSync(FormidableTextarea, fieldConfig);
+			case FieldType.Email: return await transformAndValidateSync(FormidableEmail, fieldConfig);
+			case FieldType.Password: return await transformAndValidateSync(FormidablePassword, fieldConfig);
+			case FieldType.Date: return await transformAndValidateSync(FormidableDate, fieldConfig);
+			default: throw new Error(`Invalid Field Type: ${fieldConfig.fieldType}`);
+		}
 	}
 
 	private getField(field: FormidableField<any>): VueConstructor<Vue> {
@@ -94,8 +118,7 @@ export default class FormidableForm extends Vue {
 	}
 
 	@Watch('form', {
-		deep: true,
-		immediate: true
+		deep: true
 	})
 	private async validateForm() {
 		try {
@@ -104,6 +127,17 @@ export default class FormidableForm extends Vue {
 		} catch (e) {
 			this.validationErrors = e;
 		}
+
+		await this.form.fields.reduce(
+			async (accPromise, val) => {
+				return accPromise && (await this.getFieldCtor(val)).fieldIsSubmittable;
+			},
+			Promise.resolve(true)
+		).then((val) => {
+			this.hasAllNecessaryData = val;
+		}).catch((validationErrors) => {
+			this.hasAllNecessaryData = false;
+		});
 	}
 
 	private getFieldErrors(index: number): ValidationError[] | undefined {

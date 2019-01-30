@@ -26,7 +26,13 @@
 					code(class="javascript")
 
 	FormidableForm(:form="form")
-	
+
+	//- h3.is-size-3 Samples
+
+	//- h4.is-size-4 Simple Registration
+
+	//- FormidableForm(:form="simpleRegistrationForm")
+
 </template>
 
 <script lang="ts">
@@ -38,6 +44,7 @@ import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
 import { FormidableText } from '@/models/Formidable/Field/FormidableText';
 import CollapsibleArea from '@/components/Interactive/CollapsibleArea.vue';
 import formConfig from '@/views/forms/BasicDoc/BasicDocForm';
+import simpleRegistrationFormConfig from '@/views/forms/BasicDoc/SimpleRegistrationForm';
 
 @Component({
 	components: {
@@ -51,7 +58,16 @@ export default class BasicDoc extends Vue {
 		submit: this.submitForm
 	};
 
+	private simpleRegistrationForm = {
+		...simpleRegistrationFormConfig,
+		submit: this.submitRegistrationForm
+	};
+
 	private submitForm() {
+		// console.log('submitting form', this.form);
+	}
+
+	private submitRegistrationForm() {
 		// console.log('submitting form', this.form);
 	}
 }

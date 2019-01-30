@@ -43,7 +43,7 @@ export interface IFormidableFieldProps<T> {
 /**
  * FormidableForm Field definition
  */
-export abstract class FormidableField<T> {
+export abstract class FormidableField<T> implements IFormidableFieldProps<T> {
 
 	/**
 	 * The Enumerated type of the field, used for code clarity and programmatically limiting the avaialble field types
@@ -89,4 +89,16 @@ export abstract class FormidableField<T> {
 	 * The given value of the field
 	 */
 	public value!: T | null;
+
+	abstract get fieldIsSubmittable(): boolean;
+
+	// constructor(props: IFormidableFieldProps<T>) {
+	// 	this.fieldType = props.fieldType;
+	// 	this.name = props.name || undefined;
+	// 	this.label = props.label || undefined;
+	// 	this.id = props.id || undefined;
+	// 	this.required = props.required || undefined;
+	// 	this.disabled = props.disabled || undefined;
+	// 	this.value = props.value;
+	// }
 }

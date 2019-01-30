@@ -1,7 +1,7 @@
 import { shallowMount } from '@vue/test-utils';
 import TextField from '@/components/Formidable/TextField.vue';
 import { FieldType } from '@/models/Formidable/Field/field.abstract';
-import { FormidableText } from '@/models/Formidable/Field/FormidableText';
+import { FormidableText, IFormidableTextProps } from '@/models/Formidable/Field/FormidableText';
 import { errorArrayHas } from '@/../tests/unit/field/field.abstract';
 
 const textComponentTests = describe('TextField.vue', () => {
@@ -59,7 +59,7 @@ const textComponentTests = describe('TextField.vue', () => {
 	});
 
 	it('Renders successfully when a valid value prop is provided', () => {
-		const textFieldObj: FormidableText = {
+		const textFieldObj: IFormidableTextProps = {
 			value: null,
 			fieldType: FieldType.Text
 		};

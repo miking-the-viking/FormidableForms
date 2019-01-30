@@ -33,7 +33,7 @@ export default class NumberRangeField extends Vue {
 			value: this.from,
 			fieldType: FieldType.Number,
 			maximum: this.to || undefined
-		};
+		} as FormidableNumber;
 	}
 
 	set fromField(from: FormidableNumber) {
@@ -46,7 +46,7 @@ export default class NumberRangeField extends Vue {
 			value: this.to,
 			fieldType: FieldType.Number,
 			minimum: this.from || undefined
-		};
+		} as FormidableNumber;
 	}
 
 	set toField(to: FormidableNumber) {

@@ -31,7 +31,7 @@ import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
 import { FormidableField, FieldType } from '@/models/Formidable/Field/field.abstract';
 import { ValidationError } from 'class-validator';
 import { Link } from '@/models/Formidable/Field/FormidableLink/Link';
-import { FormidableLink } from '@/models/Formidable/Field/FormidableLink';
+import { ILink, FormidableLink } from '@/models/Formidable/Field/FormidableLink';
 import TextField from '@/components/Formidable/TextField.vue';
 import { FormidableText } from '@/models/Formidable/Field/FormidableText';
 
@@ -65,7 +65,7 @@ export default class LinkField extends Vue {
 			label: 'Link Text',
 			value: this.text,
 			fieldType: FieldType.Text
-		};
+		} as FormidableText;
 	}
 
 	set textField(text: FormidableText) {
@@ -85,7 +85,7 @@ export default class LinkField extends Vue {
 			label: 'Link href',
 			value: this.href,
 			fieldType: FieldType.Text
-		};
+		} as FormidableText;
 	}
 
 	set hrefField(text: FormidableText) {

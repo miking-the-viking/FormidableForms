@@ -1,8 +1,23 @@
 <template lang="pug">
 .field(:class="feedbackClass")
 	label.label(v-if="value.label") {{value.label}}
-	.control
-		textarea.input(type="text" :maxlength="value.maxLength" v-model="val"  :class="feedbackClass")
+	.control.has-icons-left.has-icons-right
+		textarea.input(
+			type="textarea"
+			v-model="val"
+			:name="name"
+			:disabled="disabled"
+			:required="required"
+			:id="id"
+			:maxlength="maxLength"
+			:minlength="minLength"
+			:class="feedbackClass"
+		)
+		RequiredIcon(
+			:required="required"
+			:valueIsSubmittable="isSubmittable"
+			:validationErrors="validationErrors"
+		)
 	FeedbackText(:validationErrors="validationErrors" :valueIsSubmittable="isSubmittable")
 </template>
 
@@ -11,13 +26,23 @@ import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
 import { FormidableField } from '@/models/Formidable/Field/field.abstract';
 import { ValidationError } from 'class-validator';
 import FeedbackText from '@/components/Formidable/components/FeedbackText.vue';
+import RequiredIcon from '@/components/Formidable/components/RequiredIcon.vue';
 import { FormidableFieldComponent} from '@/components/Formidable/FormidableFieldComponent.abstract';
 import { FormidableText } from '@/models/Formidable/Field/FormidableText';
 
 @Component({
 	components: {
-		FeedbackText
+		FeedbackText,
+		RequiredIcon
 	}
 })
-export default class TextArea extends FormidableFieldComponent<FormidableText> {}
+export default class TextArea extends FormidableFieldComponent<FormidableText> {
+	get maxLength() {
+		return this.value.maxLength;
+	}
+
+	get minLength() {
+		return this.value.minLength;
+	}
+}
 </script>
