@@ -70,10 +70,21 @@ export default class FormidableForm extends Vue {
 	private validationErrors: ValidationError[] = [];
 	private hasAllNecessaryData: boolean = false;
 
+	/**
+	 * boolean value to indicate if the form should be validated on create, or only upon change/user input
+	 */
+	@Prop({ default: false}) private immediate!: boolean;
+
 	@Prop({
 		required: true
 	})
 	private form!: FormidableBasicForm | FormidableWizardForm;
+
+	private created() {
+		if (this.immediate) {
+			this.validateForm();
+		}
+	}
 
 	get isValid() {
 		return this.validationErrors.length === 0;

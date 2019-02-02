@@ -1,8 +1,3 @@
-import { IFormidableFileProps } from './../Field/FormidableFile';
-import { IFormidableDateProps } from './../Field/FormidableDate';
-import { IFormidableNumberRangeProps } from './../Field/FormidableNumberRange';
-import { IFormidablePasswordProps } from './../Field/FormidablePassword';
-import { IFormidableEmailProps } from './../Field/FormidableEmail';
 /**
  * Abstract Formidable Form core definition
  */
@@ -14,12 +9,11 @@ import { FormidableLink, IFormidableLinkProps } from '@/models/Formidable/Field/
 import { FormidableNumber, IFormidableNumberProps } from '@/models/Formidable/Field/FormidableNumber';
 import { FormidableText, IFormidableTextProps } from '@/models/Formidable/Field/FormidableText';
 import { FormidableTextarea, IFormidableTextareaProps } from '@/models/Formidable/Field/FormidableTextarea';
-import { FormidablePassword } from '@/models/Formidable/Field/FormidablePassword';
-import { FormidableEmail } from '@/models/Formidable/Field/FormidableEmail';
-import { FormidableNumberRange } from '@/models/Formidable/Field/FormidableNumberRange';
-import { FormidableDate } from '@/models/Formidable/Field/FormidableDate';
-import { FormidableFile } from '@/models/Formidable/Field/FormidableFile';
-import { transformAndValidate } from 'class-transformer-validator';
+import { FormidablePassword, IFormidablePasswordProps } from '@/models/Formidable/Field/FormidablePassword';
+import { FormidableEmail, IFormidableEmailProps } from '@/models/Formidable/Field/FormidableEmail';
+import { FormidableNumberRange, IFormidableNumberRangeProps } from '@/models/Formidable/Field/FormidableNumberRange';
+import { FormidableDate, IFormidableDateProps } from '@/models/Formidable/Field/FormidableDate';
+import { FormidableFile, IFormidableFileProps } from '@/models/Formidable/Field/FormidableFile';
 
 /**
  * Basic Props for a Formidable Form
@@ -28,7 +22,7 @@ export interface IFormidableFormProps {
 	fields: Array<IFormidableFieldProps<any>>;
 }
 
-type FieldConfigTypes = IFormidableNumberProps
+export type FieldConfigTypes = IFormidableNumberProps
 	| IFormidableTextProps
 	| IFormidableTextareaProps
 	| IFormidableLinkProps
@@ -38,31 +32,19 @@ type FieldConfigTypes = IFormidableNumberProps
 	| IFormidableDateProps
 	| IFormidableFileProps;
 
-export type FieldCtorTypes = FormidableNumber
-	| FormidableText
-	| FormidableTextarea
-	| FormidableLink
-	| FormidableEmail
-	| FormidablePassword
-	| FormidableNumberRange
-	| FormidableDate
-	| FormidableFile;
+export type ExtractedFieldType<T> =
+	T extends IFormidableTextProps ? IFormidableTextProps :
+	T extends IFormidableNumberProps ? IFormidableNumberProps :
+	T extends IFormidableTextareaProps ? IFormidableTextareaProps :
+	T extends IFormidableLinkProps ? IFormidableLinkProps :
+	T extends IFormidableEmailProps ? IFormidableEmailProps :
+	T extends IFormidablePasswordProps ? IFormidablePasswordProps :
+	T extends IFormidableNumberRangeProps ? IFormidableNumberRangeProps :
+	T extends IFormidableDateProps ? IFormidableDateProps :
+	T extends IFormidableFileProps ? IFormidableFileProps :
+	never;
 
-type FieldConfigTypesTest = IFormidableNumberProps;
-
-type FieldCtorTypesTest = FormidableNumber | FormidableText;
-
-
-async function getInstance(f: FieldConfigTypesTest): Promise<FieldCtorTypesTest> {
-	switch (f.fieldType) {
-		case FieldType.Number:
-			return await transformAndValidate(FormidableNumber, f);
-		case FieldType.Text:
-			return await transformAndValidate(FormidableText, f);
-		default:
-			throw new Error(`Invalid Formidable Field Type: ${f.fieldType}`);
-	}
-}
+export type FormidableFieldsArray = Array<ExtractedFieldType<FieldConfigTypes>>;
 
 /**
  * Formidable Form definition
@@ -92,7 +74,7 @@ export abstract class FormidableForm {
 			]
 		}
 	})
-	public fields!: FieldConfigTypes[];
+	public fields!: FormidableFieldsArray;
 
 	/**
 	 * Submit action for the form, optional or null if retrieving the values and submitting by another means.

@@ -25,6 +25,7 @@ import { IsGreaterThanOrEqualTo } from '@/models/IsGreaterThanOrEqualTo';
 
 
 export interface IFormidableEmailProps extends IFormidableFieldProps<string> {
+	fieldType: FieldType.Email;
 	maxLength?: number;
 	minLength?: number;
 }
@@ -33,6 +34,8 @@ export interface IFormidableEmailProps extends IFormidableFieldProps<string> {
  * Formidable Field definition for a Email input
  */
 export class FormidableEmail extends FormidableField<string> implements IFormidableEmailProps {
+
+	public fieldType: FieldType.Email = FieldType.Email;
 
 	/**
 	 * Optional minimum length

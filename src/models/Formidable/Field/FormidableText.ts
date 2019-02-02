@@ -26,6 +26,7 @@ import { IsGreaterThanOrEqualTo } from '@/models/IsGreaterThanOrEqualTo';
 
 
 export interface IFormidableTextProps extends IFormidableFieldProps<string> {
+	fieldType: FieldType.Text;
 	maxLength?: number;
 	minLength?: number;
 }
@@ -37,7 +38,7 @@ export class FormidableText extends FormidableField<string> implements IFormidab
 
 	// @IsEnum(FieldType)
 	// @Equals(FieldType.Text)
-	public fieldType: FieldType = FieldType.Text;
+	public fieldType: FieldType.Text = FieldType.Text;
 
 	/**
 	 * Optional minimum length

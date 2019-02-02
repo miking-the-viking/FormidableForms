@@ -1,3 +1,4 @@
+import { FieldType } from './field.abstract';
 import {
 	FormidableField,
 	IFormidableFieldProps
@@ -14,6 +15,7 @@ export enum DateType {
 }
 
 export interface IFormidableDateProps extends IFormidableFieldProps<string> {
+	fieldType: FieldType.Date;
 	dateType: DateType;
 }
 
@@ -21,6 +23,8 @@ export interface IFormidableDateProps extends IFormidableFieldProps<string> {
  * Formidable Field definition for a Date input
  */
 export class FormidableDate extends FormidableField<string> implements IFormidableDateProps {
+
+	public fieldType: FieldType.Date = FieldType.Date;
 
 	/**
 	 * BUGGY! TO BE FIXED

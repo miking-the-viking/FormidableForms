@@ -1,6 +1,7 @@
 import {
 	FormidableField,
-	IFormidableFieldProps
+	IFormidableFieldProps,
+	FieldType
 } from '@/models/Formidable/Field/field.abstract';
 import {
 	IsOptional,
@@ -21,6 +22,7 @@ import { IsGreaterThanOrEqualTo } from '@/models/IsGreaterThanOrEqualTo';
 
 
 export interface IFormidablePasswordProps extends IFormidableFieldProps<string> {
+	fieldType: FieldType.Password;
 	maxLength?: number;
 	minLength?: number;
 }
@@ -29,6 +31,8 @@ export interface IFormidablePasswordProps extends IFormidableFieldProps<string> 
  * Formidable Field definition for a Password input
  */
 export class FormidablePassword extends FormidableField<string> implements IFormidablePasswordProps {
+
+	public fieldType: FieldType.Password = FieldType.Password;
 
 	/**
 	 * Optional minimum length

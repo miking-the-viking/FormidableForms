@@ -2,7 +2,7 @@
 #fields
 	h3.is-size-3 Formidable Fields Home
 
-	p Formidable Fields are designedw ith generics in mind for easily resuable and expectant implementation and typing.
+	p Formidable Fields are designed with generics in mind for easily resuable and expectant implementation and typing.
 
 	h4.is-size-4 FieldType Enum
 
@@ -133,16 +133,30 @@
 		| - 
 		code required
 
+
 	p The required field by default is 
 		code false
 		| and is therefore optional. Making a field required will mean that
 		code null
 		| is an unacceptable value unless specified otherwise.
 
+		.columns.is-mobile
+			.column
+				FormidableForm(:form="basicRequiredForm")
+			.column
+				FormidableForm(:form="basicForm")
+
 	h5.is-size-5 Field Disabled
 		code boolean
 		| - 
 		code disabled
+
+	.columns.is-mobile
+		.column
+			FormidableForm(:form="basicDisabledForm")
+		.column
+			FormidableForm(:form="basicForm")
+
 
 	p The disabled field by default is 
 		code false
@@ -189,6 +203,26 @@ export default class FormidableFieldDocHome extends Vue {
 				fieldType: FieldType.Number,
 				value: null,
 				label: 'Any number',
+			}
+		]
+	};
+	private basicRequiredForm = {
+		fields: [
+			{
+				fieldType: FieldType.Number,
+				value: null,
+				label: 'Any number (required)',
+				required: true
+			}
+		]
+	};
+	private basicDisabledForm = {
+		fields: [
+			{
+				fieldType: FieldType.Number,
+				value: null,
+				label: 'Any number (disabled)',
+				disabled: true
 			}
 		]
 	};

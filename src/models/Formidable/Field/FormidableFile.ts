@@ -1,6 +1,7 @@
 import {
 	FormidableField,
-	IFormidableFieldProps
+	IFormidableFieldProps,
+	FieldType
 } from '@/models/Formidable/Field/field.abstract';
 import {
 	IsOptional,
@@ -15,6 +16,7 @@ export enum FileType {
 }
 
 export interface IFormidableFileProps extends IFormidableFieldProps<string> {
+	fieldType: FieldType.File;
 	maxSize?: number;
 	fileType?: FileType;
 }
@@ -23,6 +25,8 @@ export interface IFormidableFileProps extends IFormidableFieldProps<string> {
  * Formidable Field definition for a File Input
  */
 export class FormidableFile extends FormidableField<string> implements IFormidableFileProps {
+
+	public fieldType: FieldType.File = FieldType.File;
 
 	/**
 	 * The given value of the field
