@@ -9,30 +9,30 @@ import Navbar from '@/components/Page/Navbar.vue';
 import { debounce } from 'debounce';
 
 @Component({
-	components: {
-	}
+    components: {
+    }
 })
 export default class CollapsibleArea extends Vue {
-	@Prop({default: true}) private startCollapsed: boolean = true;
-	private collapsed: boolean = this.startCollapsed || true;
+    @Prop({default: true}) private startCollapsed: boolean = true;
+    private collapsed: boolean = this.startCollapsed || true;
 
-	private mouseEnter() {
-		this.expand();
-	}
+    private mouseEnter() {
+        this.expand();
+    }
 
-	private mouseLeave() {
-		// debounce(() => {
-		this.collapse();
-		// }, 2000);
-	}
+    private mouseLeave() {
+        // debounce(() => {
+        this.collapse();
+        // }, 2000);
+    }
 
-	private expand() {
-		this.collapsed = false;
-	}
+    private expand() {
+        this.collapsed = false;
+    }
 
-	private collapse() {
-		this.collapsed = true;
-	}
+    private collapse() {
+        this.collapsed = true;
+    }
 
 }
 </script>

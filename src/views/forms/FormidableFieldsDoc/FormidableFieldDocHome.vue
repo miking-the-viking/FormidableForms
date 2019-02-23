@@ -190,50 +190,50 @@ const BASIC_FORM_FOR_REALZ
 }`;
 
 @Component({
-	components: {
-		FormidableForm
-	}
+    components: {
+        FormidableForm
+    }
 })
 export default class FormidableFieldDocHome extends Vue {
-	private FieldType = FieldType;
-	private basicFormForRealz = BASIC_FORM_FOR_REALZ;
-	private basicForm = {
-		fields: [
-			{
-				fieldType: FieldType.Number,
-				value: null,
-				label: 'Any number',
-			}
-		]
-	};
-	private basicRequiredForm = {
-		fields: [
-			{
-				fieldType: FieldType.Number,
-				value: null,
-				label: 'Any number (required)',
-				required: true
-			}
-		]
-	};
-	private basicDisabledForm = {
-		fields: [
-			{
-				fieldType: FieldType.Number,
-				value: null,
-				label: 'Any number (disabled)',
-				disabled: true
-			}
-		]
-	};
+    private FieldType = FieldType;
+    private basicFormForRealz = BASIC_FORM_FOR_REALZ;
+    private basicForm = {
+        fields: [
+            {
+                fieldType: FieldType.Number,
+                value: null,
+                label: 'Any number',
+            }
+        ]
+    };
+    private basicRequiredForm = {
+        fields: [
+            {
+                fieldType: FieldType.Number,
+                value: null,
+                label: 'Any number (required)',
+                required: true
+            }
+        ]
+    };
+    private basicDisabledForm = {
+        fields: [
+            {
+                fieldType: FieldType.Number,
+                value: null,
+                label: 'Any number (disabled)',
+                disabled: true
+            }
+        ]
+    };
 
-	get fieldTypes() {
-		return Object.keys(FieldType).map((val) => {
-			return {
-				key: val,
-				resolvedValue: (FieldType as any)[val]
-			};
-		});
-	}
+    get fieldTypes() {
+        return Object.keys(FieldType).map((val) => {
+            return {
+                key: val,
+                resolvedValue: (FieldType as any)[val]
+            };
+        });
+    }
 }
 </script>

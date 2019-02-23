@@ -9,9 +9,9 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 import Navbar from '@/components/Page/Navbar.vue';
 
 @Component({
-	components: {
-		Navbar
-	}
+    components: {
+        Navbar
+    }
 })
 export default class App extends Vue {
 }

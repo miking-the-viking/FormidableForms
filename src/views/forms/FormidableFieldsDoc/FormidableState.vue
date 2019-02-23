@@ -77,93 +77,93 @@ import FormidableForm from '@/components/FormidableForm.vue';
 import { FormidableBasicForm } from '@/models/Formidable/Form/FormidableBasicForm';
 
 const INVALID_FIELD = {
-	fields: [
-		{
-			fieldType: FieldType.Number,
-			value: -1,
-			label: 'Number greater than or equal to 0',
-			minimum: 0,
-		}
-	]
+    fields: [
+        {
+            fieldType: FieldType.Number,
+            value: -1,
+            label: 'Number greater than or equal to 0',
+            minimum: 0
+        }
+    ]
 };
 
 const VALID_FIELD = {
-	fields: [
-		{
-			fieldType: FieldType.Number,
-			value: 1,
-			label: 'Number greater than or equal to 0',
-			minimum: 0,
-		}
-	]
+    fields: [
+        {
+            fieldType: FieldType.Number,
+            value: 1,
+            label: 'Number greater than or equal to 0',
+            minimum: 0
+        }
+    ]
 };
 
 const DISABLED_FIELD = {
-	fields: [
-		{
-			fieldType: FieldType.Number,
-			value: null,
-			label: 'Any Number',
-			disabled: true
-		}
-	]
+    fields: [
+        {
+            fieldType: FieldType.Number,
+            value: null,
+            label: 'Any Number',
+            disabled: true
+        }
+    ]
 };
 
 const ENABLED_FIELD = {
-	fields: [
-		{
-			fieldType: FieldType.Number,
-			value: 0,
-			label: 'Any Number'
-		}
-	]
+    fields: [
+        {
+            fieldType: FieldType.Number,
+            value: 0,
+            label: 'Any Number'
+        }
+    ]
 };
 
 const OPTIONAL_FIELD = {
-	fields: [
-		{
-			fieldType: FieldType.Number,
-			value: null,
-			label: 'Any Number (optional, you can submit with this field null)'
-		}
-	]
+    fields: [
+        {
+            fieldType: FieldType.Number,
+            value: null,
+            label: 'Any Number (optional, you can submit with this field null)'
+        }
+    ]
 };
 
 const REQUIRED_FIELD = {
-	fields: [
-		{
-			fieldType: FieldType.Number,
-			value: null,
-			label: 'Any Number (required, this cannot be submitted until a number value is entered)',
-			required: true
-		}
-	]
+    fields: [
+        {
+            fieldType: FieldType.Number,
+            value: null,
+            label: 'Any Number (required, this cannot be submitted until a number value is entered)',
+            required: true
+        }
+    ]
 };
 
 @Component({
-	components: {
-		FormidableForm
-	}
+    components: {
+        FormidableForm
+    }
 })
 export default class FormidableStateDoc extends Vue {
-	private invalidField = {
-		...INVALID_FIELD,
-		// tslint:disable:no-console
-		submit: () => console.log('sample submit action')
-	};
-	private validField = {
-		...VALID_FIELD,
-		submit: () => console.log('sample submit action')
-	};
-	private disabledField = DISABLED_FIELD;
-	private enabledField = ENABLED_FIELD;
-	private optionalField = {
-		...OPTIONAL_FIELD,
-		submit: () => console.log('sample submit action')
-	};
-	private requiredField = {
-		...REQUIRED_FIELD,
-		submit: () => console.log('sample submit action')
-	};
+    private invalidField = {
+        ...INVALID_FIELD,
+        // tslint:disable:no-console
+        submit: () => console.log('sample submit action')
+    };
+    private validField = {
+        ...VALID_FIELD,
+        submit: () => console.log('sample submit action')
+    };
+    private disabledField = DISABLED_FIELD;
+    private enabledField = ENABLED_FIELD;
+    private optionalField = {
+        ...OPTIONAL_FIELD,
+        submit: () => console.log('sample submit action')
+    };
+    private requiredField = {
+        ...REQUIRED_FIELD,
+        submit: () => console.log('sample submit action')
+    };
 }
 </script>

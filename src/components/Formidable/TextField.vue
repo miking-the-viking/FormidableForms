@@ -32,18 +32,18 @@ import RequiredIcon from '@/components/Formidable/components/RequiredIcon.vue';
 import { FormidableFieldComponent} from '@/components/Formidable/FormidableFieldComponent.abstract';
 
 @Component({
-	components: {
-		FeedbackText,
-		RequiredIcon
-	}
+    components: {
+        FeedbackText,
+        RequiredIcon
+    }
 })
 export default class TextField extends FormidableFieldComponent<FormidableText> {
-	get maxLength() {
-		return this.value.maxLength;
-	}
+    get maxLength() {
+        return this.value.maxLength;
+    }
 
-	get minLength() {
-		return this.value.minLength;
-	}
+    get minLength() {
+        return this.value.minLength;
+    }
 }
 </script>

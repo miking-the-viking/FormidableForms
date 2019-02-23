@@ -35,16 +35,16 @@ import RequiredIcon from '@/components/Formidable/components/RequiredIcon.vue';
 import { FormidableFieldComponent } from '@/components/Formidable/FormidableFieldComponent.abstract';
 
 @Component({
-	components: {
-		Datetime,
-		FeedbackText,
-		RequiredIcon
-	}
+    components: {
+        Datetime,
+        FeedbackText,
+        RequiredIcon
+    }
 })
 export default class DateField extends FormidableFieldComponent<FormidableDate> {
-	get dateType() {
-		return this.value.dateType;
-	}
+    get dateType() {
+        return this.value.dateType;
+    }
 }
 </script>
 

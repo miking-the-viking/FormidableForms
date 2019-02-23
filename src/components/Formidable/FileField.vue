@@ -21,20 +21,20 @@ import RequiredIcon from '@/components/Formidable/components/RequiredIcon.vue';
 import { FormidableFieldComponent } from '@/components/Formidable/FormidableFieldComponent.abstract';
 
 @Component({
-	components: {
-		FeedbackText,
-		RequiredIcon
-	}
+    components: {
+        FeedbackText,
+        RequiredIcon
+    }
 })
 export default class FileField extends FormidableFieldComponent<FormidableFile> {
-	get acceptedFileTypes() {
-		switch (this.value.fileType) {
-			case FileType.Audio: return 'audio/*';
-			case FileType.Image: return 'image/*';
-			case FileType.Video: return 'video/*';
-			case FileType.PDF: return '.pdf';
-			default: return null;
-		}
-	}
+    get acceptedFileTypes() {
+        switch (this.value.fileType) {
+            case FileType.Audio: return 'audio/*';
+            case FileType.Image: return 'image/*';
+            case FileType.Video: return 'video/*';
+            case FileType.PDF: return '.pdf';
+            default: return null;
+        }
+    }
 }
 </script>

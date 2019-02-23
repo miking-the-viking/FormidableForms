@@ -31,18 +31,18 @@ import { FormidableFieldComponent} from '@/components/Formidable/FormidableField
 import { FormidablePassword } from '@/models/Formidable/Field/FormidablePassword';
 
 @Component({
-	components: {
-		FeedbackText,
-		RequiredIcon
-	}
+    components: {
+        FeedbackText,
+        RequiredIcon
+    }
 })
 export default class PasswordField extends FormidableFieldComponent<FormidablePassword> {
-	get maxLength() {
-		return this.value.maxLength;
-	}
+    get maxLength() {
+        return this.value.maxLength;
+    }
 
-	get minLength() {
-		return this.value.minLength;
-	}
+    get minLength() {
+        return this.value.minLength;
+    }
 }
 </script>

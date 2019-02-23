@@ -15,11 +15,11 @@ import { FormidableText } from '@/models/Formidable/Field/FormidableText';
 import formConfig from '@/views/forms/BasicDoc/BasicDocForm';
 
 @Component({
-	components: {
-		FormidableForm
-	}
+    components: {
+        FormidableForm
+    }
 })
 export default class Forms extends Vue {
-	private form = formConfig;
+    private form = formConfig;
 }
 </script>
