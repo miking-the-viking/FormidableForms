@@ -50,45 +50,45 @@ import { FormidableBasicForm } from '@/models/Formidable/Form/FormidableBasicFor
 import { FileType } from '@/models/Formidable/Field/FormidableFile';
 
 const BASIC_FILE_FIELD = {
-	fields: [
-		{
-			fieldType: FieldType.File,
-			value: null,
-			label: 'Any File'
-		}
-	]
+    fields: [
+        {
+            fieldType: FieldType.File,
+            value: null,
+            label: 'Any File'
+        }
+    ]
 };
 
 const RESTRICTED_FILE_FIELDS: FormidableBasicForm = {
-	fields: [
-		{
-			fieldType: FieldType.File,
-			value: null,
-			label: 'PDF',
-			fileType: FileType.PDF
-		},
-		{
-			fieldType: FieldType.File,
-			value: null,
-			label: 'Audio',
-			fileType: FileType.Audio
-		},
-		{
-			fieldType: FieldType.File,
-			value: null,
-			label: 'Video',
-			fileType: FileType.Video
-		}
-	]
+    fields: [
+        {
+            fieldType: FieldType.File,
+            value: null,
+            label: 'PDF',
+            fileType: FileType.PDF
+        },
+        {
+            fieldType: FieldType.File,
+            value: null,
+            label: 'Audio',
+            fileType: FileType.Audio
+        },
+        {
+            fieldType: FieldType.File,
+            value: null,
+            label: 'Video',
+            fileType: FileType.Video
+        }
+    ]
 };
 
 @Component({
-	components: {
-		FormidableForm
-	}
+    components: {
+        FormidableForm
+    }
 })
 export default class FormidableEmailDoc extends Vue {
-	private basicFileFormConfig = BASIC_FILE_FIELD;
-	private restrictedFileFormConfig = RESTRICTED_FILE_FIELDS;
+    private basicFileFormConfig = BASIC_FILE_FIELD;
+    private restrictedFileFormConfig = RESTRICTED_FILE_FIELDS;
 }
 </script>

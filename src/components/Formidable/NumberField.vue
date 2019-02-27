@@ -31,19 +31,19 @@ import { FormidableFieldComponent} from '@/components/Formidable/FormidableField
 import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
 
 @Component({
-	components: {
-		FeedbackText,
-		RequiredIcon
-	}
+    components: {
+        FeedbackText,
+        RequiredIcon
+    }
 })
 export default class NumberField extends FormidableFieldComponent<FormidableNumber> {
-	get min() {
-		return this.value.minimum;
-	}
+    get min() {
+        return this.value.minimum;
+    }
 
-	get max() {
-		return this.value.maximum;
-	}
+    get max() {
+        return this.value.maximum;
+    }
 }
 </script>
 

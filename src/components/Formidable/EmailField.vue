@@ -34,19 +34,19 @@ import { FormidableFieldComponent} from '@/components/Formidable/FormidableField
 
 
 @Component({
-	components: {
-		FeedbackText,
-		RequiredIcon
-	}
+    components: {
+        FeedbackText,
+        RequiredIcon
+    }
 })
 export default class EmailField extends FormidableFieldComponent<FormidableEmail> {
-	get maxLength() {
-		return this.value.maxLength;
-	}
+    get maxLength() {
+        return this.value.maxLength;
+    }
 
-	get minLength() {
-		return this.value.minLength;
-	}
+    get minLength() {
+        return this.value.minLength;
+    }
 }
 </script>
 

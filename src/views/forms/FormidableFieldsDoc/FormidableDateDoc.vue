@@ -54,46 +54,46 @@ import { FormidableBasicForm } from '@/models/Formidable/Form/FormidableBasicFor
 import { DateType } from '@/models/Formidable/Field/FormidableDate';
 
 const BASIC_DATE_FIELD = {
-	fields: [
-		{
-			fieldType: FieldType.Date,
-			value: null,
-			label: 'Any Datetime',
-			dateType: DateType.Datetime
-		}
-	]
+    fields: [
+        {
+            fieldType: FieldType.Date,
+            value: null,
+            label: 'Any Datetime',
+            dateType: DateType.Datetime
+        }
+    ]
 };
 
 const REFINED_DATE_TYPE_FIELDS: FormidableBasicForm = {
-	fields: [
-		{
-			fieldType: FieldType.Date,
-			value: null,
-			label: 'Any Datetime',
-			dateType: DateType.Datetime
-		},
-		{
-			fieldType: FieldType.Date,
-			value: null,
-			label: 'Any Date',
-			dateType: DateType.Date
-		},
-		{
-			fieldType: FieldType.Date,
-			value: null,
-			label: 'Any Time',
-			dateType: DateType.Time
-		}
-	]
+    fields: [
+        {
+            fieldType: FieldType.Date,
+            value: null,
+            label: 'Any Datetime',
+            dateType: DateType.Datetime
+        },
+        {
+            fieldType: FieldType.Date,
+            value: null,
+            label: 'Any Date',
+            dateType: DateType.Date
+        },
+        {
+            fieldType: FieldType.Date,
+            value: null,
+            label: 'Any Time',
+            dateType: DateType.Time
+        }
+    ]
 };
 
 @Component({
-	components: {
-		FormidableForm
-	}
+    components: {
+        FormidableForm
+    }
 })
 export default class FormidableDateDoc extends Vue {
-	private basicDateFormConfig = BASIC_DATE_FIELD;
-	private refinedDateTypeFields = REFINED_DATE_TYPE_FIELDS;
+    private basicDateFormConfig = BASIC_DATE_FIELD;
+    private refinedDateTypeFields = REFINED_DATE_TYPE_FIELDS;
 }
 </script>

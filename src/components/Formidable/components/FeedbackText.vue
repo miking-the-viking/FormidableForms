@@ -10,34 +10,34 @@ import { ValidationError } from 'class-validator';
 
 @Component
 export default class FeedbackText extends Vue {
-	@Prop({ required: true }) private readonly validationErrors!: ValidationError[];
-	@Prop() private readonly alternateValidationKey?: string;
-	@Prop({ required: true }) private readonly valueIsSubmittable!: boolean;
+    @Prop({ required: true }) private readonly validationErrors!: ValidationError[];
+    @Prop() private readonly alternateValidationKey?: string;
+    @Prop({ required: true }) private readonly valueIsSubmittable!: boolean;
 
-	get hasFeedback() {
-		return this.validationErrors.length > 0;
-	}
+    get hasFeedback() {
+        return this.validationErrors.length > 0;
+    }
 
-	get feedbackClass() {
-		return {
-			'is-danger': this.validationErrors && this.validationErrors.length > 0,
-			'is-success': this.valueIsSubmittable !== null && (!this.validationErrors || this.validationErrors.length === 0)
-		};
-	}
+    get feedbackClass() {
+        return {
+            'is-danger': this.validationErrors && this.validationErrors.length > 0,
+            'is-success': this.valueIsSubmittable !== null && (!this.validationErrors || this.validationErrors.length === 0)
+        };
+    }
 
-	get errorText() {
-		if (!this.validationErrors || this.validationErrors.length === 0) {
-			return null;
-		}
+    get errorText() {
+        if (!this.validationErrors || this.validationErrors.length === 0) {
+            return null;
+        }
 
-		return this.validationErrors.reduce((acc, val) => {
-			return acc + (val.property === this.alternateValidationKey || 'value' ?
-				Object.keys(val.constraints).reduce((acc2, val2) => {
-					return acc2 + val.constraints[val2];
-				}, '') : ''
-			);
-		}, '');
-	}
+        return this.validationErrors.reduce((acc, val) => {
+            return acc + (val.property === this.alternateValidationKey || 'value' ?
+                Object.keys(val.constraints).reduce((acc2, val2) => {
+                    return acc2 + val.constraints[val2];
+                }, '') : ''
+            );
+        }, '');
+    }
 
 }
 </script>

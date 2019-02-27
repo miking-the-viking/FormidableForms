@@ -49,46 +49,46 @@ import FormidableForm from '@/components/FormidableForm.vue';
 import { FormidableBasicForm } from '@/models/Formidable/Form/FormidableBasicForm';
 
 const BASIC_TEXTAREA_FIELD = {
-	fields: [
-		{
-			fieldType: FieldType.Textarea,
-			value: null,
-			label: 'Any textarea'
-		}
-	]
+    fields: [
+        {
+            fieldType: FieldType.Textarea,
+            value: null,
+            label: 'Any textarea'
+        }
+    ]
 };
 
 const MINMAX_TEXTAREA_FIELDS: FormidableBasicForm = {
-	fields: [
-		{
-			fieldType: FieldType.Textarea,
-			value: null,
-			label: 'Greater than or equal to the minimum length of 5',
-			minLength: 5
-		},
-		{
-			fieldType: FieldType.Textarea,
-			value: null,
-			label: 'Less than or equal to the maximum length of 12',
-			maxLength: 12
-		},
-		{
-			fieldType: FieldType.Textarea,
-			value: null,
-			label: 'In between (inclusively) 10-20',
-			maxLength: 20,
-			minLength: 10
-		}
-	]
+    fields: [
+        {
+            fieldType: FieldType.Textarea,
+            value: null,
+            label: 'Greater than or equal to the minimum length of 5',
+            minLength: 5
+        },
+        {
+            fieldType: FieldType.Textarea,
+            value: null,
+            label: 'Less than or equal to the maximum length of 12',
+            maxLength: 12
+        },
+        {
+            fieldType: FieldType.Textarea,
+            value: null,
+            label: 'In between (inclusively) 10-20',
+            maxLength: 20,
+            minLength: 10
+        }
+    ]
 };
 
 @Component({
-	components: {
-		FormidableForm
-	}
+    components: {
+        FormidableForm
+    }
 })
 export default class FormidableTextareaDoc extends Vue {
-	private basicTextareaFormConfig = BASIC_TEXTAREA_FIELD;
-	private minMaxTextareaFormConfig = MINMAX_TEXTAREA_FIELDS;
+    private basicTextareaFormConfig = BASIC_TEXTAREA_FIELD;
+    private minMaxTextareaFormConfig = MINMAX_TEXTAREA_FIELDS;
 }
 </script>

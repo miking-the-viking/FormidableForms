@@ -3,17 +3,17 @@ import { FormidableTextarea } from './../Field/FormidableTextarea';
  * Wizard implementation of Formidable Form
  */
 import {
-	FormidableForm
+    FormidableForm
 } from '@/models/Formidable/Form/form.abstract';
 import {
-	IsDefined,
-	ValidateNested
+    IsDefined,
+    ValidateNested
 } from 'class-validator';
 import {
-	Type
+    Type
 } from 'class-transformer';
 import {
-	FormidableField
+    FormidableField
 } from '../Field/field.abstract';
 import { FormidableText } from '../Field/FormidableText';
 import { FormidableNumber } from '../Field/FormidableNumber';

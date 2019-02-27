@@ -49,46 +49,46 @@ import FormidableForm from '@/components/FormidableForm.vue';
 import { FormidableBasicForm } from '@/models/Formidable/Form/FormidableBasicForm';
 
 const BASIC_TEXT_FIELD = {
-	fields: [
-		{
-			fieldType: FieldType.Text,
-			value: null,
-			label: 'Any text'
-		}
-	]
+    fields: [
+        {
+            fieldType: FieldType.Text,
+            value: null,
+            label: 'Any text'
+        }
+    ]
 };
 
 const MINMAX_TEXT_FIELDS: FormidableBasicForm = {
-	fields: [
-		{
-			fieldType: FieldType.Text,
-			value: null,
-			label: 'Greater than or equal to the minimum length of 5',
-			minLength: 5
-		},
-		{
-			fieldType: FieldType.Text,
-			value: null,
-			label: 'Less than or equal to the maximum length of 12',
-			maxLength: 12
-		},
-		{
-			fieldType: FieldType.Text,
-			value: null,
-			label: 'In between (inclusively) 10-20',
-			maxLength: 20,
-			minLength: 10
-		}
-	]
+    fields: [
+        {
+            fieldType: FieldType.Text,
+            value: null,
+            label: 'Greater than or equal to the minimum length of 5',
+            minLength: 5
+        },
+        {
+            fieldType: FieldType.Text,
+            value: null,
+            label: 'Less than or equal to the maximum length of 12',
+            maxLength: 12
+        },
+        {
+            fieldType: FieldType.Text,
+            value: null,
+            label: 'In between (inclusively) 10-20',
+            maxLength: 20,
+            minLength: 10
+        }
+    ]
 };
 
 @Component({
-	components: {
-		FormidableForm
-	}
+    components: {
+        FormidableForm
+    }
 })
 export default class FormidableTextDoc extends Vue {
-	private basicTextFormConfig = BASIC_TEXT_FIELD;
-	private minMaxTextFormConfig = MINMAX_TEXT_FIELDS;
+    private basicTextFormConfig = BASIC_TEXT_FIELD;
+    private minMaxTextFormConfig = MINMAX_TEXT_FIELDS;
 }
 </script>

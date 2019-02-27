@@ -93,65 +93,65 @@ import { FileType } from '@/models/Formidable/Field/FormidableFile';
 import CollapsibleArea from '@/components/Interactive/CollapsibleArea.vue';
 
 const fieldTypeDescriptions = [
-	{
-		key: 'FieldType.Number',
-		resolvesTo: FieldType.Number,
-		description: `The Formidable Number Field is used to accept a numeric input.
+    {
+        key: 'FieldType.Number',
+        resolvesTo: FieldType.Number,
+        description: `The Formidable Number Field is used to accept a numeric input.
 		It accepts optional minimum/maximum props.`
-	},
-	{
-		key: 'FieldType.NumberRange',
-		resolvesTo: FieldType.NumberRange,
-		description: `The Formidable NumberRange Field is used to accept a NumberRange input.
+    },
+    {
+        key: 'FieldType.NumberRange',
+        resolvesTo: FieldType.NumberRange,
+        description: `The Formidable NumberRange Field is used to accept a NumberRange input.
 		A NumberRanger is an object comprised of two numeric keys from and to.
 		It has restrictive validation to ensure that from is always less than or equal to to`
-	},
-	{
-		key: 'FieldType.Text',
-		resolvesTo: FieldType.Text,
-		description: `The Formidable Text Field is used to accept a text input.
+    },
+    {
+        key: 'FieldType.Text',
+        resolvesTo: FieldType.Text,
+        description: `The Formidable Text Field is used to accept a text input.
 		It accepts optional minLength and maxLength props.`
-	},
-	{
-		key: 'FieldType.Textarea',
-		resolvesTo: FieldType.Textarea,
-		description: `The Formidable Textarea Field is used to accept a textarea input.
+    },
+    {
+        key: 'FieldType.Textarea',
+        resolvesTo: FieldType.Textarea,
+        description: `The Formidable Textarea Field is used to accept a textarea input.
 		It accepts optional minLength and maxLength props.`
-	},
-	{
-		key: 'FieldType.Link',
-		resolvesTo: FieldType.Link,
-		description: `The Formidable Link Field is used to accept a Link input.
+    },
+    {
+        key: 'FieldType.Link',
+        resolvesTo: FieldType.Link,
+        description: `The Formidable Link Field is used to accept a Link input.
 		A Link is an object comprised of an href string and a text string.
 		It accepts optional minLinkHrefLength, maxLinkHrefLength, minLinkTextLength, and maxLinkTextLength props.`
-	},
-	{
-		key: 'FieldType.Email',
-		resolvesTo: FieldType.Email,
-		description: `The Formidable Email Field is used to accept a Email input.
+    },
+    {
+        key: 'FieldType.Email',
+        resolvesTo: FieldType.Email,
+        description: `The Formidable Email Field is used to accept a Email input.
 		It accepts optional minLength and maxLength props.`
-	},
-	{
-		key: 'FieldType.Password',
-		resolvesTo: FieldType.Password,
-		description: `The Formidable Password Field is used to accept a Password input.
+    },
+    {
+        key: 'FieldType.Password',
+        resolvesTo: FieldType.Password,
+        description: `The Formidable Password Field is used to accept a Password input.
 		It accepts optional minLength and maxLength props.`
-	},
-	{
-		key: 'FieldType.Date',
-		resolvesTo: FieldType.Date,
-		description: `The Formidable Date Field is used to accept a Date input.
+    },
+    {
+        key: 'FieldType.Date',
+        resolvesTo: FieldType.Date,
+        description: `The Formidable Date Field is used to accept a Date input.
 		It accepts a required dateType prop that is further refined by the DateType enum:
 		${Object.keys(DateType).map((val) => `DateType. ${val}`).join(', ')}`
-	},
-	{
-		key: 'FieldType.File',
-		resolvesTo: FieldType.File,
-		description: `The Formidable File Field is used to accept a File input.
+    },
+    {
+        key: 'FieldType.File',
+        resolvesTo: FieldType.File,
+        description: `The Formidable File Field is used to accept a File input.
 		It accepts am fileType prop that is further refined by the FileType enum:
 		${Object.keys(FileType).map((val) => `FileType.${val}`).join(', ')}.
 		If no fileType is provided, any file type is accepted.`
-	}
+    }
 ];
 
 const sampleFormJSON =
@@ -170,15 +170,15 @@ const formidableFormVueComponentUsagePug = `FormidableForm(:form="form")`;
 const formidableFormVueComponentUsageHtml = `<FormidableForm :form="form" />`;
 
 @Component({
-	components: {
-		CollapsibleArea
-	}
+    components: {
+        CollapsibleArea
+    }
 })
 export default class Home extends Vue {
-	private fieldTypeDescriptions = fieldTypeDescriptions;
-	private sampleFormJSON = sampleFormJSON;
-	private formidableFormVueComponentUsagePug = formidableFormVueComponentUsagePug;
-	private formidableFormVueComponentUsageHtml = formidableFormVueComponentUsageHtml;
+    private fieldTypeDescriptions = fieldTypeDescriptions;
+    private sampleFormJSON = sampleFormJSON;
+    private formidableFormVueComponentUsagePug = formidableFormVueComponentUsagePug;
+    private formidableFormVueComponentUsageHtml = formidableFormVueComponentUsageHtml;
 }
 </script>
 

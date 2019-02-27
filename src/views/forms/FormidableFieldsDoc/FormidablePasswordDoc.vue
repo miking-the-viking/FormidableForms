@@ -49,46 +49,46 @@ import FormidableForm from '@/components/FormidableForm.vue';
 import { FormidableBasicForm } from '@/models/Formidable/Form/FormidableBasicForm';
 
 const BASIC_PASSWORD_FIELD = {
-	fields: [
-		{
-			fieldType: FieldType.Password,
-			value: null,
-			label: 'Any Password'
-		}
-	]
+    fields: [
+        {
+            fieldType: FieldType.Password,
+            value: null,
+            label: 'Any Password'
+        }
+    ]
 };
 
 const MINMAX_PASSWORD_FIELDS: FormidableBasicForm = {
-	fields: [
-		{
-			fieldType: FieldType.Password,
-			value: null,
-			label: 'Greater than or equal to the minimum length of 5',
-			minLength: 5
-		},
-		{
-			fieldType: FieldType.Password,
-			value: null,
-			label: 'Less than or equal to the maximum length of 12',
-			maxLength: 12
-		},
-		{
-			fieldType: FieldType.Password,
-			value: null,
-			label: 'In between (inclusively) 10-20',
-			maxLength: 20,
-			minLength: 10
-		}
-	]
+    fields: [
+        {
+            fieldType: FieldType.Password,
+            value: null,
+            label: 'Greater than or equal to the minimum length of 5',
+            minLength: 5
+        },
+        {
+            fieldType: FieldType.Password,
+            value: null,
+            label: 'Less than or equal to the maximum length of 12',
+            maxLength: 12
+        },
+        {
+            fieldType: FieldType.Password,
+            value: null,
+            label: 'In between (inclusively) 10-20',
+            maxLength: 20,
+            minLength: 10
+        }
+    ]
 };
 
 @Component({
-	components: {
-		FormidableForm
-	}
+    components: {
+        FormidableForm
+    }
 })
 export default class FormidablePasswordDoc extends Vue {
-	private basicPasswordFormConfig = BASIC_PASSWORD_FIELD;
-	private minMaxPasswordFormConfig = MINMAX_PASSWORD_FIELDS;
+    private basicPasswordFormConfig = BASIC_PASSWORD_FIELD;
+    private minMaxPasswordFormConfig = MINMAX_PASSWORD_FIELDS;
 }
 </script>
