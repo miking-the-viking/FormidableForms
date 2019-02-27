@@ -43,7 +43,7 @@ export abstract class FormidableField<T> implements IFormidableFieldProps<T> {
     /**
      * The Enumerated type of the field, used for code clarity and programmatically limiting the avaialble field types
      */
-    public fieldType!: FieldType;
+    public abstract fieldType: FieldType;
 
     /**
      * Optional name of the field

@@ -2,7 +2,9 @@ import { Vue, Prop } from 'vue-property-decorator';
 import { ValidationError } from 'class-validator';
 import { FormidableField } from '@/models/Formidable/Field/field.abstract';
 
-export abstract class FormidableFieldComponent<S extends FormidableField<any>> extends Vue {
+export abstract class FormidableFieldComponent<
+    S extends FormidableField<any>
+> extends Vue {
     @Prop({ required: true })
     protected value!: S;
     @Prop({
@@ -19,12 +21,16 @@ export abstract class FormidableFieldComponent<S extends FormidableField<any>> e
     protected validationErrors!: ValidationError[];
 
     get isSubmittable() {
-        return this.value.value !== null && (!this.validationErrors || this.validationErrors.length === 0);
+        return (
+            this.value.value !== null &&
+            (!this.validationErrors || this.validationErrors.length === 0)
+        );
     }
 
     get feedbackClass() {
         return {
-            'is-danger': this.validationErrors && this.validationErrors.length > 0,
+            'is-danger':
+                this.validationErrors && this.validationErrors.length > 0,
             'is-success': this.isSubmittable
         };
     }
@@ -34,8 +40,15 @@ export abstract class FormidableFieldComponent<S extends FormidableField<any>> e
     }
 
     set val(newVal: S | string | null) {
-        this.$emit('input', { ...this.value, value: newVal === '' ? null : newVal });
+        // tslint:disable-next-line:no-console
+        console.log(
+            'FormidableFieldComponent.abstract emitting new value: ',
+            newVal
+        );
+        const value = { ...this.value, value: newVal === '' ? null : newVal };
+        this.$emit('input', value);
     }
+
     get id() {
         return this.value.id;
     }

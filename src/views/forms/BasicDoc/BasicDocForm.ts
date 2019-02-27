@@ -2,7 +2,7 @@ import { FormidableBasicForm } from '@/models/Formidable/Form/FormidableBasicFor
 import { FieldType } from '@/models/Formidable/Field/field.abstract';
 import { DateType } from '@/models/Formidable/Field/FormidableDate';
 import { FileType } from '@/models/Formidable/Field/FormidableFile';
-import { FormType } from '../../../models/Formidable/Form/form.abstract';
+import { FormType } from '@/models/Formidable/Form/form.abstract';
 
 /**
  * Basic form config for intial sample
@@ -40,14 +40,14 @@ const formConfig: FormidableBasicForm = {
         // 	value: null,
         // 	label: 'Any amount of string text (optional)'
         // },
+        // {
+        //     fieldType: FieldType.Text,
+        //     value: null,
+        //     minLength: 3,
+        //     label: 'Atleast 3 character string (optional)'
+        // },
         {
-            fieldType: FieldType.Text,
             value: null,
-            minLength: 3,
-            label: 'Atleast 3 character string (optional)'
-        },
-        {
-            value: 4,
             minimum: 4,
             fieldType: FieldType.Number
         }

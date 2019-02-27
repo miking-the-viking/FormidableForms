@@ -1,5 +1,11 @@
 import { FieldType } from './field.abstract';
-import { IsOptional, IsNumber, ValidateIf } from 'class-validator';
+import {
+    IsOptional,
+    IsNumber,
+    ValidateIf,
+    IsDefined,
+    Equals
+} from 'class-validator';
 import {
     FormidableField,
     IFormidableFieldProps
@@ -21,7 +27,9 @@ export interface IFormidableNumberProps extends IFormidableFieldProps<number> {
  */
 export class FormidableNumber extends FormidableField<number>
     implements IFormidableNumberProps {
-    public fieldType: FieldType.Number = FieldType.Number;
+    @IsDefined()
+    @Equals(FieldType.Number)
+    public fieldType!: FieldType.Number;
 
     /**
      * The value of the number

@@ -1,4 +1,7 @@
-import { FormidableForm, FormType } from '@/models/Formidable/Form/form.abstract';
+import {
+    FormidableForm,
+    FormType
+} from '@/models/Formidable/Form/form.abstract';
 import Validator from '@/models/Validator';
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { FormidableBasicForm } from '@/models/Formidable/Form/FormidableBasicForm';
@@ -21,6 +24,15 @@ export enum FormState {
 export const FORM_STATE_CLASSES = {
     [FormState.Error]: 'is-danger',
     [FormState.Valid]: 'is-success'
+};
+
+export const FORM_CONSTRUCTORS = {
+    [FormType.Basic]: {
+        ctor: FormidableBasicForm
+    },
+    [FormType.Wizard]: {
+        ctor: FormidableWizardForm
+    }
 };
 
 /**
@@ -52,11 +64,10 @@ export default class FormMixin extends Vue {
     constructor(...args: any[]) {
         super(args);
 
-        this.validator = new Validator<FormTypes>(this.formCtor(), this.form);
-
-        if (this.immediate) {
-            this.validateForm();
-        }
+        const ctor = this.formCtor();
+        // tslint:disable-next-line:no-console
+        console.log('initializing validator with: ', ctor, this.form);
+        this.validator = new Validator<FormTypes>(ctor, this.form);
     }
 
     /**
@@ -77,10 +88,9 @@ export default class FormMixin extends Vue {
     }
 
     public formCtor() {
-        if (isBasicForm(this.form)) {
-            return FormidableBasicForm;
-        } else if (isWizardForm(this.form)) {
-            return FormidableWizardForm;
+        const mappedCtor = FORM_CONSTRUCTORS[this.form.formType];
+        if (mappedCtor) {
+            return mappedCtor.ctor;
         }
         throw new Error(`Unknown form type: ${this.form!.formType}`);
     }
@@ -88,19 +98,26 @@ export default class FormMixin extends Vue {
     @Watch('form', {
         deep: true
     })
-    private async validateForm() {
+    protected async validateForm() {
+        // tslint:disable-next-line:no-console
+        console.log('form updated, validating', JSON.stringify(this.form));
+        this.validator.setForm(this.form);
         this.validator.validate();
     }
 
-    private getFieldErrors(index: number): ValidationError[] | undefined {
+    protected getFieldErrors(index: number): ValidationError[] | undefined {
         if (!this.validationErrors || this.validationErrors.length === 0) {
             return;
         }
-        const fieldErr = this.validationErrors.find((valErr) => valErr.property === 'fields');
+        const fieldErr = this.validationErrors.find(
+            (valErr) => valErr.property === 'fields'
+        );
         if (!fieldErr) {
             return;
         }
-        const indexErr = fieldErr.children.find((valErr) => parseInt(valErr.property, 10) === index);
+        const indexErr = fieldErr.children.find(
+            (valErr) => parseInt(valErr.property, 10) === index
+        );
         return indexErr ? indexErr.children : undefined;
     }
 }

@@ -20,9 +20,19 @@
 import { VueConstructor } from 'vue';
 import { Vue, Component, Prop, Watch, Mixins } from 'vue-property-decorator';
 import { FormidableBasicForm } from '@/models/Formidable/Form/FormidableBasicForm';
-import { FieldType, IFormidableFieldProps, FormidableField } from '@/models/Formidable/Field/field.abstract';
-import { FieldCtorTypes, IFormidableFormProps } from '@/models/Formidable/Form/form.abstract';
-import { transformAndValidate, transformAndValidateSync } from 'class-transformer-validator';
+import {
+    FieldType,
+    IFormidableFieldProps,
+    FormidableField
+} from '@/models/Formidable/Field/field.abstract';
+import {
+    FieldCtorTypes,
+    IFormidableFormProps
+} from '@/models/Formidable/Form/form.abstract';
+import {
+    transformAndValidate,
+    transformAndValidateSync
+} from 'class-transformer-validator';
 import { ValidationError, validateSync } from 'class-validator';
 import { plainToClass } from 'class-transformer';
 
@@ -39,7 +49,10 @@ import FileField from '@/components/Formidable/FileField.vue';
 import { FormidableWizardForm } from '@/models/Formidable/Form/FormidableWizardForm';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import {
+    faCheckCircle,
+    faTimesCircle
+} from '@fortawesome/free-solid-svg-icons';
 import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
 import { FormidableNumberRange } from '@/models/Formidable/Field/FormidableNumberRange';
 import { FormidableText } from '@/models/Formidable/Field/FormidableText';
@@ -69,6 +82,7 @@ library.add(faCheckCircle, faTimesCircle);
 })
 export default class FormidableForm extends Mixins(FormMixin) {
     private getField(field: FormidableField<any>): VueConstructor<Vue> {
+        console.log('checking field', JSON.parse(JSON.stringify(field)));
         switch (field.fieldType) {
             case FieldType.Number:
                 return NumberField;
@@ -89,6 +103,10 @@ export default class FormidableForm extends Mixins(FormMixin) {
             case FieldType.File:
                 return FileField;
             default:
+                console.log(
+                    'invalid field: ',
+                    JSON.parse(JSON.stringify(field))
+                );
                 return InvalidField;
         }
     }
@@ -98,11 +116,13 @@ export default class FormidableForm extends Mixins(FormMixin) {
 <style lang="scss" scoped>
 .formidable-form {
     &.is-danger {
-        box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(255, 0, 0, 0.87);
+        box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1),
+            0 0 0 1px rgba(255, 0, 0, 0.87);
     }
 
     &.is-success {
-        box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(40, 255, 0, 0.92);
+        box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1),
+            0 0 0 1px rgba(40, 255, 0, 0.92);
     }
 }
 $transition: 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);

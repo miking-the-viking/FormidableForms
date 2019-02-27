@@ -67,11 +67,33 @@ export enum FormType {
     Wizard = 'wizard'
 }
 
+export type ExtractedFieldType<T> = T extends IFormidableTextProps
+    ? IFormidableTextProps
+    : T extends IFormidableNumberProps
+        ? IFormidableNumberProps
+        : T extends IFormidableTextareaProps
+            ? IFormidableTextareaProps
+            : T extends IFormidableLinkProps
+                ? IFormidableLinkProps
+                : T extends IFormidableEmailProps
+                    ? IFormidableEmailProps
+                    : T extends IFormidablePasswordProps
+                        ? IFormidablePasswordProps
+                        : T extends IFormidableNumberRangeProps
+                            ? IFormidableNumberRangeProps
+                            : T extends IFormidableDateProps
+                                ? IFormidableDateProps
+                                : T extends IFormidableFileProps
+                                    ? IFormidableFileProps
+                                    : never;
+
+export type FormidableFieldsArray = Array<ExtractedFieldType<FieldConfigTypes>>;
+
 /**
  * Formidable Form definition
  */
 export abstract class FormidableForm {
-    public formType!: FormType;
+    public abstract formType: FormType;
 
     /**
      * fields of the form
@@ -96,7 +118,8 @@ export abstract class FormidableForm {
             ]
         }
     })
-    public fields!: FieldConfigTypes[];
+    public fields!: FormidableFieldsArray;
+    // public fields!: FieldConfigTypes[];
 
     /**
      * Submit action for the form, optional or null if retrieving the values and submitting by another means.
