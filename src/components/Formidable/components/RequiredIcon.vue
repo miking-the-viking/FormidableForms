@@ -19,28 +19,28 @@ library.add(faCheckCircle, faTimesCircle, faPlayCircle);
 
 @Component
 export default class RequiredIcon extends Vue {
-	@Prop({ default: false }) private readonly required!: boolean;
-	@Prop({ required: true }) private readonly valueIsSubmittable!: boolean;
-	@Prop({ default: () => [] }) private readonly validationErrors!: ValidationError[];
+    @Prop({ default: false }) private readonly required!: boolean;
+    @Prop({ required: true }) private readonly valueIsSubmittable!: boolean;
+    @Prop({ default: () => [] }) private readonly validationErrors!: ValidationError[];
 
-	get icon() {
-		if (this.valueIsSubmittable) {
-			return 'check-circle';
-		} else {
-			return 'times-circle';
-		}
-	}
+    get icon() {
+        if (this.valueIsSubmittable) {
+            return 'check-circle';
+        } else {
+            return 'times-circle';
+        }
+    }
 
-	get hasErrors() {
-		return this.validationErrors && this.validationErrors.length > 0;
-	}
+    get hasErrors() {
+        return this.validationErrors && this.validationErrors.length > 0;
+    }
 
-	get feedbackClass() {
-		return {
-			'is-success': this.valueIsSubmittable,
-			'is-danger': this.hasErrors
-		};
-	}
+    get feedbackClass() {
+        return {
+            'is-success': this.valueIsSubmittable,
+            'is-danger': this.hasErrors
+        };
+    }
 }
 </script>
 

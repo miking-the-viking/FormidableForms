@@ -31,18 +31,18 @@ import { FormidableFieldComponent} from '@/components/Formidable/FormidableField
 import { FormidableText } from '@/models/Formidable/Field/FormidableText';
 
 @Component({
-	components: {
-		FeedbackText,
-		RequiredIcon
-	}
+    components: {
+        FeedbackText,
+        RequiredIcon
+    }
 })
 export default class TextArea extends FormidableFieldComponent<FormidableText> {
-	get maxLength() {
-		return this.value.maxLength;
-	}
+    get maxLength() {
+        return this.value.maxLength;
+    }
 
-	get minLength() {
-		return this.value.minLength;
-	}
+    get minLength() {
+        return this.value.minLength;
+    }
 }
 </script>

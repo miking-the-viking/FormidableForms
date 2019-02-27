@@ -36,9 +36,17 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
+import {
+    Vue,
+    Component,
+    Prop
+} from 'vue-property-decorator';
 import { FormidableBasicForm } from '@/models/Formidable/Form/FormidableBasicForm';
-import { FieldType, IFormidableFieldProps, FormidableField } from '@/models/Formidable/Field/field.abstract';
+import {
+    FieldType,
+    IFormidableFieldProps,
+    FormidableField
+} from '@/models/Formidable/Field/field.abstract';
 import FormidableForm from '@/components/FormidableForm.vue';
 import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
 import { FormidableText } from '@/models/Formidable/Field/FormidableText';
@@ -47,29 +55,29 @@ import formConfig from '@/views/forms/BasicDoc/BasicDocForm';
 import simpleRegistrationFormConfig from '@/views/forms/BasicDoc/SimpleRegistrationForm';
 
 @Component({
-	components: {
-		FormidableForm,
-		CollapsibleArea
-	}
+    components: {
+        FormidableForm,
+        CollapsibleArea
+    }
 })
 export default class BasicDoc extends Vue {
-	private form = {
-		...formConfig,
-		submit: this.submitForm
-	};
+    private form = {
+        ...formConfig,
+        submit: this.submitForm
+    };
 
-	private simpleRegistrationForm = {
-		...simpleRegistrationFormConfig,
-		submit: this.submitRegistrationForm
-	};
+    private simpleRegistrationForm = {
+        ...simpleRegistrationFormConfig,
+        submit: this.submitRegistrationForm
+    };
 
-	private submitForm() {
-		// console.log('submitting form', this.form);
-	}
+    private submitForm() {
+        // console.log('submitting form', this.form);
+    }
 
-	private submitRegistrationForm() {
-		// console.log('submitting form', this.form);
-	}
+    private submitRegistrationForm() {
+        // console.log('submitting form', this.form);
+    }
 }
 </script>
 

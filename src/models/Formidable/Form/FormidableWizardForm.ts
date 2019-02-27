@@ -1,26 +1,18 @@
-import { FormidableTextarea } from './../Field/FormidableTextarea';
 /**
  * Wizard implementation of Formidable Form
  */
 import {
-	FormidableForm
+    FormidableForm,
+    FormType
 } from '@/models/Formidable/Form/form.abstract';
-import {
-	IsDefined,
-	ValidateNested
-} from 'class-validator';
-import {
-	Type
-} from 'class-transformer';
-import {
-	FormidableField
-} from '../Field/field.abstract';
-import { FormidableText } from '../Field/FormidableText';
-import { FormidableNumber } from '../Field/FormidableNumber';
+import { IsDefined, Equals } from 'class-validator';
 
 /**
  * Formidable Wizard Definition
  * The Wizard provides a multi step-guided form
  */
 export class FormidableWizardForm extends FormidableForm {
+    @IsDefined()
+    @Equals(FormType.Wizard)
+    public formType: FormType.Basic = FormType.Basic;
 }

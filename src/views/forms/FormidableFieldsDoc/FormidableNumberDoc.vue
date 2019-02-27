@@ -49,46 +49,46 @@ import { FieldType } from '@/models/Formidable/Field/field.abstract';
 import FormidableForm from '@/components/FormidableForm.vue';
 
 const BASIC_NUMBER_FIELD = {
-	fields: [
-		{
-			fieldType: FieldType.Number,
-			value: null,
-			label: 'Any number'
-		}
-	]
+    fields: [
+        {
+            fieldType: FieldType.Number,
+            value: null,
+            label: 'Any number'
+        }
+    ]
 };
 
 const MINMAX_NUMBER_FIELDS = {
-	fields: [
-		{
-			fieldType: FieldType.Number,
-			value: null,
-			label: 'Greater than or equal to the minimum of 4',
-			minimum: 4
-		},
-		{
-			fieldType: FieldType.Number,
-			value: null,
-			label: 'Less than or equal to the maximum of 4',
-			maximum: 4
-		},
-		{
-			fieldType: FieldType.Number,
-			value: null,
-			label: 'In between (inclusively) 3-8',
-			maximum: 8,
-			minimum: 3
-		}
-	]
+    fields: [
+        {
+            fieldType: FieldType.Number,
+            value: null,
+            label: 'Greater than or equal to the minimum of 4',
+            minimum: 4
+        },
+        {
+            fieldType: FieldType.Number,
+            value: null,
+            label: 'Less than or equal to the maximum of 4',
+            maximum: 4
+        },
+        {
+            fieldType: FieldType.Number,
+            value: null,
+            label: 'In between (inclusively) 3-8',
+            maximum: 8,
+            minimum: 3
+        }
+    ]
 };
 
 @Component({
-	components: {
-		FormidableForm
-	}
+    components: {
+        FormidableForm
+    }
 })
 export default class FormidableNumberDoc extends Vue {
-	private basicNumberFieldConfig = BASIC_NUMBER_FIELD;
-	private minmaxNumberFields = MINMAX_NUMBER_FIELDS;
+    private basicNumberFieldConfig = BASIC_NUMBER_FIELD;
+    private minmaxNumberFields = MINMAX_NUMBER_FIELDS;
 }
 </script>

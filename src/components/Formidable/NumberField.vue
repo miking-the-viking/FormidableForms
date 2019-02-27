@@ -27,32 +27,34 @@ import { FormidableField } from '@/models/Formidable/Field/field.abstract';
 import { ValidationError } from 'class-validator';
 import FeedbackText from '@/components/Formidable/components/FeedbackText.vue';
 import RequiredIcon from '@/components/Formidable/components/RequiredIcon.vue';
-import { FormidableFieldComponent} from '@/components/Formidable/FormidableFieldComponent.abstract';
+import { FormidableFieldComponent } from '@/components/Formidable/FormidableFieldComponent.abstract';
 import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
 
 @Component({
-	components: {
-		FeedbackText,
-		RequiredIcon
-	}
+    components: {
+        FeedbackText,
+        RequiredIcon
+    }
 })
-export default class NumberField extends FormidableFieldComponent<FormidableNumber> {
-	get min() {
-		return this.value.minimum;
-	}
+export default class NumberField extends FormidableFieldComponent<
+    FormidableNumber
+> {
+    get min() {
+        return this.value.minimum;
+    }
 
-	get max() {
-		return this.value.maximum;
-	}
+    get max() {
+        return this.value.maximum;
+    }
 }
 </script>
 
 <style scoped lang="scss">
 $transition: 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 input {
-	transition : border $transition;
-	.help {
-		transition: color $transition;
-	}
+    transition: border $transition;
+    .help {
+        transition: color $transition;
+    }
 }
 </style>

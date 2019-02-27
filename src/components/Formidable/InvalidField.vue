@@ -10,6 +10,6 @@ import { FieldType, FormidableField } from '@/models/Formidable/Field/field.abst
 
 @Component
 export default class InvalidField extends Vue {
-	@Prop({ required: true }) private value!: FormidableField<any>;
+    @Prop({ required: true }) private value!: FormidableField<any>;
 }
 </script>
