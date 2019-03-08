@@ -1,0 +1,16 @@
+{
+    "steps": [
+        {
+            "name": "gcr.io/cloud-builders/yarn",
+            "args": ["install"]
+        },
+        {
+            "name": "gcr.io/cloud-builders/yarn",
+            "args": ["test:unit"]
+        },
+        {
+            "name": "gcr.io/cloud-builders/yarn",
+            "args": ["build"]
+        }
+    ]
+}
