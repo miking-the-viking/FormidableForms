@@ -1,7 +1,7 @@
 <template lang="pug">
-.field
+md-field
 
-	label.label(v-if="value.label") {{value.label}}
+	label(v-if="value.label") {{value.label}}
 
 	.columns
 

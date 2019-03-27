@@ -1,45 +1,39 @@
 <template lang="pug">
 #fields-text
-	h3.is-size-3 Formidable Text Field Doc
 
-	p The Formidable Text Field is invoked by setting the 
-		code fieldType
-		| to 
-		code FieldType.Text
-		| . This enables some Text-specific additional properties like
-		code minLength
-		| and 
-		code maxLength
-		|.
-	
-	h4.is-size-4 Basic Config
+    p The Formidable Text Field is invoked by setting the 
+        code fieldType 
+        | to 
+        code FieldType.Text 
+        | . This enables some Text-specific additional properties like
+        code minLength 
+        | and 
+        code maxLength 
+        |.
 
-	p The basic configuration for a Formidable Text involves 
-		code value
-		|, 
-		code fieldType
-		|, and the optional
-		code label:
+    h3.md-display-2 Basic Config
 
-	.columns.is-mobile
-		.column
-			pre(v-highlightjs="JSON.stringify(basicTextFormConfig, null, 1)")
-				code(class="javascript")
-		.column
-			FormidableForm(:form="basicTextFormConfig")
+    p The basic configuration for a Formidable Text involves 
+        code value 
+        |, 
+        code fieldType 
+        |, and the optional
+        code label 
+        | :
 
-	p More advanced configurations of the Formidable Text involve using the additional properties 
-		code minLength
-		|, 
-		code maxLength
-		| or either.
+        pre(v-highlightjs="JSON.stringify(basicTextFormConfig, null, 1)")
+            code(class="javascript")
+        FormidableForm(:form="basicTextFormConfig")
 
-	.columns
-		.column
-			pre(v-highlightjs="JSON.stringify(minMaxTextFormConfig, null, 1)")
-				code(class="javascript")
-		.column
-			FormidableForm(:form="minMaxTextFormConfig")
+    p More advanced configurations of the Formidable Text involve using the additional properties 
+        code minLength 
+        |, 
+        code maxLength 
+        | or either.
+
+        pre(v-highlightjs="JSON.stringify(minMaxTextFormConfig, null, 1)")
+            code(class="javascript")
+        FormidableForm(:form="minMaxTextFormConfig")
 </template>
 
 <script lang="ts">

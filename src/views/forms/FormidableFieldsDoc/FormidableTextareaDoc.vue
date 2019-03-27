@@ -1,45 +1,38 @@
 <template lang="pug">
 #fields-textarea
-	h3.is-size-3 Formidable Textarea Field Doc
 
-	p The Formidable Textarea Field is invoked by setting the 
-		code fieldType
-		| to 
-		code FieldType.Textarea
-		| . This enables some Textarea-specific additional properties like
-		code minLength
-		| and 
-		code maxLength
-		|.
-	
-	h4.is-size-4 Basic Config
+    p The Formidable Textarea Field is invoked by setting the 
+        code fieldType 
+        | to 
+        code FieldType.Textarea 
+        | . This enables some Textarea-specific additional properties like
+        code minLength 
+        | and 
+        code maxLength 
+        |.
 
-	p The basic configuration for a Formidable Textarea involves 
-		code value
-		|, 
-		code fieldType
-		|, and the optional
-		code label:
+    h3.md-display-2 Basic Config
 
-	.columns.is-mobile
-		.column
-			pre(v-highlightjs="JSON.stringify(basicTextareaFormConfig, null, 1)")
-				code(class="javascript")
-		.column
-			FormidableForm(:form="basicTextareaFormConfig")
+    p The basic configuration for a Formidable Textarea involves 
+        code value
+        |, 
+        code fieldType
+        |, and the optional
+        code label:
 
-	p More advanced configurations of the Formidable Textarea involve using the additional properties 
-		code minLength
-		|, 
-		code maxLength
-		| or either.
+        pre(v-highlightjs="JSON.stringify(basicTextareaFormConfig, null, 1)")
+            code(class="javascript")
+        FormidableForm(:form="basicTextareaFormConfig")
 
-	.columns
-		.column
-			pre(v-highlightjs="JSON.stringify(minMaxTextareaFormConfig, null, 1)")
-				code(class="javascript")
-		.column
-			FormidableForm(:form="minMaxTextareaFormConfig")
+    p More advanced configurations of the Formidable Textarea involve using the additional properties 
+        code minLength 
+        |, 
+        code maxLength 
+        | or either.
+
+        pre(v-highlightjs="JSON.stringify(minMaxTextareaFormConfig, null, 1)")
+            code(class="javascript")
+        FormidableForm(:form="minMaxTextareaFormConfig")
 </template>
 
 <script lang="ts">

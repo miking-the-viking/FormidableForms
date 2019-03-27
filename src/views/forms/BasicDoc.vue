@@ -1,37 +1,28 @@
 <template lang="pug">
 #forms
+    h1.md-display-2 Formidable Basic Form
+    h2.md-display-1 Straightforward, simple.
 
-	h1.title Formidable Basic Form
-	h2.subtitle Straightforward, simple.
+    p The Formidable Basic Form is as basic as forms come. They are setup simply using a configuration json adhering to the
+    code FormidableBasicForm
+        | class. That is an array of
+    code FormidableField
+        | configurations.
 
-	.columns.is-desktop
+    md-divider
 
-		.column
-			p The Formidable Basic Form is as basic as forms come. They are setup simply using a configuration json adhering to the
-				code FormidableBasicForm
-				| class. That is an array of
-				code FormidableField
-				| configurations.
+    h3.md-display-2 Basic Sample	
+    
+    p The form below was setup using the following
+    
+    code FormidableBasicForm
+        | config:
 
-		hr.is-hidden-desktop
+    CollapsibleArea
+        pre(v-highlightjs="JSON.stringify(form, null, 1)")
+            code(class="javascript")
 
-		.column
-			h3.is-size-6 Basic Sample	
-			p.lead The form below was setup using the following
-				code FormidableBasicForm
-				| config:
-
-			CollapsibleArea
-				pre(v-highlightjs="JSON.stringify(form, null, 1)")
-					code(class="javascript")
-
-	FormidableForm(:form="form")
-
-	//- h3.is-size-3 Samples
-
-	//- h4.is-size-4 Simple Registration
-
-	//- FormidableForm(:form="simpleRegistrationForm")
+    FormidableForm(:form="form")
 
 </template>
 

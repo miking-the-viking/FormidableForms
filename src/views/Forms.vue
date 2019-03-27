@@ -1,14 +1,18 @@
 <template lang="pug">
 #forms
-    h1 Formidable Forms
-    h2 Basic Form Sample test
+    h1.md-display-3 Formidable Forms
+    h2.md-display-2 Basic Form Sample test
     FormidableForm(:form="form")
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { FormidableBasicForm } from '@/models/Formidable/Form/FormidableBasicForm';
-import { FieldType, IFormidableFieldProps, FormidableField } from '@/models/Formidable/Field/field.abstract';
+import {
+    FieldType,
+    IFormidableFieldProps,
+    FormidableField
+} from '@/models/Formidable/Field/field.abstract';
 import FormidableForm from '@/components/FormidableForm.vue';
 import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
 import { FormidableText } from '@/models/Formidable/Field/FormidableText';
