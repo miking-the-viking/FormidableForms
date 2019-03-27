@@ -1,45 +1,45 @@
 <template lang="pug">
 #fields-email
-	h3.is-size-3 Formidable Email Field Doc
 
-	p The Formidable Email Field is invoked by setting the 
-		code fieldType
-		| to 
-		code FieldType.Email
-		| . This enables some Email-specific additional properties like
-		code minLength
-		| and 
-		code maxLength
-		|.
-	
-	h4.is-size-4 Basic Config
+    p The Formidable Email Field is invoked by setting the 
+        code fieldType 
+        | to 
+        code FieldType.Email 
+        | . This enables some Email-specific additional properties like
+        code minLength 
+        | and 
+        code maxLength 
+        |.
 
-	p The basic configuration for a Formidable Email involves 
-		code value
-		|, 
-		code fieldType
-		|, and the optional
-		code label:
+    h3.md-display-2 Basic Config
 
-	.columns.is-mobile
-		.column
-			pre(v-highlightjs="JSON.stringify(basicEmailFormConfig, null, 1)")
-				code(class="javascript")
-		.column
-			FormidableForm(:form="basicEmailFormConfig")
+    .md-layout
+        .md-layout-item
+            p The basic configuration for a Formidable Email involves 
+                code value
+                |, 
+                code fieldType
+                |, and the optional 
+                code label 
+                | :
 
-	p More advanced configurations of the Formidable Email involve using the additional properties 
-		code minLength
-		|, 
-		code maxLength
-		| or either.
+            pre(v-highlightjs="JSON.stringify(basicEmailFormConfig, null, 1)")
+                code(class="javascript")
+        .md-layout-item
+            FormidableForm(:form="basicEmailFormConfig")
 
-	.columns
-		.column
-			pre(v-highlightjs="JSON.stringify(minMaxEmailFormConfig, null, 1)")
-				code(class="javascript")
-		.column
-			FormidableForm(:form="minMaxEmailFormConfig")
+    .md-layout
+        .md-layout-item
+            p More advanced configurations of the Formidable Email involve using the additional properties 
+                code minLength
+                |, 
+                code maxLength 
+                | or either.
+
+            pre(v-highlightjs="JSON.stringify(minMaxEmailFormConfig, null, 1)")
+                code(class="javascript")
+        .md-layout-item
+            FormidableForm(:form="minMaxEmailFormConfig")
 </template>
 
 <script lang="ts">

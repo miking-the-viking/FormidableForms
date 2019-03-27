@@ -1,45 +1,39 @@
 <template lang="pug">
 #fields-file
-	h3.is-size-3 Formidable File Field Doc
 
-	p The Formidable File Field is invoked by setting the 
-		code fieldType
-		| to 
-		code FieldType.File
-		| . This enables some File-specific additional properties like
-		code minLength
-		| and 
-		code maxLength
-		|.
-	
-	h4.is-size-4 Basic Config
+    p The Formidable File Field is invoked by setting the 
+        code fieldType 
+        | to 
+        code FieldType.File 
+        | . This enables some File-specific additional properties like
+        code minLength 
+        | and 
+        code maxLength 
+        |.
 
-	p The basic configuration for a Formidable File involves 
-		code value
-		|, 
-		code fieldType
-		|, and the optional
-		code label:
+    h3.md-display-2 Basic Config
 
-	.columns.is-mobile
-		.column
-			pre(v-highlightjs="JSON.stringify(basicFileFormConfig, null, 1)")
-				code(class="javascript")
-		.column
-			FormidableForm(:form="basicFileFormConfig")
+    p The basic configuration for a Formidable File involves 
+        code value 
+        |, 
+        code fieldType 
+        |, and the optional
+        code label 
+        | :
 
-	p More advanced configurations of the Formidable File involve using the additional properties 
-		code minLength
-		|, 
-		code maxLength
-		| or either.
+        pre(v-highlightjs="JSON.stringify(basicFileFormConfig, null, 1)")
+            code(class="javascript")
+        FormidableForm(:form="basicFileFormConfig")
 
-	.columns
-		.column
-			pre(v-highlightjs="JSON.stringify(restrictedFileFormConfig, null, 1)")
-				code(class="javascript")
-		.column
-			FormidableForm(:form="restrictedFileFormConfig")
+    p More advanced configurations of the Formidable File involve using the additional properties 
+        code minLength 
+        |, 
+        code maxLength 
+        | or either.
+
+        pre(v-highlightjs="JSON.stringify(restrictedFileFormConfig, null, 1)")
+            code(class="javascript")
+        FormidableForm(:form="restrictedFileFormConfig")
 </template>
 
 <script lang="ts">

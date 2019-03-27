@@ -5,33 +5,43 @@
 import { transformAndValidate } from 'class-transformer-validator';
 import { FieldType } from '@/models/Formidable/Field/field.abstract';
 import runFieldTests, { errorArrayHas } from '../field.abstract';
-import { FormidableText, IFormidableTextProps } from '@/models/Formidable/Field/FormidableText';
+import {
+    FormidableText,
+    IFormidableTextProps
+} from '@/models/Formidable/Field/FormidableText';
 import textFieldComponentTests from './text.spec.component';
 
 describe('Formidable Text field', () => {
-
     describe('Core Field Tests', () => {
         runFieldTests(FormidableText);
         // tslint:disable-next-line:no-unused-expression
-        textFieldComponentTests;
+        // textFieldComponentTests;
     });
 
     describe('Initialization & Validation', () => {
-
         describe('Props', () => {
-
             describe('fieldType', () => {
                 xit('Only allows the text FieldType', async () => {
                     try {
-                        await transformAndValidate(FormidableText, {fieldfieldType: FieldType.Number });
-                        fail(`Should have failed on an invalid Field Type ${FieldType.Number}`);
+                        await transformAndValidate(FormidableText, {
+                            fieldfieldType: FieldType.Number
+                        });
+                        fail(
+                            `Should have failed on an invalid Field Type ${
+                                FieldType.Number
+                            }`
+                        );
                     } catch (e) {
                         expect(errorArrayHas('fieldType', e)).toBeTruthy();
                     }
-                    Object.keys(FieldType).map(async (val) => {
+                    Object.keys(FieldType).map(async val => {
                         try {
-                            await transformAndValidate(FormidableText, {fieldfieldType: val });
-                            fail(`Should have failed on an invalid Field Type ${val}`);
+                            await transformAndValidate(FormidableText, {
+                                fieldfieldType: val
+                            });
+                            fail(
+                                `Should have failed on an invalid Field Type ${val}`
+                            );
                         } catch (e) {
                             expect(errorArrayHas('fieldType', e)).toBeTruthy();
                         }
@@ -40,7 +50,6 @@ describe('Formidable Text field', () => {
             });
 
             describe('value', () => {
-
                 it('Can initialize a FormidableText with valid basic props and a null value', async () => {
                     const validText: IFormidableTextProps = {
                         fieldType: FieldType.Text,
@@ -64,7 +73,9 @@ describe('Formidable Text field', () => {
                     };
                     try {
                         await transformAndValidate(FormidableText, invalidText);
-                        fail(`Did not fail on a numeric value for a text field`);
+                        fail(
+                            `Did not fail on a numeric value for a text field`
+                        );
                     } catch (e) {
                         expect(e).toBeInstanceOf(Array);
                         expect(errorArrayHas('value', e)).toBeTruthy();
@@ -112,7 +123,6 @@ describe('Formidable Text field', () => {
             });
 
             describe('min and max length restrictions', () => {
-
                 it('are optional', async () => {
                     const validPayloads: IFormidableTextProps[] = [
                         {
@@ -137,9 +147,11 @@ describe('Formidable Text field', () => {
                         }
                     ];
 
-                    Promise.all(validPayloads.map((val) => {
-                        transformAndValidate(FormidableText, val);
-                    })).catch((e) => {
+                    Promise.all(
+                        validPayloads.map(val => {
+                            transformAndValidate(FormidableText, val);
+                        })
+                    ).catch(e => {
                         expect(!errorArrayHas('minLength', e)).toBeTruthy();
                         expect(!errorArrayHas('maxLength', e)).toBeTruthy();
                     });
@@ -174,13 +186,22 @@ describe('Formidable Text field', () => {
                     ];
 
                     // tslint:disable-next-line:forin
-                    invalidMinLength.forEach((minLengthConfig) => {
+                    invalidMinLength.forEach(minLengthConfig => {
                         it(minLengthConfig.it, async () => {
                             try {
-                                await transformAndValidate(FormidableText, minLengthConfig.data);
-                                fail(`Did not raise an error with min length ${minLengthConfig.data.minLength}`);
+                                await transformAndValidate(
+                                    FormidableText,
+                                    minLengthConfig.data
+                                );
+                                fail(
+                                    `Did not raise an error with min length ${
+                                        minLengthConfig.data.minLength
+                                    }`
+                                );
                             } catch (e) {
-                                expect(errorArrayHas('minLength', e)).toBeTruthy();
+                                expect(
+                                    errorArrayHas('minLength', e)
+                                ).toBeTruthy();
                             }
                         });
                     });
@@ -213,42 +234,59 @@ describe('Formidable Text field', () => {
                     ];
 
                     // tslint:disable-next-line:forin
-                    invalidMaxLength.forEach((maxLengthConfig) => {
+                    invalidMaxLength.forEach(maxLengthConfig => {
                         it(maxLengthConfig.it, async () => {
                             try {
-                                await transformAndValidate(FormidableText, maxLengthConfig.data);
-                                fail(`Did not raise an error with maxLength ${maxLengthConfig.data.maxLength}`);
+                                await transformAndValidate(
+                                    FormidableText,
+                                    maxLengthConfig.data
+                                );
+                                fail(
+                                    `Did not raise an error with maxLength ${
+                                        maxLengthConfig.data.maxLength
+                                    }`
+                                );
                             } catch (e) {
-                                expect(errorArrayHas('maxLength', e)).toBeTruthy();
+                                expect(
+                                    errorArrayHas('maxLength', e)
+                                ).toBeTruthy();
                             }
                         });
                     });
-
                 });
 
                 it('fails when value is less than the provided minLength', async () => {
                     try {
-                        const result = await transformAndValidate(FormidableText, {
-                            fieldType: FieldType.Text,
-                            value: 'a',
-                            minLength: 2
-                        });
-                        fail(`should have failed with a value whose length is less than the specified minLength`);
+                        const result = await transformAndValidate(
+                            FormidableText,
+                            {
+                                fieldType: FieldType.Text,
+                                value: 'a',
+                                minLength: 2
+                            }
+                        );
+                        fail(
+                            `should have failed with a value whose length is less than the specified minLength`
+                        );
                     } catch (e) {
                         expect(e).toBeInstanceOf(Array);
                         expect(errorArrayHas('value', e)).toBeTruthy();
                     }
                 });
 
-
                 it('fails when value is greater than the provided maxLength', async () => {
                     try {
-                        const result = await transformAndValidate(FormidableText, {
-                            fieldType: FieldType.Text,
-                            value: 'abbv',
-                            maxLength: 2
-                        });
-                        fail(`should have failed with a value whose length is greater than the specified maxLength`);
+                        const result = await transformAndValidate(
+                            FormidableText,
+                            {
+                                fieldType: FieldType.Text,
+                                value: 'abbv',
+                                maxLength: 2
+                            }
+                        );
+                        fail(
+                            `should have failed with a value whose length is greater than the specified maxLength`
+                        );
                     } catch (e) {
                         expect(e).toBeInstanceOf(Array);
                         expect(errorArrayHas('value', e)).toBeTruthy();
@@ -257,5 +295,4 @@ describe('Formidable Text field', () => {
             });
         });
     });
-
 });
