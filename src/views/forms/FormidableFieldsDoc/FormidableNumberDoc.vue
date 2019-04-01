@@ -1,45 +1,39 @@
 <template lang="pug">
 #number-field
-	h3.is-size-3 Formidable Number Field Doc
 
-	p The Formidable Number Field is invoked by setting the 
-		code fieldType
-		| to 
-		code FieldType.Number
-		| . This enables some number-specific additional properties like
-		code minimum
-		| and 
-		code maximum
-		|.
-	
-	h4.is-size-4 Basic Config
+    p The Formidable Number Field is invoked by setting the 
+        code fieldType 
+        | to 
+        code FieldType.Number 
+        | . This enables some number-specific additional properties like
+        code minimum 
+        | and 
+        code maximum 
+        |.
 
-	p The basic configuration for a Formidable Number involves 
-		code value
-		|, 
-		code fieldType
-		|, and the optional
-		code label:
+    h3.md-display-2 Basic Config
 
-	.columns.is-mobile
-		.column
-			pre(v-highlightjs="JSON.stringify(basicNumberFieldConfig, null, 1)")
-				code(class="javascript")
-		.column
-			FormidableForm(:form="basicNumberFieldConfig")
+    p The basic configuration for a Formidable Number involves 
+        code value 
+        |, 
+        code fieldType 
+        |, and the optional
+        code label 
+        | :
 
-	p More advanced configurations of the Formidable Number involve using the additional properties 
-		code minimum
-		|, 
-		code maximum
-		| or either.
+    pre(v-highlightjs="JSON.stringify(basicNumberFieldConfig, null, 1)")
+        code(class="javascript")
+    FormidableForm(:form="basicNumberFieldConfig")
 
-	.columns
-		.column
-			pre(v-highlightjs="JSON.stringify(minmaxNumberFields, null, 1)")
-				code(class="javascript")
-		.column
-			FormidableForm(:form="minmaxNumberFields")
+    p More advanced configurations of the Formidable Number involve using the additional properties 
+        code minimum 
+        |, 
+        code maximum 
+        | or either.
+
+        pre(v-highlightjs="JSON.stringify(minmaxNumberFields, null, 1)")
+            code(class="javascript")
+        FormidableForm(:form="minmaxNumberFields")
 
 </template>
 

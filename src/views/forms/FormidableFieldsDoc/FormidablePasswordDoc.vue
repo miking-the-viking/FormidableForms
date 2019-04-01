@@ -1,45 +1,39 @@
 <template lang="pug">
 #fields-password
-	h3.is-size-3 Formidable Password Field Doc
 
-	p The Formidable Password Field is invoked by setting the 
-		code fieldType
-		| to 
-		code FieldType.Password
-		| . This enables some Password-specific additional properties like
-		code minLength
-		| and 
-		code maxLength
-		|.
-	
-	h4.is-size-4 Basic Config
+    p The Formidable Password Field is invoked by setting the 
+        code fieldType 
+        | to 
+        code FieldType.Password 
+        | . This enables some Password-specific additional properties like
+        code minLength 
+        | and 
+        code maxLength 
+        |.
 
-	p The basic configuration for a Formidable Password involves 
-		code value
-		|, 
-		code fieldType
-		|, and the optional
-		code label:
+    h3.md-display-2 Basic Config
 
-	.columns.is-mobile
-		.column
-			pre(v-highlightjs="JSON.stringify(basicPasswordFormConfig, null, 1)")
-				code(class="javascript")
-		.column
-			FormidableForm(:form="basicPasswordFormConfig")
+    p The basic configuration for a Formidable Password involves 
+        code value 
+        |, 
+        code fieldType 
+        |, and the optional
+        code label 
+        | :
 
-	p More advanced configurations of the Formidable Password involve using the additional properties 
-		code minLength
-		|, 
-		code maxLength
-		| or either.
+        pre(v-highlightjs="JSON.stringify(basicPasswordFormConfig, null, 1)")
+            code(class="javascript")
+        FormidableForm(:form="basicPasswordFormConfig")
 
-	.columns
-		.column
-			pre(v-highlightjs="JSON.stringify(minMaxPasswordFormConfig, null, 1)")
-				code(class="javascript")
-		.column
-			FormidableForm(:form="minMaxPasswordFormConfig")
+    p More advanced configurations of the Formidable Password involve using the additional properties 
+        code minLength 
+        |, 
+        code maxLength 
+        | or either.
+
+        pre(v-highlightjs="JSON.stringify(minMaxPasswordFormConfig, null, 1)")
+            code(class="javascript")
+        FormidableForm(:form="minMaxPasswordFormConfig")
 </template>
 
 <script lang="ts">

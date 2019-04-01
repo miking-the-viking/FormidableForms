@@ -1,55 +1,49 @@
 <template lang="pug">
 #fields-link
-	h3.is-size-3 Formidable Link Field Doc
 
-	p The Formidable Link Field is invoked by setting the 
-		code fieldType
-		| to 
-		code FieldType.Link
-		| . This enables some Textarea-specific additional required and optional properties like
-		code href
-		|, 
-		code text
-		|, 
-		code minLinkHrefLength
-		|, and more.
-	
-	h4.is-size-4 Basic Config
+    p The Formidable Link Field is invoked by setting the 
+        code fieldType 
+        | to 
+        code FieldType.Link 
+        | . This enables some Textarea-specific additional required and optional properties like
+        code href 
+        |, 
+        code text 
+        |, 
+        code minLinkHrefLength 
+        |, and more.
 
-	p The basic configuration for a Formidable Link involves 
-		code value
-		| (an 
-		code ILnk
-		|), 
-		code fieldType
-		|, and the optional
-		code label:
+    m3.md-display-2 Basic Config
 
-	.columns.is-mobile
-		.column
-			pre(v-highlightjs="JSON.stringify(basicLinkFormConfig, null, 1)")
-				code(class="javascript")
-		.column
-			FormidableForm(:form="basicLinkFormConfig")
+    p The basic configuration for a Formidable Link involves 
+        code value 
+        | (an 
+        code ILink 
+        |), 
+        code fieldType 
+        |, and the optional
+        code label 
+        | :
 
-	p More advanced configurations of the Formidable Link involve using the additional properties 
-		code maxLinkTextLength
-		|, 
-		code minLinkTextLength
-		|, 
-		code minLinkTextLength
-		|, 
-		code maxLinkHrefLength
-		|, 
-		code minLinkHrefLength
-		|.
+        pre(v-highlightjs="JSON.stringify(basicLinkFormConfig, null, 1)")
+            code(class="javascript")
+        FormidableForm(:form="basicLinkFormConfig")
 
-	.columns
-		.column
-			pre(v-highlightjs="JSON.stringify(minMaxLinkFormConfig, null, 1)")
-				code(class="javascript")
-		.column
-			FormidableForm(:form="minMaxLinkFormConfig")
+    p More advanced configurations of the Formidable Link involve using the additional properties 
+        code maxLinkTextLength 
+        |, 
+        code minLinkTextLength 
+        |, 
+        code minLinkTextLength 
+        |, 
+        code maxLinkHrefLength 
+        |, 
+        code minLinkHrefLength 
+        |.
+
+        pre(v-highlightjs="JSON.stringify(minMaxLinkFormConfig, null, 1)")
+            code(class="javascript")
+        FormidableForm(:form="minMaxLinkFormConfig")
 </template>
 
 <script lang="ts">

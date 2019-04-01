@@ -1,0 +1,114 @@
+@import "~bulma";
+@import "./palette.scss";
+
+
+body, .title, .subtitle, a, p, li, .box, .label {
+    background: $color1;
+    color: $color4;
+}
+
+a:hover {
+    color: $color5;
+}
+
+code {
+    background: $color2;
+    color: $color4;
+}
+
+p {
+    margin-bottom: 0.75rem;
+}
+
+/* Tomorrow Night Blue Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+$tomorrow-comment: #7285b7;
+$tomorrow-red:#ff9da4;
+$tomorrow-yellow:#ffeead;
+$tomorrow-aqua:#99ffff;
+$tomorrow-blue:#bbdaff;
+$tomorrow-purple:#ebbbff;
+$tomorrow-green:#d1f1a9;
+$tomorrow-orange:#ffc58f;
+
+pre {
+    padding: 0;
+    
+    code {
+        display: block;
+        background: #002451;
+        color: white;
+        font-family: Menlo, Monaco, Consolas, monospace;
+        line-height: 1.5;
+        border: 1px solid #ccc;
+        padding: 10px;
+        width:100%;
+    }
+
+    .title {
+        color: $tomorrow-comment
+    }
+
+    .css .hexcolor {
+        color: $tomorrow-aqua;
+    }
+
+
+    .keyword,
+    .javascript .function {
+        color: $tomorrow-purple;
+    }
+
+    .hljs-class,
+    .hljs-ruby .class .title,
+    .hljs-css .rules .attribute {
+        color: $tomorrow-yellow;
+    }
+    
+    .hljs-string,
+    .hljs-value,
+    .hljs-inheritance,
+    .hljs-header,
+    .ruby .symbol,
+    .xml .cdata {
+        color: $tomorrow-green;
+    }
+
+    .hljs-number,
+    .hljs-preprocessor,
+    .hljs-built_in,
+    .hljs-literal,
+    .hljs-params,
+    .hljs-constant {
+        color: $tomorrow-orange;
+    }
+
+    .hljs-variable,
+    .hljs-attribute,
+    .hljs-tag,
+    .hljs-regexp,
+    .ruby .constant,
+    .xml .tag .title,
+    .xml .pi,
+    .xml .doctype,
+    .html .doctype,
+    .css .id,
+    .css .class,
+    .css .pseudo {
+        color: $tomorrow-red;
+    }
+    
+    .function,
+    .python .decorator,
+    .python .title,
+    .ruby .function .title,
+    .ruby .title .keyword,
+    .perl .sub,
+    .javascript .title,
+    .coffeescript .title {
+        color: $tomorrow-blue;
+    }
+
+}

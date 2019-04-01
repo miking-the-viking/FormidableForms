@@ -1,23 +1,29 @@
 <template lang="pug">
-#app.container
-	Navbar
-	router-view.section
+    #app.page-container.md-layout
+        LeftNavLayout(:navRouting="navRouting" :title="$route.meta.title")
+            router-view
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import Navbar from '@/components/Page/Navbar.vue';
+import LeftNavLayout from '@/components/Layouts/LeftNavLayout.vue';
+import routes from '@/routing/routes';
+import { INavMapping } from '@/routing/INavMapping.interface';
+import { AppStateModule } from '@/store/App.store';
+import store from '@/store';
 
 @Component({
     components: {
-        Navbar
+        LeftNavLayout
     }
 })
 export default class App extends Vue {
+    get test() {
+        return AppStateModule.navExpanded;
+    }
+
+    get navRouting() {
+        return (this.$router as any).options.routes;
+    }
 }
 </script>
-
-
-<style lang="scss" scoped>
-
-</style>
