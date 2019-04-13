@@ -1,11 +1,13 @@
 import { shallowMount } from '@vue/test-utils';
 import TextField from '@/components/Formidable/TextField.vue';
 import { FieldType } from '@/models/Formidable/Field/field.abstract';
-import { FormidableText, IFormidableTextProps } from '@/models/Formidable/Field/FormidableText';
-import { errorArrayHas } from '@/../tests/unit/field/field.abstract';
+import {
+    FormidableText,
+    IFormidableTextProps
+} from '@/models/Formidable/Field/FormidableText';
+import { errorArrayHas } from '@/models/Formidable/Field/field.abstract.spec.config';
 
 const textComponentTests = describe('TextField.vue', () => {
-
     describe('Invalid props should cause an error to be thrown', () => {
         xit('Fails when no value prop is provided', () => {
             try {
@@ -34,7 +36,9 @@ const textComponentTests = describe('TextField.vue', () => {
                         }
                     }
                 });
-                fail(`Did not throw an error when a non-FieldType.Text value prop type was provided`);
+                fail(
+                    `Did not throw an error when a non-FieldType.Text value prop type was provided`
+                );
             } catch (e) {
                 expect(errorArrayHas('fieldType', e)).toBeTruthy();
             }
@@ -51,7 +55,9 @@ const textComponentTests = describe('TextField.vue', () => {
                         validationErrors: 123
                     }
                 });
-                fail(`Did not throw an error when a non-array validationErrors prop type was provided`);
+                fail(
+                    `Did not throw an error when a non-array validationErrors prop type was provided`
+                );
             } catch (e) {
                 expect(errorArrayHas('validationErrors', e)).toBeTruthy();
             }
@@ -84,8 +90,6 @@ const textComponentTests = describe('TextField.vue', () => {
 
     // // assert the error has gone away
     // expect(wrapper.find('.error').exists()).toBe(false)
-
-
 });
 
 export default textComponentTests;

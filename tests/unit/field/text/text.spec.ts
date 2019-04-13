@@ -4,7 +4,9 @@
 // import { IFormidableNumberProps } from '@/models/Formidable/Field/FormidableNumber';
 import { transformAndValidate } from 'class-transformer-validator';
 import { FieldType } from '@/models/Formidable/Field/field.abstract';
-import runFieldTests, { errorArrayHas } from '../field.abstract';
+import runFieldTests, {
+    errorArrayHas
+} from '../../../../src/models/Formidable/Field/field.abstract.spec.config';
 import {
     FormidableText,
     IFormidableTextProps

@@ -75,30 +75,47 @@ export type FieldCtorType =
     | FormidableDate
     | FormidableFile;
 
-async function getInstance(f: FieldConfigType): Promise<FieldCtorType> {
-    let ctor;
+/**
+ * Function to return an Instance of the provided field
+ * @todo Test and validate this function
+ * @param f
+ */
+export async function getInstance(f: FieldConfigType): Promise<FieldCtorType> {
+    let ctor: new (...args: any[]) => FieldCtorType;
     switch (f.fieldType) {
         case FieldType.Number:
             ctor = FormidableNumber;
+            break;
         case FieldType.Text:
             ctor = FormidableText;
+            break;
         case FieldType.Textarea:
             ctor = FormidableTextarea;
+            break;
         case FieldType.Link:
             ctor = FormidableLink;
+            break;
         case FieldType.Email:
             ctor = FormidableEmail;
+            break;
         case FieldType.Password:
             ctor = FormidablePassword;
+            break;
         case FieldType.NumberRange:
             ctor = FormidableNumberRange;
+            break;
         case FieldType.Datetime:
             ctor = FormidableDate;
+            break;
         case FieldType.File:
             ctor = FormidableFile;
+            break;
         default:
-            throw new Error(`Invalid Formidable Field Type: ${f.fieldType}`);
+            throw new Error(
+                `Invalid Formidable Field Type: ${(f as any).fieldType}`
+            );
     }
+
     return await transformAndValidate(ctor, f);
 }
 

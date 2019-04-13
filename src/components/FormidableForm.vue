@@ -31,7 +31,7 @@ import {
     FormidableField
 } from '@/models/Formidable/Field/field.abstract';
 import {
-    FieldCtorTypes,
+    FieldCtorType,
     IFormidableFormProps
 } from '@/models/Formidable/Form/form.abstract';
 import {
@@ -108,7 +108,7 @@ export default class FormidableForm extends Vue {
 
     private async getFieldCtor(
         fieldConfig: IFormidableFieldProps<any>
-    ): Promise<FieldCtorTypes> {
+    ): Promise<FieldCtorType> {
         switch (fieldConfig.fieldType) {
             case FieldType.Number:
                 return await transformAndValidate(

@@ -3,7 +3,9 @@
  */
 import { transformAndValidate } from 'class-transformer-validator';
 import { FieldType } from '@/models/Formidable/Field/field.abstract';
-import runFieldTests, { errorArrayHas } from './field.abstract';
+import runFieldTests, {
+    errorArrayHas
+} from '../../../src/models/Formidable/Field/field.abstract.spec.config';
 import {
     FormidablePassword,
     IFormidablePasswordProps
@@ -129,10 +131,10 @@ describe('Formidable Password field', () => {
                     ];
 
                     Promise.all(
-                        validPayloads.map((val) => {
+                        validPayloads.map(val => {
                             transformAndValidate(FormidablePassword, val);
                         })
-                    ).catch((e) => {
+                    ).catch(e => {
                         expect(!errorArrayHas('minLength', e)).toBeTruthy();
                         expect(!errorArrayHas('maxLength', e)).toBeTruthy();
                     });
@@ -167,7 +169,7 @@ describe('Formidable Password field', () => {
                     ];
 
                     // tslint:disable-next-line:forin
-                    invalidMinLength.forEach((minLengthConfig) => {
+                    invalidMinLength.forEach(minLengthConfig => {
                         it(minLengthConfig.it, async () => {
                             try {
                                 await transformAndValidate(
@@ -215,7 +217,7 @@ describe('Formidable Password field', () => {
                     ];
 
                     // tslint:disable-next-line:forin
-                    invalidMaxLength.forEach((maxLengthConfig) => {
+                    invalidMaxLength.forEach(maxLengthConfig => {
                         it(maxLengthConfig.it, async () => {
                             try {
                                 await transformAndValidate(

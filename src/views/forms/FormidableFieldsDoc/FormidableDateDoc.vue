@@ -61,19 +61,19 @@ const BASIC_DATE_FIELD = {
 const REFINED_DATE_TYPE_FIELDS: FormidableBasicForm = {
     fields: [
         {
-            fieldType: FieldType.Date,
+            fieldType: FieldType.Datetime,
             value: null,
             label: 'Any Datetime',
             dateType: DateType.Datetime
         },
         {
-            fieldType: FieldType.Date,
+            fieldType: FieldType.Datetime,
             value: null,
             label: 'Any Date',
             dateType: DateType.Date
         },
         {
-            fieldType: FieldType.Date,
+            fieldType: FieldType.Datetime,
             value: null,
             label: 'Any Time',
             dateType: DateType.Time

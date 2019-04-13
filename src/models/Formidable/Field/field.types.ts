@@ -1,45 +1,13 @@
 import { FieldConfigType } from '@/models/Formidable/Form/form.abstract';
-import {
-    FieldType,
-    FormidableField,
-    IFormidableFieldProps
-} from '@/models/Formidable/Field/field.abstract';
-import {
-    FormidableLink,
-    IFormidableLinkProps
-} from '@/models/Formidable/Field/FormidableLink';
-import {
-    FormidableNumber,
-    IFormidableNumberProps
-} from '@/models/Formidable/Field/FormidableNumber';
-import {
-    FormidableText,
-    IFormidableTextProps
-} from '@/models/Formidable/Field/FormidableText';
-import {
-    FormidableTextarea,
-    IFormidableTextareaProps
-} from '@/models/Formidable/Field/FormidableTextarea';
-import {
-    FormidablePassword,
-    IFormidablePasswordProps
-} from '@/models/Formidable/Field/FormidablePassword';
-import {
-    FormidableEmail,
-    IFormidableEmailProps
-} from '@/models/Formidable/Field/FormidableEmail';
-import {
-    FormidableNumberRange,
-    IFormidableNumberRangeProps
-} from '@/models/Formidable/Field/FormidableNumberRange';
-import {
-    FormidableDate,
-    IFormidableDateProps
-} from '@/models/Formidable/Field/FormidableDate';
-import {
-    FormidableFile,
-    IFormidableFileProps
-} from '@/models/Formidable/Field/FormidableFile';
+import { IFormidableLinkProps } from '@/models/Formidable/Field/FormidableLink';
+import { IFormidableNumberProps } from '@/models/Formidable/Field/FormidableNumber';
+import { IFormidableTextProps } from '@/models/Formidable/Field/FormidableText';
+import { IFormidableTextareaProps } from '@/models/Formidable/Field/FormidableTextarea';
+import { IFormidablePasswordProps } from '@/models/Formidable/Field/FormidablePassword';
+import { IFormidableEmailProps } from '@/models/Formidable/Field/FormidableEmail';
+import { IFormidableNumberRangeProps } from '@/models/Formidable/Field/FormidableNumberRange';
+import { IFormidableDateProps } from '@/models/Formidable/Field/FormidableDate';
+import { IFormidableFileProps } from '@/models/Formidable/Field/FormidableFile';
 
 export type ConditionallyInferredField<T> = T extends IFormidableNumberProps
     ? IFormidableNumberProps
