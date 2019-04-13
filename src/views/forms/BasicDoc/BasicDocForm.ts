@@ -1,14 +1,10 @@
-import { FormType } from './../../../models/Formidable/Form/form.abstract';
+import { IFieldTypeSampleMap } from '@/models/Formidable/Field/field.types';
+import { FormType } from '@/models/Formidable/Form/form.abstract';
 import { FormidableBasicForm } from '@/models/Formidable/Form/FormidableBasicForm';
-import {
-    FieldType,
-    FormidableField
-} from '@/models/Formidable/Field/field.abstract';
+import { FieldType } from '@/models/Formidable/Field/field.abstract';
 import { FileType } from '@/models/Formidable/Field/FormidableFile';
 
-const SAMPLES: {
-    [key: string]: any; // TODO: Determine appropriate TS inference for these types
-} = {
+const SAMPLES: IFieldTypeSampleMap = {
     [FieldType.Number]: [
         {
             fieldType: FieldType.Number,

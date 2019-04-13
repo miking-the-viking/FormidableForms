@@ -11,6 +11,7 @@ import { IsLessThanOrEqualTo } from '@/models/IsLessThanOrEqualTo';
 import { IsGreaterThanOrEqualTo } from '@/models/IsGreaterThanOrEqualTo';
 
 export interface IFormidableEmailProps extends IFormidableFieldProps<string> {
+    fieldType: FieldType.Email;
     maxLength?: number;
     minLength?: number;
 }
@@ -20,13 +21,14 @@ export interface IFormidableEmailProps extends IFormidableFieldProps<string> {
  */
 export class FormidableEmail extends FormidableField<string>
     implements IFormidableEmailProps {
+    public fieldType: FieldType.Email = FieldType.Email;
     /**
      * Optional minimum length
      */
     @IsOptional()
     @IsNumber()
     @IsLessThanOrEqualTo('maxLength', {
-        message: (v) =>
+        message: v =>
             'MinLength must be less than or equal to specified maximum length: ' +
             v.object.maxLength
     })
@@ -38,7 +40,7 @@ export class FormidableEmail extends FormidableField<string>
     @IsOptional()
     @IsNumber()
     @IsGreaterThanOrEqualTo('minLength', {
-        message: (v) =>
+        message: v =>
             'MaxLength must be greater than or equal to the specified minimum length: ' +
             v.object.minLength
     })
@@ -48,12 +50,12 @@ export class FormidableEmail extends FormidableField<string>
      * The given value of the field
      */
     @IsLongerThan('minLength', {
-        message: (v) =>
+        message: v =>
             'Must be longer than or equal to the specified minimum length: ' +
             v.object.minLength
     })
     @IsShorterThan('maxLength', {
-        message: (v) =>
+        message: v =>
             'Must be shorter than or equal to the specified maximum length: ' +
             v.object.maxLength
     })

@@ -1,6 +1,7 @@
 import {
     FormidableField,
-    IFormidableFieldProps
+    IFormidableFieldProps,
+    FieldType
 } from '@/models/Formidable/Field/field.abstract';
 import { IsOptional, IsNumber, ValidateIf, IsString } from 'class-validator';
 import { IsLongerThan } from '@/models/IsLongerThan';
@@ -9,12 +10,14 @@ import { IsStringOrNull } from '@/models/IsStringOrNull';
 
 export interface IFormidableTextareaProps
     extends IFormidableFieldProps<string> {
+    fieldType: FieldType.Textarea;
     maxLength?: number;
     minLength?: number;
 }
 
 export class FormidableTextarea extends FormidableField<string>
     implements IFormidableTextareaProps {
+    public fieldType: FieldType.Textarea = FieldType.Textarea;
     /**
      * Optional minimum length
      */
@@ -33,12 +36,12 @@ export class FormidableTextarea extends FormidableField<string>
      * The given value of the field
      */
     @IsLongerThan('minLength', {
-        message: (v) =>
+        message: v =>
             'Must be longer than the specified minimum length: ' +
             v.object.minLength
     })
     @IsShorterThan('maxLength', {
-        message: (v) =>
+        message: v =>
             'Must be shorter than the specified maxLength: ' +
             v.object.maxLength
     })

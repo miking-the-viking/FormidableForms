@@ -1,3 +1,4 @@
+import { FieldType } from './field.abstract';
 import { IsOptional, IsNumber, ValidateIf } from 'class-validator';
 import {
     FormidableField,
@@ -10,6 +11,7 @@ import { IsLessThanOrEqualTo } from '@/models/IsLessThanOrEqualTo';
  * Props interface
  */
 export interface IFormidableNumberProps extends IFormidableFieldProps<number> {
+    fieldType: FieldType.Number;
     minimum?: number;
     maximum?: number;
 }
@@ -19,6 +21,8 @@ export interface IFormidableNumberProps extends IFormidableFieldProps<number> {
  */
 export class FormidableNumber extends FormidableField<number>
     implements IFormidableNumberProps {
+    public fieldType: FieldType.Number = FieldType.Number;
+
     /**
      * The value of the number
      */
@@ -26,11 +30,11 @@ export class FormidableNumber extends FormidableField<number>
     @IsNumber() // this may not work with null, tbd.
     // @IsOptional()
     @IsLessThanOrEqualTo('maximum', {
-        message: (v) =>
+        message: v =>
             'Value must be less than specified maximum: ' + v.object.maximum
     })
     @IsGreaterThanOrEqualTo('minimum', {
-        message: (v) =>
+        message: v =>
             'Value must be greater than or equal to specified minimum: ' +
             v.object.minimum
     })
@@ -42,7 +46,7 @@ export class FormidableNumber extends FormidableField<number>
     @IsOptional()
     @IsNumber()
     @IsLessThanOrEqualTo('maximum', {
-        message: (v) =>
+        message: v =>
             'The minimum has to be less than or equal to the maximum: ' +
             v.object.maximum
     })
@@ -54,7 +58,7 @@ export class FormidableNumber extends FormidableField<number>
     @IsOptional()
     @IsNumber()
     @IsGreaterThanOrEqualTo('minimum', {
-        message: (v) =>
+        message: v =>
             'The maximum has to be greater than or equal to the minimum: ' +
             v.object.maximum
     })

@@ -1,6 +1,7 @@
 import {
     FormidableField,
-    IFormidableFieldProps
+    IFormidableFieldProps,
+    FieldType
 } from '@/models/Formidable/Field/field.abstract';
 import { IsOptional, IsDateString } from 'class-validator';
 
@@ -11,6 +12,7 @@ export enum DateType {
 }
 
 export interface IFormidableDateProps extends IFormidableFieldProps<string> {
+    fieldType: FieldType.Datetime;
     dateType: DateType;
 }
 
@@ -19,6 +21,7 @@ export interface IFormidableDateProps extends IFormidableFieldProps<string> {
  */
 export class FormidableDate extends FormidableField<string>
     implements IFormidableDateProps {
+    public fieldType: FieldType.Datetime = FieldType.Datetime;
     /**
      * BUGGY! TO BE FIXED
      * The given value of the field

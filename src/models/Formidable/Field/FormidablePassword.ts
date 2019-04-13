@@ -1,6 +1,7 @@
 import {
     FormidableField,
-    IFormidableFieldProps
+    IFormidableFieldProps,
+    FieldType
 } from '@/models/Formidable/Field/field.abstract';
 import { IsOptional, IsNumber } from 'class-validator';
 import { IsLongerThan } from '@/models/IsLongerThan';
@@ -11,6 +12,7 @@ import { IsGreaterThanOrEqualTo } from '@/models/IsGreaterThanOrEqualTo';
 
 export interface IFormidablePasswordProps
     extends IFormidableFieldProps<string> {
+    fieldType: FieldType.Password;
     maxLength?: number;
     minLength?: number;
 }
@@ -20,13 +22,14 @@ export interface IFormidablePasswordProps
  */
 export class FormidablePassword extends FormidableField<string>
     implements IFormidablePasswordProps {
+    public fieldType: FieldType.Password = FieldType.Password;
     /**
      * Optional minimum length
      */
     @IsOptional()
     @IsNumber()
     @IsLessThanOrEqualTo('maxLength', {
-        message: (v) =>
+        message: v =>
             'MinLength must be less than or equal to specified maximum length: ' +
             v.object.maxLength
     })
@@ -38,7 +41,7 @@ export class FormidablePassword extends FormidableField<string>
     @IsOptional()
     @IsNumber()
     @IsGreaterThanOrEqualTo('minLength', {
-        message: (v) =>
+        message: v =>
             'MaxLength must be greater than or equal to the specified minimum length: ' +
             v.object.minLength
     })
@@ -48,12 +51,12 @@ export class FormidablePassword extends FormidableField<string>
      * The given value of the field
      */
     @IsLongerThan('minLength', {
-        message: (v) =>
+        message: v =>
             'Must be longer than or equal to the specified minimum length: ' +
             v.object.minLength
     })
     @IsShorterThan('maxLength', {
-        message: (v) =>
+        message: v =>
             'Must be shorter than or equal to the specified maximum length: ' +
             v.object.maxLength
     })

@@ -53,7 +53,7 @@ export enum FormType {
 
 export type FormTypes = FormidableBasicForm | FormidableWizardForm;
 
-type FieldConfigTypes =
+export type FieldConfigType =
     | IFormidableNumberProps
     | IFormidableTextProps
     | IFormidableTextareaProps
@@ -64,7 +64,7 @@ type FieldConfigTypes =
     | IFormidableDateProps
     | IFormidableFileProps;
 
-export type FieldCtorTypes =
+export type FieldCtorType =
     | FormidableNumber
     | FormidableText
     | FormidableTextarea
@@ -75,21 +75,31 @@ export type FieldCtorTypes =
     | FormidableDate
     | FormidableFile;
 
-type FieldConfigTypesTest = IFormidableNumberProps;
-
-type FieldCtorTypesTest = FormidableNumber | FormidableText;
-
-async function getInstance(
-    f: FieldConfigTypesTest
-): Promise<FieldCtorTypesTest> {
+async function getInstance(f: FieldConfigType): Promise<FieldCtorType> {
+    let ctor;
     switch (f.fieldType) {
         case FieldType.Number:
-            return await transformAndValidate(FormidableNumber, f);
+            ctor = FormidableNumber;
         case FieldType.Text:
-            return await transformAndValidate(FormidableText, f);
+            ctor = FormidableText;
+        case FieldType.Textarea:
+            ctor = FormidableTextarea;
+        case FieldType.Link:
+            ctor = FormidableLink;
+        case FieldType.Email:
+            ctor = FormidableEmail;
+        case FieldType.Password:
+            ctor = FormidablePassword;
+        case FieldType.NumberRange:
+            ctor = FormidableNumberRange;
+        case FieldType.Datetime:
+            ctor = FormidableDate;
+        case FieldType.File:
+            ctor = FormidableFile;
         default:
             throw new Error(`Invalid Formidable Field Type: ${f.fieldType}`);
     }
+    return await transformAndValidate(ctor, f);
 }
 
 /**
@@ -119,7 +129,7 @@ export abstract class FormidableForm {
             ]
         }
     })
-    public fields!: FieldConfigTypes[];
+    public fields!: FieldConfigType[];
 
     /**
      * Submit action for the form, optional or null if retrieving the values and submitting by another means.

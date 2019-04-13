@@ -1,3 +1,4 @@
+import { FieldType } from './field.abstract';
 import {
     FormidableField,
     IFormidableFieldProps
@@ -12,6 +13,7 @@ export enum FileType {
 }
 
 export interface IFormidableFileProps extends IFormidableFieldProps<string> {
+    fieldType: FieldType.File;
     maxSize?: number;
     fileType?: FileType;
 }
@@ -21,6 +23,7 @@ export interface IFormidableFileProps extends IFormidableFieldProps<string> {
  */
 export class FormidableFile extends FormidableField<string>
     implements IFormidableFileProps {
+    public fieldType: FieldType.File = FieldType.File;
     /**
      * The given value of the field
      */
