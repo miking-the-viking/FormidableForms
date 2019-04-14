@@ -1,24 +1,31 @@
 {
-    "name": "@formidable/core",
-    "version": "0.0.0",
+    "name": "@formidableforms/core",
+    "version": "0.4.0",
     "description": "Formidable Forms Core",
     "author": "MikingTheViking <kingmi123@gmail.com>",
     "homepage": "https://github.com/miking-the-viking/FormidableForms#readme",
     "license": "ISC",
-    "main": "lib/core.js",
+    "main": "lib/index.js",
     "directories": {
-        "lib": "lib",
-        "test": "__tests__"
+        "lib": "lib"
     },
     "files": [
         "lib"
     ],
+    "publishConfig": {
+        "access": "public"
+    },
+    "jest": {
+        "preset": "ts-jest"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/miking-the-viking/FormidableForms.git"
     },
     "scripts": {
-        "test": "echo \"Error: run tests from root\" && exit 1"
+        "build": "tsc --build tsconfig.build.json",
+        "build:watch": "tsc --build tsconfig.build.json --watch",
+        "test": "jest"
     },
     "bugs": {
         "url": "https://github.com/miking-the-viking/FormidableForms/issues"
@@ -33,8 +40,10 @@
         "@types/faker": "^4.1.5",
         "@types/jest": "^24.0.11",
         "faker": "^4.1.0",
+        "jest": "^24.7.1",
         "ts-jest": "^24.0.2",
         "ts-node": "^8.0.3",
+        "tslib": "^1.9.3",
         "typescript": "^3.4.3"
     },
     "gitHooks": {
@@ -49,5 +58,6 @@
             "yarn test",
             "git add"
         ]
-    }
+    },
+    "gitHead": "c89d97f146d1f2a98f7813c75d4c08c52447c6e8"
 }

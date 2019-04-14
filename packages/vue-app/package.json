@@ -1,10 +1,9 @@
 {
-    "name": "@formidable/vue",
-    "version": "0.1.0",
+    "name": "@formidableforms/vue",
+    "version": "0.4.0",
     "description": "Formidable Forms Vue SPA",
     "main": "./dist/formidable-forms.common.js",
     "module": "./dist/formidable-forms.common.js",
-    "private": true,
     "files": [
         "dist/*",
         "src/*",
@@ -23,6 +22,8 @@
         "test:unit:watch": "vue-cli-service test:unit --watch --verbose"
     },
     "dependencies": {
+        "@formidableforms/core": "^0.4.0",
+        "@formidableforms/vue-components": "^0.4.0",
         "@fortawesome/fontawesome-svg-core": "^1.2.12",
         "@fortawesome/free-solid-svg-icons": "^5.6.3",
         "@fortawesome/vue-fontawesome": "^0.1.4",
@@ -69,6 +70,9 @@
         "vue-cli-plugin-pug": "^1.0.7",
         "vue-template-compiler": "^2.5.17"
     },
+    "publishConfig": {
+        "access": "public"
+    },
     "gitHooks": {
         "pre-commit": "lint-staged"
     },
@@ -89,5 +93,6 @@
         "alias": {
             "@": "src"
         }
-    }
+    },
+    "gitHead": "c89d97f146d1f2a98f7813c75d4c08c52447c6e8"
 }

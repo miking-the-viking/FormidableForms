@@ -1,0 +1,112 @@
+{
+    "name": "@formidableforms/vue-components",
+    "version": "0.4.0",
+    "description": "> TODO: description",
+    "author": "MikingTheViking <kingmi123@gmail.com>",
+    "homepage": "https://github.com/miking-the-viking/FormidableForms#readme",
+    "license": "ISC",
+    "main": "lib/vue-components.js",
+    "directories": {
+        "lib": "lib"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "files": [
+        "lib"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/miking-the-viking/FormidableForms.git"
+    },
+    "bugs": {
+        "url": "https://github.com/miking-the-viking/FormidableForms/issues"
+    },
+    "dependencies": {
+        "@formidableforms/core": "^0.4.0",
+        "core-js": "^2.6.5",
+        "pug": "^2.0.3",
+        "pug-plain-loader": "^1.0.0",
+        "register-service-worker": "^1.6.2",
+        "vue": "^2.6.10",
+        "vue-class-component": "^7.0.2",
+        "vue-property-decorator": "^8.1.0"
+    },
+    "devDependencies": {
+        "@types/jest": "^23.1.4",
+        "@vue/cli-plugin-babel": "^3.6.0",
+        "@vue/cli-plugin-pwa": "^3.6.0",
+        "@vue/cli-plugin-typescript": "^3.6.0",
+        "@vue/cli-plugin-unit-jest": "^3.6.0",
+        "@vue/cli-service": "^3.6.0",
+        "@vue/test-utils": "1.0.0-beta.29",
+        "babel-core": "7.0.0-bridge.0",
+        "lint-staged": "^8.1.5",
+        "sass": "^1.18.0",
+        "sass-loader": "^7.1.0",
+        "ts-jest": "^23.0.0",
+        "typescript": "^3.4.3",
+        "vue-template-compiler": "^2.5.21"
+    },
+    "postcss": {
+        "plugins": {
+            "autoprefixer": {}
+        }
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not ie <= 8"
+    ],
+    "jest": {
+        "moduleFileExtensions": [
+            "js",
+            "jsx",
+            "json",
+            "vue",
+            "ts",
+            "tsx"
+        ],
+        "transform": {
+            "^.+\\.vue$": "vue-jest",
+            ".+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
+            "^.+\\.tsx?$": "ts-jest"
+        },
+        "transformIgnorePatterns": [
+            "/node_modules/"
+        ],
+        "moduleNameMapper": {
+            "^@/(.*)$": "<rootDir>/src/$1"
+        },
+        "snapshotSerializers": [
+            "jest-serializer-vue"
+        ],
+        "testMatch": [
+            "**/tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)"
+        ],
+        "testURL": "http://localhost/",
+        "watchPlugins": [
+            "/Users/viking/projects/personal/FormidableForms/packages/vue-components/vue-components/@formidable/vue-components/node_modules/jest-watch-typeahead/filename.js",
+            "/Users/viking/projects/personal/FormidableForms/packages/vue-components/vue-components/@formidable/vue-components/node_modules/jest-watch-typeahead/testname.js"
+        ],
+        "globals": {
+            "ts-jest": {
+                "babelConfig": true
+            }
+        }
+    },
+    "gitHooks": {
+        "pre-commit": "lint-staged"
+    },
+    "lint-staged": {
+        "*.ts": [
+            "vue-cli-service lint",
+            "git add"
+        ],
+        "*.vue": [
+            "vue-cli-service lint",
+            "git add"
+        ]
+    },
+    "gitHead": "c89d97f146d1f2a98f7813c75d4c08c52447c6e8"
+}
