@@ -24,16 +24,6 @@ form.formidable-form.md-layout.md-alignment-top-center(@submit.prevent="form.sub
 <script lang="ts">
 import { VueConstructor } from 'vue';
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
-import { FormidableBasicForm } from '@/models/Formidable/Form/FormidableBasicForm';
-import {
-    FieldType,
-    IFormidableFieldProps,
-    FormidableField
-} from '@/models/Formidable/Field/field.abstract';
-import {
-    FieldCtorType,
-    IFormidableFormProps
-} from '@/models/Formidable/Form/form.abstract';
 import {
     transformAndValidate,
     transformAndValidateSync
@@ -51,23 +41,30 @@ import EmailField from '@/components/Formidable/EmailField.vue';
 import PasswordField from '@/components/Formidable/PasswordField.vue';
 import DateField from '@/components/Formidable/DateField.vue';
 import FileField from '@/components/Formidable/FileField.vue';
-import { FormidableWizardForm } from '@/models/Formidable/Form/FormidableWizardForm';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
     faCheckCircle,
     faTimesCircle
 } from '@fortawesome/free-solid-svg-icons';
-import { FormidableNumber } from '@/models/Formidable/Field/Number/FormidableNumber';
-import { FormidableNumberRange } from '@/models/Formidable/Field/NumberRange/FormidableNumberRange';
-import { FormidableText } from '@/models/Formidable/Field/Text/FormidableText';
-import { FormidableTextarea } from '@/models/Formidable/Field/Textarea/FormidableTextarea';
-import { FormidableLink } from '@/models/Formidable/Field/Link/FormidableLink';
-import { FormidableEmail } from '@/models/Formidable/Field/Email/FormidableEmail';
-import { FormidablePassword } from '@/models/Formidable/Field/Password/FormidablePassword';
-import { FormidableDate } from '@/models/Formidable/Field/Date/FormidableDate';
-import { FormidableFile } from '@/models/Formidable/Field/FormidableFile';
-import { FormType, FormTypes } from '@/models/Formidable/Form/form.abstract';
+
+import {
+    FormidableWizardForm,
+    FieldType,
+    IFormidableFieldProps,
+    FormidableNumber,
+    FormidableNumberRange,
+    FormidableText,
+    FormidableTextarea,
+    FormidableEmail,
+    FormidablePassword,
+    FormidableDate,
+    FormidableFile,
+    FormidableLink,
+    FormidableField,
+    FormidableBasicForm
+} from '@formidableforms/core/lib/models';
+import { FieldCtorType } from '@formidableforms/core/lib/models/form/core';
 
 library.add(faCheckCircle, faTimesCircle);
 
