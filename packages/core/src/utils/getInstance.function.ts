@@ -1,17 +1,14 @@
-import { FieldType } from '@/models/Formidable/Field/Core/field.types.enum';
-import { FormidableDate } from '@/models/Formidable/Field/Date/FormidableDate';
-import { FormidableEmail } from '@/models/Formidable/Field/Email/FormidableEmail';
-import { FormidableFile } from '@/models/Formidable/Field/File/FormidableFile';
-import { FormidableLink } from '@/models/Formidable/Field/Link/FormidableLink';
-import { FormidableNumber } from '@/models/Formidable/Field/Number/FormidableNumber';
-import { FormidableNumberRange } from '@/models/Formidable/Field/NumberRange/FormidableNumberRange';
-import { FormidablePassword } from '@/models/Formidable/Field/Password/FormidablePassword';
-import { FormidableText } from '@/models/Formidable/Field/Text/FormidableText';
-import { FormidableTextarea } from '@/models/Formidable/Field/Textarea/FormidableTextarea';
-import {
-    FieldConfigType,
-    FieldCtorType
-} from '@/models/Formidable/Form/Core/form.types';
+import { FieldType } from '@/models/field/core/field.types.enum';
+import { FormidableDate } from '@/models/field/date/FormidableDate';
+import { FormidableEmail } from '@/models/field/email/FormidableEmail';
+import { FormidableFile } from '@/models/field/file/FormidableFile';
+import { FormidableLink } from '@/models/field/link/FormidableLink';
+import { FormidableNumber } from '@/models/field/number/FormidableNumber';
+import { FormidableNumberRange } from '@/models/field/numberRange/FormidableNumberRange';
+import { FormidablePassword } from '@/models/field/password/FormidablePassword';
+import { FormidableText } from '@/models/field/text/FormidableText';
+import { FormidableTextarea } from '@/models/field/textarea/FormidableTextarea';
+import { FieldConfigType, FieldCtorType } from '@/models/form/core/form.types';
 import { transformAndValidate } from 'class-transformer-validator';
 
 /**
