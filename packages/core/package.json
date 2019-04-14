@@ -1,0 +1,53 @@
+{
+    "name": "@formidable/core",
+    "version": "0.0.0",
+    "description": "Formidable Forms Core",
+    "author": "MikingTheViking <kingmi123@gmail.com>",
+    "homepage": "https://github.com/miking-the-viking/FormidableForms#readme",
+    "license": "ISC",
+    "main": "lib/core.js",
+    "directories": {
+        "lib": "lib",
+        "test": "__tests__"
+    },
+    "files": [
+        "lib"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/miking-the-viking/FormidableForms.git"
+    },
+    "scripts": {
+        "test": "echo \"Error: run tests from root\" && exit 1"
+    },
+    "bugs": {
+        "url": "https://github.com/miking-the-viking/FormidableForms/issues"
+    },
+    "dependencies": {
+        "class-transformer": "^0.2.0",
+        "class-transformer-validator": "^0.7.1",
+        "class-validator": "^0.9.1",
+        "reflect-metadata": "^0.1.13"
+    },
+    "devDependencies": {
+        "@types/faker": "^4.1.5",
+        "@types/jest": "^24.0.11",
+        "faker": "^4.1.0",
+        "ts-jest": "^24.0.2",
+        "ts-node": "^8.0.3",
+        "typescript": "^3.4.3"
+    },
+    "gitHooks": {
+        "pre-commit": "link-staged"
+    },
+    "lint-staged": {
+        "*.ts": [
+            "yarn lint",
+            "git add"
+        ],
+        "*.spec.ts": [
+            "yarn test",
+            "git add"
+        ]
+    }
+}
