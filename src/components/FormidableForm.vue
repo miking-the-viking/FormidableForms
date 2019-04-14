@@ -1,19 +1,24 @@
 <template lang="pug">
-.formidable-form.container.is-fluid.box(:class="formClasses")
-	.field(v-for="(field, index) in form.fields")
-		component(
-			v-bind:is="getField(field)"
-			v-model="form.fields[index]"
-			:validationErrors="getFieldErrors(index)"
-		)
-	.level(v-if="form.submit")
-		.level-left
-		.level-right
-			.level-item
-				button.button.transitionButton(:class="formClasses" @click="form.submit")
-					span.icon
-						font-awesome-icon(:icon="hasAllNecessaryData ? 'check-circle' : 'times-circle'")
-					span Submit
+form.formidable-form.md-layout.md-alignment-top-center(@submit.prevent="form.submit")
+    md-card.md-layout-item.md-size-75.md-small-size-100
+        md-card-header
+            .md-title Some Form
+        md-card-content
+            .md-layout.md-gutter
+            template(v-for="(field, index) in form.fields")
+                component(
+                    v-bind:is="getField(field)"
+                    v-model="form.fields[index]"
+                    :validationErrors="getFieldErrors(index)"
+                    :key="field.label"
+                )
+
+        md-card-actions(v-if="form.submit")
+            md-button.md-primary.button.transitionButton(type="submit" :class="formClasses" @click="form.submit")
+                span.icon
+                    font-awesome-icon(:icon="hasAllNecessaryData ? 'check-circle' : 'times-circle'")
+                span Submit
+    md-snackbar(:md-active.sync="saved") The Form was saved
 </template>
 
 <script lang="ts">
@@ -26,7 +31,7 @@ import {
     FormidableField
 } from '@/models/Formidable/Field/field.abstract';
 import {
-    FieldCtorTypes,
+    FieldCtorType,
     IFormidableFormProps
 } from '@/models/Formidable/Form/form.abstract';
 import {
@@ -53,14 +58,14 @@ import {
     faCheckCircle,
     faTimesCircle
 } from '@fortawesome/free-solid-svg-icons';
-import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
-import { FormidableNumberRange } from '@/models/Formidable/Field/FormidableNumberRange';
-import { FormidableText } from '@/models/Formidable/Field/FormidableText';
-import { FormidableTextarea } from '@/models/Formidable/Field/FormidableTextarea';
-import { FormidableLink } from '@/models/Formidable/Field/FormidableLink';
-import { FormidableEmail } from '@/models/Formidable/Field/FormidableEmail';
-import { FormidablePassword } from '@/models/Formidable/Field/FormidablePassword';
-import { FormidableDate } from '@/models/Formidable/Field/FormidableDate';
+import { FormidableNumber } from '@/models/Formidable/Field/Number/FormidableNumber';
+import { FormidableNumberRange } from '@/models/Formidable/Field/NumberRange/FormidableNumberRange';
+import { FormidableText } from '@/models/Formidable/Field/Text/FormidableText';
+import { FormidableTextarea } from '@/models/Formidable/Field/Textarea/FormidableTextarea';
+import { FormidableLink } from '@/models/Formidable/Field/Link/FormidableLink';
+import { FormidableEmail } from '@/models/Formidable/Field/Email/FormidableEmail';
+import { FormidablePassword } from '@/models/Formidable/Field/Password/FormidablePassword';
+import { FormidableDate } from '@/models/Formidable/Field/Date/FormidableDate';
 import { FormidableFile } from '@/models/Formidable/Field/FormidableFile';
 import { FormType, FormTypes } from '@/models/Formidable/Form/form.abstract';
 
@@ -83,11 +88,7 @@ export default class FormidableForm extends Vue {
     private readonly FieldType = FieldType;
     private validationErrors: ValidationError[] = [];
     private hasAllNecessaryData: boolean = false;
-
-    /**
-     * Form Validator
-     */
-    // private validator!: Validator<FormTypes>;
+    private saved: boolean = false;
 
     @Prop({
         required: true
@@ -107,43 +108,38 @@ export default class FormidableForm extends Vue {
 
     private async getFieldCtor(
         fieldConfig: IFormidableFieldProps<any>
-    ): Promise<FieldCtorTypes> {
+    ): Promise<FieldCtorType> {
         switch (fieldConfig.fieldType) {
             case FieldType.Number:
-                return await transformAndValidateSync(
+                return await transformAndValidate(
                     FormidableNumber,
                     fieldConfig
                 );
             case FieldType.NumberRange:
-                return await transformAndValidateSync(
+                return await transformAndValidate(
                     FormidableNumberRange,
                     fieldConfig
                 );
             case FieldType.Text:
-                return await transformAndValidateSync(
-                    FormidableText,
-                    fieldConfig
-                );
+                return await transformAndValidate(FormidableText, fieldConfig);
             case FieldType.Textarea:
-                return await transformAndValidateSync(
+                return await transformAndValidate(
                     FormidableTextarea,
                     fieldConfig
                 );
             case FieldType.Email:
-                return await transformAndValidateSync(
-                    FormidableEmail,
-                    fieldConfig
-                );
+                return await transformAndValidate(FormidableEmail, fieldConfig);
             case FieldType.Password:
-                return await transformAndValidateSync(
+                return await transformAndValidate(
                     FormidablePassword,
                     fieldConfig
                 );
             case FieldType.Date:
-                return await transformAndValidateSync(
-                    FormidableDate,
-                    fieldConfig
-                );
+                return await transformAndValidate(FormidableDate, fieldConfig);
+            case FieldType.File:
+                return await transformAndValidate(FormidableFile, fieldConfig);
+            case FieldType.Link:
+                return await transformAndValidate(FormidableLink, fieldConfig);
             default:
                 throw new Error(`Invalid Field Type: ${fieldConfig.fieldType}`);
         }
@@ -195,10 +191,10 @@ export default class FormidableForm extends Vue {
                     (await this.getFieldCtor(val)).fieldIsSubmittable
                 );
             }, Promise.resolve(true))
-            .then((val) => {
+            .then(val => {
                 this.hasAllNecessaryData = val;
             })
-            .catch((validationErrors) => {
+            .catch(validationErrors => {
                 this.hasAllNecessaryData = false;
             });
     }
@@ -208,13 +204,13 @@ export default class FormidableForm extends Vue {
             return;
         }
         const fieldErr = this.validationErrors.find(
-            (valErr) => valErr.property === 'fields'
+            valErr => valErr.property === 'fields'
         );
         if (!fieldErr) {
             return;
         }
         const indexErr = fieldErr.children.find(
-            (valErr) => parseInt(valErr.property, 10) === index
+            valErr => parseInt(valErr.property, 10) === index
         );
         return indexErr ? indexErr.children : undefined;
     }
@@ -222,17 +218,6 @@ export default class FormidableForm extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.formidable-form {
-    &.is-danger {
-        box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1),
-            0 0 0 1px rgba(255, 0, 0, 0.87);
-    }
-
-    &.is-success {
-        box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1),
-            0 0 0 1px rgba(40, 255, 0, 0.92);
-    }
-}
 $transition: 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
 .transitionButton {

@@ -1,28 +1,35 @@
-import { IFormidableTextProps } from './../../../src/models/Formidable/Field/FormidableText';
+import { IFormidableTextProps } from '../../../src/models/Formidable/Field/Text/FormidableText';
 import { IFormidableFieldProps } from './../../../src/models/Formidable/Field/field.abstract';
 /**
  * Abstract tests defining consistent core Formidable Form behaviour
  */
 
 import { FormidableForm } from '@/models/Formidable/Form/form.abstract';
-import { FieldType, FormidableField } from '@/models/Formidable/Field/field.abstract';
-import { errorArrayHas } from '../field/field.abstract';
+import {
+    FieldType,
+    FormidableField
+} from '@/models/Formidable/Field/field.abstract';
+import { errorArrayHas } from '../../../src/models/Formidable/Field/field.abstract.spec.config';
 import { plainToClass } from 'class-transformer';
 import { validate } from 'class-validator';
-import { FormidableNumber, IFormidableNumberProps } from '@/models/Formidable/Field/FormidableNumber';
-import { FormidableText } from '@/models/Formidable/Field/FormidableText';
+import {
+    FormidableNumber,
+    IFormidableNumberProps
+} from '@/models/Formidable/Field/Number/FormidableNumber';
+import { FormidableText } from '@/models/Formidable/Field/Text/FormidableText';
 
-export default <T extends FormidableForm>(
-    ctor: new(...args: any[]) => T
-) => {
-    describe(`Formidable Forms Core Test for ${ctor.name} Implementation`, () => {
-
+export default <T extends FormidableForm>(ctor: new (...args: any[]) => T) => {
+    describe(`Formidable Forms Core Test for ${
+        ctor.name
+    } Implementation`, () => {
         describe('Form Validation', () => {
             it('Fails when no fields argument is provided or invalid', async () => {
                 const form = plainToClass(ctor, {});
                 const errs = await validate(form);
                 if (errs.length === 0) {
-                    fail('Did not throw an error when no fields propery were provided to the form');
+                    fail(
+                        'Did not throw an error when no fields propery were provided to the form'
+                    );
                 }
                 expect(errs).toBeInstanceOf(Array);
                 expect(errorArrayHas('fields', errs)).toBeTruthy();
@@ -37,20 +44,22 @@ export default <T extends FormidableForm>(
 
             it('Fails when there is an evident validation error', async () => {
                 const invalidFields: FormidableForm = {
-                        fields: [
-                            {
-                                fieldType: FieldType.Number,
-                                value: -50,
-                                minimum: -20,
-                                label: 'Any number >= -20'
-                            }
-                        ]
+                    fields: [
+                        {
+                            fieldType: FieldType.Number,
+                            value: -50,
+                            minimum: -20,
+                            label: 'Any number >= -20'
+                        }
+                    ]
                 };
 
                 const form = plainToClass(ctor, invalidFields);
                 const errs = await validate(form);
                 if (errs.length === 0) {
-                    fail(`Did not throw an error on an invalid number field value.`);
+                    fail(
+                        `Did not throw an error on an invalid number field value.`
+                    );
                 }
                 expect(errs).toBeInstanceOf(Array);
                 expect(errorArrayHas('fields', errs)).toBeTruthy();
@@ -69,7 +78,7 @@ export default <T extends FormidableForm>(
                     {
                         fieldType: FieldType.Number,
                         // tslint:disable-next-line
-						value: 'some string'
+                        value: 'some string'
                     }
                 ];
 
@@ -78,7 +87,9 @@ export default <T extends FormidableForm>(
                 });
                 const errs = await validate(form);
                 if (errs.length === 0) {
-                    fail('There should have been an error for an evidently invalid field value');
+                    fail(
+                        'There should have been an error for an evidently invalid field value'
+                    );
                 }
                 expect(errs).toBeInstanceOf(Array);
                 expect(errorArrayHas('fields', errs)).toBeTruthy();
@@ -96,11 +107,14 @@ export default <T extends FormidableForm>(
         });
 
         describe('Form initialization', () => {
-
-            const existingFields: Array<IFormidableNumberProps | IFormidableTextProps> = [{
-                fieldType: FieldType.Number,
-                value: 1
-            }];
+            const existingFields: Array<
+                IFormidableNumberProps | IFormidableTextProps
+            > = [
+                {
+                    fieldType: FieldType.Number,
+                    value: 1
+                }
+            ];
 
             const formObj = {
                 fields: existingFields
@@ -118,7 +132,6 @@ export default <T extends FormidableForm>(
                 expect(form.fields).toHaveLength(1);
                 expect(form.fields[0].value).toEqual(existingFields[0].value);
             });
-
         });
     });
 };

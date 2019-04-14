@@ -1,13 +1,11 @@
+import { IFieldTypeSampleMap } from '@/models/Formidable/Field/field.types';
+import { FormType } from '@/models/Formidable/Form/form.abstract';
 import { FormidableBasicForm } from '@/models/Formidable/Form/FormidableBasicForm';
 import { FieldType } from '@/models/Formidable/Field/field.abstract';
-import { DateType } from '@/models/Formidable/Field/FormidableDate';
 import { FileType } from '@/models/Formidable/Field/FormidableFile';
 
-/**
- * Basic form config for intial sample
- */
-const formConfig: FormidableBasicForm = {
-    fields: [
+const SAMPLES: IFieldTypeSampleMap = {
+    [FieldType.Number]: [
         {
             fieldType: FieldType.Number,
             value: null,
@@ -26,7 +24,9 @@ const formConfig: FormidableBasicForm = {
             minimum: 0,
             maximum: 10,
             label: 'Any number between 0-10 (optional)'
-        },
+        }
+    ],
+    [FieldType.Text]: [
         {
             fieldType: FieldType.Text,
             value: null,
@@ -56,7 +56,9 @@ const formConfig: FormidableBasicForm = {
             minLength: 3,
             maxLength: 8,
             label: 'Between 3-8 character string (optional)'
-        },
+        }
+    ],
+    [FieldType.Textarea]: [
         {
             fieldType: FieldType.Textarea,
             value: null,
@@ -70,7 +72,9 @@ const formConfig: FormidableBasicForm = {
             minLength: 10,
             maxLength: 500,
             label: 'Between 10-500 character string (optional)'
-        },
+        }
+    ],
+    [FieldType.Link]: [
         {
             fieldType: FieldType.Link,
             value: {
@@ -87,7 +91,9 @@ const formConfig: FormidableBasicForm = {
                 href: null
             },
             label: 'Some Link (optional)'
-        },
+        }
+    ],
+    [FieldType.Email]: [
         {
             fieldType: FieldType.Email,
             value: null,
@@ -110,7 +116,9 @@ const formConfig: FormidableBasicForm = {
             value: null,
             maxLength: 30,
             label: 'Some Email shorter than 30 characters (optional)'
-        },
+        }
+    ],
+    [FieldType.Password]: [
         {
             fieldType: FieldType.Password,
             value: null,
@@ -122,7 +130,9 @@ const formConfig: FormidableBasicForm = {
             value: null,
             minLength: 8,
             label: 'Some password field (optional, min length 8)'
-        },
+        }
+    ],
+    [FieldType.NumberRange]: [
         {
             fieldType: FieldType.NumberRange,
             value: {
@@ -130,25 +140,29 @@ const formConfig: FormidableBasicForm = {
                 to: null
             },
             label: 'Number Range (optional)'
-        },
-        {
-            fieldType: FieldType.Date,
-            value: null,
-            label: 'Some datetime (optional)',
-            dateType: DateType.Datetime
-        },
-        {
-            fieldType: FieldType.Date,
-            value: null,
-            label: 'Some Date (optional)',
-            dateType: DateType.Date
-        },
-        {
-            fieldType: FieldType.Date,
-            value: null,
-            label: 'Some Time (optional)',
-            dateType: DateType.Time
-        },
+        }
+    ],
+    [FieldType.Date]: [
+        // {
+        //     fieldType: FieldType.Date,
+        //     value: null,
+        //     label: 'Some datetime (optional)',
+        //     dateType: DateType.Datetime
+        // },
+        // {
+        //     fieldType: FieldType.Date,
+        //     value: null,
+        //     label: 'Some Date (optional)',
+        //     dateType: DateType.Date
+        // },
+        // {
+        //     fieldType: FieldType.Date,
+        //     value: null,
+        //     label: 'Some Time (optional)',
+        //     dateType: DateType.Time
+        // },
+    ],
+    [FieldType.File]: [
         {
             fieldType: FieldType.File,
             value: null,
@@ -182,138 +196,17 @@ const formConfig: FormidableBasicForm = {
     ]
 };
 
-const form2: FormidableBasicForm = {
-    fields: [
-        // NUMBER
-
-        // {
-        // 	fieldType: FieldType.Number,
-        // 	value: null,
-        // 	label: 'Any number (required)',
-        // 	required: true
-        // },
-        // {
-        // 	fieldType: FieldType.Number,
-        // 	value: null,
-        // 	label: 'Any number (optional)',
-        // 	required: false
-        // },
-
-        // TEXT
-
-        // {
-        // 	fieldType: FieldType.Text,
-        // 	value: null,
-        // 	minLength: 2,
-        // 	label: '2 or more character text (required)',
-        // 	required: true
-        // },
-        // {
-        // 	fieldType: FieldType.Text,
-        // 	value: null,
-        // 	label: 'any length of character text (optional)',
-        // 	required: false
-        // },
-
-        // TEXTAREA
-
-        // {
-        // 	fieldType: FieldType.Textarea,
-        // 	value: null,
-        // 	maxLength: 150,
-        // 	label: 'Between 0-150 character string (required)',
-        // 	required: true
-        // },
-        // {
-        // 	fieldType: FieldType.Textarea,
-        // 	value: null,
-        // 	maxLength: 20,
-        // 	label: 'Between 0-20 character string (optional)',
-        // 	required: false
-        // },
-
-        // EMAIL
-
-        // {
-        // 	fieldType: FieldType.Email,
-        // 	value: null,
-        // 	label: 'Some Email (required)',
-        // 	required: true
-        // },
-        // {
-        // 	fieldType: FieldType.Email,
-        // 	value: null,
-        // 	label: 'Some Email (optional)',
-        // 	required: false
-        // },
-
-        // DATE
-
-        // {
-        // 	fieldType: FieldType.Date,
-        // 	value: null,
-        // 	label: 'Some Date',
-        // 	required: true
-        // },
-        // {
-        // 	fieldType: FieldType.Date,
-        // 	value: null,
-        // 	label: 'Some Datetime',
-        // 	dateType: DateType.Datetime,
-        // 	required: true
-        // },
-        // {
-        // 	fieldType: FieldType.Date,
-        // 	value: null,
-        // 	label: 'Some Time',
-        // 	dateType: DateType.Time,
-        // 	required: true
-        // },
-
-        // PASSWORD
-
-        // {
-        // 	fieldType: FieldType.Password,
-        // 	value: null,
-        // 	label: 'Some Password (required, at least 3 chars)',
-        // 	required: true,
-        // 	minLength: 3
-        // },
-
-        // NUMBERRANGE
-
-        // {
-        // 	fieldType: FieldType.NumberRange,
-        // 	value: {
-        // 		from: null,
-        // 		to: null
-        // 	},
-        // 	label: 'Some Number Range (required)',
-        // 	required: true
-        // }
-
-        // LINK
-
-        // {
-        // 	fieldType: FieldType.Link,
-        // 	value: {
-        // 		text: null,
-        // 		href: null
-        // 	},
-        // 	label: 'Some Link (required)',
-        // 	required: true
-        // },
-
-        // FILE
-
-        {
-            fieldType: FieldType.File,
-            value: null,
-            label: 'Some File (required)',
-            required: true
-        }
-    ]
+/**
+ * Basic form config for intial sample
+ */
+const formConfig = (type: FieldType): FormidableBasicForm => {
+    const fields = SAMPLES[type] || [];
+    return {
+        type: FormType.Basic,
+        fields
+    } as FormidableBasicForm;
 };
 
+export const FIELDS = Object.keys(FieldType).map(val => FieldType[val as any]);
+
 export default formConfig;
-// export default form2;

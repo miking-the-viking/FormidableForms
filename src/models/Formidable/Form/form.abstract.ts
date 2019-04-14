@@ -1,10 +1,10 @@
 import { FormidableBasicForm } from '@/models/Formidable/Form/FormidableBasicForm';
 import { FormidableWizardForm } from '@/models/Formidable/Form/FormidableWizardForm';
 import { IFormidableFileProps } from './../Field/FormidableFile';
-import { IFormidableDateProps } from './../Field/FormidableDate';
-import { IFormidableNumberRangeProps } from './../Field/FormidableNumberRange';
-import { IFormidablePasswordProps } from './../Field/FormidablePassword';
-import { IFormidableEmailProps } from './../Field/FormidableEmail';
+import { IFormidableDateProps } from '../Field/Date/FormidableDate';
+import { IFormidableNumberRangeProps } from '../Field/NumberRange/FormidableNumberRange';
+import { IFormidablePasswordProps } from '../Field/Password/FormidablePassword';
+import { IFormidableEmailProps } from '../Field/Email/FormidableEmail';
 /**
  * Abstract Formidable Form core definition
  */
@@ -19,23 +19,23 @@ import {
 import {
     FormidableLink,
     IFormidableLinkProps
-} from '@/models/Formidable/Field/FormidableLink';
+} from '@/models/Formidable/Field/Link/FormidableLink';
 import {
     FormidableNumber,
     IFormidableNumberProps
-} from '@/models/Formidable/Field/FormidableNumber';
+} from '@/models/Formidable/Field/Number/FormidableNumber';
 import {
     FormidableText,
     IFormidableTextProps
-} from '@/models/Formidable/Field/FormidableText';
+} from '@/models/Formidable/Field/Text/FormidableText';
 import {
     FormidableTextarea,
     IFormidableTextareaProps
-} from '@/models/Formidable/Field/FormidableTextarea';
-import { FormidablePassword } from '@/models/Formidable/Field/FormidablePassword';
-import { FormidableEmail } from '@/models/Formidable/Field/FormidableEmail';
-import { FormidableNumberRange } from '@/models/Formidable/Field/FormidableNumberRange';
-import { FormidableDate } from '@/models/Formidable/Field/FormidableDate';
+} from '@/models/Formidable/Field/Textarea/FormidableTextarea';
+import { FormidablePassword } from '@/models/Formidable/Field/Password/FormidablePassword';
+import { FormidableEmail } from '@/models/Formidable/Field/Email/FormidableEmail';
+import { FormidableNumberRange } from '@/models/Formidable/Field/NumberRange/FormidableNumberRange';
+import { FormidableDate } from '@/models/Formidable/Field/Date/FormidableDate';
 import { FormidableFile } from '@/models/Formidable/Field/FormidableFile';
 import { transformAndValidate } from 'class-transformer-validator';
 
@@ -53,7 +53,7 @@ export enum FormType {
 
 export type FormTypes = FormidableBasicForm | FormidableWizardForm;
 
-type FieldConfigTypes =
+export type FieldConfigType =
     | IFormidableNumberProps
     | IFormidableTextProps
     | IFormidableTextareaProps
@@ -64,7 +64,7 @@ type FieldConfigTypes =
     | IFormidableDateProps
     | IFormidableFileProps;
 
-export type FieldCtorTypes =
+export type FieldCtorType =
     | FormidableNumber
     | FormidableText
     | FormidableTextarea
@@ -75,21 +75,48 @@ export type FieldCtorTypes =
     | FormidableDate
     | FormidableFile;
 
-type FieldConfigTypesTest = IFormidableNumberProps;
-
-type FieldCtorTypesTest = FormidableNumber | FormidableText;
-
-async function getInstance(
-    f: FieldConfigTypesTest
-): Promise<FieldCtorTypesTest> {
+/**
+ * Function to return an Instance of the provided field
+ * @todo Test and validate this function
+ * @param f
+ */
+export async function getInstance(f: FieldConfigType): Promise<FieldCtorType> {
+    let ctor: new (...args: any[]) => FieldCtorType;
     switch (f.fieldType) {
         case FieldType.Number:
-            return await transformAndValidate(FormidableNumber, f);
+            ctor = FormidableNumber;
+            break;
         case FieldType.Text:
-            return await transformAndValidate(FormidableText, f);
+            ctor = FormidableText;
+            break;
+        case FieldType.Textarea:
+            ctor = FormidableTextarea;
+            break;
+        case FieldType.Link:
+            ctor = FormidableLink;
+            break;
+        case FieldType.Email:
+            ctor = FormidableEmail;
+            break;
+        case FieldType.Password:
+            ctor = FormidablePassword;
+            break;
+        case FieldType.NumberRange:
+            ctor = FormidableNumberRange;
+            break;
+        case FieldType.Datetime:
+            ctor = FormidableDate;
+            break;
+        case FieldType.File:
+            ctor = FormidableFile;
+            break;
         default:
-            throw new Error(`Invalid Formidable Field Type: ${f.fieldType}`);
+            throw new Error(
+                `Invalid Formidable Field Type: ${(f as any).fieldType}`
+            );
     }
+
+    return await transformAndValidate(ctor, f);
 }
 
 /**
@@ -119,7 +146,7 @@ export abstract class FormidableForm {
             ]
         }
     })
-    public fields!: FieldConfigTypes[];
+    public fields!: FieldConfigType[];
 
     /**
      * Submit action for the form, optional or null if retrieving the values and submitting by another means.
