@@ -1,6 +1,6 @@
 {
     "name": "@formidableforms/vue",
-    "version": "0.4.0",
+    "version": "0.4.1-alpha.0",
     "description": "Formidable Forms Vue SPA",
     "main": "./dist/formidable-forms.common.js",
     "module": "./dist/formidable-forms.common.js",
@@ -22,8 +22,8 @@
         "test:unit:watch": "vue-cli-service test:unit --watch --verbose"
     },
     "dependencies": {
-        "@formidableforms/core": "^0.4.0",
-        "@formidableforms/vue-components": "^0.4.0",
+        "@formidableforms/core": "^0.4.1-alpha.0",
+        "@formidableforms/vue-components": "^0.4.1-alpha.0",
         "@fortawesome/fontawesome-svg-core": "^1.2.12",
         "@fortawesome/free-solid-svg-icons": "^5.6.3",
         "@fortawesome/vue-fontawesome": "^0.1.4",
