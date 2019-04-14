@@ -1,7 +1,6 @@
 {
-  "name": "root",
-  "private": true,
-  "devDependencies": {
-    "lerna": "^3.13.1"
-  }
+    "name": "@formidableforms/root",
+    "devDependencies": {
+        "lerna": "^3.13.1"
+    }
 }

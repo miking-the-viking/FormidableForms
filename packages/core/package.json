@@ -1,6 +1,6 @@
 {
-    "name": "@formidable/core",
-    "version": "1.0.0",
+    "name": "@formidableforms/core",
+    "version": "0.0.1-alpha.0",
     "description": "Formidable Forms Core",
     "author": "MikingTheViking <kingmi123@gmail.com>",
     "homepage": "https://github.com/miking-the-viking/FormidableForms#readme",
@@ -51,5 +51,6 @@
             "yarn test",
             "git add"
         ]
-    }
+    },
+    "gitHead": "bca8d33e8e926e2a29385d8b355d6e9628791bf3"
 }
