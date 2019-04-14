@@ -6,6 +6,7 @@ import { FieldType } from '@/models/field/core/field.types.enum';
 import { FormidableNumber } from '@/models/field/number/FormidableNumber';
 import { NumberFactory } from '@/models/field/number/number.factory';
 import { numberFactoryTest } from '@/models/field/number/number.factory.spec.config';
+import { IFormidableNumberProps } from '@/models/field/number/number.props.interface';
 import errorArrayHas from '@/utils/testing/errorArrayHas.function';
 import { transformAndValidate } from 'class-transformer-validator';
 
