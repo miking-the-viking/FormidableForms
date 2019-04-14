@@ -1,6 +1,6 @@
 {
     "name": "@formidable/core",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "description": "Formidable Forms Core",
     "author": "MikingTheViking <kingmi123@gmail.com>",
     "homepage": "https://github.com/miking-the-viking/FormidableForms#readme",
@@ -13,12 +13,15 @@
     "files": [
         "lib"
     ],
+    "jest": {
+        "preset": "ts-jest"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/miking-the-viking/FormidableForms.git"
     },
     "scripts": {
-        "test": "echo \"Error: run tests from root\" && exit 1"
+        "test": "jest"
     },
     "bugs": {
         "url": "https://github.com/miking-the-viking/FormidableForms/issues"
