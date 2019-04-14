@@ -1,6 +1,6 @@
 {
     "name": "@formidableforms/vue-components",
-    "version": "0.0.1-alpha.0",
+    "version": "0.4.0",
     "description": "> TODO: description",
     "author": "MikingTheViking <kingmi123@gmail.com>",
     "homepage": "https://github.com/miking-the-viking/FormidableForms#readme",
@@ -20,7 +20,7 @@
         "url": "https://github.com/miking-the-viking/FormidableForms/issues"
     },
     "dependencies": {
-        "@formidableforms/core": "^0.0.1-alpha.0",
+        "@formidableforms/core": "^0.4.0",
         "core-js": "^2.6.5",
         "pug": "^2.0.3",
         "pug-plain-loader": "^1.0.0",
