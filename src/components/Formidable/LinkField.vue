@@ -28,12 +28,18 @@ md-field
 
 <script lang="ts">
 import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
-import { FormidableField, FieldType } from '@/models/Formidable/Field/field.abstract';
+import {
+    FormidableField,
+    FieldType
+} from '@/models/Formidable/Field/field.abstract';
 import { ValidationError } from 'class-validator';
-import { Link } from '@/models/Formidable/Field/FormidableLink/Link';
-import { ILink, FormidableLink } from '@/models/Formidable/Field/FormidableLink';
+import { Link } from '@/models/Formidable/Field/Link/Link';
+import {
+    ILink,
+    FormidableLink
+} from '@/models/Formidable/Field/Link/FormidableLink';
 import TextField from '@/components/Formidable/TextField.vue';
-import { FormidableText } from '@/models/Formidable/Field/FormidableText';
+import { FormidableText } from '@/models/Formidable/Field/Text/FormidableText';
 
 @Component({
     components: {
@@ -45,18 +51,20 @@ export default class LinkField extends Vue {
     @Prop({ default: () => [] }) private validationErrors!: ValidationError[];
 
     get valueFieldError(): ValidationError | undefined {
-        return this.validationErrors.find((val) => val.property === 'value');
+        return this.validationErrors.find(val => val.property === 'value');
     }
 
     get textFieldError(): ValidationError[] | undefined {
         const textFieldErr = this.valueFieldError
-            ? this.valueFieldError.children.find((val) => val.property === 'text') : undefined;
+            ? this.valueFieldError.children.find(val => val.property === 'text')
+            : undefined;
         return textFieldErr ? [textFieldErr] : undefined;
     }
 
     get hrefFieldError(): ValidationError[] | undefined {
         const hrefFieldErr = this.valueFieldError
-            ? this.valueFieldError.children.find((val) => val.property === 'href') : undefined;
+            ? this.valueFieldError.children.find(val => val.property === 'href')
+            : undefined;
         return hrefFieldErr ? [hrefFieldErr] : undefined;
     }
 
@@ -77,7 +85,10 @@ export default class LinkField extends Vue {
     }
 
     set text(text: string | null) {
-        this.$emit('input', {...this.value, value: {...this.value.value, text}});
+        this.$emit('input', {
+            ...this.value,
+            value: { ...this.value.value, text }
+        });
     }
 
     get hrefField() {
@@ -97,8 +108,10 @@ export default class LinkField extends Vue {
     }
 
     set href(href: string | null) {
-        this.$emit('input', {...this.value, value: {...this.value.value, href}});
+        this.$emit('input', {
+            ...this.value,
+            value: { ...this.value.value, href }
+        });
     }
-
 }
 </script>

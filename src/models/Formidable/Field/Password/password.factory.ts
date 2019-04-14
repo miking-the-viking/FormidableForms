@@ -1,18 +1,18 @@
 import { BasicFieldFactoryObject } from './../field.factory.abstract';
-import { IFormidableNumberProps } from '@/models/Formidable/Field/Number/FormidableNumber';
+import { IFormidablePasswordProps } from '@/models/Formidable/Field/Password/FormidablePassword';
 import { Factory } from '../field.factory.abstract';
 import { FieldType } from '../field.abstract';
 
-export class NumberFactory extends Factory<IFormidableNumberProps> {
+export class PasswordFactory extends Factory<IFormidablePasswordProps> {
     public generate(count = 1, config = {}) {
         return new Array(count).map(x => this.buildField(config));
     }
 
-    public buildField(config = {}): IFormidableNumberProps {
+    public buildField(config = {}): IFormidablePasswordProps {
         return {
             ...this.buildBaseField(),
-            fieldType: FieldType.Number,
+            fieldType: FieldType.Password,
             ...config
-        } as IFormidableNumberProps;
+        } as IFormidablePasswordProps;
     }
 }

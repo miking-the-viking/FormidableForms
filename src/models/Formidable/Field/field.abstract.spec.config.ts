@@ -7,7 +7,7 @@ import {
 
 import { transformAndValidate } from 'class-transformer-validator';
 import { ValidationError } from 'class-validator';
-import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
+import { FormidableNumber } from '@/models/Formidable/Field/Number/FormidableNumber';
 import { Factory } from '@/models/Formidable/Field/field.factory.abstract';
 import { getInstance } from '@/models/Formidable/Form/form.abstract';
 

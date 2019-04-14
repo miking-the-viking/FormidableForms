@@ -1,28 +1,36 @@
+import { PasswordFactory } from './password.factory';
 /**
- * Email implementation of a Formidable Field test suite
+ * Password implementation of a Formidable Field test suite
  */
-// import { IFormidableEmailProps } from '@/models/Formidable/Field/FormidableEmail';
 import { transformAndValidate } from 'class-transformer-validator';
 import { FieldType } from '@/models/Formidable/Field/field.abstract';
-import runFieldTests, { errorArrayHas } from './field.abstract.spec.config';
+import runFieldTests, { errorArrayHas } from '../field.abstract.spec.config';
 import {
-    FormidableEmail,
-    IFormidableEmailProps
-} from '@/models/Formidable/Field/FormidableEmail';
+    FormidablePassword,
+    IFormidablePasswordProps
+} from '@/models/Formidable/Field/Password/FormidablePassword';
+import { passwordFactoryTest } from './password.factory.spec.config';
 
-describe('Formidable Email field', () => {
+describe('Formidable Password field', () => {
+    let factory: PasswordFactory;
+
+    beforeAll(() => {
+        factory = new PasswordFactory();
+    });
+
     describe('Core Field Tests', () => {
-        runFieldTests(FormidableEmail);
+        passwordFactoryTest();
+        runFieldTests(FormidablePassword, PasswordFactory);
     });
 
     describe('Initialization & Validation', () => {
         describe('Props', () => {
             // describe('fieldType', () => {
-            // 	it('Only allows the Email FieldType', async () => {
+            // 	it('Only allows the Password FieldType', async () => {
             // 		for (const type in FieldType) {
-            // 			if (FieldType[type] !== FieldType.Email) {
+            // 			if (FieldType[type] !== FieldType.Password) {
             // 				try {
-            // 					await transformAndValidate(FormidableEmail, { fieldType: FieldType[type] });
+            // 					await transformAndValidate(FormidablePassword, {fieldType: FieldType[type] });
             // 					fail(`Should have failed on an invalid Field Type ${FieldType[type]}`);
             // 				} catch (e) {
             // 					expect(errorArrayHas('fieldType', e)).toBeTruthy();
@@ -33,50 +41,40 @@ describe('Formidable Email field', () => {
             // });
 
             describe('value', () => {
-                it('Can initialize a FormidableEmail with valid basic props and a null value', async () => {
-                    const validEmail: IFormidableEmailProps = {
-                        fieldType: FieldType.Email,
-                        value: null
-                    };
-                    await transformAndValidate(FormidableEmail, validEmail);
+                it('Can initialize a FormidablePassword with valid basic props and a null value', async () => {
+                    const validPassword: IFormidablePasswordProps = factory.buildField(
+                        {
+                            value: null
+                        }
+                    );
+                    await transformAndValidate(
+                        FormidablePassword,
+                        validPassword
+                    );
                 });
 
-                it('Can initialize a FormidableEmail with valid basic props and an email string value', async () => {
-                    const validEmail: IFormidableEmailProps = {
-                        fieldType: FieldType.Email,
-                        value: 'someemail@gmail.com'
-                    };
-                    await transformAndValidate(FormidableEmail, validEmail);
-                });
-
-                it('Fails when a non-email string is used', async () => {
-                    const invalidEmail: IFormidableEmailProps = {
-                        fieldType: FieldType.Email,
-                        value: 'not a damn email'
-                    };
-                    try {
-                        await transformAndValidate(
-                            FormidableEmail,
-                            invalidEmail
-                        );
-                        fail(
-                            `Did not fail on a numeric value for a Email field`
-                        );
-                    } catch (e) {
-                        expect(e).toBeInstanceOf(Array);
-                        expect(errorArrayHas('value', e)).toBeTruthy();
-                    }
+                it('Can initialize a FormidablePassword with valid basic props and an Password string value', async () => {
+                    const validPassword: IFormidablePasswordProps = factory.buildField(
+                        {
+                            value: 'thisIsMyPassword123!'
+                        }
+                    );
+                    await transformAndValidate(
+                        FormidablePassword,
+                        validPassword
+                    );
                 });
 
                 it('Fails when an object is used', async () => {
-                    const invalidEmail: IFormidableEmailProps = {
-                        fieldType: FieldType.Email,
-                        value: { blah: 5 } as any
-                    };
+                    const invalidPassword: IFormidablePasswordProps = factory.buildField(
+                        {
+                            value: { blah: 5 } as any
+                        }
+                    );
                     try {
                         await transformAndValidate(
-                            FormidableEmail,
-                            invalidEmail
+                            FormidablePassword,
+                            invalidPassword
                         );
                     } catch (e) {
                         expect(e).toBeInstanceOf(Array);
@@ -85,14 +83,15 @@ describe('Formidable Email field', () => {
                 });
 
                 it('Fails when an array is used', async () => {
-                    const invalidEmail: IFormidableEmailProps = {
-                        fieldType: FieldType.Email,
-                        value: [1, 2, 3, 45, 5, 6] as any
-                    };
+                    const invalidPassword: IFormidablePasswordProps = factory.buildField(
+                        {
+                            value: [1, 2, 3, 45, 5, 6] as any
+                        }
+                    );
                     try {
                         await transformAndValidate(
-                            FormidableEmail,
-                            invalidEmail
+                            FormidablePassword,
+                            invalidPassword
                         );
                     } catch (e) {
                         expect(e).toBeInstanceOf(Array);
@@ -101,14 +100,15 @@ describe('Formidable Email field', () => {
                 });
 
                 it('Fails when a Date is used', async () => {
-                    const invalidEmail: IFormidableEmailProps = {
-                        fieldType: FieldType.Email,
-                        value: new Date() as any
-                    };
+                    const invalidPassword: IFormidablePasswordProps = factory.buildField(
+                        {
+                            value: new Date() as any
+                        }
+                    );
                     try {
                         await transformAndValidate(
-                            FormidableEmail,
-                            invalidEmail
+                            FormidablePassword,
+                            invalidPassword
                         );
                     } catch (e) {
                         expect(e).toBeInstanceOf(Array);
@@ -119,23 +119,19 @@ describe('Formidable Email field', () => {
 
             describe('min and max length restrictions', () => {
                 it('are optional', async () => {
-                    const validPayloads: IFormidableEmailProps[] = [
+                    const validPayloads: Array<Partial<IFormidablePasswordProps>> = [
                         {
-                            fieldType: FieldType.Email,
                             value: null
                         },
                         {
-                            fieldType: FieldType.Email,
                             value: null,
                             maxLength: 10
                         },
                         {
-                            fieldType: FieldType.Email,
                             value: null,
                             minLength: 1
                         },
                         {
-                            fieldType: FieldType.Email,
                             value: null,
                             minLength: 1,
                             maxLength: 10
@@ -144,7 +140,10 @@ describe('Formidable Email field', () => {
 
                     Promise.all(
                         validPayloads.map(val => {
-                            transformAndValidate(FormidableEmail, val);
+                            transformAndValidate(
+                                FormidablePassword,
+                                factory.buildField(val)
+                            );
                         })
                     ).catch(e => {
                         expect(!errorArrayHas('minLength', e)).toBeTruthy();
@@ -157,7 +156,6 @@ describe('Formidable Email field', () => {
                         {
                             it: 'fails on a string',
                             data: {
-                                fieldType: FieldType.Email,
                                 value: null,
                                 minLength: 'some string'
                             }
@@ -165,7 +163,6 @@ describe('Formidable Email field', () => {
                         {
                             it: 'fails on a boolean',
                             data: {
-                                fieldType: FieldType.Email,
                                 value: null,
                                 minLength: true
                             }
@@ -173,7 +170,6 @@ describe('Formidable Email field', () => {
                         {
                             it: 'fails on an object',
                             data: {
-                                fieldType: FieldType.Email,
                                 value: null,
                                 minLength: {}
                             }
@@ -185,8 +181,8 @@ describe('Formidable Email field', () => {
                         it(minLengthConfig.it, async () => {
                             try {
                                 await transformAndValidate(
-                                    FormidableEmail,
-                                    minLengthConfig.data
+                                    FormidablePassword,
+                                    factory.buildField(minLengthConfig.data)
                                 );
                                 fail(
                                     `Did not raise an error with min length ${
@@ -205,7 +201,6 @@ describe('Formidable Email field', () => {
                         {
                             it: 'fails on a string',
                             data: {
-                                fieldType: FieldType.Email,
                                 value: null,
                                 maxLength: 'some string'
                             }
@@ -213,7 +208,6 @@ describe('Formidable Email field', () => {
                         {
                             it: 'fails on a boolean',
                             data: {
-                                fieldType: FieldType.Email,
                                 value: null,
                                 maxLength: true
                             }
@@ -221,7 +215,6 @@ describe('Formidable Email field', () => {
                         {
                             it: 'fails on an object',
                             data: {
-                                fieldType: FieldType.Email,
                                 value: null,
                                 maxLength: {}
                             }
@@ -233,8 +226,8 @@ describe('Formidable Email field', () => {
                         it(maxLengthConfig.it, async () => {
                             try {
                                 await transformAndValidate(
-                                    FormidableEmail,
-                                    maxLengthConfig.data
+                                    FormidablePassword,
+                                    factory.buildField(maxLengthConfig.data)
                                 );
                                 fail(
                                     `Did not raise an error with maxLength ${
@@ -253,12 +246,11 @@ describe('Formidable Email field', () => {
                 it('fails when value is less than the provided minLength', async () => {
                     try {
                         const result = await transformAndValidate(
-                            FormidableEmail,
-                            {
-                                fieldType: FieldType.Email,
+                            FormidablePassword,
+                            factory.buildField({
                                 value: 'a',
                                 minLength: 2
-                            }
+                            })
                         );
                         fail(
                             `should have failed with a value whose length is less than the specified minLength`
@@ -272,12 +264,11 @@ describe('Formidable Email field', () => {
                 it('fails when value is greater than the provided maxLength', async () => {
                     try {
                         const result = await transformAndValidate(
-                            FormidableEmail,
-                            {
-                                fieldType: FieldType.Email,
+                            FormidablePassword,
+                            factory.buildField({
                                 value: 'abbv',
                                 maxLength: 2
-                            }
+                            })
                         );
                         fail(
                             `should have failed with a value whose length is greater than the specified maxLength`

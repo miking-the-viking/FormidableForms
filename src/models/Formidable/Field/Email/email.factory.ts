@@ -1,18 +1,18 @@
 import { BasicFieldFactoryObject } from './../field.factory.abstract';
-import { IFormidableNumberProps } from '@/models/Formidable/Field/Number/FormidableNumber';
+import { IFormidableEmailProps } from '@/models/Formidable/Field/Email/FormidableEmail';
 import { Factory } from '../field.factory.abstract';
 import { FieldType } from '../field.abstract';
 
-export class NumberFactory extends Factory<IFormidableNumberProps> {
+export class EmailFactory extends Factory<IFormidableEmailProps> {
     public generate(count = 1, config = {}) {
         return new Array(count).map(x => this.buildField(config));
     }
 
-    public buildField(config = {}): IFormidableNumberProps {
+    public buildField(config = {}): IFormidableEmailProps {
         return {
             ...this.buildBaseField(),
-            fieldType: FieldType.Number,
+            fieldType: FieldType.Email,
             ...config
-        } as IFormidableNumberProps;
+        } as IFormidableEmailProps;
     }
 }

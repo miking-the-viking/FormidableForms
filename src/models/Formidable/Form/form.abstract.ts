@@ -1,10 +1,10 @@
 import { FormidableBasicForm } from '@/models/Formidable/Form/FormidableBasicForm';
 import { FormidableWizardForm } from '@/models/Formidable/Form/FormidableWizardForm';
 import { IFormidableFileProps } from './../Field/FormidableFile';
-import { IFormidableDateProps } from './../Field/FormidableDate';
-import { IFormidableNumberRangeProps } from './../Field/FormidableNumberRange';
-import { IFormidablePasswordProps } from './../Field/FormidablePassword';
-import { IFormidableEmailProps } from './../Field/FormidableEmail';
+import { IFormidableDateProps } from '../Field/Date/FormidableDate';
+import { IFormidableNumberRangeProps } from '../Field/NumberRange/FormidableNumberRange';
+import { IFormidablePasswordProps } from '../Field/Password/FormidablePassword';
+import { IFormidableEmailProps } from '../Field/Email/FormidableEmail';
 /**
  * Abstract Formidable Form core definition
  */
@@ -19,23 +19,23 @@ import {
 import {
     FormidableLink,
     IFormidableLinkProps
-} from '@/models/Formidable/Field/FormidableLink';
+} from '@/models/Formidable/Field/Link/FormidableLink';
 import {
     FormidableNumber,
     IFormidableNumberProps
-} from '@/models/Formidable/Field/FormidableNumber';
+} from '@/models/Formidable/Field/Number/FormidableNumber';
 import {
     FormidableText,
     IFormidableTextProps
-} from '@/models/Formidable/Field/FormidableText';
+} from '@/models/Formidable/Field/Text/FormidableText';
 import {
     FormidableTextarea,
     IFormidableTextareaProps
-} from '@/models/Formidable/Field/FormidableTextarea';
-import { FormidablePassword } from '@/models/Formidable/Field/FormidablePassword';
-import { FormidableEmail } from '@/models/Formidable/Field/FormidableEmail';
-import { FormidableNumberRange } from '@/models/Formidable/Field/FormidableNumberRange';
-import { FormidableDate } from '@/models/Formidable/Field/FormidableDate';
+} from '@/models/Formidable/Field/Textarea/FormidableTextarea';
+import { FormidablePassword } from '@/models/Formidable/Field/Password/FormidablePassword';
+import { FormidableEmail } from '@/models/Formidable/Field/Email/FormidableEmail';
+import { FormidableNumberRange } from '@/models/Formidable/Field/NumberRange/FormidableNumberRange';
+import { FormidableDate } from '@/models/Formidable/Field/Date/FormidableDate';
 import { FormidableFile } from '@/models/Formidable/Field/FormidableFile';
 import { transformAndValidate } from 'class-transformer-validator';
 

@@ -1,8 +1,8 @@
-import { IFormidableNumberProps } from '../FormidableNumber';
+import { IFormidableNumberProps } from './FormidableNumber';
 import { shallowMount, mount, Wrapper } from '@vue/test-utils';
 import NumberField from '@/components/Formidable/NumberField.vue';
 import { FieldType } from '@/models/Formidable/Field/field.abstract';
-import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
+import { FormidableNumber } from '@/models/Formidable/Field/Number/FormidableNumber';
 import { errorArrayHas } from '@/models/Formidable/Field/field.abstract.spec.config';
 import { Validator } from '@/models/Validator';
 import FeedbackText from '@/components/Formidable/components/FeedbackText.vue';

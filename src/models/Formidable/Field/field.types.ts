@@ -1,12 +1,12 @@
 import { FieldConfigType } from '@/models/Formidable/Form/form.abstract';
-import { IFormidableLinkProps } from '@/models/Formidable/Field/FormidableLink';
-import { IFormidableNumberProps } from '@/models/Formidable/Field/FormidableNumber';
-import { IFormidableTextProps } from '@/models/Formidable/Field/FormidableText';
-import { IFormidableTextareaProps } from '@/models/Formidable/Field/FormidableTextarea';
-import { IFormidablePasswordProps } from '@/models/Formidable/Field/FormidablePassword';
-import { IFormidableEmailProps } from '@/models/Formidable/Field/FormidableEmail';
-import { IFormidableNumberRangeProps } from '@/models/Formidable/Field/FormidableNumberRange';
-import { IFormidableDateProps } from '@/models/Formidable/Field/FormidableDate';
+import { IFormidableLinkProps } from '@/models/Formidable/Field/Link/FormidableLink';
+import { IFormidableNumberProps } from '@/models/Formidable/Field/Number/FormidableNumber';
+import { IFormidableTextProps } from '@/models/Formidable/Field/Text/FormidableText';
+import { IFormidableTextareaProps } from '@/models/Formidable/Field/Textarea/FormidableTextarea';
+import { IFormidablePasswordProps } from '@/models/Formidable/Field/Password/FormidablePassword';
+import { IFormidableEmailProps } from '@/models/Formidable/Field/Email/FormidableEmail';
+import { IFormidableNumberRangeProps } from '@/models/Formidable/Field/NumberRange/FormidableNumberRange';
+import { IFormidableDateProps } from '@/models/Formidable/Field/Date/FormidableDate';
 import { IFormidableFileProps } from '@/models/Formidable/Field/FormidableFile';
 
 export type ConditionallyInferredField<T> = T extends IFormidableNumberProps

@@ -22,7 +22,7 @@ import { FormidableField } from '@/models/Formidable/Field/field.abstract';
 import { ValidationError } from 'class-validator';
 import FeedbackText from '@/components/Formidable/components/FeedbackText.vue';
 import { FormidableFieldComponent } from '@/components/Formidable/FormidableFieldComponent.abstract';
-import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
+import { FormidableNumber } from '@/models/Formidable/Field/Number/FormidableNumber';
 
 @Component({
     components: {

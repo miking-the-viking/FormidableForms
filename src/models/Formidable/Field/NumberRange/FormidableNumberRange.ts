@@ -1,4 +1,4 @@
-import { FieldType } from './field.abstract';
+import { FieldType } from '../field.abstract';
 import {
     FormidableField,
     IFormidableFieldProps
@@ -6,7 +6,7 @@ import {
 import { ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
 import 'reflect-metadata';
-import { NumberRange } from '@/models/Formidable/Field/FormidableNumberRange/NumberRange';
+import { NumberRange } from '@/models/Formidable/Field/NumberRange/NumberRange';
 
 /**
  * A Range is defined as two values: from and to. These can be numbers, dates, times, etc. Hence the generic T

@@ -1,71 +1,105 @@
+import { TextFactory } from './text.factory';
 /**
- * Password implementation of a Formidable Field test suite
+ * Number implementation of a Formidable Field test suite
  */
+// import { IFormidableNumberProps } from '@/models/Formidable/Field/FormidableNumber';
 import { transformAndValidate } from 'class-transformer-validator';
 import { FieldType } from '@/models/Formidable/Field/field.abstract';
 import runFieldTests, {
     errorArrayHas
-} from '../../../src/models/Formidable/Field/field.abstract.spec.config';
+} from '@/models/Formidable/Field/field.abstract.spec.config';
 import {
-    FormidablePassword,
-    IFormidablePasswordProps
-} from '@/models/Formidable/Field/FormidablePassword';
+    FormidableText,
+    IFormidableTextProps
+} from '@/models/Formidable/Field/Text/FormidableText';
+import textFieldComponentTests from './text.spec.component';
+import { textFactoryTest } from './text.factory.spec.config';
 
-describe('Formidable Password field', () => {
+describe('Formidable Text field', () => {
+    let factory: TextFactory;
+
+    beforeAll(() => {
+        factory = new TextFactory();
+    });
+
     describe('Core Field Tests', () => {
-        runFieldTests(FormidablePassword);
+        textFactoryTest();
+        runFieldTests(FormidableText, TextFactory);
+        // tslint:disable-next-line:no-unused-expression
+        // textFieldComponentTests;
     });
 
     describe('Initialization & Validation', () => {
         describe('Props', () => {
-            // describe('fieldType', () => {
-            // 	it('Only allows the Password FieldType', async () => {
-            // 		for (const type in FieldType) {
-            // 			if (FieldType[type] !== FieldType.Password) {
-            // 				try {
-            // 					await transformAndValidate(FormidablePassword, {fieldType: FieldType[type] });
-            // 					fail(`Should have failed on an invalid Field Type ${FieldType[type]}`);
-            // 				} catch (e) {
-            // 					expect(errorArrayHas('fieldType', e)).toBeTruthy();
-            // 				}
-            // 			}
-            // 		}
-            // 	});
-            // });
+            describe('fieldType', () => {
+                xit('Only allows the text FieldType', async () => {
+                    try {
+                        await transformAndValidate(FormidableText, {
+                            fieldfieldType: FieldType.Number
+                        });
+                        fail(
+                            `Should have failed on an invalid Field Type ${
+                                FieldType.Number
+                            }`
+                        );
+                    } catch (e) {
+                        expect(errorArrayHas('fieldType', e)).toBeTruthy();
+                    }
+                    Object.keys(FieldType).map(async val => {
+                        try {
+                            await transformAndValidate(FormidableText, {
+                                fieldfieldType: val
+                            });
+                            fail(
+                                `Should have failed on an invalid Field Type ${val}`
+                            );
+                        } catch (e) {
+                            expect(errorArrayHas('fieldType', e)).toBeTruthy();
+                        }
+                    });
+                });
+            });
 
             describe('value', () => {
-                it('Can initialize a FormidablePassword with valid basic props and a null value', async () => {
-                    const validPassword: IFormidablePasswordProps = {
-                        fieldType: FieldType.Password,
+                it('Can initialize a FormidableText with valid basic props and a null value', async () => {
+                    const validText: IFormidableTextProps = factory.buildField({
                         value: null
-                    };
-                    await transformAndValidate(
-                        FormidablePassword,
-                        validPassword
-                    );
+                    });
+                    await transformAndValidate(FormidableText, validText);
                 });
 
-                it('Can initialize a FormidablePassword with valid basic props and an Password string value', async () => {
-                    const validPassword: IFormidablePasswordProps = {
-                        fieldType: FieldType.Password,
-                        value: 'thisIsMyPassword123!'
-                    };
-                    await transformAndValidate(
-                        FormidablePassword,
-                        validPassword
+                it('Can initialize a FormidableText with valid basic props and a string value', async () => {
+                    const validText: IFormidableTextProps = factory.buildField({
+                        value: 'Some string value'
+                    });
+                    await transformAndValidate(FormidableText, validText);
+                });
+
+                it('Fails when a number is used', async () => {
+                    const invalidText: IFormidableTextProps = factory.buildField(
+                        {
+                            value: 5 as any
+                        }
                     );
+                    try {
+                        await transformAndValidate(FormidableText, invalidText);
+                        fail(
+                            `Did not fail on a numeric value for a text field`
+                        );
+                    } catch (e) {
+                        expect(e).toBeInstanceOf(Array);
+                        expect(errorArrayHas('value', e)).toBeTruthy();
+                    }
                 });
 
                 it('Fails when an object is used', async () => {
-                    const invalidPassword: IFormidablePasswordProps = {
-                        fieldType: FieldType.Password,
-                        value: { blah: 5 } as any
-                    };
+                    const invalidText: IFormidableTextProps = factory.buildField(
+                        {
+                            value: { blah: 5 } as any
+                        }
+                    );
                     try {
-                        await transformAndValidate(
-                            FormidablePassword,
-                            invalidPassword
-                        );
+                        await transformAndValidate(FormidableText, invalidText);
                     } catch (e) {
                         expect(e).toBeInstanceOf(Array);
                         expect(errorArrayHas('value', e)).toBeTruthy();
@@ -73,15 +107,13 @@ describe('Formidable Password field', () => {
                 });
 
                 it('Fails when an array is used', async () => {
-                    const invalidPassword: IFormidablePasswordProps = {
-                        fieldType: FieldType.Password,
-                        value: [1, 2, 3, 45, 5, 6] as any
-                    };
+                    const invalidText: IFormidableTextProps = factory.buildField(
+                        {
+                            value: [1, 2, 3, 45, 5, 6] as any
+                        }
+                    );
                     try {
-                        await transformAndValidate(
-                            FormidablePassword,
-                            invalidPassword
-                        );
+                        await transformAndValidate(FormidableText, invalidText);
                     } catch (e) {
                         expect(e).toBeInstanceOf(Array);
                         expect(errorArrayHas('value', e)).toBeTruthy();
@@ -89,15 +121,13 @@ describe('Formidable Password field', () => {
                 });
 
                 it('Fails when a Date is used', async () => {
-                    const invalidPassword: IFormidablePasswordProps = {
-                        fieldType: FieldType.Password,
-                        value: new Date() as any
-                    };
+                    const invalidText: IFormidableTextProps = factory.buildField(
+                        {
+                            value: new Date() as any
+                        }
+                    );
                     try {
-                        await transformAndValidate(
-                            FormidablePassword,
-                            invalidPassword
-                        );
+                        await transformAndValidate(FormidableText, invalidText);
                     } catch (e) {
                         expect(e).toBeInstanceOf(Array);
                         expect(errorArrayHas('value', e)).toBeTruthy();
@@ -107,23 +137,21 @@ describe('Formidable Password field', () => {
 
             describe('min and max length restrictions', () => {
                 it('are optional', async () => {
-                    const validPayloads: IFormidablePasswordProps[] = [
+                    const validPayloads: Array<
+                        Partial<IFormidableTextProps>
+                    > = [
                         {
-                            fieldType: FieldType.Password,
                             value: null
                         },
                         {
-                            fieldType: FieldType.Password,
                             value: null,
                             maxLength: 10
                         },
                         {
-                            fieldType: FieldType.Password,
                             value: null,
                             minLength: 1
                         },
                         {
-                            fieldType: FieldType.Password,
                             value: null,
                             minLength: 1,
                             maxLength: 10
@@ -132,7 +160,10 @@ describe('Formidable Password field', () => {
 
                     Promise.all(
                         validPayloads.map(val => {
-                            transformAndValidate(FormidablePassword, val);
+                            transformAndValidate(
+                                FormidableText,
+                                factory.buildField(val)
+                            );
                         })
                     ).catch(e => {
                         expect(!errorArrayHas('minLength', e)).toBeTruthy();
@@ -145,7 +176,6 @@ describe('Formidable Password field', () => {
                         {
                             it: 'fails on a string',
                             data: {
-                                fieldType: FieldType.Password,
                                 value: null,
                                 minLength: 'some string'
                             }
@@ -153,7 +183,6 @@ describe('Formidable Password field', () => {
                         {
                             it: 'fails on a boolean',
                             data: {
-                                fieldType: FieldType.Password,
                                 value: null,
                                 minLength: true
                             }
@@ -161,7 +190,6 @@ describe('Formidable Password field', () => {
                         {
                             it: 'fails on an object',
                             data: {
-                                fieldType: FieldType.Password,
                                 value: null,
                                 minLength: {}
                             }
@@ -173,8 +201,8 @@ describe('Formidable Password field', () => {
                         it(minLengthConfig.it, async () => {
                             try {
                                 await transformAndValidate(
-                                    FormidablePassword,
-                                    minLengthConfig.data
+                                    FormidableText,
+                                    factory.buildField(minLengthConfig.data)
                                 );
                                 fail(
                                     `Did not raise an error with min length ${
@@ -193,7 +221,6 @@ describe('Formidable Password field', () => {
                         {
                             it: 'fails on a string',
                             data: {
-                                fieldType: FieldType.Password,
                                 value: null,
                                 maxLength: 'some string'
                             }
@@ -201,7 +228,6 @@ describe('Formidable Password field', () => {
                         {
                             it: 'fails on a boolean',
                             data: {
-                                fieldType: FieldType.Password,
                                 value: null,
                                 maxLength: true
                             }
@@ -209,7 +235,6 @@ describe('Formidable Password field', () => {
                         {
                             it: 'fails on an object',
                             data: {
-                                fieldType: FieldType.Password,
                                 value: null,
                                 maxLength: {}
                             }
@@ -221,8 +246,8 @@ describe('Formidable Password field', () => {
                         it(maxLengthConfig.it, async () => {
                             try {
                                 await transformAndValidate(
-                                    FormidablePassword,
-                                    maxLengthConfig.data
+                                    FormidableText,
+                                    factory.buildField(maxLengthConfig.data)
                                 );
                                 fail(
                                     `Did not raise an error with maxLength ${
@@ -241,12 +266,11 @@ describe('Formidable Password field', () => {
                 it('fails when value is less than the provided minLength', async () => {
                     try {
                         const result = await transformAndValidate(
-                            FormidablePassword,
-                            {
-                                fieldType: FieldType.Password,
+                            FormidableText,
+                            factory.buildField({
                                 value: 'a',
                                 minLength: 2
-                            }
+                            })
                         );
                         fail(
                             `should have failed with a value whose length is less than the specified minLength`
@@ -260,12 +284,11 @@ describe('Formidable Password field', () => {
                 it('fails when value is greater than the provided maxLength', async () => {
                     try {
                         const result = await transformAndValidate(
-                            FormidablePassword,
-                            {
-                                fieldType: FieldType.Password,
+                            FormidableText,
+                            factory.buildField({
                                 value: 'abbv',
                                 maxLength: 2
-                            }
+                            })
                         );
                         fail(
                             `should have failed with a value whose length is greater than the specified maxLength`

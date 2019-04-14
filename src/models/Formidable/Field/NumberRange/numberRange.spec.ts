@@ -1,22 +1,29 @@
+import { NumberRangeFactory } from './numberRange.factory';
 /**
  * NumberRange implementation of a Formidable Field test suite
  */
 import { transformAndValidate } from 'class-transformer-validator';
 import { FieldType } from '@/models/Formidable/Field/field.abstract';
-import runFieldTests, {
-    errorArrayHas
-} from '../../../src/models/Formidable/Field/field.abstract.spec.config';
+import runFieldTests, { errorArrayHas } from '../field.abstract.spec.config';
 import {
     FormidableNumberRange,
     IFormidableNumberRangeProps,
     INumberRange
-} from '@/models/Formidable/Field/FormidableNumberRange';
+} from '@/models/Formidable/Field/NumberRange/FormidableNumberRange';
 import { plainToClass } from 'class-transformer';
 import { validate } from 'class-validator';
+import { numberRangeFactoryTest } from './numberRange.factory.spec.config';
 
 describe('Formidable NumberRange field', () => {
+    let factory: NumberRangeFactory;
+
+    beforeAll(() => {
+        factory = new NumberRangeFactory();
+    });
+
     describe('Core Field Tests', () => {
-        runFieldTests(FormidableNumberRange);
+        numberRangeFactoryTest();
+        runFieldTests(FormidableNumberRange, NumberRangeFactory);
     });
 
     describe('Initialization & Validation', () => {
@@ -37,13 +44,14 @@ describe('Formidable NumberRange field', () => {
 
             describe('value', () => {
                 it('Can initialize a FormidableNumberRange with valid basic props and a null value from from and to', async () => {
-                    const validNumberRange: IFormidableNumberRangeProps = {
-                        fieldType: FieldType.NumberRange,
-                        value: {
-                            from: null,
-                            to: null
+                    const validNumberRange: IFormidableNumberRangeProps = factory.buildField(
+                        {
+                            value: {
+                                from: null,
+                                to: null
+                            }
                         }
-                    };
+                    );
                     await transformAndValidate(
                         FormidableNumberRange,
                         validNumberRange
@@ -51,13 +59,14 @@ describe('Formidable NumberRange field', () => {
                 });
 
                 it('Can initialize a FormidableNumberRange with valid basic props and number values for from and to', async () => {
-                    const validNumberRange: IFormidableNumberRangeProps = {
-                        fieldType: FieldType.NumberRange,
-                        value: {
-                            from: 1,
-                            to: 10
+                    const validNumberRange: IFormidableNumberRangeProps = factory.buildField(
+                        {
+                            value: {
+                                from: 1,
+                                to: 10
+                            }
                         }
-                    };
+                    );
                     await transformAndValidate(
                         FormidableNumberRange,
                         validNumberRange
@@ -75,13 +84,14 @@ describe('Formidable NumberRange field', () => {
                 });
 
                 it('Fails to validate a FormidableNumberRange with a to less than the from', async () => {
-                    const validNumberRange: IFormidableNumberRangeProps = {
-                        fieldType: FieldType.NumberRange,
-                        value: {
-                            from: 8,
-                            to: 6
+                    const validNumberRange: IFormidableNumberRangeProps = factory.buildField(
+                        {
+                            value: {
+                                from: 8,
+                                to: 6
+                            }
                         }
-                    };
+                    );
                     try {
                         await transformAndValidate(
                             FormidableNumberRange,

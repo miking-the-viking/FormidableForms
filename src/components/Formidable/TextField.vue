@@ -19,7 +19,7 @@ md-field(:class="feedbackClass")
 import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
 import { FormidableField } from '@/models/Formidable/Field/field.abstract';
 import { ValidationError } from 'class-validator';
-import { FormidableText } from '@/models/Formidable/Field/FormidableText';
+import { FormidableText } from '@/models/Formidable/Field/Text/FormidableText';
 import {
     transformAndValidate,
     transformAndValidateSync

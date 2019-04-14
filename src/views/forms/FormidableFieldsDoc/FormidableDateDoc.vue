@@ -45,7 +45,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 import { FieldType } from '@/models/Formidable/Field/field.abstract';
 import FormidableForm from '@/components/FormidableForm.vue';
 import { FormidableBasicForm } from '@/models/Formidable/Form/FormidableBasicForm';
-import { DateType } from '@/models/Formidable/Field/FormidableDate';
+import { DateType } from '@/models/Formidable/Field/Date/FormidableDate';
 
 const BASIC_DATE_FIELD = {
     fields: [

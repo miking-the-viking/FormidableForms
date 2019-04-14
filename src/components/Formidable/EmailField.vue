@@ -22,7 +22,7 @@ md-field(:class="feedbackClass")
 import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
 import { FormidableField } from '@/models/Formidable/Field/field.abstract';
 import { ValidationError } from 'class-validator';
-import { FormidableEmail } from '@/models/Formidable/Field/FormidableEmail';
+import { FormidableEmail } from '@/models/Formidable/Field/Email/FormidableEmail';
 import FeedbackText from '@/components/Formidable/components/FeedbackText.vue';
 import { FormidableFieldComponent } from '@/components/Formidable/FormidableFieldComponent.abstract';
 

@@ -4,7 +4,7 @@ import { FieldType } from '@/models/Formidable/Field/field.abstract';
 import {
     FormidableText,
     IFormidableTextProps
-} from '@/models/Formidable/Field/FormidableText';
+} from '@/models/Formidable/Field/Text/FormidableText';
 import { errorArrayHas } from '@/models/Formidable/Field/field.abstract.spec.config';
 
 const textComponentTests = describe('TextField.vue', () => {

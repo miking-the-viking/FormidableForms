@@ -21,7 +21,7 @@ import { FormidableField } from '@/models/Formidable/Field/field.abstract';
 import { ValidationError } from 'class-validator';
 import FeedbackText from '@/components/Formidable/components/FeedbackText.vue';
 import { FormidableFieldComponent } from '@/components/Formidable/FormidableFieldComponent.abstract';
-import { FormidablePassword } from '@/models/Formidable/Field/FormidablePassword';
+import { FormidablePassword } from '@/models/Formidable/Field/Password/FormidablePassword';
 
 @Component({
     components: {

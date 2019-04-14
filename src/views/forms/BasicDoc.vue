@@ -56,8 +56,8 @@ import {
     FormidableField
 } from '@/models/Formidable/Field/field.abstract';
 import FormidableForm from '@/components/FormidableForm.vue';
-import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
-import { FormidableText } from '@/models/Formidable/Field/FormidableText';
+import { FormidableNumber } from '@/models/Formidable/Field/Number/FormidableNumber';
+import { FormidableText } from '@/models/Formidable/Field/Text/FormidableText';
 import formConfig, { FIELDS } from '@/views/forms/BasicDoc/BasicDocForm';
 import simpleRegistrationFormConfig from '@/views/forms/BasicDoc/SimpleRegistrationForm';
 

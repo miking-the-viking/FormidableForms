@@ -82,7 +82,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { FieldType } from '@/models/Formidable/Field/field.abstract';
-import { DateType } from '@/models/Formidable/Field/FormidableDate';
+import { DateType } from '@/models/Formidable/Field/Date/FormidableDate';
 import { FileType } from '@/models/Formidable/Field/FormidableFile';
 
 const fieldTypeDescriptions = [

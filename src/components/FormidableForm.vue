@@ -58,14 +58,14 @@ import {
     faCheckCircle,
     faTimesCircle
 } from '@fortawesome/free-solid-svg-icons';
-import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
-import { FormidableNumberRange } from '@/models/Formidable/Field/FormidableNumberRange';
-import { FormidableText } from '@/models/Formidable/Field/FormidableText';
-import { FormidableTextarea } from '@/models/Formidable/Field/FormidableTextarea';
-import { FormidableLink } from '@/models/Formidable/Field/FormidableLink';
-import { FormidableEmail } from '@/models/Formidable/Field/FormidableEmail';
-import { FormidablePassword } from '@/models/Formidable/Field/FormidablePassword';
-import { FormidableDate } from '@/models/Formidable/Field/FormidableDate';
+import { FormidableNumber } from '@/models/Formidable/Field/Number/FormidableNumber';
+import { FormidableNumberRange } from '@/models/Formidable/Field/NumberRange/FormidableNumberRange';
+import { FormidableText } from '@/models/Formidable/Field/Text/FormidableText';
+import { FormidableTextarea } from '@/models/Formidable/Field/Textarea/FormidableTextarea';
+import { FormidableLink } from '@/models/Formidable/Field/Link/FormidableLink';
+import { FormidableEmail } from '@/models/Formidable/Field/Email/FormidableEmail';
+import { FormidablePassword } from '@/models/Formidable/Field/Password/FormidablePassword';
+import { FormidableDate } from '@/models/Formidable/Field/Date/FormidableDate';
 import { FormidableFile } from '@/models/Formidable/Field/FormidableFile';
 import { FormType, FormTypes } from '@/models/Formidable/Form/form.abstract';
 

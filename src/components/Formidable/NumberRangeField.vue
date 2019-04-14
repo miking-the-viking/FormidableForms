@@ -20,9 +20,9 @@ import { ValidationError } from 'class-validator';
 import {
     INumberRange,
     FormidableNumberRange
-} from '@/models/Formidable/Field/FormidableNumberRange';
+} from '@/models/Formidable/Field/NumberRange/FormidableNumberRange';
 import NumberField from '@/components/Formidable/NumberField.vue';
-import { FormidableNumber } from '@/models/Formidable/Field/FormidableNumber';
+import { FormidableNumber } from '@/models/Formidable/Field/Number/FormidableNumber';
 
 @Component({
     components: {

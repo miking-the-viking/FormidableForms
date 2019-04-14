@@ -1,4 +1,4 @@
-import { IFormidableTextProps } from './../../../src/models/Formidable/Field/FormidableText';
+import { IFormidableTextProps } from '../../../src/models/Formidable/Field/Text/FormidableText';
 import { IFormidableFieldProps } from './../../../src/models/Formidable/Field/field.abstract';
 /**
  * Abstract tests defining consistent core Formidable Form behaviour
@@ -15,8 +15,8 @@ import { validate } from 'class-validator';
 import {
     FormidableNumber,
     IFormidableNumberProps
-} from '@/models/Formidable/Field/FormidableNumber';
-import { FormidableText } from '@/models/Formidable/Field/FormidableText';
+} from '@/models/Formidable/Field/Number/FormidableNumber';
+import { FormidableText } from '@/models/Formidable/Field/Text/FormidableText';
 
 export default <T extends FormidableForm>(ctor: new (...args: any[]) => T) => {
     describe(`Formidable Forms Core Test for ${

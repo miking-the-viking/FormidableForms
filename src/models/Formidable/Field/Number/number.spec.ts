@@ -6,7 +6,7 @@ import { FormidableField } from '@/models/Formidable/Field/field.abstract';
 import {
     FormidableNumber,
     IFormidableNumberProps
-} from '@/models/Formidable/Field/FormidableNumber';
+} from '@/models/Formidable/Field/Number/FormidableNumber';
 import { transformAndValidate } from 'class-transformer-validator';
 import { FieldType } from '@/models/Formidable/Field/field.abstract';
 import runFieldTests, {

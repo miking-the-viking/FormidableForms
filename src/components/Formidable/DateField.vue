@@ -11,7 +11,7 @@ import { FormidableField } from '@/models/Formidable/Field/field.abstract';
 import { ValidationError } from 'class-validator';
 import { Datetime } from 'vue-datetime';
 import 'vue-datetime/dist/vue-datetime.css';
-import { FormidableDate } from '@/models/Formidable/Field/FormidableDate';
+import { FormidableDate } from '@/models/Formidable/Field/Date/FormidableDate';
 import FeedbackText from '@/components/Formidable/components/FeedbackText.vue';
 import { FormidableFieldComponent } from '@/components/Formidable/FormidableFieldComponent.abstract';
 
