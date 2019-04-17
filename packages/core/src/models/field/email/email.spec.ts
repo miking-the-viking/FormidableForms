@@ -1,13 +1,14 @@
 /**
  * Email implementation of a Formidable Field test suite
  */
-import runFieldTests from '@/models/field/core/field.abstract.spec.config';
-import { EmailFactory } from '@/models/field/email/email.factory';
-import { emailFactoryTest } from '@/models/field/email/email.factory.spec.config';
-import { IFormidableEmailProps } from '@/models/field/email/email.props.interface';
-import { FormidableEmail } from '@/models/field/email/FormidableEmail';
-import errorArrayHas from '@/utils/testing/errorArrayHas.function';
 import { transformAndValidate } from 'class-transformer-validator';
+
+import runFieldTests from '../core/field.abstract.spec.config';
+import { EmailFactory } from './email.factory';
+import { emailFactoryTest } from './email.factory.spec.config';
+import { IFormidableEmailProps } from './email.props.interface';
+import { FormidableEmail } from './FormidableEmail';
+import errorArrayHas from '../../../utils/testing/errorArrayHas.function';
 
 describe('Formidable Email field', () => {
     let factory: EmailFactory;

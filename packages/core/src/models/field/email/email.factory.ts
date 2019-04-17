@@ -1,6 +1,6 @@
-import { FieldFactory } from '@/models/field/core/factory/field.factory.abstract';
-import { FieldType } from '@/models/field/core/field.types.enum';
-import { IFormidableEmailProps } from '@/models/field/email/email.props.interface';
+import { FieldFactory } from '../core/factory/field.factory.abstract';
+import { FieldType } from '../core/field.types.enum';
+import { IFormidableEmailProps } from './email.props.interface';
 
 /**
  * Email implementation of the Factory

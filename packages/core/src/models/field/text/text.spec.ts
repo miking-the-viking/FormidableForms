@@ -2,13 +2,13 @@
  * Number implementation of a Formidable Field test suite
  */
 // import { IFormidableNumberProps } from '@/models/fieldFormidableNumber';
-import runFieldTests from '@/models/field/core/field.abstract.spec.config';
-import { FieldType } from '@/models/field/core/field.types.enum';
-import { FormidableText } from '@/models/field/text/FormidableText';
-import { TextFactory } from '@/models/field/text/text.factory';
-import { textFactoryTest } from '@/models/field/text/text.factory.spec.config';
-import { IFormidableTextProps } from '@/models/field/text/text.props.interface';
-import errorArrayHas from '@/utils/testing/errorArrayHas.function';
+import runFieldTests from '../core/field.abstract.spec.config';
+import { FieldType } from '../core/field.types.enum';
+import { FormidableText } from './FormidableText';
+import { TextFactory } from './text.factory';
+import { textFactoryTest } from './text.factory.spec.config';
+import { IFormidableTextProps } from './text.props.interface';
+import errorArrayHas from '../../../utils/testing/errorArrayHas.function';
 import { transformAndValidate } from 'class-transformer-validator';
 
 describe('Formidable Text field', () => {

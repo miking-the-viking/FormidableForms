@@ -1,6 +1,6 @@
-import { FormidableText } from '@/models/field/text/FormidableText';
-import { TextFactory } from '@/models/field/text/text.factory';
-import { abstractFactoryTest } from '@/models/field/core/factory/field.factory.abstract.spec.config';
+import { FormidableText } from './FormidableText';
+import { TextFactory } from './text.factory';
+import { abstractFactoryTest } from '../core/factory/field.factory.abstract.spec.config';
 
 /**
  * Text Factory tests and abstract Factory tests implementation

@@ -1,6 +1,6 @@
-import { IFormidableFieldProps } from '@/models/field/core/field.props.interface';
-import { FieldType } from '@/models/field/core/field.types.enum';
-import { INumberRange } from '@/models/field/numberRange/numberRange.interface';
+import { IFormidableFieldProps } from '../core/field.props.interface';
+import { FieldType } from '../core/field.types.enum';
+import { INumberRange } from './numberRange.interface';
 
 /**
  * Props interface

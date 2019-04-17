@@ -1,6 +1,6 @@
-import { FieldType } from '@/models/field/core/field.types.enum';
-import { IFormidableFieldProps } from '@/models/field/core/field.props.interface';
-import { FieldConfigType } from '@/models/form/core/form.types';
+import { FieldType } from '../field.types.enum';
+import { IFormidableFieldProps } from '../field.props.interface';
+import { FieldConfigType } from '../../../form/core/form.types';
 
 /**
  * A Basic Factory Object must at least have fieldType

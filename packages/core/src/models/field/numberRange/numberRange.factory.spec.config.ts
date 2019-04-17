@@ -1,6 +1,6 @@
-import { abstractFactoryTest } from '@/models/field/core/factory/field.factory.abstract.spec.config';
-import { FormidableNumberRange } from '@/models/field/numberRange/FormidableNumberRange';
-import { NumberRangeFactory } from '@/models/field/numberRange/numberRange.factory';
+import { abstractFactoryTest } from '../core/factory/field.factory.abstract.spec.config';
+import { FormidableNumberRange } from './FormidableNumberRange';
+import { NumberRangeFactory } from './numberRange.factory';
 
 /**
  * Number Range Factory Tests and abstract Factory tests implementation

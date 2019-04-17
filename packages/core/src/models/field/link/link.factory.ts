@@ -1,6 +1,6 @@
-import { FieldFactory } from '@/models/field/core/factory/field.factory.abstract';
-import { FieldType } from '@/models/field/core/field.types.enum';
-import { IFormidableLinkProps } from '@/models/field/link/link.props.interface';
+import { FieldFactory } from '../core/factory/field.factory.abstract';
+import { FieldType } from '../core/field.types.enum';
+import { IFormidableLinkProps } from './link.props.interface';
 import faker from 'faker';
 
 /**

@@ -1,11 +1,12 @@
-import runFieldTests from '@/models/field/core/field.abstract.spec.config';
-import { FieldType } from '@/models/field/core/field.types.enum';
-import { FormidableTextarea } from '@/models/field/textarea/FormidableTextarea';
-import { TextareaFactory } from '@/models/field/textarea/textarea.factory';
-import { textareaFactoryTest } from '@/models/field/textarea/textarea.factory.spec.config';
-import { IFormidableTextareaProps } from '@/models/field/textarea/textarea.props.interface';
-import errorArrayHas from '@/utils/testing/errorArrayHas.function';
 import { transformAndValidate } from 'class-transformer-validator';
+
+import runFieldTests from '../core/field.abstract.spec.config';
+import { FieldType } from '../core/field.types.enum';
+import { FormidableTextarea } from './FormidableTextarea';
+import { TextareaFactory } from './textarea.factory';
+import { textareaFactoryTest } from './textarea.factory.spec.config';
+import { IFormidableTextareaProps } from './textarea.props.interface';
+import errorArrayHas from '../../../utils/testing/errorArrayHas.function';
 
 describe('Formidable Textarea field', () => {
     let factory: TextareaFactory;

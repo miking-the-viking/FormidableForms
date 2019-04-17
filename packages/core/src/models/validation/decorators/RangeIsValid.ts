@@ -1,6 +1,7 @@
-import { FormidableLink } from '@/models/field/link/FormidableLink';
-import { ILink } from '@/models/field/link/link.interface';
 import { registerDecorator, ValidationArguments } from 'class-validator';
+
+import { FormidableLink } from '../../field/link/FormidableLink';
+import { ILink } from '../../field/link/link.interface';
 
 // export function LinkIsValid(property: string, validationOptions?: ValidationOptions) {
 

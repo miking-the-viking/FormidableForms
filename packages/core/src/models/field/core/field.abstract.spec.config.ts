@@ -1,10 +1,11 @@
-import { FieldFactory } from '@/models/field/core/factory/field.factory.abstract';
-import { FormidableField } from '@/models/field/core/field.abstract';
-import { IFormidableFieldProps } from '@/models/field/core/field.props.interface';
-import { FieldType } from '@/models/field/core/field.types.enum';
-import { getInstance } from '@/utils/getInstance.function';
-import errorArrayHas from '@/utils/testing/errorArrayHas.function';
 import { transformAndValidate } from 'class-transformer-validator';
+
+import { FieldFactory } from './factory/field.factory.abstract';
+import { FormidableField } from './field.abstract';
+import { IFormidableFieldProps } from './field.props.interface';
+import { FieldType } from './field.types.enum';
+import { getInstance } from '../../../utils/getInstance.function';
+import errorArrayHas from '../../../utils/testing/errorArrayHas.function';
 
 /**
  * Abstract Formidable Field Tests, can be imported and executed in a Plug'n'Play style for its implementations

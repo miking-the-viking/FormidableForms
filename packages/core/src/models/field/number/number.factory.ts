@@ -1,6 +1,6 @@
-import { FieldFactory } from '@/models/field/core/factory/field.factory.abstract';
-import { FieldType } from '@/models/field/core/field.types.enum';
-import { IFormidableNumberProps } from '@/models/field/number/number.props.interface';
+import { FieldFactory } from '../core/factory/field.factory.abstract';
+import { FieldType } from '../core/field.types.enum';
+import { IFormidableNumberProps } from './number.props.interface';
 
 /**
  * Number implmentation of the Factory

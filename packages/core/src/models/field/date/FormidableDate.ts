@@ -1,8 +1,9 @@
-import { FormidableField } from '@/models/field/core/field.abstract';
 import { IsOptional } from 'class-validator';
-import { FieldType } from '@/models/field/core/field.types.enum';
-import { IFormidableDateProps } from '@/models/field/date/date.props.interface';
-import { DateType } from '@/models/field/date/date.type.enum';
+
+import { FormidableField } from '../core/field.abstract';
+import { FieldType } from '../core/field.types.enum';
+import { IFormidableDateProps } from './date.props.interface';
+import { DateType } from './date.type.enum';
 
 /**
  * Formidable Field definition for a Date input

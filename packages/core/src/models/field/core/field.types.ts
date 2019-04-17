@@ -1,13 +1,13 @@
-import { IFormidableDateProps } from '@/models/field/date/date.props.interface';
-import { IFormidableEmailProps } from '@/models/field/email/email.props.interface';
-import { IFormidableFileProps } from '@/models/field/file/file.props.interface';
-import { IFormidableLinkProps } from '@/models/field/link/link.props.interface';
-import { IFormidableNumberProps } from '@/models/field/number/number.props.interface';
-import { IFormidableNumberRangeProps } from '@/models/field/numberRange/numberRange.props.interface';
-import { IFormidablePasswordProps } from '@/models/field/password/password.props.interface';
-import { IFormidableTextProps } from '@/models/field/text/text.props.interface';
-import { IFormidableTextareaProps } from '@/models/field/textarea/textarea.props.interface';
-import { FieldConfigType } from '@/models/form/core/form.types';
+import { IFormidableDateProps } from '../date/date.props.interface';
+import { IFormidableEmailProps } from '../email/email.props.interface';
+import { IFormidableFileProps } from '../file/file.props.interface';
+import { IFormidableLinkProps } from '../link/link.props.interface';
+import { IFormidableNumberProps } from '../number/number.props.interface';
+import { IFormidableNumberRangeProps } from '../numberRange/numberRange.props.interface';
+import { IFormidablePasswordProps } from '../password/password.props.interface';
+import { IFormidableTextProps } from '../text/text.props.interface';
+import { IFormidableTextareaProps } from '../textarea/textarea.props.interface';
+import { FieldConfigType } from '../../form/core/form.types';
 
 /**
  * Conditional Field Inference

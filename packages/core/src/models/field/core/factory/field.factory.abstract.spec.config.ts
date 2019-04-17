@@ -1,8 +1,9 @@
-import { FieldFactory } from '@/models/field/core/factory/field.factory.abstract';
-import { FormidableField } from '@/models/field/core/field.abstract';
-import { FieldConfigType } from '@/models/form/core/form.types';
-import { getInstance } from '@/utils/getInstance.function';
 import { validate } from 'class-validator';
+
+import { FieldFactory } from './field.factory.abstract';
+import { FormidableField } from '../field.abstract';
+import { FieldConfigType } from '../../../form/core/form.types';
+import { getInstance } from '../../../../utils/getInstance.function';
 
 /**
  * Abstract Factory Tests, can simply be imported and ran in a Plug'n'Play style with any implementation

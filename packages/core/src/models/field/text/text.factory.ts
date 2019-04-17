@@ -1,6 +1,6 @@
-import { FieldFactory } from '@/models/field/core/factory/field.factory.abstract';
-import { FieldType } from '@/models/field/core/field.types.enum';
-import { IFormidableTextProps } from '@/models/field/text/text.props.interface';
+import { FieldFactory } from '../core/factory/field.factory.abstract';
+import { FieldType } from '../core/field.types.enum';
+import { IFormidableTextProps } from './text.props.interface';
 
 /**
  * Text implementation of the abstract Factory

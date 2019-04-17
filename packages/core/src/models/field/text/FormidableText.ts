@@ -1,11 +1,12 @@
-import { FormidableField } from '@/models/field/core/field.abstract';
-import { FieldType } from '@/models/field/core/field.types.enum';
-import { IFormidableTextProps } from '@/models/field/text/text.props.interface';
-import { IsGreaterThanOrEqualTo } from '@/models/validation/decorators/IsGreaterThanOrEqualTo';
-import { IsLessThanOrEqualTo } from '@/models/validation/decorators/IsLessThanOrEqualTo';
-import { IsLongerThan } from '@/models/validation/decorators/IsLongerThan';
-import { IsShorterThan } from '@/models/validation/decorators/IsShorterThan';
 import { IsNumber, IsOptional, IsString, ValidateIf } from 'class-validator';
+
+import { FormidableField } from '../core/field.abstract';
+import { FieldType } from '../core/field.types.enum';
+import { IFormidableTextProps } from './text.props.interface';
+import { IsGreaterThanOrEqualTo } from '../../validation/decorators/IsGreaterThanOrEqualTo';
+import { IsLessThanOrEqualTo } from '../../validation/decorators/IsLessThanOrEqualTo';
+import { IsLongerThan } from '../../validation/decorators/IsLongerThan';
+import { IsShorterThan } from '../../validation/decorators/IsShorterThan';
 
 /**
  * Formidable Field definition for a text input

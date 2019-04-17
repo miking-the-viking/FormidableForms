@@ -1,6 +1,6 @@
-import { abstractFactoryTest } from '@/models/field/core/factory/field.factory.abstract.spec.config';
-import { FormidableNumber } from '@/models/field/number/FormidableNumber';
-import { NumberFactory } from '@/models/field/number/number.factory';
+import { abstractFactoryTest } from '../core/factory/field.factory.abstract.spec.config';
+import { FormidableNumber } from './FormidableNumber';
+import { NumberFactory } from './number.factory';
 
 /**
  * Number Factory tests, implementing the abstract Factory tests

@@ -1,7 +1,7 @@
-import { FormidableBasicForm } from '@/models/form/Basic/FormidableBasicForm';
-import { FormFactory } from '@/models/form/core/factory/form.factory.abstract';
-import { FormFactoryObject } from '@/models/form/core/factory/form.factory.types';
-import { FormType } from '@/models/form/core/form.type.enum';
+import { FormidableBasicForm } from '../FormidableBasicForm';
+import { FormFactory } from '../../core/factory/form.factory.abstract';
+import { FormFactoryObject } from '../../core/factory/form.factory.types';
+import { FormType } from '../../core/form.type.enum';
 
 /**
  * Basic Form implementation of the abstract Form Factory

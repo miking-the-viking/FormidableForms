@@ -1,21 +1,22 @@
 /**
  * Abstract Formidable Form core definition
  */
-import { FormidableField } from '@/models/field/core/field.abstract';
-import { FieldType } from '@/models/field/core/field.types.enum';
-import { FormidableDate } from '@/models/field/date/FormidableDate';
-import { FormidableEmail } from '@/models/field/email/FormidableEmail';
-import { FormidableFile } from '@/models/field/file/FormidableFile';
-import { FormidableLink } from '@/models/field/link/FormidableLink';
-import { FormidableNumber } from '@/models/field/number/FormidableNumber';
-import { FormidableNumberRange } from '@/models/field/numberRange/FormidableNumberRange';
-import { FormidablePassword } from '@/models/field/password/FormidablePassword';
-import { FormidableText } from '@/models/field/text/FormidableText';
-import { FormidableTextarea } from '@/models/field/textarea/FormidableTextarea';
-import { FieldConfigType } from '@/models/form/core/form.types';
 import { Type } from 'class-transformer';
 import { IsDefined, ValidateNested } from 'class-validator';
 import 'reflect-metadata';
+
+import { FormidableField } from '../../field/core/field.abstract';
+import { FieldType } from '../../field/core/field.types.enum';
+import { FormidableDate } from '../../field/date/FormidableDate';
+import { FormidableEmail } from '../../field/email/FormidableEmail';
+import { FormidableFile } from '../../field/file/FormidableFile';
+import { FormidableLink } from '../../field/link/FormidableLink';
+import { FormidableNumber } from '../../field/number/FormidableNumber';
+import { FormidableNumberRange } from '../../field/numberRange/FormidableNumberRange';
+import { FormidablePassword } from '../../field/password/FormidablePassword';
+import { FormidableText } from '../../field/text/FormidableText';
+import { FormidableTextarea } from '../../field/textarea/FormidableTextarea';
+import { FieldConfigType } from './form.types';
 
 /**
  * Formidable Form definition

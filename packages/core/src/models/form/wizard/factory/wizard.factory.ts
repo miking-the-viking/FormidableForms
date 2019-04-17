@@ -1,7 +1,7 @@
-import { FormidableWizardForm } from '@/models/form/Wizard/FormidableWizardForm';
-import { FormFactory } from '@/models/form/core/factory/form.factory.abstract';
-import { FormFactoryObject } from '@/models/form/core/factory/form.factory.types';
-import { FormType } from '@/models/form/core/form.type.enum';
+import { FormidableWizardForm } from '../FormidableWizardForm';
+import { FormFactory } from '../../core/factory/form.factory.abstract';
+import { FormFactoryObject } from '../../core/factory/form.factory.types';
+import { FormType } from '../../core/form.type.enum';
 
 /**
  * Wizard Form implementation of the abstract Form Factory

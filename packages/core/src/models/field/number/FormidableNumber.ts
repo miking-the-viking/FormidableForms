@@ -1,9 +1,10 @@
-import { FormidableField } from '@/models/field/core/field.abstract';
-import { FieldType } from '@/models/field/core/field.types.enum';
-import { IFormidableNumberProps } from '@/models/field/number/number.props.interface';
-import { IsGreaterThanOrEqualTo } from '@/models/validation/decorators/IsGreaterThanOrEqualTo';
-import { IsLessThanOrEqualTo } from '@/models/validation/decorators/IsLessThanOrEqualTo';
 import { IsNumber, IsOptional, ValidateIf } from 'class-validator';
+
+import { FormidableField } from '../core/field.abstract';
+import { FieldType } from '../core/field.types.enum';
+import { IFormidableNumberProps } from './number.props.interface';
+import { IsGreaterThanOrEqualTo } from '../../validation/decorators/IsGreaterThanOrEqualTo';
+import { IsLessThanOrEqualTo } from '../../validation/decorators/IsLessThanOrEqualTo';
 
 /**
  * Formidable Field definition for a number input

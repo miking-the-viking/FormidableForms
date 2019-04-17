@@ -1,6 +1,6 @@
-import { IFormidableFieldProps } from '@/models/field/core/field.props.interface';
-import { FieldType } from '@/models/field/core/field.types.enum';
-import { ILink } from '@/models/field/link/link.interface';
+import { IFormidableFieldProps } from '../core/field.props.interface';
+import { FieldType } from '../core/field.types.enum';
+import { ILink } from './link.interface';
 
 /**
  * Props interface

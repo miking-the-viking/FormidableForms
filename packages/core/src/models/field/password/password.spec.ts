@@ -1,12 +1,12 @@
 /**
  * Password implementation of a Formidable Field test suite
  */
-import runFieldTests from '@/models/field/core/field.abstract.spec.config';
-import { FormidablePassword } from '@/models/field/password/FormidablePassword';
-import { PasswordFactory } from '@/models/field/password/password.factory';
-import { passwordFactoryTest } from '@/models/field/password/password.factory.spec.config';
-import { IFormidablePasswordProps } from '@/models/field/password/password.props.interface';
-import errorArrayHas from '@/utils/testing/errorArrayHas.function';
+import runFieldTests from '../core/field.abstract.spec.config';
+import { FormidablePassword } from './FormidablePassword';
+import { PasswordFactory } from './password.factory';
+import { passwordFactoryTest } from './password.factory.spec.config';
+import { IFormidablePasswordProps } from './password.props.interface';
+import errorArrayHas from '../../../utils/testing/errorArrayHas.function';
 import { transformAndValidate } from 'class-transformer-validator';
 
 describe('Formidable Password field', () => {

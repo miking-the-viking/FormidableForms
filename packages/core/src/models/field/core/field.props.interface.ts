@@ -1,4 +1,4 @@
-import { FieldType } from '@/models/field/core/field.types.enum';
+import { FieldType } from './field.types.enum';
 
 /**
  * Basic props for a Formidable Field

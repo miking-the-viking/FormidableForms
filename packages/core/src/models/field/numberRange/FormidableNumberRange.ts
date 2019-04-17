@@ -1,11 +1,12 @@
-import { FormidableField } from '@/models/field/core/field.abstract';
-import { FieldType } from '@/models/field/core/field.types.enum';
-import { NumberRange } from '@/models/field/numberRange/NumberRange';
-import { INumberRange } from '@/models/field/numberRange/numberRange.interface';
-import { IFormidableNumberRangeProps } from '@/models/field/numberRange/numberRange.props.interface';
 import { Type } from 'class-transformer';
 import { ValidateNested } from 'class-validator';
 import 'reflect-metadata';
+
+import { FormidableField } from '../core/field.abstract';
+import { FieldType } from '../core/field.types.enum';
+import { NumberRange } from './NumberRange';
+import { INumberRange } from './numberRange.interface';
+import { IFormidableNumberRangeProps } from './numberRange.props.interface';
 
 /**
  * Formidable Number Range Validation Class

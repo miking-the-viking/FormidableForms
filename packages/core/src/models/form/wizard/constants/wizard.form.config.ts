@@ -1,4 +1,4 @@
-import { FormType } from '@/models/form/core/form.type.enum';
+import { FormType } from '../../core/form.type.enum';
 
 /**
  * Basic Wizard Config

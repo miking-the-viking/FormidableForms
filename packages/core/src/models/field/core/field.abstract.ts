@@ -1,9 +1,10 @@
 /**
  * Abstract definition concerning Formidable Form Field
  */
-import { FieldType } from '@/models/field/core/field.types.enum';
-import { IFormidableFieldProps } from '@/models/field/core/field.props.interface';
 import { IsBoolean, IsOptional, IsString } from 'class-validator';
+
+import { FieldType } from './field.types.enum';
+import { IFormidableFieldProps } from './field.props.interface';
 
 /**
  * FormidableForm Field definition abstract

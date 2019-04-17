@@ -1,8 +1,9 @@
-import { FormidableField } from '@/models/field/core/field.abstract';
-import { FieldType } from '@/models/field/core/field.types.enum';
-import { IFormidableFileProps } from '@/models/field/file/file.props.interface';
-import { FileType } from '@/models/field/file/file.type.enum';
 import { IsOptional } from 'class-validator';
+
+import { FormidableField } from '../core/field.abstract';
+import { FieldType } from '../core/field.types.enum';
+import { IFormidableFileProps } from './file.props.interface';
+import { FileType } from './file.type.enum';
 
 /**
  * Formidable Field definition for a File Input

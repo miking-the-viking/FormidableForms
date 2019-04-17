@@ -1,13 +1,14 @@
 /**
  * Date implementation of a Formidable Field test suite
  */
-import { FormidableDate } from '@/models/field/date/FormidableDate';
-import errorArrayHas from '@/utils/testing/errorArrayHas.function';
 import { transformAndValidate } from 'class-transformer-validator';
-import runFieldTests from '@/models/field/core/field.abstract.spec.config';
-import { DateFactory } from '@/models/field/date/date.factory';
-import { dateFactoryTest } from '@/models/field/date/date.factory.spec.config';
-import { IFormidableDateProps } from '@/models/field/date/date.props.interface';
+
+import { FormidableDate } from './FormidableDate';
+import errorArrayHas from '../../../utils/testing/errorArrayHas.function';
+import runFieldTests from '../core/field.abstract.spec.config';
+import { DateFactory } from './date.factory';
+import { dateFactoryTest } from './date.factory.spec.config';
+import { IFormidableDateProps } from './date.props.interface';
 
 describe('Formidable Date field', () => {
     let factory: DateFactory;

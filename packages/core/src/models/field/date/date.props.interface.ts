@@ -1,6 +1,6 @@
-import { IFormidableFieldProps } from '@/models/field/core/field.props.interface';
-import { FieldType } from '@/models/field/core/field.types.enum';
-import { DateType } from '@/models/field/date/date.type.enum';
+import { IFormidableFieldProps } from '../core/field.props.interface';
+import { FieldType } from '../core/field.types.enum';
+import { DateType } from './date.type.enum';
 
 /**
  * Props for a Formidable Date

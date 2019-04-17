@@ -1,6 +1,6 @@
-import { FieldFactory } from '@/models/field/core/factory/field.factory.abstract';
-import { FieldType } from '@/models/field/core/field.types.enum';
-import { IFormidablePasswordProps } from '@/models/field/password/password.props.interface';
+import { FieldFactory } from '../core/factory/field.factory.abstract';
+import { FieldType } from '../core/field.types.enum';
+import { IFormidablePasswordProps } from './password.props.interface';
 
 /**
  * Password implementation of tha abstract Factory

@@ -1,6 +1,6 @@
-import { FormFactoryObject } from '@/models/form/core/factory/form.factory.types';
-import { IFormidableFormProps } from '@/models/form/core/form.props.interface';
-import { FormTypes } from '@/models/form/core/form.types';
+import { FormFactoryObject } from '../factory/form.factory.types';
+import { IFormidableFormProps } from '../form.props.interface';
+import { FormTypes } from '../form.types';
 
 /**
  * Form Factory

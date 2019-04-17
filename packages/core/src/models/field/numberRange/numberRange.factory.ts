@@ -1,6 +1,6 @@
-import { FieldType } from '@/models/field/core/field.types.enum';
-import { FieldFactory } from '@/models/field/core/factory/field.factory.abstract';
-import { IFormidableNumberRangeProps } from '@/models/field/numberRange/numberRange.props.interface';
+import { FieldType } from '../core/field.types.enum';
+import { FieldFactory } from '../core/factory/field.factory.abstract';
+import { IFormidableNumberRangeProps } from './numberRange.props.interface';
 
 /**
  * Number Range Implementation of the abstract Field Factory

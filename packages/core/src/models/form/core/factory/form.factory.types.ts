@@ -1,5 +1,5 @@
-import { IFormidableFormProps } from '@/models/form/core/form.props.interface';
-import { FormType } from '@/models/form/core/form.type.enum';
+import { IFormidableFormProps } from '../form.props.interface';
+import { FormType } from '../form.type.enum';
 /**
  * A Form Factory Object must at least have the discriminator property: `formType`
  */

@@ -1,14 +1,15 @@
 /**
  * Number implementation of a Formidable Field test suite
  */
-import runFieldTests from '@/models/field/core/field.abstract.spec.config';
-import { FieldType } from '@/models/field/core/field.types.enum';
-import { FormidableNumber } from '@/models/field/number/FormidableNumber';
-import { NumberFactory } from '@/models/field/number/number.factory';
-import { numberFactoryTest } from '@/models/field/number/number.factory.spec.config';
-import { IFormidableNumberProps } from '@/models/field/number/number.props.interface';
-import errorArrayHas from '@/utils/testing/errorArrayHas.function';
 import { transformAndValidate } from 'class-transformer-validator';
+
+import runFieldTests from '../core/field.abstract.spec.config';
+import { FieldType } from '../core/field.types.enum';
+import { FormidableNumber } from './FormidableNumber';
+import { NumberFactory } from './number.factory';
+import { numberFactoryTest } from './number.factory.spec.config';
+import { IFormidableNumberProps } from './number.props.interface';
+import errorArrayHas from '../../../utils/testing/errorArrayHas.function';
 
 describe('Formidable Number field', () => {
     let factory: NumberFactory;

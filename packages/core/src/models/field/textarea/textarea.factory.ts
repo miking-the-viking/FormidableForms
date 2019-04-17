@@ -1,6 +1,6 @@
-import { FieldFactory } from '@/models/field/core/factory/field.factory.abstract';
-import { FieldType } from '@/models/field/core/field.types.enum';
-import { IFormidableTextareaProps } from '@/models/field/textarea/textarea.props.interface';
+import { FieldFactory } from '../core/factory/field.factory.abstract';
+import { FieldType } from '../core/field.types.enum';
+import { IFormidableTextareaProps } from './textarea.props.interface';
 
 /**
  * Textarea implementation of the abstract Factory

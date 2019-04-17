@@ -1,6 +1,6 @@
-import { abstractFactoryTest } from '@/models/field/core/factory/field.factory.abstract.spec.config';
-import { FormidableTextarea } from '@/models/field/textarea/FormidableTextarea';
-import { TextareaFactory } from '@/models/field/textarea/textarea.factory';
+import { abstractFactoryTest } from '../core/factory/field.factory.abstract.spec.config';
+import { FormidableTextarea } from './FormidableTextarea';
+import { TextareaFactory } from './textarea.factory';
 
 /**
  * Textarea Factory tests and abstract Factory implementation tests

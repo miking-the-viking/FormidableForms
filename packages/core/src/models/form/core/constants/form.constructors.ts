@@ -1,5 +1,5 @@
-import { FormidableWizardForm } from '@/models/form/Wizard/FormidableWizardForm';
-import { FormidableBasicForm } from '@/models/form/Basic/FormidableBasicForm';
+import { FormidableWizardForm } from '../../Wizard/FormidableWizardForm';
+import { FormidableBasicForm } from '../../Basic/FormidableBasicForm';
 import { FormTypes } from '../form.types';
 import { FormType } from '../form.type.enum';
 import { BASIC_CONFIG } from '../../Basic/constants/basic.form.config';

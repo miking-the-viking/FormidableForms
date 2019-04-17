@@ -1,6 +1,6 @@
-import { IFormidableFieldProps } from '@/models/field/core/field.props.interface';
-import { FieldType } from '@/models/field/core/field.types.enum';
-import { FileType } from '@/models/field/file/file.type.enum';
+import { IFormidableFieldProps } from '../core/field.props.interface';
+import { FieldType } from '../core/field.types.enum';
+import { FileType } from './file.type.enum';
 
 /**
  * Props for a Formidable File

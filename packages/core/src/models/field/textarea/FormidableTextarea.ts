@@ -1,9 +1,10 @@
-import { FormidableField } from '@/models/field/core/field.abstract';
-import { FieldType } from '@/models/field/core/field.types.enum';
-import { IFormidableTextareaProps } from '@/models/field/textarea/textarea.props.interface';
-import { IsLongerThan } from '@/models/validation/decorators/IsLongerThan';
-import { IsShorterThan } from '@/models/validation/decorators/IsShorterThan';
 import { IsNumber, IsOptional, IsString, ValidateIf } from 'class-validator';
+
+import { FormidableField } from '../core/field.abstract';
+import { FieldType } from '../core/field.types.enum';
+import { IFormidableTextareaProps } from './textarea.props.interface';
+import { IsLongerThan } from '../../validation/decorators/IsLongerThan';
+import { IsShorterThan } from '../../validation/decorators/IsShorterThan';
 
 export class FormidableTextarea extends FormidableField<string>
     implements IFormidableTextareaProps {

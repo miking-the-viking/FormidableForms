@@ -1,15 +1,16 @@
 /**
  * NumberRange implementation of a Formidable Field test suite
  */
-import runFieldTests from '@/models/field/core/field.abstract.spec.config';
-import { FormidableNumberRange } from '@/models/field/numberRange/FormidableNumberRange';
-import { NumberRangeFactory } from '@/models/field/numberRange/numberRange.factory';
-import { numberRangeFactoryTest } from '@/models/field/numberRange/numberRange.factory.spec.config';
-import { IFormidableNumberRangeProps } from '@/models/field/numberRange/numberRange.props.interface';
-import errorArrayHas from '@/utils/testing/errorArrayHas.function';
 import { plainToClass } from 'class-transformer';
 import { transformAndValidate } from 'class-transformer-validator';
 import { validate } from 'class-validator';
+
+import runFieldTests from '../core/field.abstract.spec.config';
+import { FormidableNumberRange } from './FormidableNumberRange';
+import { NumberRangeFactory } from './numberRange.factory';
+import { numberRangeFactoryTest } from './numberRange.factory.spec.config';
+import { IFormidableNumberRangeProps } from './numberRange.props.interface';
+import errorArrayHas from '../../../utils/testing/errorArrayHas.function';
 
 describe('Formidable NumberRange field', () => {
     let factory: NumberRangeFactory;

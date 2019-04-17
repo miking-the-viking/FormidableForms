@@ -1,7 +1,7 @@
 /**
  * Wizard implementation of Formidable Form
  */
-import { FormidableForm } from '@/models/form/core/form.abstract';
+import { FormidableForm } from '../core/form.abstract';
 
 /**
  * Formidable Wizard Definition

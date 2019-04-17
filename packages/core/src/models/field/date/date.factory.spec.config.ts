@@ -1,6 +1,6 @@
-import { abstractFactoryTest } from '@/models/field/core/factory/field.factory.abstract.spec.config';
-import { DateFactory } from '@/models/field/date/date.factory';
-import { FormidableDate } from '@/models/field/date/FormidableDate';
+import { abstractFactoryTest } from '../core/factory/field.factory.abstract.spec.config';
+import { DateFactory } from './date.factory';
+import { FormidableDate } from './FormidableDate';
 
 /**
  * Date Factory Test implementation

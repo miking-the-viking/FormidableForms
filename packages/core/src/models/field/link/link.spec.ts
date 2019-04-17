@@ -1,16 +1,17 @@
 /**
  * Link implementation of a Formidable Field test suite
  */
-import runFieldTests from '@/models/field/core/field.abstract.spec.config';
-import { FormidableLink } from '@/models/field/link/FormidableLink';
-import { LinkFactory } from '@/models/field/link/link.factory';
-import { linkFactoryTest } from '@/models/field/link/link.factory.spec.config';
-import { ILink } from '@/models/field/link/link.interface';
-import { IFormidableLinkProps } from '@/models/field/link/link.props.interface';
-import errorArrayHas from '@/utils/testing/errorArrayHas.function';
 import { plainToClass } from 'class-transformer';
 import { transformAndValidate } from 'class-transformer-validator';
 import { validate } from 'class-validator';
+
+import runFieldTests from '../core/field.abstract.spec.config';
+import { FormidableLink } from './FormidableLink';
+import { LinkFactory } from './link.factory';
+import { linkFactoryTest } from './link.factory.spec.config';
+import { ILink } from './link.interface';
+import { IFormidableLinkProps } from './link.props.interface';
+import errorArrayHas from '../../../utils/testing/errorArrayHas.function';
 
 describe('Formidable Link field', () => {
     let factory: LinkFactory;
