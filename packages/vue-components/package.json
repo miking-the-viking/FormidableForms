@@ -1,6 +1,6 @@
 {
     "name": "@formidableforms/vue-components",
-    "version": "0.4.3-alpha.0",
+    "version": "0.4.3-alpha.1.0",
     "description": "> TODO: description",
     "author": "MikingTheViking <kingmi123@gmail.com>",
     "homepage": "https://github.com/miking-the-viking/FormidableForms#readme",
@@ -30,7 +30,7 @@
         "test:unit:watch": "vue-cli-service test:unit --watch --verbose"
     },
     "dependencies": {
-        "@formidableforms/core": "^0.4.3-alpha.0",
+        "@formidableforms/core": "^0.4.3-alpha.1.0",
         "@fortawesome/fontawesome-svg-core": "^1.2.17",
         "@fortawesome/free-solid-svg-icons": "^5.8.1",
         "class-transformer": "^0.2.0",
