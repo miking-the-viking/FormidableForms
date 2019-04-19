@@ -27,13 +27,13 @@ import { FormidableField, FormidableText } from '@formidableforms/core';
 
 import FeedbackText from './components/FeedbackText.vue';
 import { FormidableFieldComponent } from './FormidableFieldComponent.abstract';
-import { MdField, MdInput } from 'vue-material/dist/components';
+import { MdField } from 'vue-material/dist/components';
+
+Vue.use(MdField);
 
 @Component({
     components: {
-        FeedbackText,
-        MdField,
-        MdInput
+        FeedbackText
     }
 })
 export default class TextField extends FormidableFieldComponent<

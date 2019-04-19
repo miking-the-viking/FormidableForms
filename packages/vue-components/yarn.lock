@@ -674,10 +674,10 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@formidableforms/core@^0.4.3-alpha.1.0":
-  version "0.4.3-alpha.1.0"
-  resolved "https://registry.yarnpkg.com/@formidableforms/core/-/core-0.4.3-alpha.1.0.tgz#9636d90924859e0120602c39ea2ea45d451aa224"
-  integrity sha512-7hq1LngemMk0KaTdy9JST7X1KXx3dro+D2gmehU0rszgZa2j9yLv5r4QBSKXtwBc4hMo8c4eha4a1gdySBTWDQ==
+"@formidableforms/core@^0.4.3-alpha.1.1.0":
+  version "0.4.3-alpha.1.1.0"
+  resolved "https://registry.yarnpkg.com/@formidableforms/core/-/core-0.4.3-alpha.1.1.0.tgz#49ea34c73060f4062486814dd7d1876170108c8c"
+  integrity sha512-pQEC4uqXWoZOracNuMarI9lMYBz0vVtk24w7Xl2cOHBlI9osurRlbSkjLyysFj73HVVCTeESJTUuVKf69lFUtw==
   dependencies:
     class-transformer "^0.2.0"
     class-transformer-validator "^0.7.1"

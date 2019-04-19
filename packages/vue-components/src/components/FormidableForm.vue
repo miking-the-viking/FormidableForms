@@ -6,6 +6,7 @@ form.formidable-form.md-layout.md-alignment-top-center(@submit.prevent="form.sub
         md-card-content
             .md-layout.md-gutter
             template(v-for="(field, index) in form.fields")
+                p a field!
                 component(
                     v-bind:is="getField(field)"
                     v-model="form.fields[index]"
@@ -16,13 +17,14 @@ form.formidable-form.md-layout.md-alignment-top-center(@submit.prevent="form.sub
         md-card-actions(v-if="form.submit")
             md-button.md-primary.button.transitionButton(type="submit" :class="formClasses" @click="form.submit")
                 span.icon
-                    font-awesome-icon(:icon="hasAllNecessaryData ? 'check-circle' : 'times-circle'")
+                    // font-awesome-icon(:icon="hasAllNecessaryData ? 'check-circle' : 'times-circle'")
                 span Submit
     md-snackbar(:md-active.sync="saved") The Form was saved
 </template>
 
 <script lang="ts">
 // import { VueConstructor } from 'vue';
+// import Vue from 'vue';
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import {
     transformAndValidate,
@@ -74,7 +76,11 @@ import {
     MdSnackbar
 } from 'vue-material/dist/components';
 
-library.add(faCheckCircle, faTimesCircle);
+Vue.use(MdButton);
+Vue.use(MdCard);
+Vue.use(MdSnackbar);
+
+// library.add(faCheckCircle, faTimesCircle);
 
 @Component({
     components: {
@@ -86,12 +92,7 @@ library.add(faCheckCircle, faTimesCircle);
         EmailField,
         PasswordField,
         DateField,
-        FileField,
-        MdCard,
-        MdCardHeader,
-        MdCardActions,
-        MdButton,
-        MdSnackbar
+        FileField
     }
 })
 export default class FormidableForm extends Vue {
@@ -119,7 +120,6 @@ export default class FormidableForm extends Vue {
     private async getFieldCtor(
         fieldConfig: IFormidableFieldProps<any>
     ): Promise<FieldCtorType> {
-        console.log('getFieldCtor: ', fieldConfig);
         switch (fieldConfig.fieldType) {
             case FieldType.Number:
                 return await transformAndValidate(
@@ -157,15 +157,12 @@ export default class FormidableForm extends Vue {
     }
 
     private getField(field: FormidableField<any>): any {
-        console.log('getField: ', field);
         switch (field.fieldType) {
             case FieldType.Number:
                 return NumberField;
             case FieldType.NumberRange:
                 return NumberRangeField;
             case FieldType.Text:
-                console.log('Text Field');
-                console.log(TextField);
                 return TextField;
             case FieldType.Textarea:
                 return TextArea;
