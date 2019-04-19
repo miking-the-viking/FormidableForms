@@ -13,7 +13,7 @@ md-field
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import { ValidationError } from 'class-validator';
-import NumberField from '@/components/Formidable/NumberField.vue';
+
 import {
     INumberRange,
     FormidableNumberRange,
@@ -22,9 +22,14 @@ import {
     FormidableNumber
 } from '@formidableforms/core';
 
+import NumberField from './NumberField.vue';
+
+import { MdField } from 'vue-material/dist/components';
+
 @Component({
     components: {
-        NumberField
+        NumberField,
+        MdField
     }
 })
 export default class NumberRangeField extends Vue {

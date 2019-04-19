@@ -5,7 +5,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import Navbar from '@/components/Page/Navbar.vue';
+import Navbar from '../Page/Navbar.vue';
 import { debounce } from 'debounce';
 
 @Component({

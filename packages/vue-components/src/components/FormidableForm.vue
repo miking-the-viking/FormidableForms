@@ -22,7 +22,7 @@ form.formidable-form.md-layout.md-alignment-top-center(@submit.prevent="form.sub
 </template>
 
 <script lang="ts">
-import { VueConstructor } from 'vue';
+// import { VueConstructor } from 'vue';
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import {
     transformAndValidate,
@@ -66,6 +66,14 @@ import {
 } from '@formidableforms/core/lib/models';
 import { FieldCtorType } from '@formidableforms/core/lib/models/form/core';
 
+import {
+    MdCard,
+    MdCardHeader,
+    MdCardActions,
+    MdButton,
+    MdSnackbar
+} from 'vue-material/dist/components';
+
 library.add(faCheckCircle, faTimesCircle);
 
 @Component({
@@ -78,7 +86,12 @@ library.add(faCheckCircle, faTimesCircle);
         EmailField,
         PasswordField,
         DateField,
-        FileField
+        FileField,
+        MdCard,
+        MdCardHeader,
+        MdCardActions,
+        MdButton,
+        MdSnackbar
     }
 })
 export default class FormidableForm extends Vue {
@@ -106,6 +119,7 @@ export default class FormidableForm extends Vue {
     private async getFieldCtor(
         fieldConfig: IFormidableFieldProps<any>
     ): Promise<FieldCtorType> {
+        console.log('getFieldCtor: ', fieldConfig);
         switch (fieldConfig.fieldType) {
             case FieldType.Number:
                 return await transformAndValidate(
@@ -142,13 +156,16 @@ export default class FormidableForm extends Vue {
         }
     }
 
-    private getField(field: FormidableField<any>): VueConstructor<Vue> {
+    private getField(field: FormidableField<any>): any {
+        console.log('getField: ', field);
         switch (field.fieldType) {
             case FieldType.Number:
                 return NumberField;
             case FieldType.NumberRange:
                 return NumberRangeField;
             case FieldType.Text:
+                console.log('Text Field');
+                console.log(TextField);
                 return TextField;
             case FieldType.Textarea:
                 return TextArea;

@@ -28,22 +28,25 @@ md-field
 
 <script lang="ts">
 import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
-import {
-    FormidableField,
-    FieldType
-} from '@/models/Formidable/Field/field.abstract';
 import { ValidationError } from 'class-validator';
-import { Link } from '@/models/Formidable/Field/Link/Link';
+
 import {
     ILink,
-    FormidableLink
-} from '@/models/Formidable/Field/Link/FormidableLink';
-import TextField from '@/components/Formidable/TextField.vue';
-import { FormidableText } from '@formidableforms/FormidableText';
+    Link,
+    FormidableLink,
+    FormidableField,
+    FieldType,
+    FormidableText
+} from '@formidableforms/core';
+
+import TextField from './TextField.vue';
+import { MdField, MdInput } from 'vue-material/dist/components';
 
 @Component({
     components: {
-        TextField
+        TextField,
+        MdField,
+        MdInput
     }
 })
 export default class LinkField extends Vue {

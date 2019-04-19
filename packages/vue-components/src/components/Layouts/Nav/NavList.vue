@@ -17,9 +17,20 @@ md-list
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { INavMapping } from '../../../routing/INavMapping.interface';
 
+import {
+    MdList,
+    MdListItem,
+    MdIcon,
+    MdButton
+} from 'vue-material/dist/components';
+
 @Component({
     components: {
-        NavList
+        NavList,
+        MdList,
+        MdListItem,
+        MdIcon,
+        MdButton
     }
 })
 export default class NavList extends Vue {

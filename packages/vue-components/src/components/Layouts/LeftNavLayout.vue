@@ -28,9 +28,24 @@ import { INavMapping } from '../../routing/INavMapping.interface';
 // import { AppStateModule } from '@/store/App.store';
 import { VuexModule } from 'vuex-module-decorators';
 
+import {
+    MdApp,
+    MdAppToolbar,
+    MdButton,
+    MdAppDrawer,
+    MdToolbar,
+    MdAppContent
+} from 'vue-material/dist/components';
+
 @Component({
     components: {
-        NavList
+        NavList,
+        MdApp,
+        MdAppToolbar,
+        MdButton,
+        MdAppDrawer,
+        MdToolbar,
+        MdAppContent
     }
 })
 export default class LeftNavLayout extends Vue {
