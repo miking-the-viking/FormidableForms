@@ -7,12 +7,12 @@ md-field(:class="feedbackClass")
 
 <script lang="ts">
 import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
-import { FormidableField } from '@/models/Formidable/Field/field.abstract';
 import { ValidationError } from 'class-validator';
 import {
     FormidableFile,
-    FileType
-} from '@/models/Formidable/Field/FormidableFile';
+    FileType,
+    FormidableField
+} from '@formidableforms/core';
 import FeedbackText from '@/components/Formidable/components/FeedbackText.vue';
 import { FormidableFieldComponent } from '@/components/Formidable/FormidableFieldComponent.abstract';
 

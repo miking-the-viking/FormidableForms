@@ -39,7 +39,7 @@ import {
     FormidableLink
 } from '@/models/Formidable/Field/Link/FormidableLink';
 import TextField from '@/components/Formidable/TextField.vue';
-import { FormidableText } from '@/models/Formidable/Field/Text/FormidableText';
+import { FormidableText } from '@formidableforms/FormidableText';
 
 @Component({
     components: {

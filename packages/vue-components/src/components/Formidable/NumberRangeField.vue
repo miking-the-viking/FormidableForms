@@ -12,17 +12,15 @@ md-field
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
-import {
-    FormidableField,
-    FieldType
-} from '@/models/Formidable/Field/field.abstract';
 import { ValidationError } from 'class-validator';
+import NumberField from '@/components/Formidable/NumberField.vue';
 import {
     INumberRange,
-    FormidableNumberRange
-} from '@/models/Formidable/Field/NumberRange/FormidableNumberRange';
-import NumberField from '@/components/Formidable/NumberField.vue';
-import { FormidableNumber } from '@/models/Formidable/Field/Number/FormidableNumber';
+    FormidableNumberRange,
+    FormidableField,
+    FieldType,
+    FormidableNumber
+} from '@formidableforms/core';
 
 @Component({
     components: {

@@ -1,3 +1,3 @@
-import FormidableForm from '@/components/FormidableForm.vue';
+import FormidableForm from './FormidableForm.vue';
 
 export { FormidableForm };

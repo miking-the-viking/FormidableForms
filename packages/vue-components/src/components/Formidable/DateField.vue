@@ -7,11 +7,10 @@ md-field(:class="feedbackClass")
 
 <script lang="ts">
 import { Vue, Component, Prop, Emit, Watch } from 'vue-property-decorator';
-import { FormidableField } from '@/models/Formidable/Field/field.abstract';
 import { ValidationError } from 'class-validator';
 import { Datetime } from 'vue-datetime';
 import 'vue-datetime/dist/vue-datetime.css';
-import { FormidableDate } from '@/models/Formidable/Field/Date/FormidableDate';
+import { FormidableField, FormidableDate } from '@formidableforms/core';
 import FeedbackText from '@/components/Formidable/components/FeedbackText.vue';
 import { FormidableFieldComponent } from '@/components/Formidable/FormidableFieldComponent.abstract';
 

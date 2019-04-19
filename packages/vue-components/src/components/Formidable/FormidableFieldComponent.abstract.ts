@@ -1,6 +1,6 @@
 import { Vue, Prop } from 'vue-property-decorator';
 import { ValidationError } from 'class-validator';
-import { FormidableField } from '@/models/Formidable/Field/field.abstract';
+import { FormidableField } from '@formidableforms/core';
 
 export abstract class FormidableFieldComponent<
     S extends FormidableField<any>
@@ -8,14 +8,14 @@ export abstract class FormidableFieldComponent<
     @Prop({ required: true }) protected value!: S;
     @Prop({
         default: () => [],
-        validator: value => {
+        validator: (value) => {
             if (value === undefined || value === null || value.length >= 0) {
                 return true;
             }
             const err = new ValidationError();
             err.property = 'validationErrors';
             throw err;
-        }
+        },
     })
     protected validationErrors!: ValidationError[];
 
@@ -30,7 +30,7 @@ export abstract class FormidableFieldComponent<
         return {
             'md-invalid':
                 this.validationErrors && this.validationErrors.length > 0,
-            'is-success': this.isSubmittable
+            'is-success': this.isSubmittable,
         };
     }
 
@@ -41,7 +41,7 @@ export abstract class FormidableFieldComponent<
     set val(newVal: S | string | null) {
         this.$emit('input', {
             ...this.value,
-            value: newVal === '' ? null : newVal
+            value: newVal === '' ? null : newVal,
         });
     }
     get id() {

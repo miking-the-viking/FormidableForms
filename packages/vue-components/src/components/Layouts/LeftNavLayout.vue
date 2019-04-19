@@ -24,8 +24,9 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import NavList from '@/components/Layouts/Nav/NavList.vue';
-import { INavMapping } from '@/routing/INavMapping.interface';
-import { AppStateModule } from '@/store/App.store';
+import { INavMapping } from '../../routing/INavMapping.interface';
+// import { AppStateModule } from '@/store/App.store';
+import { VuexModule } from 'vuex-module-decorators';
 
 @Component({
     components: {
@@ -35,13 +36,35 @@ import { AppStateModule } from '@/store/App.store';
 export default class LeftNavLayout extends Vue {
     @Prop({ required: true }) private title!: string;
     @Prop({ required: true }) private navRouting!: INavMapping[];
+    @Prop({
+        required: false,
+        default: undefined,
+        validator(vuexModule: VuexModule) {
+            if ((vuexModule as any).navExpanded) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    })
+    private appStateModule?: VuexModule;
+
+    private fallbackLocalNavExpanded: boolean = false;
 
     get menuVisible() {
-        return AppStateModule.navExpanded;
+        if (this.appStateModule) {
+            return (this.appStateModule as any).navExpanded;
+        } else {
+            return this.fallbackLocalNavExpanded;
+        }
     }
 
     private toggleMenu() {
-        AppStateModule.toggleNav();
+        if (this.appStateModule) {
+            (this.appStateModule as any).toggleNav();
+        } else {
+            this.fallbackLocalNavExpanded = !this.fallbackLocalNavExpanded;
+        }
     }
 }
 </script>

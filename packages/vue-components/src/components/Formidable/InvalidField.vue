@@ -6,7 +6,7 @@ div.invalid-field-type.error
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { FieldType, FormidableField } from '@/models/Formidable/Field/field.abstract';
+import { FieldType, FormidableField } from '@formidableforms/core';
 
 @Component
 export default class InvalidField extends Vue {

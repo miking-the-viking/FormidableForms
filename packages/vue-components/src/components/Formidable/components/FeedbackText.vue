@@ -4,7 +4,7 @@ span.md-error(v-if="hasFeedback") {{errorText}}
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
-import { FormidableField } from '@/models/Formidable/Field/field.abstract';
+import { FormidableField } from '@formidableforms/core';
 import { ValidationError } from 'class-validator';
 
 @Component

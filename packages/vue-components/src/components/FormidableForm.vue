@@ -31,16 +31,16 @@ import {
 import { ValidationError, validateSync } from 'class-validator';
 import { plainToClass } from 'class-transformer';
 
-import NumberField from '@/components/Formidable/NumberField.vue';
-import NumberRangeField from '@/components/Formidable/NumberRangeField.vue';
-import InvalidField from '@/components/Formidable/InvalidField.vue';
-import TextField from '@/components/Formidable/TextField.vue';
-import TextArea from '@/components/Formidable/TextArea.vue';
-import LinkField from '@/components/Formidable/LinkField.vue';
-import EmailField from '@/components/Formidable/EmailField.vue';
-import PasswordField from '@/components/Formidable/PasswordField.vue';
-import DateField from '@/components/Formidable/DateField.vue';
-import FileField from '@/components/Formidable/FileField.vue';
+import NumberField from './Formidable/NumberField.vue';
+import NumberRangeField from './Formidable/NumberRangeField.vue';
+import InvalidField from './Formidable/InvalidField.vue';
+import TextField from './Formidable/TextField.vue';
+import TextArea from './Formidable/TextArea.vue';
+import LinkField from './Formidable/LinkField.vue';
+import EmailField from './Formidable/EmailField.vue';
+import PasswordField from './Formidable/PasswordField.vue';
+import DateField from './Formidable/DateField.vue';
+import FileField from './Formidable/FileField.vue';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
