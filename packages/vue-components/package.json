@@ -1,133 +1,145 @@
 {
-    "name": "@formidableforms/vue-components",
-    "version": "0.4.3-alpha.1.1.0",
-    "description": "Formidable Forms Vue Components",
-    "author": "MikingTheViking <kingmi123@gmail.com>",
-    "homepage": "https://github.com/miking-the-viking/FormidableForms#readme",
-    "license": "ISC",
-    "main": "lib/vue-components.js",
-    "directories": {
-        "lib": "lib"
-    },
-    "publishConfig": {
-        "access": "public"
-    },
-    "files": [
-        "lib"
+  "name": "@formidableforms/vue-components",
+  "version": "0.4.3-alpha.1.1.0",
+  "description": "Formidable Forms Vue Components",
+  "author": "MikingTheViking <kingmi123@gmail.com>",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "lint": "vue-cli-service lint",
+    "build:lib": "vue-cli-service build --target lib --name miking ./src/index.ts",
+    "storybook": "start-storybook",
+    "storybook:build": "vue-cli-service storybook:build -c config/storybook",
+    "storybook:serve": "vue-cli-service storybook:serve -p 6006 -c config/storybook",
+    "test:unit": "vue-cli-service test:unit",
+    "test:unit:watch": "vue-cli-service test:unit --watch --verbose"
+  },
+  "main": "lib/vue-components.js",
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "@formidableforms/core": "^0.4.3-alpha.1.1.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.17",
+    "@fortawesome/free-solid-svg-icons": "^5.8.1",
+    "core-js": "^2.6.5",
+    "debounce": "^1.2.0",
+    "luxon": "^1.12.1",
+    "pug": "^2.0.3",
+    "pug-plain-loader": "^1.0.0",
+    "register-service-worker": "^1.6.2",
+    "vue": "^2.6.10",
+    "vue-class-component": "^7.0.2",
+    "vue-cli-plugin-storybook": "^0.6.1",
+    "vue-datetime": "^1.0.0-beta.10",
+    "vue-loader": "^15.7.0",
+    "vue-material": "^1.0.0-beta-10.2",
+    "vue-property-decorator": "^8.1.0",
+    "vue-router": "^3.0.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@storybook/addon-actions": "^4.1.0 || ^5.0.0",
+    "@storybook/addon-knobs": "^4.1.0 || ^5.0.0",
+    "@storybook/addon-links": "^4.1.0 || ^5.0.0",
+    "@storybook/addon-notes": "^4.1.0 || ^5.0.0",
+    "@storybook/vue": "^5.0.11",
+    "@types/debounce": "^1.2.0",
+    "@types/jest": "^23.1.4",
+    "@types/storybook__vue": "^5.0.1",
+    "@vue/cli-plugin-babel": "^3.6.0",
+    "@vue/cli-plugin-pwa": "^3.6.0",
+    "@vue/cli-plugin-typescript": "^3.6.0",
+    "@vue/cli-plugin-unit-jest": "^3.6.0",
+    "@vue/cli-service": "^3.6.0",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-loader": "^8.0.5",
+    "babel-preset-vue": "^2.0.2",
+    "lint-staged": "^8.1.5",
+    "node-sass": "^4.12.0",
+    "sass": "^1.18.0",
+    "sass-loader": "^7.1.0",
+    "ts-jest": "^23.0.0",
+    "typescript": "^3.4.5",
+    "vue-template-compiler": "^2.6.10",
+    "vuex": "^3.1.0",
+    "vuex-module-decorators": "^0.9.8"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json",
+      "vue",
+      "ts",
+      "tsx"
     ],
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/miking-the-viking/FormidableForms.git"
+    "transform": {
+      "^.+\\.vue$": "vue-jest",
+      ".+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
+      "^.+\\.tsx?$": "ts-jest"
     },
-    "bugs": {
-        "url": "https://github.com/miking-the-viking/FormidableForms/issues"
-    },
-    "scripts": {
-        "serve": "vue-cli-service serve",
-        "build:lib": "vue-cli-service build --target lib --name miking ./src/index.ts",
-        "lint": "vue-cli-service lint",
-        "test:unit": "vue-cli-service test:unit",
-        "test:unit:watch": "vue-cli-service test:unit --watch --verbose"
-    },
-    "dependencies": {
-        "@formidableforms/core": "^0.4.3-alpha.1.1.0",
-        "@fortawesome/fontawesome-svg-core": "^1.2.17",
-        "@fortawesome/free-solid-svg-icons": "^5.8.1",
-        "class-transformer": "^0.2.0",
-        "class-transformer-validator": "^0.7.1",
-        "class-validator": "^0.9.1",
-        "core-js": "^2.6.5",
-        "debounce": "^1.2.0",
-        "luxon": "^1.12.1",
-        "pug": "^2.0.3",
-        "pug-plain-loader": "^1.0.0",
-        "register-service-worker": "^1.6.2",
-        "vue": "^2.6.10",
-        "vue-class-component": "^7.0.2",
-        "vue-datetime": "^1.0.0-beta.10",
-        "vue-loader": "^15.7.0",
-        "vue-material": "^1.0.0-beta-10.2",
-        "vue-property-decorator": "^8.1.0",
-        "vue-router": "^3.0.6"
-    },
-    "devDependencies": {
-        "@types/debounce": "^1.2.0",
-        "@types/jest": "^23.1.4",
-        "@vue/cli-plugin-babel": "^3.6.0",
-        "@vue/cli-plugin-pwa": "^3.6.0",
-        "@vue/cli-plugin-typescript": "^3.6.0",
-        "@vue/cli-plugin-unit-jest": "^3.6.0",
-        "@vue/cli-service": "^3.6.0",
-        "@vue/test-utils": "1.0.0-beta.29",
-        "babel-core": "7.0.0-bridge.0",
-        "lint-staged": "^8.1.5",
-        "sass": "^1.18.0",
-        "sass-loader": "^7.1.0",
-        "ts-jest": "^23.0.0",
-        "typescript": "^3.4.3",
-        "vue-template-compiler": "^2.5.21",
-        "vuex": "^3.1.0",
-        "vuex-module-decorators": "^0.9.8"
-    },
-    "postcss": {
-        "plugins": {
-            "autoprefixer": {}
-        }
-    },
-    "browserslist": [
-        "> 1%",
-        "last 2 versions",
-        "not ie <= 8"
+    "transformIgnorePatterns": [
+      "/node_modules/"
     ],
-    "jest": {
-        "moduleFileExtensions": [
-            "js",
-            "jsx",
-            "json",
-            "vue",
-            "ts",
-            "tsx"
-        ],
-        "transform": {
-            "^.+\\.vue$": "vue-jest",
-            ".+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
-            "^.+\\.tsx?$": "ts-jest"
-        },
-        "transformIgnorePatterns": [
-            "/node_modules/"
-        ],
-        "moduleNameMapper": {
-            "^@/(.*)$": "<rootDir>/src/$1"
-        },
-        "snapshotSerializers": [
-            "jest-serializer-vue"
-        ],
-        "testMatch": [
-            "**/tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)"
-        ],
-        "testURL": "http://localhost/",
-        "watchPlugins": [
-            "/Users/viking/projects/personal/FormidableForms/packages/vue-components/vue-components/@formidable/vue-components/node_modules/jest-watch-typeahead/filename.js",
-            "/Users/viking/projects/personal/FormidableForms/packages/vue-components/vue-components/@formidable/vue-components/node_modules/jest-watch-typeahead/testname.js"
-        ],
-        "globals": {
-            "ts-jest": {
-                "babelConfig": true
-            }
-        }
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
     },
-    "gitHooks": {
-        "pre-commit": "lint-staged"
-    },
-    "lint-staged": {
-        "*.ts": [
-            "vue-cli-service lint",
-            "git add"
-        ],
-        "*.vue": [
-            "vue-cli-service lint",
-            "git add"
-        ]
-    },
-    "gitHead": "c89d97f146d1f2a98f7813c75d4c08c52447c6e8"
+    "snapshotSerializers": [
+      "jest-serializer-vue"
+    ],
+    "testMatch": [
+      "**/tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)"
+    ],
+    "testURL": "http://localhost/",
+    "watchPlugins": [
+      "/Users/viking/projects/personal/FormidableForms/packages/vue-components/vue-components/@formidable/vue-components/node_modules/jest-watch-typeahead/filename.js",
+      "/Users/viking/projects/personal/FormidableForms/packages/vue-components/vue-components/@formidable/vue-components/node_modules/jest-watch-typeahead/testname.js"
+    ],
+    "globals": {
+      "ts-jest": {
+        "babelConfig": true
+      }
+    }
+  },
+  "bugs": {
+    "url": "https://github.com/miking-the-viking/FormidableForms/issues"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "gitHead": "c89d97f146d1f2a98f7813c75d4c08c52447c6e8",
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "homepage": "https://github.com/miking-the-viking/FormidableForms#readme",
+  "license": "ISC",
+  "lint-staged": {
+    "*.ts": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "*.vue": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miking-the-viking/FormidableForms.git"
+  }
 }

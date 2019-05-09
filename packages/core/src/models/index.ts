@@ -1,3 +1,3 @@
-export * from './validation';
+export * from '../validation';
 export * from './form';
 export * from './field';

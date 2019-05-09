@@ -6,7 +6,6 @@ form.formidable-form.md-layout.md-alignment-top-center(@submit.prevent="form.sub
         md-card-content
             .md-layout.md-gutter
             template(v-for="(field, index) in form.fields")
-                p a field!
                 component(
                     v-bind:is="getField(field)"
                     v-model="form.fields[index]"
@@ -152,7 +151,11 @@ export default class FormidableForm extends Vue {
             case FieldType.Link:
                 return await transformAndValidate(FormidableLink, fieldConfig);
             default:
-                throw new Error(`Invalid Field Type: ${fieldConfig.fieldType}`);
+                throw new Error(
+                    `Invalid Field Type: ${fieldConfig.fieldType}, not === to ${
+                        FieldType.Text
+                    }`
+                );
         }
     }
 
@@ -177,6 +180,9 @@ export default class FormidableForm extends Vue {
             case FieldType.File:
                 return FileField;
             default:
+                console.log(
+                    `field type ${field.fieldType} is not === ${FieldType.Text}`
+                );
                 return InvalidField;
         }
     }

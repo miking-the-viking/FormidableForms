@@ -3,8 +3,8 @@ import { IsNumber, IsOptional, IsString, ValidateIf } from 'class-validator';
 import { FormidableField } from '../core/field.abstract';
 import { FieldType } from '../core/field.types.enum';
 import { IFormidableTextareaProps } from './textarea.props.interface';
-import { IsLongerThan } from '../../validation/decorators/IsLongerThan';
-import { IsShorterThan } from '../../validation/decorators/IsShorterThan';
+import { IsLongerThan } from '../../../validation/decorators/IsLongerThan';
+import { IsShorterThan } from '../../../validation/decorators/IsShorterThan';
 
 export class FormidableTextarea extends FormidableField<string>
     implements IFormidableTextareaProps {

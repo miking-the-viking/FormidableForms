@@ -1,7 +1,6 @@
 import { FieldFactory } from '../core/factory/field.factory.abstract';
 import { FieldType } from '../core/field.types.enum';
 import { IFormidableLinkProps } from './link.props.interface';
-import faker from 'faker';
 
 /**
  * Link implementation of the Factory
@@ -16,8 +15,8 @@ export class LinkFactory extends FieldFactory<IFormidableLinkProps> {
             ...this.buildBaseField(),
             fieldType: FieldType.Link,
             value: {
-                text: faker.lorem.words(6),
-                href: faker.internet.url()
+                text: 'some link',
+                href: 'www.google.ca'
             },
             ...config
         } as IFormidableLinkProps;

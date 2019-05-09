@@ -19,7 +19,15 @@
         "src/**/*.tsx",
         "src/**/*.vue",
         "tests/**/*.ts",
-        "tests/**/*.tsx"
+        "tests/**/*.tsx",
+        "stories/**/*.ts",
+        "stories/index.ts"
     ],
-    "exclude": ["node_modules"]
+    "exclude": ["node_modules"],
+    "awesomeTypescriptLoaderOptions": {
+        "useWebpackText": true,
+        "useTranspileModule": true,
+        "doTypeCheck": true,
+        "forkChecker": true
+    }
 }

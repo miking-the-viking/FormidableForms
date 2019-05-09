@@ -7,9 +7,9 @@ import { FieldType } from '../core/field.types.enum';
 import { Link } from '.';
 import { ILink } from './link.interface';
 import { IFormidableLinkProps } from './link.props.interface';
-import { IsGreaterThanOrEqualTo } from '../../validation/decorators/IsGreaterThanOrEqualTo';
-import { IsLessThanOrEqualTo } from '../../validation/decorators/IsLessThanOrEqualTo';
-import { LinkIsValid } from '../../validation/decorators/LinkIsValid';
+import { IsGreaterThanOrEqualTo } from '../../../validation/decorators/IsGreaterThanOrEqualTo';
+import { IsLessThanOrEqualTo } from '../../../validation/decorators/IsLessThanOrEqualTo';
+import { LinkIsValid } from '../../../validation/decorators/LinkIsValid';
 
 /**
  * Formidable Link Validation Class

@@ -3,14 +3,16 @@ import { IsNumber, IsOptional, IsString, ValidateIf } from 'class-validator';
 import { FormidableField } from '../core/field.abstract';
 import { FieldType } from '../core/field.types.enum';
 import { IFormidableTextProps } from './text.props.interface';
-import { IsGreaterThanOrEqualTo } from '../../validation/decorators/IsGreaterThanOrEqualTo';
-import { IsLessThanOrEqualTo } from '../../validation/decorators/IsLessThanOrEqualTo';
-import { IsLongerThan } from '../../validation/decorators/IsLongerThan';
-import { IsShorterThan } from '../../validation/decorators/IsShorterThan';
+import { IsGreaterThanOrEqualTo } from '../../../validation/decorators/IsGreaterThanOrEqualTo';
+import { IsLessThanOrEqualTo } from '../../../validation/decorators/IsLessThanOrEqualTo';
+import { IsLongerThan } from '../../../validation/decorators/IsLongerThan';
+import { IsShorterThan } from '../../../validation/decorators/IsShorterThan';
+import { registerValidatable } from '../../../validation/registerValidatable.decorator';
 
 /**
  * Formidable Field definition for a text input
  */
+@registerValidatable
 export class FormidableText extends FormidableField<string>
     implements IFormidableTextProps {
     // @IsEnum(FieldType)

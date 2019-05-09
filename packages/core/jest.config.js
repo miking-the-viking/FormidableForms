@@ -5,8 +5,8 @@ module.exports = {
         //     'jest-transform-stub',
         '^.+\\.tsx?$': 'ts-jest'
     },
-    moduleNameMapper: {
-        '^@/(.*)$': '<rootDir>/src/$1'
-    },
+    // moduleNameMapper: {
+    // '^@/(.*)$': '<rootDir>/src/$1'
+    // },
     testMatch: ['**/*.spec.(ts|tsx|js|jsx)']
 };

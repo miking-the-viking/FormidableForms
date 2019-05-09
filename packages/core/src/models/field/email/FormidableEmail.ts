@@ -3,11 +3,11 @@ import { IsEmail, IsNumber, IsOptional } from 'class-validator';
 import { FormidableField } from '../core/field.abstract';
 import { FieldType } from '../core/field.types.enum';
 import { IFormidableEmailProps } from './email.props.interface';
-import { IsGreaterThanOrEqualTo } from '../../validation/decorators/IsGreaterThanOrEqualTo';
-import { IsLessThanOrEqualTo } from '../../validation/decorators/IsLessThanOrEqualTo';
-import { IsLongerThan } from '../../validation/decorators/IsLongerThan';
-import { IsShorterThan } from '../../validation/decorators/IsShorterThan';
-import { IsStringOrNull } from '../../validation/decorators/IsStringOrNull';
+import { IsGreaterThanOrEqualTo } from '../../../validation/decorators/IsGreaterThanOrEqualTo';
+import { IsLessThanOrEqualTo } from '../../../validation/decorators/IsLessThanOrEqualTo';
+import { IsLongerThan } from '../../../validation/decorators/IsLongerThan';
+import { IsShorterThan } from '../../../validation/decorators/IsShorterThan';
+import { IsStringOrNull } from '../../../validation/decorators/IsStringOrNull';
 
 /**
  * Formidable Field definition for a Email input

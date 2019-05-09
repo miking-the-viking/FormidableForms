@@ -1,8 +1,8 @@
 import { IsNumber, IsOptional } from 'class-validator';
 
 import { INumberRange } from './numberRange.interface';
-import { IsGreaterThanOrEqualTo } from '../../validation/decorators/IsGreaterThanOrEqualTo';
-import { IsLessThanOrEqualTo } from '../../validation/decorators/IsLessThanOrEqualTo';
+import { IsGreaterThanOrEqualTo } from '../../../validation/decorators/IsGreaterThanOrEqualTo';
+import { IsLessThanOrEqualTo } from '../../../validation/decorators/IsLessThanOrEqualTo';
 
 /**
  * Number Range validation class
