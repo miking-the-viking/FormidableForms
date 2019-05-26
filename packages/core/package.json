@@ -31,6 +31,7 @@
         "url": "https://github.com/miking-the-viking/FormidableForms/issues"
     },
     "dependencies": {
+        "@formidableforms/typeahead": "^0.4.4-alpha.0",
         "class-transformer": "^0.2.0",
         "class-transformer-validator": "^0.7.1",
         "class-validator": "^0.9.1",
