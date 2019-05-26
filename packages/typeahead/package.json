@@ -1,0 +1,60 @@
+{
+    "name": "@formidableforms/typeahead",
+    "version": "0.4.4-alpha.1",
+    "description": "FormidableForm's TypeAhead Client",
+    "author": "MikingTheViking <kingmi123@gmail.com>",
+    "homepage": "https://github.com/miking-the-viking/FormidableForms#readme",
+    "license": "ISC",
+    "main": "lib/index.js",
+    "directories": {
+        "lib": "lib",
+        "src": "src"
+    },
+    "files": [
+        "lib"
+    ],
+    "publishConfig": {
+        "access": "public"
+    },
+    "jest": {
+        "preset": "ts-jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/miking-the-viking/FormidableForms.git"
+    },
+    "scripts": {
+        "build": "tsc --build tsconfig.build.json",
+        "build:watch": "tsc --build tsconfig.build.json --watch",
+        "test": "jest"
+    },
+    "bugs": {
+        "url": "https://github.com/miking-the-viking/FormidableForms/issues"
+    },
+    "gitHooks": {
+        "pre-commit": "link-staged"
+    },
+    "lint-staged": {
+        "*.ts": [
+            "yarn lint",
+            "git add"
+        ],
+        "*.spec.ts": [
+            "yarn test",
+            "git add"
+        ]
+    },
+    "dependencies": {
+        "rxjs": "^6.5.2"
+    },
+    "devDependencies": {
+        "@types/faker": "^4.1.5",
+        "@types/jest": "^24.0.13",
+        "@types/node": "^12.0.2",
+        "faker": "^4.1.0",
+        "jest": "^24.8.0",
+        "ts-jest": "^24.0.2",
+        "ts-node": "^8.2.0",
+        "typescript": "^3.4.5"
+    }
+}
