@@ -1,6 +1,6 @@
 {
     "name": "@formidableforms/core",
-    "version": "0.4.4-alpha.0",
+    "version": "0.4.4-alpha.1",
     "description": "Formidable Forms Core",
     "author": "MikingTheViking <kingmi123@gmail.com>",
     "homepage": "https://github.com/miking-the-viking/FormidableForms#readme",
@@ -31,7 +31,7 @@
         "url": "https://github.com/miking-the-viking/FormidableForms/issues"
     },
     "dependencies": {
-        "@formidableforms/typeahead": "^0.4.4-alpha.0",
+        "@formidableforms/typeahead": "^0.4.4-alpha.1",
         "class-transformer": "^0.2.0",
         "class-transformer-validator": "^0.7.1",
         "class-validator": "^0.9.1",
