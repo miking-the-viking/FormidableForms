@@ -7717,9 +7717,9 @@ lru-cache@^5.1.1:
     yallist "^3.0.2"
 
 luxon@^1.8.3:
-  version "1.8.3"
-  resolved "https://registry.yarnpkg.com/luxon/-/luxon-1.8.3.tgz#6c76b50319b3a91a357002ca2e96576bb3bfe26d"
-  integrity sha512-hICQcGmUl5e9VUnf5PtHAma+tpiwL/wMBV9/6/M/6iSpzWFHdEElK2Rj4IZx8kbk2/baJvYftgb+n/I2wJ7RXQ==
+  version "1.28.1"
+  resolved "https://registry.yarnpkg.com/luxon/-/luxon-1.28.1.tgz#528cdf3624a54506d710290a2341aa8e6e6c61b0"
+  integrity sha512-gYHAa180mKrNIUJCbwpmD0aTu9kV0dREDrwNnuyFAsO1Wt0EVYSZelPnJlbj9HplzXX/YWXHFTL45kvZ53M0pw==
 
 macos-release@^2.0.0:
   version "2.0.0"
